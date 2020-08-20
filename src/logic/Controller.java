@@ -1,7 +1,9 @@
 package logic;
 
 import gui.*;
+import logic.DAO.AlbergoDAO;
 import logic.DAO.Associazione_Categoria_RistoranteDAO;
+import logic.DAO.Associazione_Servizio_AlbergoDAO;
 import logic.DAO.ContattiDAO;
 import logic.DAO.LuogoDAO;
 import logic.DAO.RistoranteDAO;
@@ -29,6 +31,8 @@ public class Controller {
 	private RistoranteDAO ristoranteDAO = new RistoranteDAO(this);
 	private ContattiDAO contattiDAO = new ContattiDAO(this);
 	private Associazione_Categoria_RistoranteDAO associazione_categoria_ristoranteDAO = new Associazione_Categoria_RistoranteDAO(this);
+	private AlbergoDAO albergoDAO = new AlbergoDAO(this);
+	private Associazione_Servizio_AlbergoDAO associazione_servizio_albergoDAO = new Associazione_Servizio_AlbergoDAO(this);
 
 	//inizializza FINESTRE
 	private HomePage home;
@@ -113,6 +117,15 @@ public class Controller {
 	
 	public Associazione_Categoria_RistoranteDAO getAssociazione_Categoria_RistoranteDAO() {
 		return associazione_categoria_ristoranteDAO;
+	}
+	
+	
+	public AlbergoDAO getAlbergoDAO(){
+		return albergoDAO;
+	}
+	
+	public Associazione_Servizio_AlbergoDAO getAssociazione_Servizio_AlbergoDAO() {
+		return associazione_servizio_albergoDAO;
 	}
 	
 // i metodi seguenti servono per passare le finestre quando vengono chiamati i metodi CambiaFrame e ChiudiFrame

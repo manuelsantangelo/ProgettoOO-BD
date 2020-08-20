@@ -1,3 +1,4 @@
+
 package gui;
 
 import java.awt.Toolkit;
@@ -56,7 +57,7 @@ public class Aggiungi_Ristorante extends JFrame {
 	private JTextField stato;
 	private JTextField città;
 	private JTextField paese;
-	private JTextField idirizzo;
+	private JTextField indirizzo;
 	private JTextField txtTelefono;
 	private JTextField txtSitoWeb;
 	private DefaultListModel dlm;
@@ -158,13 +159,13 @@ public class Aggiungi_Ristorante extends JFrame {
 		txtrI.setBounds(24, 115, 76, 29);
 		contentPane.add(txtrI);
 		
-		idirizzo = new JTextField();
-		idirizzo.setForeground(Color.GREEN);
-		idirizzo.setFont(new Font("Parametric Glitch", Font.PLAIN, 16));
-		idirizzo.setColumns(10);
-		idirizzo.setBackground(Color.BLACK);
-		idirizzo.setBounds(24, 148, 173, 29);
-		contentPane.add(idirizzo);
+		indirizzo = new JTextField();
+		indirizzo.setForeground(Color.GREEN);
+		indirizzo.setFont(new Font("Parametric Glitch", Font.PLAIN, 16));
+		indirizzo.setColumns(10);
+		indirizzo.setBackground(Color.BLACK);
+		indirizzo.setBounds(24, 148, 173, 29);
+		contentPane.add(indirizzo);
 		
 		JTextArea txtrPrezzo = new JTextArea();
 		txtrPrezzo.setText("Prezzo");
@@ -416,7 +417,7 @@ public class Aggiungi_Ristorante extends JFrame {
 				String stato1 = stato.getText();
 				String città1 = città.getText();
 				String paese1 = paese.getText();
-				String indirizzo1 = idirizzo.getText();
+				String indirizzo1 = indirizzo.getText();
 				prezzo price = prezzo.valueOf(prezzi.getSelectedItem().toString());
 				int stelleMichelin1 = stelleMichelin.getSelectedIndex();
 				String descrizione1 = descrizione.getText();

@@ -38,7 +38,7 @@ public class LuogoDAO {
 		
 		ps.executeUpdate();
 		
-		//JOptionPane.showMessageDialog(null, "LUOGO AGGIUNTO CON SUCCESSO");
+		JOptionPane.showMessageDialog(null, "LUOGO AGGIUNTO CON SUCCESSO");
 		
 		} catch (SQLException e2) {
 			System.out.println("ERROR IN SQL" + e2);

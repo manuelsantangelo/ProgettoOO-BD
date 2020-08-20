@@ -67,5 +67,10 @@ public class Albergo {
 		Numero_Camere = numero_Camere;
 		Luogo_FK = luogo_FK;
 	}
+	
+	public Albergo() {
+		
+	}
+	
 
 }

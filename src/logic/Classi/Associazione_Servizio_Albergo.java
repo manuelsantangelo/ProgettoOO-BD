@@ -6,6 +6,10 @@ public class Associazione_Servizio_Albergo {
 	public int getAlbergo_FK() {
 		return Albergo_FK;
 	}
+	
+	public Associazione_Servizio_Albergo() {
+		
+	}
 	public void setAlbergo_FK(int albergo_FK) {
 		Albergo_FK = albergo_FK;
 	}
