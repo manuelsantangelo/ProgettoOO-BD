@@ -18,9 +18,9 @@ import javax.swing.JOptionPane;
 
 public class Controller {
 	//CAMBIARE VALORI URL, USERNAME E PASS IN BASE AL PROPRIO DATABASE!!!!
-	private String  url =  "jdbc:postgresql://localhost:5432/ProvaProgetto";
-	private String username = "postgres";
-	private String pass = "Gemitaiz88";
+	private String  url =  "jdbc:postgresql://rogue.db.elephantsql.com:5432/tdzrnvmi";
+	private String username = "tdzrnvmi";
+	private String pass = "Qs1bbw564IBF7ktInw6e0CAa8EH2jKUR";
 	
 	private Connection conn;
 	
