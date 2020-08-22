@@ -64,7 +64,7 @@ public class Aggiungi_Attrazione extends JFrame {
 
 		setTitle("Aggiungi Attrazione");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\manue\\eclipse-workspace\\SafeTravel6\\images\\LogoPiccolo.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("images\\LogoPiccolo.png"));
 		setBounds(FINESTRA_Y, FINESTRA_X, 1099, 651);
 		contentPane = new JPanel();
 		contentPane.setForeground(Color.WHITE);
@@ -178,7 +178,7 @@ public class Aggiungi_Attrazione extends JFrame {
 		
 		JList comboBox_1 = new JList();
 		comboBox_1.setModel(new AbstractListModel() {
-			String[] values = new String[] {"Museo", "Teatro", "Stadio", "Parco Divertimenti", "Zona Verde", "Arena", "Giro Turistico", "Sagra"};
+			String[] values = new String[] {"Museo", "Teatro", "Stadio", "Parco_Divertimenti", "Zona_Verde", "Arena", "Giro_Turistico", "Sagra"};
 			public int getSize() {
 				return values.length;
 			}
@@ -202,6 +202,7 @@ public class Aggiungi_Attrazione extends JFrame {
 		txtrTipologia.setBounds(498, 226, 128, 29);
 		contentPane.add(txtrTipologia);
 		
+		
 		JTextArea txtrTelefono = new JTextArea();
 		txtrTelefono.setText("Telefono");
 		txtrTelefono.setForeground(Color.GREEN);
@@ -217,7 +218,7 @@ public class Aggiungi_Attrazione extends JFrame {
 		textField_5.setColumns(10);
 		textField_5.setBackground(Color.BLACK);
 		textField_5.setBounds(24, 260, 142, 29);
-		contentPane.add(textField_5);
+		contentPane.add(textField_5);	
 		
 		JList list_1 = new JList();
 		list_1.setBorder(new LineBorder(Color.GREEN));
@@ -307,7 +308,7 @@ public class Aggiungi_Attrazione extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 					JFileChooser fc = new JFileChooser();
-					fc.setCurrentDirectory(new java.io.File("C:/Users/Biagio/Desktop"));
+					fc.setCurrentDirectory(new java.io.File("C:/Users"));
 					fc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
 					if(fc.showOpenDialog(btnCerca) == JFileChooser.APPROVE_OPTION) {
 						String path = fc.getSelectedFile().getAbsolutePath();

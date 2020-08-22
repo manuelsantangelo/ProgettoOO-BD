@@ -75,7 +75,7 @@ public class Aggiungi_Hotel extends JFrame {
 
 		setTitle("Aggiungi Hotel");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\manue\\eclipse-workspace\\SafeTravel6\\images\\LogoPiccolo.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("images\\LogoPiccolo.png"));
 		setBounds(FINESTRA_Y, FINESTRA_X, 1370, 651);
 		contentPane = new JPanel();
 		contentPane.setForeground(Color.WHITE);
@@ -208,7 +208,7 @@ public class Aggiungi_Hotel extends JFrame {
 		JList categorie = new JList();
 		categorie.setLayoutOrientation(JList.VERTICAL_WRAP);
 		categorie.setModel(new AbstractListModel() {
-			String[] values = new String[] {"Hotel", "Motel", "BnB", "Villaggio Turistico", "Beauty Farm", "Albergo Residenziale", "Residenza di epoca Alberghiera"};
+			String[] values = new String[] {"Hotel", "Motel", "BnB", "Villaggio_Turistico", "Beauty_Farm", "Albergo_Residenziale", "Residenza_di_epoca_Alberghiera"};
 			public int getSize() {
 				return values.length;
 			}
@@ -337,7 +337,7 @@ public class Aggiungi_Hotel extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				JFileChooser fc = new JFileChooser();
-				fc.setCurrentDirectory(new java.io.File("C:\\Users\\manue\\Desktop"));
+				fc.setCurrentDirectory(new java.io.File("C:\\Users"));
 				fc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
 				if(fc.showOpenDialog(btnCerca) == JFileChooser.APPROVE_OPTION) {
 					String path = fc.getSelectedFile().getAbsolutePath();

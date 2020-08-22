@@ -78,7 +78,7 @@ public class Controller {
 		addAtt = new Aggiungi_Attrazione(this);
 		
 		mod.setVisible(true);
-		home.setVisible(false);
+		home.setVisible(true);
 	}
 	
 	public void MostraMessaggioErrore( String titolo, String testo) {
