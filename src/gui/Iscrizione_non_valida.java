@@ -31,13 +31,13 @@ public class Iscrizione_non_valida extends JFrame {
 		setAlwaysOnTop(true);
 		setType(Type.POPUP);
 		getContentPane().setBackground(new Color(51, 102, 255));
-		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\manue\\eclipse-workspace\\SafeTravel6\\images\\LogoPiccolo.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("images\\LogoPiccolo.png"));
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		getContentPane().setLayout(null);
 		setBounds(460, 300, 359, 93);
 		
 		JLabel lblIconaDiErrore = new JLabel("");
-		lblIconaDiErrore.setIcon(new ImageIcon("C:\\Users\\manue\\eclipse-workspace\\SafeTravel6\\images\\errore icon.png"));
+		lblIconaDiErrore.setIcon(new ImageIcon("errore icon.png"));
 		lblIconaDiErrore.setBounds(15, 8, 54, 43);
 		getContentPane().add(lblIconaDiErrore);
 		

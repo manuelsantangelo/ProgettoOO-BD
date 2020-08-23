@@ -46,7 +46,7 @@ public class HomePage extends JFrame {
 		
 		this.controller = controller;
 		
-		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\manue\\eclipse-workspace\\SafeTravel6\\images\\LogoPiccolo.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("images\\LogoPiccolo.png"));
 		setTitle("SafeTravel");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(FINESTRA_Y, FINESTRA_X, LUNGHEZZA_FINESTRA, ALTEZZA_FINESTRA);
@@ -57,7 +57,7 @@ public class HomePage extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel logo_image = new JLabel("New label");
-		logo_image.setIcon(new ImageIcon("C:\\Users\\manue\\eclipse-workspace\\SafeTravel6\\images\\Corretto.png"));
+		logo_image.setIcon(new ImageIcon("images\\Corretto.png"));
 		logo_image.setBounds(10, 52, 468, 315);
 		contentPane.add(logo_image);
 		

@@ -49,7 +49,7 @@ public class Moderatore_Homepage extends JFrame {
 		this.controller = controller;
 		
 		// La parola moderatore va cambiata con il nome del moderatore preso da Postgresql
-		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\manue\\eclipse-workspace\\SafeTravel6\\images\\LogoPiccolo.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("images\\LogoPiccolo.png"));
 		setTitle("Benvenuto, Moderatore");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(FINESTRA_Y, FINESTRA_X, (LUNGHEZZA_FINESTRA/2)+30, ALTEZZA_FINESTRA/2);
@@ -60,9 +60,9 @@ public class Moderatore_Homepage extends JFrame {
 		contentPane.setLayout(null);
 		
 		try{
-			custom_font = Font.createFont(Font.TRUETYPE_FONT, new File("C:\\Users\\manue\\eclipse-workspace\\SafeTravel6\\font\\Parametric Glitch Bold.ttf")).deriveFont(36f);
+			custom_font = Font.createFont(Font.TRUETYPE_FONT, new File("font\\Parametric Glitch Bold.ttf")).deriveFont(36f);
 			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-			ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("C:\\Users\\manue\\eclipse-workspace\\SafeTravel6\\font\\Parametric Glitch Bold.ttf")));
+			ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("font\\Parametric Glitch Bold.ttf")));
 		}
 		catch(IOException | FontFormatException e) {
 			
