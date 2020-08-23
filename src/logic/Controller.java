@@ -4,6 +4,7 @@ import gui.*;
 import logic.DAO.AlbergoDAO;
 import logic.DAO.Associazione_Categoria_RistoranteDAO;
 import logic.DAO.Associazione_Servizio_AlbergoDAO;
+import logic.DAO.AttrazioneDAO;
 import logic.DAO.ContattiDAO;
 import logic.DAO.LuogoDAO;
 import logic.DAO.RistoranteDAO;
@@ -15,6 +16,7 @@ import java.sql.SQLException;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+
 
 public class Controller {
 	//CAMBIARE VALORI URL, USERNAME E PASS IN BASE AL PROPRIO DATABASE!!!!
@@ -33,6 +35,7 @@ public class Controller {
 	private Associazione_Categoria_RistoranteDAO associazione_categoria_ristoranteDAO = new Associazione_Categoria_RistoranteDAO(this);
 	private AlbergoDAO albergoDAO = new AlbergoDAO(this);
 	private Associazione_Servizio_AlbergoDAO associazione_servizio_albergoDAO = new Associazione_Servizio_AlbergoDAO(this);
+	private AttrazioneDAO attrazioneDAO = new AttrazioneDAO(this);
 
 	//inizializza FINESTRE
 	private HomePage home;
@@ -126,6 +129,10 @@ public class Controller {
 	
 	public Associazione_Servizio_AlbergoDAO getAssociazione_Servizio_AlbergoDAO() {
 		return associazione_servizio_albergoDAO;
+	}
+	
+	public AttrazioneDAO getAttrazioneDAO() {
+		return attrazioneDAO;
 	}
 	
 // i metodi seguenti servono per passare le finestre quando vengono chiamati i metodi CambiaFrame e ChiudiFrame

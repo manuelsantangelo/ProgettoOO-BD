@@ -208,7 +208,7 @@ public class Aggiungi_Hotel extends JFrame {
 		JList categorie = new JList();
 		categorie.setLayoutOrientation(JList.VERTICAL_WRAP);
 		categorie.setModel(new AbstractListModel() {
-			String[] values = new String[] {"Hotel", "Motel", "BnB", "Villaggio Turistico", "Beauty Farm", "Albergo Residenziale", "Residenza di epoca Alberghiera"};
+			String[] values = new String[] {"Hotel", "Motel", "BnB", "Villaggio Turistico", "Beauty_Farm", "Albergo_Residenziale", "Residenza_di_epoca_alberghiera"};
 			public int getSize() {
 				return values.length;
 			}

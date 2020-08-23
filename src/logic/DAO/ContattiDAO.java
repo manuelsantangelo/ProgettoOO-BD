@@ -172,5 +172,77 @@ public void addContattiAlbergo(Connection conn, ArrayList<String> numTelefono, A
 		}
 	}
 }
-}
 
+public void addContattiAttrazione(Connection conn, ArrayList<String> numTelefono, ArrayList<String> webSite, int ID) {
+	String comando;
+	comando = "INSERT INTO public.\"Contatti\"(\"Telefono\", \"SitoWeb\", \"Attrazione_FK\")VALUES (?, ?, ?);";
+	
+	int casotel = numTelefono.size();
+	int casoweb = webSite.size();
+	
+	if(casotel >= casoweb) {
+		for(int i = 0; i < casotel; i++) {
+			if(webSite.get(i) != null) {
+				try {
+					PreparedStatement ps = null;
+					ps = conn.prepareStatement(comando);	
+					
+					ps.setString(1, numTelefono.get(i));
+					ps.setString(2, webSite.get(i));
+					ps.setInt(3, ID);
+					
+					ps.executeUpdate();
+				} catch (SQLException e2) {
+					System.out.println("ERROR IN SQL" + e2);
+					JOptionPane.showMessageDialog(null, "ERRORE! Qualcossa è andato storto con i contatti");
+				}
+
+			} else {
+				try {
+					PreparedStatement ps = null;
+					ps = conn.prepareStatement(comando);	
+					
+					ps.setString(1, numTelefono.get(i));
+					ps.setInt(3, ID);
+					
+					ps.executeUpdate();
+				} catch (SQLException e2) {
+					System.out.println("ERROR IN SQL" + e2);
+					JOptionPane.showMessageDialog(null, "ERRORE! Qualcossa è andato storto con i contatti");
+				}
+			}
+		}
+	} else {
+		for(int j = 0; j < casoweb; j++) {
+			if(numTelefono.get(j) != null) {
+				try {
+					PreparedStatement ps = null;
+					ps = conn.prepareStatement(comando);	
+					
+					ps.setString(1, numTelefono.get(j));
+					ps.setString(2, webSite.get(j));
+					ps.setInt(3, ID);
+					
+					ps.executeUpdate();
+				} catch (SQLException e2) {
+					System.out.println("ERROR IN SQL" + e2);
+					JOptionPane.showMessageDialog(null, "ERRORE! Qualcossa è andato storto con i contatti");
+				}
+			} else {
+				try {
+					PreparedStatement ps = null;
+					ps = conn.prepareStatement(comando);	
+			
+					ps.setString(2, webSite.get(j));
+					ps.setInt(3, ID);
+					
+					ps.executeUpdate();
+				} catch (SQLException e2) {
+					System.out.println("ERROR IN SQL" + e2);
+					JOptionPane.showMessageDialog(null, "ERRORE! Qualcossa è andato storto con i contatti");
+				}
+			}
+		}
+	}
+}
+}

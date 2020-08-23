@@ -60,5 +60,9 @@ public class Attrazione {
 		Luogo_FK = luogo_FK;
 	}
 	
+	public Attrazione() {
+		
+	}
+	
 	
 }

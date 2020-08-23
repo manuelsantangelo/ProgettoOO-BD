@@ -1,7 +1,7 @@
 package Tipi;
 
 public enum tipoattrazione {
-	Museum,
+	Museo,
 	Teatro,
 	Stadio,
 	Parco_Divertimenti,
