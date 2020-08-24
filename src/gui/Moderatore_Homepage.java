@@ -158,5 +158,26 @@ public class Moderatore_Homepage extends JFrame {
 			controller.CambiaFrame(Moderatore_Homepage.this, controller.getHome());
 				}
 		});
+		
+btnEliminaAttrazione.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+			controller.CambiaFrame(Moderatore_Homepage.this, controller.getElimina_Attrazione());
+				}
+		});
+
+btnEliminaRistorante.addActionListener(new ActionListener() {
+	
+	public void actionPerformed(ActionEvent e) {
+	controller.CambiaFrame(Moderatore_Homepage.this, controller.getElimina_Ristorante());
+		}
+});
+
+btnEliminaHotel.addActionListener(new ActionListener() {
+	
+	public void actionPerformed(ActionEvent e) {
+	controller.CambiaFrame(Moderatore_Homepage.this, controller.getElimina_Hotel());
+		}
+});
 	}
 }

@@ -91,6 +91,57 @@ public class AttrazioneDAO {
 		
 		return ID;
 	}
+	
+	
+	public ArrayList<String> getNomeAttrazione (Connection conn) {
+		ArrayList<String> nome =  new ArrayList<String>();
+		String comando;
+		
+		
+		comando = "select \"Nome\" From \"Attrazione\" ";
+		
+		try {
+			PreparedStatement ps = null;
+			ResultSet rs = null;
+			ps = conn.prepareStatement(comando);
+			rs = ps.executeQuery();
+			String nome1 = null;
+			while(rs.next()) {
+				
+			nome1 = rs.getString(1);
+			nome.add(nome1);
+			}
+			rs.close();
+		} catch (SQLException e2) {
+			System.out.println("ERROR IN SQL" + e2);
+			JOptionPane.showMessageDialog(null, "ERRORE! Qualcosa è andato storto con l'Attrazione");
+	}
+		return nome;
+	}
+	
+	
+	
+	public void deleteAttrazione(Connection conn, String nome1) {
+		String comando;
+		comando = "Delete From \"Attrazione\" where \"Nome\" = ? ";
+		
+		try {
+			PreparedStatement ps = null;
+
+			ps = conn.prepareStatement(comando);
+			ps.setString(1, nome1);
+			
+			
+			ps.executeUpdate();
+			JOptionPane.showMessageDialog(null, "Attrazione eliminata con successo!");
+			
+		} catch (SQLException e2) {
+			System.out.println("ERROR IN SQL" + e2);
+			JOptionPane.showMessageDialog(null, "ERRORE! Qualcosa è andato storto con l'Attrazione");
+	}
+		
+	}
+	
 }
 
 

@@ -46,6 +46,9 @@ public class Controller {
 	private Aggiungi_Hotel addHotel;
 	private Aggiungi_Attrazione addAtt;
 	private Principale principale;
+	private Elimina_Attrazione delAtt;
+	private Elimina_Ristorante delRest;
+	private Elimina_Hotel delHotel;
 	
 	
 	//****************************************
@@ -81,10 +84,14 @@ public class Controller {
 		addHotel = new Aggiungi_Hotel(this);
 		addAtt = new Aggiungi_Attrazione(this);
 		principale = new Principale(this);
-		
-		mod.setVisible(false);
+		delAtt = new Elimina_Attrazione(this);
+		delRest = new Elimina_Ristorante(this);
+		delHotel = new Elimina_Hotel(this);		
+
+		mod.setVisible(true);
 		home.setVisible(false);
-		principale.setVisible(true);
+		principale.setVisible(false);
+
 	}
 	
 	public void MostraMessaggioErrore( String titolo, String testo) {
@@ -166,5 +173,17 @@ public class Controller {
 	
 	public Connection getConnection() {
 		return conn;
+	}
+	
+	public Elimina_Attrazione getElimina_Attrazione() {
+		return delAtt;
+	}
+	public Elimina_Ristorante getElimina_Ristorante() {
+		return delRest;
+	}
+
+	public Elimina_Hotel getElimina_Hotel() {
+		
+		return delHotel;
 	}
 }
