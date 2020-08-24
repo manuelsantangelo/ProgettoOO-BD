@@ -32,12 +32,8 @@ public class Elimina_Attrazione extends JFrame {
 	final static int ALTEZZA_FINESTRA = 690;
 	final static int LUNGHEZZA_FINESTRA = 940;
 	static File imgpath = null;
-
-	
-	
 	private DefaultListModel dlm;
 	private DefaultListModel dlm1;
-	
 
 	public Elimina_Attrazione(Controller controller) {
 		
@@ -113,10 +109,7 @@ this.controller = controller;
 		btnAggiorna.setBackground(Color.BLACK);
 		btnAggiorna.setBounds(438, 50, 117, 29);
 		contentPane.add(btnAggiorna);
-		
 	
-		
-			
 		
 		btnElimina.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

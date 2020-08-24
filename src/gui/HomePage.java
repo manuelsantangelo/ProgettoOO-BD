@@ -114,6 +114,23 @@ public class HomePage extends JFrame {
 		panel.add(chckbxNewCheckBox);
 		
 		Button tasto_di_accesso = new Button("Accedi");
+		tasto_di_accesso.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				String nick = textField.getText();
+				@SuppressWarnings("deprecation")
+				String pass = textField_1.getText();
+				boolean flagMod = false;
+				boolean flagUser = false;
+				
+				
+				flagMod = controller.getModeratoreDAO().checkModeratore(controller.getConnection(), nick, pass);
+				if(flagMod)
+					controller.CambiaFrame(HomePage.this, controller.getModeratore_Homepage());
+
+				
+			}
+		});
 		tasto_di_accesso.setBounds(38, 455, 185, 45);
 		panel.add(tasto_di_accesso);
 		tasto_di_accesso.setBackground(new Color(0, 204, 255));

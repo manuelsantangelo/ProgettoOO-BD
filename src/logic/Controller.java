@@ -7,6 +7,7 @@ import logic.DAO.Associazione_Servizio_AlbergoDAO;
 import logic.DAO.AttrazioneDAO;
 import logic.DAO.ContattiDAO;
 import logic.DAO.LuogoDAO;
+import logic.DAO.ModeratoreDAO;
 import logic.DAO.RistoranteDAO;
 import logic.DAO.UtenteDAO;
 
@@ -36,11 +37,12 @@ public class Controller {
 	private AlbergoDAO albergoDAO = new AlbergoDAO(this);
 	private Associazione_Servizio_AlbergoDAO associazione_servizio_albergoDAO = new Associazione_Servizio_AlbergoDAO(this);
 	private AttrazioneDAO attrazioneDAO = new AttrazioneDAO(this);
+	private ModeratoreDAO moderatoreDAO = new ModeratoreDAO(this);
 
 	//inizializza FINESTRE
 	private HomePage home;
 	private Iscrizione iscrizione;
-	private Iscrizione_non_valida error1;
+	//private Iscrizione_non_valida error1;
 	private Moderatore_Homepage mod;
 	private Aggiungi_Ristorante addRest;
 	private Aggiungi_Hotel addHotel;
@@ -78,7 +80,7 @@ public class Controller {
 		
 		home = new HomePage(this);
 		iscrizione = new Iscrizione(this);
-		error1 = new Iscrizione_non_valida(this);
+		//error1 = new Iscrizione_non_valida(this);
 		mod = new Moderatore_Homepage(this);
 		addRest = new Aggiungi_Ristorante(this);
 		addHotel = new Aggiungi_Hotel(this);
@@ -89,7 +91,7 @@ public class Controller {
 		delHotel = new Elimina_Hotel(this);		
 
 		mod.setVisible(true);
-		home.setVisible(false);
+		home.setVisible(true);
 		principale.setVisible(false);
 
 	}
@@ -143,6 +145,10 @@ public class Controller {
 	
 	public AttrazioneDAO getAttrazioneDAO() {
 		return attrazioneDAO;
+	}
+	
+	public ModeratoreDAO getModeratoreDAO() {
+		return moderatoreDAO;
 	}
 	
 // i metodi seguenti servono per passare le finestre quando vengono chiamati i metodi CambiaFrame e ChiudiFrame

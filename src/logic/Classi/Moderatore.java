@@ -1,5 +1,7 @@
 package logic.Classi;
 
+import java.sql.Date;
+
 public class Moderatore {
 	private int Moderatore_ID;
 	private String Sede;
@@ -7,8 +9,8 @@ public class Moderatore {
 	private String Cognome;
 	private String Email;
 	private String Indirizzo;
-	private String Data_Inizio_Lavoro;
-	private String DataDiNascita;
+	private Date Data_Inizio_Lavoro;
+	private Date DataDiNascita;
 	private String CF;
 	private String Password;
 	public int getModeratore_ID() {
@@ -47,16 +49,16 @@ public class Moderatore {
 	public void setIndirizzo(String indirizzo) {
 		Indirizzo = indirizzo;
 	}
-	public String getData_Inizio_Lavoro() {
+	public Date getData_Inizio_Lavoro() {
 		return Data_Inizio_Lavoro;
 	}
-	public void setData_Inizio_Lavoro(String data_Inizio_Lavoro) {
+	public void setData_Inizio_Lavoro(Date data_Inizio_Lavoro) {
 		Data_Inizio_Lavoro = data_Inizio_Lavoro;
 	}
-	public String getDataDiNascita() {
+	public Date getDataDiNascita() {
 		return DataDiNascita;
 	}
-	public void setDataDiNascita(String dataDiNascita) {
+	public void setDataDiNascita(Date dataDiNascita) {
 		DataDiNascita = dataDiNascita;
 	}
 	public String getCF() {
@@ -72,7 +74,7 @@ public class Moderatore {
 		Password = password;
 	}
 	public Moderatore(String sede, String nome, String cognome, String email, String indirizzo,
-			String data_Inizio_Lavoro, String dataDiNascita, String cF, String password) {
+			Date data_Inizio_Lavoro, Date dataDiNascita, String cF, String password) {
 		super();
 		Sede = sede;
 		Nome = nome;
@@ -83,6 +85,8 @@ public class Moderatore {
 		DataDiNascita = dataDiNascita;
 		CF = cF;
 		Password = password;
+	}
+	public Moderatore() {
 	}
 	
 }
