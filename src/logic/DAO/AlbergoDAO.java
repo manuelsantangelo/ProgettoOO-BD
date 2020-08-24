@@ -94,4 +94,54 @@ public class AlbergoDAO {
 		
 		return ID;
 	}
+	
+	
+	public ArrayList<String> getNomeAlbergo (Connection conn) {
+		ArrayList<String> nome =  new ArrayList<String>();
+		String comando;
+		
+		
+		comando = "select \"Nome\" From \"Albergo\" ";
+		
+		try {
+			PreparedStatement ps = null;
+			ResultSet rs = null;
+			ps = conn.prepareStatement(comando);
+			rs = ps.executeQuery();
+			String nome1 = null;
+			while(rs.next()) {
+				
+			nome1 = rs.getString(1);
+			nome.add(nome1);
+			}
+			rs.close();
+		} catch (SQLException e2) {
+			System.out.println("ERROR IN SQL" + e2);
+			JOptionPane.showMessageDialog(null, "ERRORE! Qualcosa è andato storto con l'Albergo");
+	}
+		return nome;
+	}
+	
+	public void deleteAlbergo(Connection conn, String nome1) {
+		String comando;
+		comando = "Delete From \"Albergo\" where \"Nome\" = ? ";
+		
+		try {
+			PreparedStatement ps = null;
+
+			ps = conn.prepareStatement(comando);
+			ps.setString(1, nome1);
+			
+			
+			ps.executeUpdate();
+			JOptionPane.showMessageDialog(null, "Albergo eliminato con successo!");
+			
+		} catch (SQLException e2) {
+			System.out.println("ERROR IN SQL" + e2);
+			JOptionPane.showMessageDialog(null, "ERRORE! Qualcosa è andato storto con l'Albergo");
+	}
+		
+	}
+	
+	
 }
