@@ -32,7 +32,7 @@ import java.awt.Toolkit;
 public class HomePage extends JFrame {
 	
 	private Controller controller;
-	
+
 	final static int FINESTRA_Y = 80;
 	final static int FINESTRA_X = 25;
 	final static int ALTEZZA_FINESTRA = 690;

@@ -45,6 +45,7 @@ public class Controller {
 	private Aggiungi_Ristorante addRest;
 	private Aggiungi_Hotel addHotel;
 	private Aggiungi_Attrazione addAtt;
+	private Principale principale;
 	
 	
 	//****************************************
@@ -79,9 +80,11 @@ public class Controller {
 		addRest = new Aggiungi_Ristorante(this);
 		addHotel = new Aggiungi_Hotel(this);
 		addAtt = new Aggiungi_Attrazione(this);
+		principale = new Principale(this);
 		
-		mod.setVisible(true);
-		home.setVisible(true);
+		mod.setVisible(false);
+		home.setVisible(false);
+		principale.setVisible(true);
 	}
 	
 	public void MostraMessaggioErrore( String titolo, String testo) {
