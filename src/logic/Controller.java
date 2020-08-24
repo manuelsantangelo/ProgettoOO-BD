@@ -50,7 +50,6 @@ public class Controller {
 	private Elimina_Hotel delHotel;
 	
 	
-	
 	//****************************************
 	
 	public Controller() {
@@ -86,8 +85,9 @@ public class Controller {
 		delAtt = new Elimina_Attrazione(this);
 		delRest = new Elimina_Ristorante(this);
 		delHotel = new Elimina_Hotel(this);
+		
 		mod.setVisible(true);
-		home.setVisible(true);
+		home.setVisible(false);
 	}
 	
 	public void MostraMessaggioErrore( String titolo, String testo) {

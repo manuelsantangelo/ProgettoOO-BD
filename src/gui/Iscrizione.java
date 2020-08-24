@@ -58,7 +58,7 @@ public class Iscrizione extends JFrame{
 		
 		this.controller = controller;
 		
-		setIconImage(Toolkit.getDefaultToolkit().getImage("images\\LogoPiccolo.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\manue\\eclipse-workspace\\SafeTravel6\\images\\LogoPiccolo.png"));
 		
 		setTitle("SafeTravel - Iscriviti!");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -204,7 +204,7 @@ public class Iscrizione extends JFrame{
 		button2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			JFileChooser fc = new JFileChooser();
-			fc.setCurrentDirectory(new java.io.File("C:/Users"));
+			fc.setCurrentDirectory(new java.io.File("C:/Users/Biagio/Desktop"));
 			fc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
 			if(fc.showOpenDialog(button2) == JFileChooser.APPROVE_OPTION) {
 				String path = fc.getSelectedFile().getAbsolutePath();

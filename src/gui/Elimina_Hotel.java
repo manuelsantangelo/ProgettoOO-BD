@@ -66,6 +66,7 @@ public class Elimina_Hotel extends JFrame {
 			txtrHotel.setBounds(24, 11, 114, 29);
 			contentPane.add(txtrHotel);
 			
+			
 			JComboBox hotel = new JComboBox();
 
 			hotel.setFont(new Font("Parametric Glitch", Font.PLAIN, 16));
