@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
+import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
@@ -80,4 +81,51 @@ public class RistoranteDAO {
 		
 		return ID;
 	}
+	
+	public ArrayList<String> getNomeRistorante (Connection conn) {
+		ArrayList<String> nome =  new ArrayList<String>();
+		String comando;
+		
+		
+		comando = "select \"Nome\" From \"Ristorante\" ";
+		
+		try {
+			PreparedStatement ps = null;
+			ResultSet rs = null;
+			ps = conn.prepareStatement(comando);
+			rs = ps.executeQuery();
+			String nome1 = null;
+			while(rs.next()) {
+				
+			nome1 = rs.getString(1);
+			nome.add(nome1);
+			}
+			rs.close();
+		} catch (SQLException e2) {
+			System.out.println("ERROR IN SQL" + e2);
+			JOptionPane.showMessageDialog(null, "ERRORE! Qualcosa è andato storto con il Ristorante");
+	}
+		return nome;
+	}
+	
+	public void deleteRistorante(Connection conn, String nome1) {
+		String comando;
+		comando = "Delete From \"Ristorante\" where \"Nome\" = ? ";
+		
+		try {
+			PreparedStatement ps = null;
+
+			ps = conn.prepareStatement(comando);
+			ps.setString(1, nome1);
+			
+			
+			ps.executeUpdate();
+			JOptionPane.showMessageDialog(null, "Ristorante eliminato con successo!");
+			
+		} catch (SQLException e2) {
+			System.out.println("ERROR IN SQL" + e2);
+			JOptionPane.showMessageDialog(null, "ERRORE! Qualcosa è andato storto con il Ristorante");
+	}
+	
+}
 }
