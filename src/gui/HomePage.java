@@ -127,8 +127,7 @@ public class HomePage extends JFrame {
 				flagMod = controller.getModeratoreDAO().checkModeratore(controller.getConnection(), nick, pass);
 				if(flagMod)
 					controller.CambiaFrame(HomePage.this, controller.getModeratore_Homepage());
-
-				
+	
 			}
 		});
 		tasto_di_accesso.setBounds(38, 455, 185, 45);
