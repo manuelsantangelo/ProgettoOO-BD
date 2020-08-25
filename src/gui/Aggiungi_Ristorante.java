@@ -73,7 +73,7 @@ public class Aggiungi_Ristorante extends JFrame {
 
 		setTitle("Aggiungi Ristorante");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setIconImage(Toolkit.getDefaultToolkit().getImage("images\\LogoPiccolo.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\manue\\eclipse-workspace\\SafeTravel6\\images\\LogoPiccolo.png"));
 		setBounds(FINESTRA_Y, FINESTRA_X, 1099, 651);
 		contentPane = new JPanel();
 		contentPane.setForeground(Color.WHITE);
@@ -334,7 +334,7 @@ public class Aggiungi_Ristorante extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 					JFileChooser fc = new JFileChooser();
-					fc.setCurrentDirectory(new java.io.File("C:\\Users"));
+					fc.setCurrentDirectory(new java.io.File("C:\\Users\\manue\\Desktop"));
 					fc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
 					if(fc.showOpenDialog(btnCerca) == JFileChooser.APPROVE_OPTION) {
 						String path = fc.getSelectedFile().getAbsolutePath();

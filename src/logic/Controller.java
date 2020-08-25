@@ -47,6 +47,7 @@ public class Controller {
 	private Aggiungi_Ristorante addRest;
 	private Aggiungi_Hotel addHotel;
 	private Aggiungi_Attrazione addAtt;
+
 	private Principale principale;
 	private Elimina_Attrazione delAtt;
 	private Elimina_Ristorante delRest;
@@ -88,7 +89,8 @@ public class Controller {
 		principale = new Principale(this);
 		delAtt = new Elimina_Attrazione(this);
 		delRest = new Elimina_Ristorante(this);
-		delHotel = new Elimina_Hotel(this);		
+		delHotel = new Elimina_Hotel(this);
+		
 
 		mod.setVisible(true);
 		home.setVisible(true);

@@ -8,6 +8,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="looks-1.2.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Biagio/git/ProgettoOO-BD/postgresql-42.2.14.jar"/>
+	<classpathentry kind="lib" path="C:/Users/manue/Desktop/postgresql-42.2.14.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
