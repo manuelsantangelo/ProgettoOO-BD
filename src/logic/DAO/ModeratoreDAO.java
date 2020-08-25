@@ -87,7 +87,7 @@ public class ModeratoreDAO {
 			System.out.println("ERROR IN SQL" + e2);
 			JOptionPane.showMessageDialog(null, "ERRORE! Qualcosa èandato storto con il recupero del Moderatore");	
 		}
-		
+		setModeratore(mod);
 		return mod;	
 		
 	}
