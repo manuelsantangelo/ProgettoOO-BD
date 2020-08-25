@@ -163,6 +163,7 @@ public class HomePage extends JFrame {
 				}
 		});
 		
+		controller.getModeratoreDAO().getModeratore();
 	}
 
 }

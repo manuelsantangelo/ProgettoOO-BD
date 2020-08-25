@@ -1,6 +1,7 @@
 package logic;
 
 import gui.*;
+import logic.Classi.Moderatore;
 import logic.DAO.AlbergoDAO;
 import logic.DAO.Associazione_Categoria_RistoranteDAO;
 import logic.DAO.Associazione_Servizio_AlbergoDAO;
@@ -39,6 +40,8 @@ public class Controller {
 	private AttrazioneDAO attrazioneDAO = new AttrazioneDAO(this);
 	private ModeratoreDAO moderatoreDAO = new ModeratoreDAO(this);
 
+	private Moderatore moderatore = new Moderatore();
+	
 	//inizializza FINESTRE
 	private HomePage home;
 	private Iscrizione iscrizione;
@@ -195,4 +198,16 @@ public class Controller {
 		
 		return delHotel;
 	}
+	
+	public Moderatore setModeratore() {
+		this.moderatore = getModeratoreDAO().getThisModeratore(conn, moderatoreDAO.getModeratore().getNome(), moderatoreDAO.getModeratore().getNome());
+	return null;
+	}
+	
+	
+
+	
+	
+
+	
 }
