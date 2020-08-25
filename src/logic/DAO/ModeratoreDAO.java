@@ -33,7 +33,7 @@ public class ModeratoreDAO {
 		int count = 0;
 		String comando;
 		
-		comando = "SELECT COUNT(*) FROM public.\"Moderatore\" WHERE \"Nome\" = \'?\' AND \"Password\" = \'?\'";
+		comando = "SELECT COUNT(*) FROM public.\"Moderatore\" WHERE \"Nome\" = ? AND \"Password\" = ?";
 		
 		try {
 			PreparedStatement ps = null;
@@ -42,7 +42,10 @@ public class ModeratoreDAO {
 			ps.setString(1, nome);
 			ps.setString(2, pass);
 			rs = ps.executeQuery();
+			
+			while(rs.next()) {
 			count = rs.getInt(1);
+			}
 			
 		} catch (SQLException e2) {
 			System.out.println("ERROR IN SQL" + e2);
@@ -61,7 +64,7 @@ public class ModeratoreDAO {
 		Moderatore mod = new Moderatore();
 		String comando;
 		
-		comando = "SELECT * FROM public.\"Moderatore\" WHERE \"Nome\" = '?' AND \"Password\" = '?'";
+		comando = "SELECT * FROM public.\"Moderatore\" WHERE \"Nome\" = ? AND \"Password\" = ?";
 		
 		try {
 			PreparedStatement ps = null;

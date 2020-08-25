@@ -94,7 +94,7 @@ public class Controller {
 		delHotel = new Elimina_Hotel(this);
 		
 
-		mod.setVisible(true);
+		mod.setVisible(false);
 		home.setVisible(true);
 		principale.setVisible(false);
 
