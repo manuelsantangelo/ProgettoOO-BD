@@ -199,13 +199,14 @@ public class Controller {
 		return delHotel;
 	}
 	
-	public Moderatore setModeratore() {
+	public void setModeratore() {
 		this.moderatore = getModeratoreDAO().getThisModeratore(conn, moderatoreDAO.getModeratore().getNome(), moderatoreDAO.getModeratore().getNome());
-	return null;
+	
 	}
 	
-	
-
+	public Moderatore getModeratore() {
+		return moderatore;
+	}
 	
 	
 
