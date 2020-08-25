@@ -47,7 +47,6 @@ public class Controller {
 	private Aggiungi_Ristorante addRest;
 	private Aggiungi_Hotel addHotel;
 	private Aggiungi_Attrazione addAtt;
-
 	private Principale principale;
 	private Elimina_Attrazione delAtt;
 	private Elimina_Ristorante delRest;
@@ -152,7 +151,6 @@ public class Controller {
 	public ModeratoreDAO getModeratoreDAO() {
 		return moderatoreDAO;
 	}
-	
 	
 // i metodi seguenti servono per passare le finestre quando vengono chiamati i metodi CambiaFrame e ChiudiFrame
 	
