@@ -2,6 +2,7 @@ package logic.Classi;
 
 import java.sql.Date;
 
+
 public class Moderatore {
 	private int Moderatore_ID;
 	private String Sede;

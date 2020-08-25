@@ -153,6 +153,7 @@ public class Controller {
 		return moderatoreDAO;
 	}
 	
+	
 // i metodi seguenti servono per passare le finestre quando vengono chiamati i metodi CambiaFrame e ChiudiFrame
 	
 	public Iscrizione getIscrizione() {

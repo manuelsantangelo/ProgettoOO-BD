@@ -87,5 +87,4 @@ public class ModeratoreDAO {
 		return mod;	
 		
 	}
-
 }
