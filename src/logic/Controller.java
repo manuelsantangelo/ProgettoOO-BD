@@ -200,7 +200,7 @@ public class Controller {
 	}
 	
 	public void setModeratore() {
-		this.moderatore = getModeratoreDAO().getThisModeratore(conn, moderatoreDAO.getModeratore().getNome(), moderatoreDAO.getModeratore().getNome());
+		this.moderatore = getModeratoreDAO().getThisModeratore(conn, moderatoreDAO.getModeratore().getNome(), moderatoreDAO.getModeratore().getPassword());
 	
 	}
 	
