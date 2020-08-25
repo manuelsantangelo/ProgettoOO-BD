@@ -28,6 +28,7 @@ import java.awt.Button;
 import javax.swing.JTextArea;
 import java.awt.Toolkit;
 
+//Se vedi questo commento allora la commit è avvenuta con successo
 
 public class HomePage extends JFrame {
 	
