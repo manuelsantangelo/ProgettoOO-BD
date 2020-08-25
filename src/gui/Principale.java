@@ -15,6 +15,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.ListSelectionModel;
 import javax.swing.JScrollPane;
 import javax.swing.JScrollBar;
+import javax.swing.JRadioButton;
 
 public class Principale extends JFrame {
 	
@@ -28,7 +29,8 @@ public class Principale extends JFrame {
 	final static int FINESTRA_X = 25;
 	final static int ALTEZZA_FINESTRA = 690;
 	final static int LUNGHEZZA_FINESTRA = 940;
-	private JTable table;
+	private JTable table_1;
+	
 
 	public Principale(Controller controller) {
 		setIconImage(Toolkit.getDefaultToolkit().getImage("images\\LogoPiccolo.png"));
@@ -40,10 +42,21 @@ public class Principale extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-		table = new JTable();
-		table.setModel(new DefaultTableModel(
+		table_1 = new JTable();
+		table_1.setModel(new DefaultTableModel(
 			new Object[][] {
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
 				{null, null, null, null, null},
 				{null, null, null, null, null},
 				{null, null, null, null, null},
@@ -70,14 +83,15 @@ public class Principale extends JFrame {
 				"New column", "New column", "New column", "New column", "New column"
 			}
 		));
-		table.setBounds(272, 110, 403, 168);
-		contentPane.add(table);
-		table.setVisible(true);
-		table.setPreferredScrollableViewportSize(new Dimension(450,63));
-        table.setFillsViewportHeight(true);
+	
+		JScrollPane scrollPane = new JScrollPane(table_1);
+		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS); 
+		scrollPane.setBounds(245, 196, 564, 317);
+		contentPane.add(scrollPane);
 		
-		JScrollPane scrollBar = new JScrollPane(table);
-		scrollBar.setVisible(true);
-		contentPane.add(scrollBar);
+		scrollPane.setViewportView(table_1);
+		
+		
+	
 	}
 }

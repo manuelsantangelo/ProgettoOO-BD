@@ -19,6 +19,7 @@ public class ModeratoreDAO {
 		return moderatore;
 	}
 	
+	
 	public void setModeratore(Moderatore moderatore) {
 		this.moderatore = moderatore;
 	}
@@ -84,7 +85,15 @@ public class ModeratoreDAO {
 			JOptionPane.showMessageDialog(null, "ERRORE! Qualcosa èandato storto con il recupero del Moderatore");	
 		}
 		
+		
 		return mod;	
 		
 	}
+	
+	
+	
+	
+ 
 }
+
+
