@@ -9,6 +9,7 @@ import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
 import logic.Controller;
+import logic.Classi.Moderatore;
 import logic.Classi.Utente;
 
 public class UtenteDAO {
@@ -55,7 +56,7 @@ public class UtenteDAO {
 					ps.setString(7, città1);
 					
 					ps.executeUpdate();
-					System.out.println("NULLI ENTREMBI :" + password1 + " "+ nome1 + " " + nickname1 + " " + email1 + " " + dataNascita1 + " " + cognome1 + " " + città1);
+					System.out.println("NULLI ENTRAMBI :" + password1 + " "+ nome1 + " " + nickname1 + " " + email1 + " " + dataNascita1 + " " + cognome1 + " " + città1);
 					
 					JOptionPane.showMessageDialog(null, "TI SEI ISCRITTO CON SUCCESSO! ORA PUOI ACCEDERE");
 					controller.CambiaFrame(controller.getIscrizione(), controller.getHome());
@@ -171,4 +172,74 @@ public class UtenteDAO {
 			}
 		
 		}
+	
+	
+	public boolean checkUtente(Connection conn, String nickname, String pass) {
+		boolean flag = false;
+		int count = 0;
+		String comando;
+		
+		comando = "SELECT COUNT(*) FROM \"Utente\" WHERE \"NickName\" = ? AND \"Password\" = ?";
+		
+		try {
+			PreparedStatement ps = null;
+			ResultSet rs = null;
+			ps = conn.prepareStatement(comando);
+			ps.setString(1, nickname);
+			ps.setString(2, pass);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+			count = rs.getInt(1);
+			}
+		} catch (SQLException e2) {
+			System.out.println("ERROR IN SQL" + e2);
+			JOptionPane.showMessageDialog(null, "ERRORE! Qualcosa è andato storto con il check dell'utente");	
+		}
+		
+		if(count == 1) {
+			flag = true;
+			return flag;
+		}
+		
+		return flag;	
+	}
+	
+	
+	public Utente getThisUtente(Connection conn, String nickname, String pass) {
+		Utente user = new Utente();
+		String comando;
+		
+		comando = "SELECT * FROM public.\"Utente\" WHERE \"NickName\" = ? AND \"Password\" = ?";
+		
+		try {
+			PreparedStatement ps = null;
+			ResultSet rs = null;
+			ps = conn.prepareStatement(comando);
+			ps.setString(1, nickname);
+			ps.setString(2, pass);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+			user.setUser_ID(rs.getInt(1));
+			user.setPassword(rs.getString(2));
+			user.setNome(rs.getString(3));
+			user.setNickname(rs.getString(4));
+			user.setEmail(rs.getString(5));
+			user.setData_Iscrizione(rs.getDate(6));
+			user.setData_di_Nascita(rs.getDate(7));
+			user.setCognome(rs.getString(8));
+			user.setCittà(rs.getString(9));
+			user.setPropic(rs.getBytes(10));
+			user.setContributi(rs.getInt(11));
+			
+			}
+			
+		} catch (SQLException e2) {
+			System.out.println("ERROR IN SQL" + e2);
+			JOptionPane.showMessageDialog(null, "ERRORE! Qualcosa è andato storto con il recupero del Moderatore");	
+		}
+		
+		return user;	
+		
+	}
 }

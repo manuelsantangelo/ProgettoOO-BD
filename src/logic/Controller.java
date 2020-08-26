@@ -40,7 +40,6 @@ public class Controller {
 	private AttrazioneDAO attrazioneDAO = new AttrazioneDAO(this);
 	private ModeratoreDAO moderatoreDAO = new ModeratoreDAO(this);
 
-	private Moderatore moderatore = new Moderatore();
 	
 	//inizializza FINESTRE
 	private HomePage home;
@@ -84,19 +83,14 @@ public class Controller {
 		home = new HomePage(this);
 		iscrizione = new Iscrizione(this);
 		//error1 = new Iscrizione_non_valida(this);
-		mod = new Moderatore_Homepage(this);
 		addRest = new Aggiungi_Ristorante(this);
 		addHotel = new Aggiungi_Hotel(this);
 		addAtt = new Aggiungi_Attrazione(this);
-		principale = new Principale(this);
 		delAtt = new Elimina_Attrazione(this);
 		delRest = new Elimina_Ristorante(this);
 		delHotel = new Elimina_Hotel(this);
 		
-
-		mod.setVisible(false);
 		home.setVisible(true);
-		principale.setVisible(false);
 
 	}
 	
@@ -137,8 +131,7 @@ public class Controller {
 	public Associazione_Categoria_RistoranteDAO getAssociazione_Categoria_RistoranteDAO() {
 		return associazione_categoria_ristoranteDAO;
 	}
-	
-	
+		
 	public AlbergoDAO getAlbergoDAO(){
 		return albergoDAO;
 	}
@@ -170,7 +163,13 @@ public class Controller {
 	}
 	
 	public Moderatore_Homepage getModeratore_Homepage() {
+		mod = new Moderatore_Homepage(this);
 		return mod;
+	}
+	
+	public Principale getPrincipale() {
+		principale = new Principale(this);
+		return principale;
 	}
 	
 	public Aggiungi_Hotel getAggiungi_Hotel() {
@@ -196,17 +195,5 @@ public class Controller {
 		
 		return delHotel;
 	}
-	
-	public void setModeratore() {
-		this.moderatore = getModeratoreDAO().getThisModeratore(conn, moderatoreDAO.getModeratore().getNome(), moderatoreDAO.getModeratore().getPassword());
-	
-	}
-	
-	public Moderatore getModeratore() {
-		return moderatore;
-	}
-	
-	
-
 	
 }

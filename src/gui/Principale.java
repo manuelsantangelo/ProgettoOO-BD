@@ -1,10 +1,15 @@
 package gui;
 
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -90,6 +95,19 @@ public class Principale extends JFrame {
 		contentPane.add(scrollPane);
 		
 		scrollPane.setViewportView(table_1);
+		
+		JButton btnIndietro = new JButton("Logout");
+		btnIndietro.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnIndietro.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				controller.CambiaFrame(Principale.this, controller.getHome());
+			}
+		});
+		btnIndietro.setForeground(Color.CYAN);
+		btnIndietro.setFont(new Font("Parametric Glitch", Font.PLAIN, 14));
+		btnIndietro.setBackground(Color.RED);
+		btnIndietro.setBounds(759, 553, 117, 29);
+		contentPane.add(btnIndietro);
 		
 		
 	
