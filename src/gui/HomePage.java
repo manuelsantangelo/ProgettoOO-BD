@@ -10,6 +10,7 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -124,11 +125,21 @@ public class HomePage extends JFrame {
 				boolean flagMod = false;
 				boolean flagUser = false;
 				
-				
 				flagMod = controller.getModeratoreDAO().checkModeratore(controller.getConnection(), nick, pass);
-				if(flagMod)
-					controller.CambiaFrame(HomePage.this, controller.getModeratore_Homepage());
-	
+				flagUser = controller.getUtenteDAO().checkUtente(controller.getConnection(), nick, pass);
+				
+				if(flagMod) {
+				controller.getModeratoreDAO().setModeratore(controller.getModeratoreDAO().getThisModeratore(controller.getConnection(), nick, pass));
+				controller.CambiaFrame(HomePage.this, controller.getModeratore_Homepage());
+				}else if (flagUser) {
+					controller.getUtenteDAO().setUtente(controller.getUtenteDAO().getThisUtente(controller.getConnection(), nick, pass));
+					controller.CambiaFrame(HomePage.this, controller.getPrincipale());
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "Per accedere devi iscriverti. Non sei ne un utente ne un moderatore!");
+				}
+				
+			
 			}
 		});
 		tasto_di_accesso.setBounds(38, 455, 185, 45);
@@ -163,7 +174,7 @@ public class HomePage extends JFrame {
 				}
 		});
 		
-		controller.getModeratoreDAO().getModeratore();
+	
 	}
 
 }
