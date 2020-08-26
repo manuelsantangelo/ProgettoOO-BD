@@ -44,10 +44,10 @@ this.controller = controller;
 		dlm = new DefaultListModel();
 		dlm1 = new DefaultListModel();
 
-		setTitle("Elimina ristorante");
+		setTitle("Elimina Ristorante");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setIconImage(Toolkit.getDefaultToolkit().getImage("images\\LogoPiccolo.png"));
-		setBounds(FINESTRA_Y, FINESTRA_X, 605, 605);
+		setBounds(FINESTRA_Y, FINESTRA_X, 600, 260);
 		contentPane = new JPanel();
 		contentPane.setForeground(Color.WHITE);
 		contentPane.setBackground(Color.BLACK);

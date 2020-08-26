@@ -46,10 +46,10 @@ public class Elimina_Hotel extends JFrame {
 			dlm = new DefaultListModel();
 			dlm1 = new DefaultListModel();
 
-			setTitle("Elimina hotel");
+			setTitle("Elimina Hotel");
 			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			setIconImage(Toolkit.getDefaultToolkit().getImage("images\\LogoPiccolo.png"));
-			setBounds(FINESTRA_Y, FINESTRA_X, 605, 605);
+			setBounds(FINESTRA_Y, FINESTRA_X, 600, 260);
 			contentPane = new JPanel();
 			contentPane.setForeground(Color.WHITE);
 			contentPane.setBackground(Color.BLACK);
@@ -62,7 +62,7 @@ public class Elimina_Hotel extends JFrame {
 			txtrHotel.setForeground(Color.GREEN);
 			txtrHotel.setEditable(false);
 			txtrHotel.setFont(new Font("Parametric Glitch", Font.BOLD, 21));
-			txtrHotel.setText("Ristorante");
+			txtrHotel.setText("Hotel");
 			txtrHotel.setBounds(24, 11, 114, 29);
 			contentPane.add(txtrHotel);
 			

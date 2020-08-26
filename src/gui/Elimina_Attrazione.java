@@ -29,8 +29,8 @@ public class Elimina_Attrazione extends JFrame {
 
 	final static int FINESTRA_Y = 0;
 	final static int FINESTRA_X = 25;
-	final static int ALTEZZA_FINESTRA = 690;
-	final static int LUNGHEZZA_FINESTRA = 940;
+	final static int ALTEZZA_FINESTRA = 200;
+	final static int LUNGHEZZA_FINESTRA = 400;
 	static File imgpath = null;
 	private DefaultListModel dlm;
 	private DefaultListModel dlm1;
@@ -42,10 +42,10 @@ this.controller = controller;
 		dlm = new DefaultListModel();
 		dlm1 = new DefaultListModel();
 
-		setTitle("Elimina attrazione");
+		setTitle("Elimina Attrazione");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setIconImage(Toolkit.getDefaultToolkit().getImage("images\\LogoPiccolo.png"));
-		setBounds(FINESTRA_Y, FINESTRA_X, 605, 605);
+		setBounds(FINESTRA_Y, FINESTRA_X, 600, 260);
 		contentPane = new JPanel();
 		contentPane.setForeground(Color.WHITE);
 		contentPane.setBackground(Color.BLACK);
