@@ -4,6 +4,7 @@ import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
@@ -389,6 +390,12 @@ public class Aggiungi_Hotel extends JFrame {
 		Border border = BorderFactory.createLineBorder(Color.GREEN);
 		descrizione.setBorder(BorderFactory.createCompoundBorder(border, 
 		      BorderFactory.createEmptyBorder(10, 10, 10, 10)));
+		
+		JScrollPane scrollPane = new JScrollPane(descrizione);
+		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		scrollPane.setBounds(24, 499, 664, 102);
+		contentPane.add(scrollPane);
+		scrollPane.setViewportView(descrizione);
 		
 		JButton btnAggiungi = new JButton("Aggiungi");
 		btnAggiungi.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));

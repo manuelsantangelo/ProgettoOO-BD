@@ -4,6 +4,7 @@ import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
@@ -363,6 +364,13 @@ public class Aggiungi_Attrazione extends JFrame {
 		descrizione.setBounds(24, 499, 664, 102);
 		contentPane.add(descrizione);
 		
+		JScrollPane scrollPane = new JScrollPane(descrizione);
+		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		scrollPane.setBounds(24, 499, 664, 102);
+		contentPane.add(scrollPane);
+		scrollPane.setViewportView(descrizione);
+
+
 		Border border = BorderFactory.createLineBorder(Color.GREEN);
 		descrizione.setBorder(BorderFactory.createCompoundBorder(border, 
 		      BorderFactory.createEmptyBorder(10, 10, 10, 10)));
