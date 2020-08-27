@@ -39,7 +39,7 @@ public class AlbergoDAO {
 	
 	public void addAlbergo(Connection conn, String nome1, ArrayList<categoriaalbergo> type, int stelleAlbergo, int numeroCamere, String descrizione1, File immagine, prezzo price) {
 		String comando;
-		comando = "INSERT INTO \"Albergo\"(\"Nome\", \"Stelle\", \"Descrizione\", \"Categoria\", \"Foto\",\"Numero_Camere\", \"Fascia_Prezzo\" ) VALUES (?, ?, ?, ?, ?,?,?);";
+		comando = "INSERT INTO \"Albergo\"(\"Nome\", \"Stelle\", \"Descrizione\", \"Categoria\", \"Foto\",\"Numero_Camere\", \"Fascia_Prezzo\" ) VALUES (?, ?, ?, ?, ?, ?, ?);";
 		
 		try {
 			PreparedStatement ps = null;
@@ -51,8 +51,6 @@ public class AlbergoDAO {
 			for(int i = 0; i < type.size(); i++) {
 				ps.setObject(4, type.get(i), Types.OTHER);
 			}
-			
-			
 			
 			try {
 				ps.setBinaryStream(5 ,new FileInputStream(immagine), immagine.length());

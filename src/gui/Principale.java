@@ -128,7 +128,7 @@ public class Principale extends JFrame {
 		
 		JLabel lblFoto = new JLabel("foto");
 		lblFoto.setBorder(new LineBorder(new Color(0, 191, 255), 2, true));
-		lblFoto.setBounds(42, 23, 213, 169);
+		lblFoto.setBounds(42, 23, 160, 160);
 		panel.add(lblFoto);
 		
 		byte[] imgBytes = controller.getUtenteDAO().getUtente().getPropic();
