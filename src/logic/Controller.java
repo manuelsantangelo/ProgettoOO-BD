@@ -12,6 +12,7 @@ import logic.DAO.ModeratoreDAO;
 import logic.DAO.RistoranteDAO;
 import logic.DAO.UtenteDAO;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -167,7 +168,7 @@ public class Controller {
 		return mod;
 	}
 	
-	public Principale getPrincipale() {
+	public Principale getPrincipale() throws IOException {
 		principale = new Principale(this);
 		return principale;
 	}

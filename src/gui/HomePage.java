@@ -133,7 +133,11 @@ public class HomePage extends JFrame {
 				controller.CambiaFrame(HomePage.this, controller.getModeratore_Homepage());
 				}else if (flagUser) {
 					controller.getUtenteDAO().setUtente(controller.getUtenteDAO().getThisUtente(controller.getConnection(), nick, pass));
-					controller.CambiaFrame(HomePage.this, controller.getPrincipale());
+					try {
+						controller.CambiaFrame(HomePage.this, controller.getPrincipale());
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
 				}
 				else {
 					JOptionPane.showMessageDialog(null, "Per accedere devi iscriverti. Non sei ne un utente ne un moderatore!");

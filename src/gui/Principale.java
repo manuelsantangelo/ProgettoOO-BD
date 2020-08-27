@@ -2,12 +2,11 @@ package gui;
 
 import java.awt.Color;
 import java.awt.Cursor;
-import java.awt.Dimension;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -17,10 +16,8 @@ import javax.swing.border.EmptyBorder;
 import logic.Controller;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.ListSelectionModel;
 import javax.swing.JScrollPane;
-import javax.swing.JScrollBar;
-import javax.swing.JRadioButton;
+import javax.swing.JLabel;
 
 public class Principale extends JFrame {
 	
@@ -37,7 +34,7 @@ public class Principale extends JFrame {
 	private JTable table_1;
 	
 
-	public Principale(Controller controller) {
+	public Principale(Controller controller) throws IOException {
 		setIconImage(Toolkit.getDefaultToolkit().getImage("images\\LogoPiccolo.png"));
 		setTitle("SafeTravel");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -91,7 +88,7 @@ public class Principale extends JFrame {
 	
 		JScrollPane scrollPane = new JScrollPane(table_1);
 		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS); 
-		scrollPane.setBounds(245, 196, 564, 317);
+		scrollPane.setBounds(332, 194, 563, 316);
 		contentPane.add(scrollPane);
 		
 		scrollPane.setViewportView(table_1);
@@ -109,7 +106,17 @@ public class Principale extends JFrame {
 		btnIndietro.setBounds(759, 553, 117, 29);
 		contentPane.add(btnIndietro);
 		
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(0, 153, 255));
+		panel.setBounds(0, 0, 317, 651);
+		contentPane.add(panel);
+		panel.setLayout(null);
 		
-	
+		JLabel lblNomeECognome = new JLabel("Nome e Cognome");
+		lblNomeECognome.setFont(new Font("Gadugi", Font.BOLD, 19));
+		lblNomeECognome.setBounds(72, 285, 168, 35);
+		panel.add(lblNomeECognome);
+		
 	}
+
 }
