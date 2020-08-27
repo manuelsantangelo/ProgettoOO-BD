@@ -144,6 +144,7 @@ public class AlbergoDAO {
 	
 	public ArrayList<Albergo> getAlberghi(Connection conn){
 		ArrayList<Albergo> alberghi = new ArrayList<Albergo>();
+		
 try {		
 	Albergo albergo;
 	
@@ -156,13 +157,22 @@ try {
 		albergo = new Albergo();
 		albergo.setAlbergo_ID(rs.getInt(1));
 		albergo.setNome(rs.getString(2));
-		//albergo.setCategoria(rs.getString("Categ"));
+		albergo.setCategoria((categoriaalbergo) rs.getObject(3));
 		albergo.setStelle(rs.getInt(4));
+		albergo.setTesto(rs.getString(5));
+		albergo.setNumero_Camere(rs.getInt(6));
+		albergo.setLuogo_FK(rs.getInt(7));
+		albergo.setFascia_Prezzo((prezzo) rs.getObject(8));
+		albergo.setFoto(rs.getBytes(9));
+		alberghi.add(albergo);
 	}
 } catch (Exception e) {
-	// TODO: handle exception
+	
 }
+return alberghi;
 	}
+	
+	
 	
 
 }

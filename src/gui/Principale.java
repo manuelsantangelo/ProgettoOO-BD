@@ -10,15 +10,20 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import logic.Controller;
+import logic.Classi.Albergo;
+
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JScrollPane;
@@ -39,10 +44,13 @@ public class Principale extends JFrame {
 	final static int FINESTRA_X = 25;
 	final static int ALTEZZA_FINESTRA = 690;
 	final static int LUNGHEZZA_FINESTRA = 940;
-	private JTable table_1;
+	private JTable elementi;
 	
+	private ArrayList<Albergo> listaAlberghi = new ArrayList<Albergo>();
 
 	public Principale(Controller controller) throws IOException{
+		
+		
 		setIconImage(Toolkit.getDefaultToolkit().getImage("images\\LogoPiccolo.png"));
 		setTitle("SafeTravel");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -52,54 +60,41 @@ public class Principale extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		table_1 = new JTable();
-		table_1.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-			},
-			new String[] {
-				"New column", "New column", "New column", "New column", "New column"
-			}
-		));
+		
+		//https://stackoverflow.com/questions/22371720/how-to-add-row-dynamically-in-jtable
+		
+		elementi = new JTable();
+		DefaultTableModel dtm = new DefaultTableModel(0,0);
+		
+		String header [] = new String[]{"Nome", "Stelle"};
+			
+		dtm.setColumnIdentifiers(header);
+		elementi.setModel(dtm);
+		for(int count=0; count<=1; count ++) {
+			dtm.addRow(new Object[] {
+					listaAlberghi.get(0).getNome(), listaAlberghi.get(0).getStelle(),
+					listaAlberghi.get(1).getNome(), listaAlberghi.get(1).getStelle()
+			});
+		}
+		
+		
+		
+		
 	
-		JScrollPane scrollPane = new JScrollPane(table_1);
+		JScrollPane scrollPane = new JScrollPane(elementi);
 		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS); 
 		scrollPane.setBounds(332, 194, 563, 316);
 		contentPane.add(scrollPane);
 		
-		scrollPane.setViewportView(table_1);
+		scrollPane.setViewportView(elementi);
+		
+		JButton cerca = new JButton("Cerca");
+		cerca.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		cerca.setForeground(Color.BLACK);
+		cerca.setFont(new Font("Parametric Glitch", Font.PLAIN, 14));
+		cerca.setBackground(Color.WHITE);
+		cerca.setBounds(729, 82, 117, 28);
+		contentPane.add(cerca);
 		
 		JButton btnIndietro = new JButton("Logout");
 		btnIndietro.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -162,5 +157,33 @@ public class Principale extends JFrame {
 		lblDescrizioniEffettuate.setBounds(42, 320, 194, 35);
 		panel.add(lblDescrizioniEffettuate);
 		
+		JComboBox attrazioneristorantehotel = new JComboBox();
+
+		attrazioneristorantehotel.setFont(new Font("Parametric Glitch", Font.PLAIN, 16));
+		attrazioneristorantehotel.setBackground(Color.WHITE);
+		attrazioneristorantehotel.setForeground(Color.BLACK);
+		String [] tipi = {"Attrazione","Ristorante","Albergo"};
+		DefaultComboBoxModel model = new DefaultComboBoxModel(tipi);
+		attrazioneristorantehotel.setModel(model);
+		attrazioneristorantehotel.setBounds(332, 81, 173, 29);
+		contentPane.add(attrazioneristorantehotel);
+		
+	
+		cerca.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				String nome = attrazioneristorantehotel.getSelectedItem().toString();
+	
+				if(nome == "Attrazione") {
+				
+				}if(nome == "Ristorante"){
+					
+				}if(nome == "Albergo") {
+					listaAlberghi = controller.getAlbergoDAO().getAlberghi(controller.getConnection());
+					System.out.println("OKKKKKKKKKKK");
+				}
+			}});
 	}
+	
+	
 }
