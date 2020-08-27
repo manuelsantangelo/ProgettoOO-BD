@@ -10,6 +10,9 @@ public class Albergo {
 	private String Testo;
 	private int Numero_Camere;
 	private int Luogo_FK;
+	private prezzo Fascia_Prezzo;
+	private byte[] Foto;
+	
 	public int getAlbergo_ID() {
 		return Albergo_ID;
 	}
@@ -28,6 +31,23 @@ public class Albergo {
 	public void setCategoria(categoriaalbergo categoria) {
 		Categoria = categoria;
 	}
+	
+	public prezzo getFascia_Prezzo() {
+		return Fascia_Prezzo;
+	}
+	
+	public void setFascia_Prezzo(prezzo fascia_Prezzo) {
+		Fascia_Prezzo = fascia_Prezzo;
+	}
+	
+	public byte[] getFoto() {
+		return Foto;
+	}
+	
+	public void setFoto(byte[] foto) {
+		Foto = foto;
+	}
+	
 	public int getStelle() {
 		return Stelle;
 	}
@@ -66,6 +86,7 @@ public class Albergo {
 		Testo = testo;
 		Numero_Camere = numero_Camere;
 		Luogo_FK = luogo_FK;
+		
 	}
 	
 	public Albergo() {
