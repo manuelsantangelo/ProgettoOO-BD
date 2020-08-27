@@ -18,6 +18,9 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JScrollPane;
 import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+import java.awt.Component;
+import javax.swing.border.LineBorder;
 
 public class Principale extends JFrame {
 	
@@ -108,15 +111,44 @@ public class Principale extends JFrame {
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(0, 153, 255));
-		panel.setBounds(0, 0, 317, 651);
+		panel.setBounds(0, 0, 312, 651);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
 		JLabel lblNomeECognome = new JLabel("Nome e Cognome");
-		lblNomeECognome.setFont(new Font("Gadugi", Font.BOLD, 19));
-		lblNomeECognome.setBounds(72, 285, 168, 35);
+		lblNomeECognome.setFont(new Font("Gadugi", Font.BOLD, 21));
+		lblNomeECognome.setBounds(42, 203, 244, 35);
+		lblNomeECognome.setAlignmentX(Component.CENTER_ALIGNMENT);
 		panel.add(lblNomeECognome);
 		
+		JLabel lblFoto = new JLabel("foto");
+		lblFoto.setBorder(new LineBorder(new Color(0, 191, 255), 2, true));
+		lblFoto.setBounds(42, 23, 213, 169);
+		panel.add(lblFoto);
+		
+		JLabel lblNickname = new JLabel("Nickname");
+		lblNickname.setFont(new Font("Gadugi", Font.BOLD, 17));
+		lblNickname.setAlignmentX(0.5f);
+		lblNickname.setBounds(42, 229, 194, 35);
+		panel.add(lblNickname);
+		
+		JLabel lblEmail = new JLabel("Email");
+		lblEmail.setFont(new Font("Gadugi", Font.BOLD, 17));
+		lblEmail.setAlignmentX(0.5f);
+		lblEmail.setBounds(42, 250, 194, 35);
+		panel.add(lblEmail);
+		
+		JLabel lblDataDiIscrizione = new JLabel("Data di Iscrizione:");
+		lblDataDiIscrizione.setFont(new Font("Gadugi", Font.BOLD, 17));
+		lblDataDiIscrizione.setAlignmentX(0.5f);
+		lblDataDiIscrizione.setBounds(42, 296, 244, 35);
+		panel.add(lblDataDiIscrizione);
+		
+		JLabel lblDescrizioniEffettuate = new JLabel("Descrizioni effettuate:");
+		lblDescrizioniEffettuate.setFont(new Font("Gadugi", Font.BOLD, 17));
+		lblDescrizioniEffettuate.setAlignmentX(0.5f);
+		lblDescrizioniEffettuate.setBounds(42, 320, 194, 35);
+		panel.add(lblDescrizioniEffettuate);
+		
 	}
-
 }
