@@ -180,7 +180,6 @@ public class Principale extends JFrame {
 					
 				}if(nome == "Albergo") {
 					listaAlberghi = controller.getAlbergoDAO().getAlberghi(controller.getConnection());
-					System.out.println("OKKKKKKKKKKK");
 				}
 			}});
 	}
