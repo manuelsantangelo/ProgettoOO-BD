@@ -63,19 +63,6 @@ public class Principale extends JFrame {
 		
 		//https://stackoverflow.com/questions/22371720/how-to-add-row-dynamically-in-jtable
 		
-		elementi = new JTable();
-		DefaultTableModel dtm = new DefaultTableModel(0,0);
-		
-		String header [] = new String[]{"Nome", "Stelle"};
-			
-		dtm.setColumnIdentifiers(header);
-		elementi.setModel(dtm);
-		for(int count=0; count<=1; count ++) {
-			dtm.addRow(new Object[] {
-					listaAlberghi.get(0).getNome(), listaAlberghi.get(0).getStelle(),
-					listaAlberghi.get(1).getNome(), listaAlberghi.get(1).getStelle()
-			});
-		}
 		
 		
 		
@@ -179,10 +166,30 @@ public class Principale extends JFrame {
 				}if(nome == "Ristorante"){
 					
 				}if(nome == "Albergo") {
-					listaAlberghi = controller.getAlbergoDAO().getAlberghi(controller.getConnection());
+					
+					System.out.println(controller.getAlberghi().size());
+					//riempitabella();
 				}
 			}});
 	}
+	
+	/*public void riempitabella() {
+		elementi = new JTable();
+		DefaultTableModel dtm = new DefaultTableModel(0,0);
+		
+		String header [] = new String[]{"Nome", "Stelle"};
+		dtm.setColumnIdentifiers(header);
+		int i = 1;
+	do {
+		
+		
+			dtm.addRow(new Object[] {
+					listaAlberghi.get(i).getNome(), listaAlberghi.get(i).getStelle(),
+			});
+			i++;
+		}while(listaAlberghi.size() != i-1);
+		
+	}*/
 	
 	
 }

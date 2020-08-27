@@ -143,6 +143,7 @@ public class AlbergoDAO {
 	}
 	
 	public ArrayList<Albergo> getAlberghi(Connection conn){
+		
 		ArrayList<Albergo> alberghi = new ArrayList<Albergo>();
 		
 try {		
@@ -150,9 +151,11 @@ try {
 	
 	String comando = "SELECT * FROM \"Albergo\" ";
 	
-	PreparedStatement ps = conn.prepareStatement(comando);
-	ResultSet rs = ps.executeQuery();
+	PreparedStatement ps = null;
+	ResultSet rs = null;
 	
+	ps = conn.prepareStatement(comando);
+	rs = ps.executeQuery();
 	while (rs.next()) {
 		albergo = new Albergo();
 		albergo.setAlbergo_ID(rs.getInt(1));
@@ -165,10 +168,12 @@ try {
 		albergo.setFascia_Prezzo((prezzo) rs.getObject(8));
 		albergo.setFoto(rs.getBytes(9));
 		alberghi.add(albergo);
+		
 	}
 } catch (Exception e) {
 	
 }
+
 return alberghi;
 	}
 	

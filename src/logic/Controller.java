@@ -58,7 +58,6 @@ public class Controller {
 	
 	//ArrayList
 	
-	private ArrayList<Albergo> albergo = new ArrayList<Albergo>();
 	
 	
 	//****************************************
@@ -202,6 +201,10 @@ public class Controller {
 	public Elimina_Hotel getElimina_Hotel() {
 		
 		return delHotel;
+			}
+	
+	public ArrayList<Albergo> getAlberghi(){
+		return getAlbergoDAO().getAlberghi(conn);
 	}
 	
 }
