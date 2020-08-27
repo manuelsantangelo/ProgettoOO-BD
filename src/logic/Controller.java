@@ -47,7 +47,6 @@ public class Controller {
 	//inizializza FINESTRE
 	private HomePage home;
 	private Iscrizione iscrizione;
-	//private Iscrizione_non_valida error1;
 	private Moderatore_Homepage mod;
 	private Aggiungi_Ristorante addRest;
 	private Aggiungi_Hotel addHotel;
@@ -89,7 +88,6 @@ public class Controller {
 		
 		home = new HomePage(this);
 		iscrizione = new Iscrizione(this);
-		//error1 = new Iscrizione_non_valida(this);
 		addRest = new Aggiungi_Ristorante(this);
 		addHotel = new Aggiungi_Hotel(this);
 		addAtt = new Aggiungi_Attrazione(this);

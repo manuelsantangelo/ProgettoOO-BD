@@ -30,7 +30,6 @@ public class UtenteDAO {
 	}
 	
 
-	
 	public void addUtente (Connection conn, String nome1, String password1, String nickname1, String email1, String cognome1, java.sql.Date dataNascita1, String città1, File immagine) {
 			String comando;
 			if(immagine == null && nickname1 == null) {
@@ -118,7 +117,6 @@ public class UtenteDAO {
 					try {
 						ps.setBinaryStream(8 ,new FileInputStream(immagine), immagine.length());
 					} catch (FileNotFoundException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 					
@@ -153,7 +151,6 @@ public class UtenteDAO {
 					try {
 						ps.setBinaryStream(8 ,new FileInputStream(immagine), immagine.length());
 					} catch (FileNotFoundException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 					

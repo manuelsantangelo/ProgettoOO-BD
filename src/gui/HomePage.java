@@ -136,6 +136,7 @@ public class HomePage extends JFrame {
 					try {
 						controller.CambiaFrame(HomePage.this, controller.getPrincipale());
 					} catch (IOException e1) {
+						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
 				}
@@ -178,7 +179,6 @@ public class HomePage extends JFrame {
 				}
 		});
 		
-	
 	}
 
 }

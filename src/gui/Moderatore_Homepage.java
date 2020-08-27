@@ -52,7 +52,7 @@ public class Moderatore_Homepage extends JFrame {
 		// La parola moderatore va cambiata con il nome del moderatore preso da Postgresql
 		setIconImage(Toolkit.getDefaultToolkit().getImage("images\\LogoPiccolo.png"));
 
-		setTitle("Benvenuto, "+ controller.getModeratoreDAO().getModeratore().getNome() );
+		setTitle("Benvenuto, "+ controller.getModeratoreDAO().getModeratore().getNome());
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(FINESTRA_Y, FINESTRA_X, (LUNGHEZZA_FINESTRA/2)+30, ALTEZZA_FINESTRA/2);
 		contentPane = new JPanel();

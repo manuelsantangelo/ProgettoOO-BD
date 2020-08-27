@@ -3,11 +3,16 @@ package gui;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -37,7 +42,7 @@ public class Principale extends JFrame {
 	private JTable table_1;
 	
 
-	public Principale(Controller controller) throws IOException {
+	public Principale(Controller controller) throws IOException{
 		setIconImage(Toolkit.getDefaultToolkit().getImage("images\\LogoPiccolo.png"));
 		setTitle("SafeTravel");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -115,7 +120,7 @@ public class Principale extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		JLabel lblNomeECognome = new JLabel("Nome e Cognome");
+		JLabel lblNomeECognome = new JLabel(controller.getUtenteDAO().getUtente().getNome() + " " + controller.getUtenteDAO().getUtente().getCognome());
 		lblNomeECognome.setFont(new Font("Gadugi", Font.BOLD, 21));
 		lblNomeECognome.setBounds(42, 203, 244, 35);
 		lblNomeECognome.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -126,25 +131,32 @@ public class Principale extends JFrame {
 		lblFoto.setBounds(42, 23, 213, 169);
 		panel.add(lblFoto);
 		
-		JLabel lblNickname = new JLabel("Nickname");
+		byte[] imgBytes = controller.getUtenteDAO().getUtente().getPropic();
+		ByteArrayInputStream bis = new ByteArrayInputStream(imgBytes);
+	    BufferedImage bImage = ImageIO.read(bis);
+	    Image dimg = bImage.getScaledInstance(lblFoto.getWidth(), lblFoto.getHeight(), Image.SCALE_SMOOTH); 
+		ImageIcon imageIcon = new ImageIcon(dimg);
+		lblFoto.setIcon(imageIcon);
+		
+		JLabel lblNickname = new JLabel(controller.getUtenteDAO().getUtente().getNickname());
 		lblNickname.setFont(new Font("Gadugi", Font.BOLD, 17));
 		lblNickname.setAlignmentX(0.5f);
 		lblNickname.setBounds(42, 229, 194, 35);
 		panel.add(lblNickname);
 		
-		JLabel lblEmail = new JLabel("Email");
+		JLabel lblEmail = new JLabel(controller.getUtenteDAO().getUtente().getEmail());
 		lblEmail.setFont(new Font("Gadugi", Font.BOLD, 17));
 		lblEmail.setAlignmentX(0.5f);
 		lblEmail.setBounds(42, 250, 194, 35);
 		panel.add(lblEmail);
 		
-		JLabel lblDataDiIscrizione = new JLabel("Data di Iscrizione:");
+		JLabel lblDataDiIscrizione = new JLabel("Data di Iscrizione: " + controller.getUtenteDAO().getUtente().getData_Iscrizione());
 		lblDataDiIscrizione.setFont(new Font("Gadugi", Font.BOLD, 17));
 		lblDataDiIscrizione.setAlignmentX(0.5f);
 		lblDataDiIscrizione.setBounds(42, 296, 244, 35);
 		panel.add(lblDataDiIscrizione);
 		
-		JLabel lblDescrizioniEffettuate = new JLabel("Descrizioni effettuate:");
+		JLabel lblDescrizioniEffettuate = new JLabel("Descrizioni effettuate: " + controller.getUtenteDAO().getUtente().getContributi());
 		lblDescrizioniEffettuate.setFont(new Font("Gadugi", Font.BOLD, 17));
 		lblDescrizioniEffettuate.setAlignmentX(0.5f);
 		lblDescrizioniEffettuate.setBounds(42, 320, 194, 35);
