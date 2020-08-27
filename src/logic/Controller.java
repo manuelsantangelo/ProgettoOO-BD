@@ -1,6 +1,7 @@
-package logic;
+ package logic;
 
 import gui.*;
+import logic.Classi.Albergo;
 import logic.Classi.Moderatore;
 import logic.DAO.AlbergoDAO;
 import logic.DAO.Associazione_Categoria_RistoranteDAO;
@@ -16,6 +17,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -54,6 +56,10 @@ public class Controller {
 	private Elimina_Attrazione delAtt;
 	private Elimina_Ristorante delRest;
 	private Elimina_Hotel delHotel;
+	
+	//ArrayList
+	
+	private ArrayList<Albergo> albergo = new ArrayList<Albergo>();
 	
 	
 	//****************************************
@@ -110,6 +116,9 @@ public class Controller {
 		frameDaChiudere.dispose();
 		
 	}
+	
+	// arraylist per prendere cose dalla DAO
+
 	
 // i getter per le DAO
 	

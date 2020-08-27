@@ -1,5 +1,6 @@
 package logic.DAO;
 
+import java.beans.Statement;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -143,5 +144,27 @@ public class AlbergoDAO {
 		
 	}
 	
+	public ArrayList<Albergo> getAlberghi(Connection conn){
+		ArrayList<Albergo> alberghi = new ArrayList<Albergo>();
+try {		
+	Albergo albergo;
 	
+	String comando = "SELECT * FROM \"Albergo\" ";
+	
+	PreparedStatement ps = conn.prepareStatement(comando);
+	ResultSet rs = ps.executeQuery();
+	
+	while (rs.next()) {
+		albergo = new Albergo();
+		albergo.setAlbergo_ID(rs.getInt(1));
+		albergo.setNome(rs.getString(2));
+		//albergo.setCategoria(rs.getString("Categ"));
+		albergo.setStelle(rs.getInt(4));
+	}
+} catch (Exception e) {
+	// TODO: handle exception
+}
+	}
+	
+
 }
