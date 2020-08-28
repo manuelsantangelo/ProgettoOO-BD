@@ -36,6 +36,8 @@ import javax.swing.SwingConstants;
 import java.awt.Component;
 import javax.swing.border.LineBorder;
 import java.awt.SystemColor;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Principale extends JFrame {
 	
@@ -50,12 +52,9 @@ public class Principale extends JFrame {
 	final static int ALTEZZA_FINESTRA = 690;
 	final static int LUNGHEZZA_FINESTRA = 940;
 	static private JTable elementi = new JTable();
+	
 	static DefaultTableModel dtm = new DefaultTableModel(0,0);
 	
-	private JTable elementiAlbergo;
-	private JTable elementiRistorante;
-	private JTable elementiAttrazione;
-
 	private ArrayList<Albergo> listaAlberghi = new ArrayList<Albergo>();
 	private ArrayList<Ristorante> listaRistoranti = new ArrayList<Ristorante>();
 	private ArrayList<Attrazione> listaAttrazioni = new ArrayList<Attrazione>();
@@ -72,7 +71,7 @@ public class Principale extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+	
 		JButton cerca = new JButton("Cerca");
 		cerca.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		cerca.setForeground(Color.BLACK);
@@ -152,10 +151,20 @@ public class Principale extends JFrame {
 		attrazioneristorantehotel.setModel(model);
 		attrazioneristorantehotel.setBounds(332, 81, 173, 29);
 		contentPane.add(attrazioneristorantehotel);
+		elementi.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				boolean a = elementi.isEditing();
+				if(a == false) {
+					controller.CambiaFrame(Principale.this, controller.getHome());
+				}
+			}
+		});
+				
 		
 		elementi.setBackground(Color.WHITE);
 		elementi.setFont(new Font("Gadugi", Font.PLAIN, 14));
-		String nomeColonne[] = new String[] { "Nome albergo", "Voto" };
+		String nomeColonne[] = new String[] { "Nome", "COSE VARIE" };
 	    elementi.setModel(dtm);
 		dtm.setColumnIdentifiers(nomeColonne);
 		elementi.setBounds(332, 148, 514, 304);
@@ -194,12 +203,12 @@ public class Principale extends JFrame {
 	
 	
 	public void riempitabellaAlberghi() {
-		if(dtm.getRowCount() != 0) {
-			for(int a = 0; a < dtm.getRowCount(); a++) {
-				dtm.removeRow(a);
-			}
+		while (dtm.getRowCount() > 0) {
+		    dtm.removeRow(0);
 		}
-				
+		
+		dtm.setRowCount(0);
+
 		int i = 0;
 	do {
 			dtm.addRow(new Object[] {
@@ -207,15 +216,18 @@ public class Principale extends JFrame {
 			});
 			i++;
 		}while(listaAlberghi.size() != i);
+	
 
 	}
 	
 	public void riempitabellaRistoranti() {
-		if(dtm.getRowCount() != 0) {
-			for(int a = 0; a < dtm.getRowCount(); a++) {
-				dtm.removeRow(a);
-			}
+		int a = 0;
+		while (dtm.getRowCount() > 0) {
+		    dtm.removeRow(0);
 		}
+		
+		dtm.setRowCount(0);
+
 
 		int i = 0;
 	do {
@@ -223,17 +235,21 @@ public class Principale extends JFrame {
 					listaRistoranti.get(i).getNome(), listaRistoranti.get(i).getStelle_Michelin(),
 			});
 			i++;
+			
 		}while(listaRistoranti.size() != i);
-		
+	
+
+	
 
 	}
 	
 	public void riempitabellaAttrazioni() {
-		if(dtm.getRowCount() != 0) {
-			for(int a = 0; a < dtm.getRowCount(); a++) {
-				dtm.removeRow(a);
-			}
+		while (dtm.getRowCount() > 0) {
+		    dtm.removeRow(0);
 		}
+		
+		dtm.setRowCount(0);
+
 		
 		int i = 0;
 	do {
@@ -242,6 +258,10 @@ public class Principale extends JFrame {
 			});
 			i++;
 		}while(listaAttrazioni.size() != i);
+	
+
+	
 	}
+
 	
 }
