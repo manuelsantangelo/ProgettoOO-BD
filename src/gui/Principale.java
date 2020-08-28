@@ -28,6 +28,8 @@ import logic.Classi.Ristorante;
 
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
+
 import javax.swing.JScrollPane;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
@@ -49,8 +51,11 @@ public class Principale extends JFrame {
 	final static int LUNGHEZZA_FINESTRA = 940;
 	static private JTable elementi = new JTable();
 	static DefaultTableModel dtm = new DefaultTableModel(0,0);
-
 	
+	private JTable elementiAlbergo;
+	private JTable elementiRistorante;
+	private JTable elementiAttrazione;
+
 	private ArrayList<Albergo> listaAlberghi = new ArrayList<Albergo>();
 	private ArrayList<Ristorante> listaRistoranti = new ArrayList<Ristorante>();
 	private ArrayList<Attrazione> listaAttrazioni = new ArrayList<Attrazione>();
@@ -170,6 +175,7 @@ public class Principale extends JFrame {
 				if(nome == "Attrazione") {
 				listaAttrazioni = controller.getAttrazioni();
 				riempitabellaAttrazioni();
+				
 				}else if(nome == "Ristorante"){
 					listaRistoranti = controller.getRistoranti();
 					riempitabellaRistoranti();
@@ -193,6 +199,7 @@ public class Principale extends JFrame {
 				dtm.removeRow(a);
 			}
 		}
+				
 		int i = 0;
 	do {
 			dtm.addRow(new Object[] {
@@ -200,7 +207,7 @@ public class Principale extends JFrame {
 			});
 			i++;
 		}while(listaAlberghi.size() != i);
-		
+
 	}
 	
 	public void riempitabellaRistoranti() {
@@ -209,7 +216,7 @@ public class Principale extends JFrame {
 				dtm.removeRow(a);
 			}
 		}
-		
+
 		int i = 0;
 	do {
 			dtm.addRow(new Object[] {
@@ -218,6 +225,7 @@ public class Principale extends JFrame {
 			i++;
 		}while(listaRistoranti.size() != i);
 		
+
 	}
 	
 	public void riempitabellaAttrazioni() {
@@ -234,8 +242,6 @@ public class Principale extends JFrame {
 			});
 			i++;
 		}while(listaAttrazioni.size() != i);
-		
 	}
-	
 	
 }
