@@ -48,7 +48,7 @@ public class Principale extends JFrame {
 	private JTable elementi;
 	
 	private ArrayList<Albergo> listaAlberghi = new ArrayList<Albergo>();
-	private JTable table;
+	
 
 	public Principale(Controller controller) throws IOException{
 		
@@ -177,7 +177,7 @@ public class Principale extends JFrame {
 		elementi.setFont(new Font("Gadugi", Font.PLAIN, 14));
 		DefaultTableModel dtm = new DefaultTableModel(0,0);
 		
-		String nomeColonne[] = new String[] { "Nome", "Stelle" };
+		String nomeColonne[] = new String[] { "Nome albergo", "Stelle" };
 	    elementi.setModel(dtm);
 		dtm.setColumnIdentifiers(nomeColonne);
 		elementi.setBounds(332, 148, 514, 304);
