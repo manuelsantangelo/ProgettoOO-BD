@@ -133,13 +133,14 @@ public class HomePage extends JFrame {
 				controller.CambiaFrame(HomePage.this, controller.getModeratore_Homepage());
 				}else if (flagUser) {
 					controller.getUtenteDAO().setUtente(controller.getUtenteDAO().getThisUtente(controller.getConnection(), nick, pass));
-					try {
-						controller.CambiaFrame(HomePage.this, controller.getPrincipale());
-					} catch (IOException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-				}
+						try {
+							controller.CambiaFrame(HomePage.this, controller.getPrincipale());
+						} catch (IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+					} 
+				
 				else {
 					JOptionPane.showMessageDialog(null, "Per accedere devi iscriverti. Non sei ne un utente ne un moderatore!");
 				}

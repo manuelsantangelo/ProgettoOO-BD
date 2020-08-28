@@ -31,6 +31,7 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Component;
 import javax.swing.border.LineBorder;
+import java.awt.SystemColor;
 
 public class Principale extends JFrame {
 	
@@ -47,6 +48,7 @@ public class Principale extends JFrame {
 	private JTable elementi;
 	
 	private ArrayList<Albergo> listaAlberghi = new ArrayList<Albergo>();
+	private JTable table;
 
 	public Principale(Controller controller) throws IOException{
 		
@@ -68,12 +70,8 @@ public class Principale extends JFrame {
 		
 		
 	
-		JScrollPane scrollPane = new JScrollPane(elementi);
-		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS); 
-		scrollPane.setBounds(332, 194, 563, 316);
-		contentPane.add(scrollPane);
 		
-		scrollPane.setViewportView(elementi);
+		
 		
 		JButton cerca = new JButton("Cerca");
 		cerca.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -163,23 +161,36 @@ public class Principale extends JFrame {
 	
 				if(nome == "Attrazione") {
 				
-				}if(nome == "Ristorante"){
+				}else if(nome == "Ristorante"){
 					
-				}if(nome == "Albergo") {
-					
-					System.out.println(controller.getAlberghi().size());
-					//riempitabella();
+				}else if(nome == "Albergo") {
+					listaAlberghi = controller.getAlberghi();
+					System.out.println(listaAlberghi.size());
+					riempitabella();
 				}
 			}});
 	}
 	
-	/*public void riempitabella() {
+	public void riempitabella() {
 		elementi = new JTable();
+		elementi.setBackground(Color.WHITE);
+		elementi.setFont(new Font("Gadugi", Font.PLAIN, 14));
 		DefaultTableModel dtm = new DefaultTableModel(0,0);
 		
-		String header [] = new String[]{"Nome", "Stelle"};
-		dtm.setColumnIdentifiers(header);
-		int i = 1;
+		String nomeColonne[] = new String[] { "Nome", "Stelle" };
+	    elementi.setModel(dtm);
+		dtm.setColumnIdentifiers(nomeColonne);
+		elementi.setBounds(332, 148, 514, 304);
+		contentPane.add(elementi);
+		
+		JScrollPane scrollPane = new JScrollPane(elementi);
+		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS); 
+		scrollPane.setBounds(332, 194, 563, 316);
+		contentPane.add(scrollPane);
+		
+		scrollPane.setViewportView(elementi);
+		
+		int i = 0;
 	do {
 		
 		
@@ -187,9 +198,7 @@ public class Principale extends JFrame {
 					listaAlberghi.get(i).getNome(), listaAlberghi.get(i).getStelle(),
 			});
 			i++;
-		}while(listaAlberghi.size() != i-1);
+		}while(listaAlberghi.size() != i);
 		
-	}*/
-	
-	
+	}
 }
