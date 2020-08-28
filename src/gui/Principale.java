@@ -28,6 +28,8 @@ import logic.Classi.Ristorante;
 
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
+
 import javax.swing.JScrollPane;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
@@ -47,8 +49,11 @@ public class Principale extends JFrame {
 	final static int FINESTRA_X = 25;
 	final static int ALTEZZA_FINESTRA = 690;
 	final static int LUNGHEZZA_FINESTRA = 940;
-	private JTable elementi;
-	
+	private JTable elementiAlbergo;
+	private JTable elementiRistorante;
+	private JTable elementiAttrazione;
+
+
 	private ArrayList<Albergo> listaAlberghi = new ArrayList<Albergo>();
 	private ArrayList<Ristorante> listaRistoranti = new ArrayList<Ristorante>();
 	private ArrayList<Attrazione> listaAttrazioni = new ArrayList<Attrazione>();
@@ -67,14 +72,6 @@ public class Principale extends JFrame {
 		contentPane.setLayout(null);
 		
 		//https://stackoverflow.com/questions/22371720/how-to-add-row-dynamically-in-jtable
-		
-		
-		
-		
-		
-	
-		
-		
 		
 		JButton cerca = new JButton("Cerca");
 		cerca.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -165,6 +162,7 @@ public class Principale extends JFrame {
 				if(nome == "Attrazione") {
 					listaAttrazioni = controller.getAttrazioni();
 				riempitabellaAttrazioni();
+				
 				}else if(nome == "Ristorante"){
 					listaRistoranti = controller.getRistoranti();
 					riempitabellaRistoranti();
@@ -183,24 +181,25 @@ public class Principale extends JFrame {
 	
 	
 	public void riempitabellaAlberghi() {
-		elementi = new JTable();
-		elementi.setBackground(Color.WHITE);
-		elementi.setFont(new Font("Gadugi", Font.PLAIN, 14));
+		elementiAlbergo = new JTable();
+		elementiAlbergo.setBackground(Color.WHITE);
+		elementiAlbergo.setFont(new Font("Gadugi", Font.PLAIN, 14));
 		DefaultTableModel dtm = new DefaultTableModel(0,0);
 		
 		String nomeColonne[] = new String[] { "Nome albergo", "Stelle" };
-	    elementi.setModel(dtm);
+	    elementiAlbergo.setModel(dtm);
 		dtm.setColumnIdentifiers(nomeColonne);
-		elementi.setBounds(332, 148, 514, 304);
-		contentPane.add(elementi);
+		elementiAlbergo.setBounds(332, 148, 514, 304);
+		contentPane.add(elementiAlbergo);
 		
-		JScrollPane scrollPane = new JScrollPane(elementi);
+		JScrollPane scrollPane = new JScrollPane(elementiAlbergo);
 		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS); 
 		scrollPane.setBounds(332, 194, 563, 316);
 		contentPane.add(scrollPane);
+		scrollPane.setViewportView(elementiAlbergo);
 		
-		scrollPane.setViewportView(elementi);
 		
+
 		int i = 0;
 	do {
 			dtm.addRow(new Object[] {
@@ -208,27 +207,29 @@ public class Principale extends JFrame {
 			});
 			i++;
 		}while(listaAlberghi.size() != i);
-		
+
 	}
 	
 	public void riempitabellaRistoranti() {
-		elementi = new JTable();
-		elementi.setBackground(Color.WHITE);
-		elementi.setFont(new Font("Gadugi", Font.PLAIN, 14));
+		elementiRistorante = new JTable();
+		elementiRistorante.setBackground(Color.WHITE);
+		elementiRistorante.setFont(new Font("Gadugi", Font.PLAIN, 14));
 		DefaultTableModel dtm = new DefaultTableModel(0,0);
 		
 		String nomeColonne[] = new String[] { "Nome ristorante", "Stelle Michelin" };
-	    elementi.setModel(dtm);
+	    elementiRistorante.setModel(dtm);
 		dtm.setColumnIdentifiers(nomeColonne);
-		elementi.setBounds(332, 148, 514, 304);
-		contentPane.add(elementi);
+		elementiRistorante.setBounds(332, 148, 514, 304);
+		contentPane.add(elementiRistorante);
 		
-		JScrollPane scrollPane = new JScrollPane(elementi);
+		JScrollPane scrollPane = new JScrollPane(elementiRistorante);
 		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS); 
 		scrollPane.setBounds(332, 194, 563, 316);
 		contentPane.add(scrollPane);
 		
-		scrollPane.setViewportView(elementi);
+		scrollPane.setViewportView(elementiRistorante);
+		
+		
 		
 		int i = 0;
 	do {
@@ -238,26 +239,29 @@ public class Principale extends JFrame {
 			i++;
 		}while(listaRistoranti.size() != i);
 		
+
 	}
 	
 	public void riempitabellaAttrazioni() {
-		elementi = new JTable();
-		elementi.setBackground(Color.WHITE);
-		elementi.setFont(new Font("Gadugi", Font.PLAIN, 14));
+		elementiAttrazione = new JTable();
+		elementiAttrazione.setBackground(Color.WHITE);
+		elementiAttrazione.setFont(new Font("Gadugi", Font.PLAIN, 14));
 		DefaultTableModel dtm = new DefaultTableModel(0,0);
 		
-		String nomeColonne[] = new String[] { "Nome attrazione", "Stelle Michelin" };
-	    elementi.setModel(dtm);
+		String nomeColonne[] = new String[] { "Nome attrazione", "Descrizione" };
+	    elementiAttrazione.setModel(dtm);
 		dtm.setColumnIdentifiers(nomeColonne);
-		elementi.setBounds(332, 148, 514, 304);
-		contentPane.add(elementi);
+		elementiAttrazione.setBounds(332, 148, 514, 304);
+		contentPane.add(elementiAttrazione);
 		
-		JScrollPane scrollPane = new JScrollPane(elementi);
+		JScrollPane scrollPane = new JScrollPane(elementiAttrazione);
 		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS); 
 		scrollPane.setBounds(332, 194, 563, 316);
 		contentPane.add(scrollPane);
 		
-		scrollPane.setViewportView(elementi);
+		scrollPane.setViewportView(elementiAttrazione);
+		
+		
 		
 		int i = 0;
 	do {
@@ -266,7 +270,8 @@ public class Principale extends JFrame {
 			});
 			i++;
 		}while(listaAttrazioni.size() != i);
-		
+	
+	
 	}
 	
 	
