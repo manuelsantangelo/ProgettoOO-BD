@@ -9,6 +9,7 @@ public class Attrazione {
 	private String Descrizione;
 	private prezzo Fascia_Prezzo;
 	private int Luogo_FK;
+	private byte[] Foto;
 	public int getAttrazione_ID() {
 		return Attrazione_ID;
 	}
@@ -50,6 +51,13 @@ public class Attrazione {
 	}
 	public void setLuogo_FK(int luogo_FK) {
 		Luogo_FK = luogo_FK;
+	}
+	
+	public byte[] getFoto() {
+		return Foto;
+	}
+	public void setFoto(byte[] foto) {
+		Foto = foto;
 	}
 	public Attrazione(String nome, tipoattrazione tipo, String descrizione, prezzo fascia_Prezzo, int luogo_FK) {
 		super();

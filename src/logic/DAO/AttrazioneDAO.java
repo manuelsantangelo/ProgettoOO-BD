@@ -16,6 +16,7 @@ import Tipi.tipoattrazione;
 import Tipi.prezzo;
 import logic.Controller;
 import logic.Classi.Attrazione;
+import logic.Classi.Ristorante;
 
 public class AttrazioneDAO {
 
@@ -140,6 +141,43 @@ public class AttrazioneDAO {
 			JOptionPane.showMessageDialog(null, "ERRORE! Qualcosa è andato storto con l'Attrazione");
 	}
 		
+	}
+	
+public ArrayList<Attrazione> getAttrazioni(Connection conn){
+		
+		ArrayList<Attrazione> attrazioni = new ArrayList<Attrazione>();
+		
+try {		
+	Attrazione attrazione;
+	
+	String comando = "SELECT * FROM public.\"Attrazione\" ";
+	
+	PreparedStatement ps = null;
+	ResultSet rs = null;
+	
+	ps = conn.prepareStatement(comando);
+	rs = ps.executeQuery();
+	while (rs.next()) {
+		attrazione = new Attrazione();
+		attrazione.setAttrazione_ID(rs.getInt(1));
+		attrazione.setNome(rs.getString(2));
+		//attrazione.setTipo(tipo);
+		attrazione.setVoto(rs.getDouble(4));
+		attrazione.setDescrizione(rs.getString(5));
+		//ristorante.setFascia_Prezzo(fascia_Prezzo);
+		attrazione.setLuogo_FK(rs.getInt(7));
+		attrazione.setFoto(rs.getBytes(8));
+		attrazioni.add(attrazione);
+	
+	}
+	
+} catch (Exception e) {
+	System.out.println("ERROR IN SQL" + e);
+	JOptionPane.showMessageDialog(null, "ERRORE! Qualcosa è andato storto con il recupero delle attrazioni");	
+	
+}
+
+return attrazioni;
 	}
 	
 }

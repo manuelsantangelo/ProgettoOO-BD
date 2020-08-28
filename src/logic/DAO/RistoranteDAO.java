@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 
 import Tipi.prezzo;
 import logic.Controller;
+import logic.Classi.Albergo;
 import logic.Classi.Ristorante;
 
 public class RistoranteDAO {
@@ -128,4 +129,44 @@ public class RistoranteDAO {
 	}
 	
 }
+	
+	public ArrayList<Ristorante> getRistoranti(Connection conn){
+		
+		ArrayList<Ristorante> ristoranti = new ArrayList<Ristorante>();
+		
+try {		
+	Ristorante ristorante;
+	
+	String comando = "SELECT * FROM public.\"Ristorante\" ";
+	
+	PreparedStatement ps = null;
+	ResultSet rs = null;
+	
+	ps = conn.prepareStatement(comando);
+	rs = ps.executeQuery();
+	while (rs.next()) {
+		ristorante = new Ristorante();
+		ristorante.setRistorante_ID(rs.getInt(1));
+		ristorante.setNome(rs.getString(2));
+		ristorante.setStelle_Michelin(rs.getInt(3));
+		ristorante.setVoto(rs.getDouble(4));
+		ristorante.setDescizione(rs.getString(5));
+		//ristorante.setFascia_Prezzo(fascia_Prezzo);
+		ristorante.setLuogo_FK(rs.getInt(7));
+		ristorante.setFoto(rs.getBytes(8));
+		ristoranti.add(ristorante);
+	
+	}
+	
+} catch (Exception e) {
+	System.out.println("ERROR IN SQL" + e);
+	JOptionPane.showMessageDialog(null, "ERRORE! Qualcosa è andato storto con il recupero del ristorante");	
+	
 }
+
+return ristoranti;
+	}
+	
+}
+
+

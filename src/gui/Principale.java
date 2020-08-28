@@ -23,6 +23,8 @@ import javax.swing.border.EmptyBorder;
 
 import logic.Controller;
 import logic.Classi.Albergo;
+import logic.Classi.Attrazione;
+import logic.Classi.Ristorante;
 
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -38,8 +40,8 @@ public class Principale extends JFrame {
 	private Controller controller;
 
 
-	private JFrame frame;
 	private JPanel contentPane;
+	private JFrame frame;
 	
 	final static int FINESTRA_Y = 80;
 	final static int FINESTRA_X = 25;
@@ -48,7 +50,8 @@ public class Principale extends JFrame {
 	private JTable elementi;
 	
 	private ArrayList<Albergo> listaAlberghi = new ArrayList<Albergo>();
-	
+	private ArrayList<Ristorante> listaRistoranti = new ArrayList<Ristorante>();
+	private ArrayList<Attrazione> listaAttrazioni = new ArrayList<Attrazione>();
 
 	public Principale(Controller controller) throws IOException{
 		
@@ -160,18 +163,26 @@ public class Principale extends JFrame {
 				String nome = attrazioneristorantehotel.getSelectedItem().toString();
 	
 				if(nome == "Attrazione") {
-				
+					listaAttrazioni = controller.getAttrazioni();
+				riempitabellaAttrazioni();
 				}else if(nome == "Ristorante"){
+					listaRistoranti = controller.getRistoranti();
+					riempitabellaRistoranti();
 					
 				}else if(nome == "Albergo") {
 					listaAlberghi = controller.getAlberghi();
-					System.out.println(listaAlberghi.size());
-					riempitabella();
+					riempitabellaAlberghi();
 				}
 			}});
-	}
+	} 
 	
-	public void riempitabella() {
+	
+	//-----------------------------------------------------------------------------------------------------------
+	//CHIUSURA CONTROLLER
+	//FUNZIONI PER RIEMPIRE LE TABELLE!!!!
+	
+	
+	public void riempitabellaAlberghi() {
 		elementi = new JTable();
 		elementi.setBackground(Color.WHITE);
 		elementi.setFont(new Font("Gadugi", Font.PLAIN, 14));
@@ -192,8 +203,6 @@ public class Principale extends JFrame {
 		
 		int i = 0;
 	do {
-		
-		
 			dtm.addRow(new Object[] {
 					listaAlberghi.get(i).getNome(), listaAlberghi.get(i).getStelle(),
 			});
@@ -201,4 +210,64 @@ public class Principale extends JFrame {
 		}while(listaAlberghi.size() != i);
 		
 	}
+	
+	public void riempitabellaRistoranti() {
+		elementi = new JTable();
+		elementi.setBackground(Color.WHITE);
+		elementi.setFont(new Font("Gadugi", Font.PLAIN, 14));
+		DefaultTableModel dtm = new DefaultTableModel(0,0);
+		
+		String nomeColonne[] = new String[] { "Nome ristorante", "Stelle Michelin" };
+	    elementi.setModel(dtm);
+		dtm.setColumnIdentifiers(nomeColonne);
+		elementi.setBounds(332, 148, 514, 304);
+		contentPane.add(elementi);
+		
+		JScrollPane scrollPane = new JScrollPane(elementi);
+		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS); 
+		scrollPane.setBounds(332, 194, 563, 316);
+		contentPane.add(scrollPane);
+		
+		scrollPane.setViewportView(elementi);
+		
+		int i = 0;
+	do {
+			dtm.addRow(new Object[] {
+					listaRistoranti.get(i).getNome(), listaRistoranti.get(i).getStelle_Michelin(),
+			});
+			i++;
+		}while(listaRistoranti.size() != i);
+		
+	}
+	
+	public void riempitabellaAttrazioni() {
+		elementi = new JTable();
+		elementi.setBackground(Color.WHITE);
+		elementi.setFont(new Font("Gadugi", Font.PLAIN, 14));
+		DefaultTableModel dtm = new DefaultTableModel(0,0);
+		
+		String nomeColonne[] = new String[] { "Nome attrazione", "Stelle Michelin" };
+	    elementi.setModel(dtm);
+		dtm.setColumnIdentifiers(nomeColonne);
+		elementi.setBounds(332, 148, 514, 304);
+		contentPane.add(elementi);
+		
+		JScrollPane scrollPane = new JScrollPane(elementi);
+		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS); 
+		scrollPane.setBounds(332, 194, 563, 316);
+		contentPane.add(scrollPane);
+		
+		scrollPane.setViewportView(elementi);
+		
+		int i = 0;
+	do {
+			dtm.addRow(new Object[] {
+					listaAttrazioni.get(i).getNome(), listaAttrazioni.get(i).getDescrizione(),
+			});
+			i++;
+		}while(listaAttrazioni.size() != i);
+		
+	}
+	
+	
 }

@@ -2,7 +2,9 @@
 
 import gui.*;
 import logic.Classi.Albergo;
+import logic.Classi.Attrazione;
 import logic.Classi.Moderatore;
+import logic.Classi.Ristorante;
 import logic.DAO.AlbergoDAO;
 import logic.DAO.Associazione_Categoria_RistoranteDAO;
 import logic.DAO.Associazione_Servizio_AlbergoDAO;
@@ -205,6 +207,14 @@ public class Controller {
 	
 	public ArrayList<Albergo> getAlberghi(){
 		return getAlbergoDAO().getAlberghi(conn);
+	}
+	
+	public ArrayList<Ristorante> getRistoranti(){
+		return getRistoranteDAO().getRistoranti(conn);
+	}
+	
+	public ArrayList<Attrazione> getAttrazioni(){
+		return getAttrazioneDAO().getAttrazioni(conn);
 	}
 	
 }

@@ -9,6 +9,8 @@ public class Ristorante {
 	private String Descizione;
 	private prezzo Fascia_Prezzo;
 	private int Luogo_FK;
+	private byte[] Foto;
+	
 	public int getRistorante_ID() {
 		return Ristorante_ID;
 	}
@@ -44,6 +46,13 @@ public class Ristorante {
 	}
 	public void setFascia_Prezzo(prezzo fascia_Prezzo) {
 		Fascia_Prezzo = fascia_Prezzo;
+	}
+	
+	public void setFoto(byte[] foto) {
+		Foto = foto;
+	}
+	public byte[] getFoto() {
+		return Foto;
 	}
 	public int getLuogo_FK() {
 		return Luogo_FK;
