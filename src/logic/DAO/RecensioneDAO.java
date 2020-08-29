@@ -34,25 +34,17 @@ public class RecensioneDAO {
 	
 	public void addRecensione(Connection conn, String testo, int stelle) {
 		String comando;
+	
 		comando = "INSERT INTO \"Recensione\" (\"Testo\", \"Stelle\") VALUES (?, ?);";
+		
 		
 		try {
 			PreparedStatement ps = null;
 			ps = conn.prepareStatement(comando);
-			ResultSet rs = ps.executeQuery();
 			
 			ps.setString(1, testo);
 			ps.setInt(2, stelle);
-			while(rs.next()) {
-				recensione.setReview_ID(rs.getInt(1));
-				recensione.setMiPiace(rs.getInt(4));
-				recensione.setApprovata(rs.getBoolean(5));
-				recensione.setUser_FK1(rs.getInt(6));
-				recensione.setModeratore_FK(rs.getInt(7));
-				recensione.setAlbergo_FK(rs.getInt(8));
-				recensione.setAttrazione_FK(rs.getInt(9));
-				recensione.setRistorante_FK(rs.getInt(10));
-			}
+			
 			
 			ps.executeUpdate();
 			JOptionPane.showMessageDialog(null, "Recensione aggiunta con successo!");

@@ -61,8 +61,9 @@ public class Controller {
 	private Elimina_Hotel delHotel;
 	private ScriviRecensione scriviRec;
 	//Nome da passare per la recensione
-	String nomeDaRecensire;
+	//String nomeDaRecensire;
 	
+	private int indice;
 	
 	
 	//****************************************
@@ -193,13 +194,13 @@ public class Controller {
 	}
 	//-------------------------------------------------------------------------------------
 	// METODI CREATI PER SETTARE IL NOME CHE CI VIENE DATO DALLA TABELLA E PASSARLO POI ALLA FINESTRA "ScriviRecensione"
-	public void setNomeDaRecensire(String nomeDaRecensire) {
+	/*public void setNomeDaRecensire(String nomeDaRecensire) {
 	this.nomeDaRecensire = nomeDaRecensire;
 	}
 	
 	public String getNomeDaRecensire() {
 		return nomeDaRecensire;
-	}
+	}*/
 	//-----------------------------------------------------------------------------------------------------------
 	public Aggiungi_Hotel getAggiungi_Hotel() {
 		return addHotel;
@@ -236,6 +237,14 @@ public class Controller {
 	
 	public ArrayList<Attrazione> getAttrazioni(){
 		return getAttrazioneDAO().getAttrazioni(conn);
+	}
+	
+	public int getIndice() {
+		return indice;
+	}
+	
+	public void setIndice(int indice) {
+		this.indice = indice;
 	}
 	
 }
