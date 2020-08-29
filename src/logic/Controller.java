@@ -57,8 +57,9 @@ public class Controller {
 	private Elimina_Attrazione delAtt;
 	private Elimina_Ristorante delRest;
 	private Elimina_Hotel delHotel;
-	
-	//ArrayList
+	private ScriviRecensione scriviRec;
+	//Nome da passare per la recensione
+	String nomeDaRecensire;
 	
 	
 	
@@ -115,8 +116,7 @@ public class Controller {
 		frameDaChiudere.dispose();
 		
 	}
-	
-	// arraylist per prendere cose dalla DAO
+
 
 	
 // i getter per le DAO
@@ -181,6 +181,20 @@ public class Controller {
 		return principale;
 	}
 	
+	public ScriviRecensione getScriviRecensione(){
+		scriviRec = new ScriviRecensione(this);
+		return scriviRec;
+	}
+	//-------------------------------------------------------------------------------------
+	// METODI CREATI PER SETTARE IL NOME CHE CI VIENE DATO DALLA TABELLA E PASSARLO POI ALLA FINESTRA "ScriviRecensione"
+	public void setNomeDaRecensire(String nomeDaRecensire) {
+	this.nomeDaRecensire = nomeDaRecensire;
+	}
+	
+	public String getNomeDaRecensire() {
+		return nomeDaRecensire;
+	}
+	//-----------------------------------------------------------------------------------------------------------
 	public Aggiungi_Hotel getAggiungi_Hotel() {
 		return addHotel;
 	}

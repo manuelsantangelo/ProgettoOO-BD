@@ -4,7 +4,10 @@ import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.Point;
 import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -27,6 +30,7 @@ import logic.Classi.Attrazione;
 import logic.Classi.Ristorante;
 
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -52,8 +56,15 @@ public class Principale extends JFrame {
 	final static int ALTEZZA_FINESTRA = 690;
 	final static int LUNGHEZZA_FINESTRA = 940;
 	static private JTable elementi = new JTable();
-	
-	static DefaultTableModel dtm = new DefaultTableModel(0,0);
+	private JTextArea txtDomanda;
+
+	static DefaultTableModel dtm = new DefaultTableModel(0,0){       //Impostiamo le righe e colonne della JTable
+		                                                            //cliccabili ma non modificabili
+		@Override
+	    public boolean isCellEditable(int row, int column) {
+	        return false;
+	    }
+	};	
 	
 	private ArrayList<Albergo> listaAlberghi = new ArrayList<Albergo>();
 	private ArrayList<Ristorante> listaRistoranti = new ArrayList<Ristorante>();
@@ -63,7 +74,7 @@ public class Principale extends JFrame {
 		
 		
 		setIconImage(Toolkit.getDefaultToolkit().getImage("images\\LogoPiccolo.png"));
-		setTitle("SafeTravel");
+		setTitle("Benvenuto " + controller.getUtenteDAO().getUtente().getNome() + " " + controller.getUtenteDAO().getUtente().getCognome());
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(FINESTRA_Y, FINESTRA_X, LUNGHEZZA_FINESTRA, ALTEZZA_FINESTRA);
 		contentPane = new JPanel();
@@ -141,6 +152,16 @@ public class Principale extends JFrame {
 		lblDescrizioniEffettuate.setBounds(42, 320, 194, 35);
 		panel.add(lblDescrizioniEffettuate);
 		
+		txtDomanda = new JTextArea();
+		txtDomanda.setEditable(false);
+		txtDomanda.setFont(new Font("MV Boli", Font.PLAIN, 30));
+		txtDomanda.setText("Cosa si desidere recensire?");
+		txtDomanda.setForeground(Color.WHITE);
+		txtDomanda.setBackground(new Color(0, 191, 255));
+		txtDomanda.setBounds(417, 10, 391, 54);
+		contentPane.add(txtDomanda);
+		txtDomanda.setColumns(10);
+		
 		JComboBox attrazioneristorantehotel = new JComboBox();
 
 		attrazioneristorantehotel.setFont(new Font("Parametric Glitch", Font.PLAIN, 16));
@@ -151,29 +172,22 @@ public class Principale extends JFrame {
 		attrazioneristorantehotel.setModel(model);
 		attrazioneristorantehotel.setBounds(332, 81, 173, 29);
 		contentPane.add(attrazioneristorantehotel);
-		elementi.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				boolean a = elementi.isEditing();
-				if(a == false) {
-					controller.CambiaFrame(Principale.this, controller.getHome());
-				}
-			}
-		});
-				
 		
+	
 		elementi.setBackground(Color.WHITE);
 		elementi.setFont(new Font("Gadugi", Font.PLAIN, 14));
-		String nomeColonne[] = new String[] { "Nome", "COSE VARIE" };
+		String nomeColonne[] = new String[] { "Nome", "Luogo" };
 	    elementi.setModel(dtm);
-		dtm.setColumnIdentifiers(nomeColonne);
+	    dtm.setColumnIdentifiers(nomeColonne);
 		elementi.setBounds(332, 148, 514, 304);
 		contentPane.add(elementi);
+		
 		JScrollPane scrollPane = new JScrollPane(elementi);
 		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS); 
 		scrollPane.setBounds(332, 194, 563, 316);
 		contentPane.add(scrollPane);
 		scrollPane.setViewportView(elementi);
+		
 		
 	
 		cerca.addActionListener(new ActionListener() {
@@ -194,9 +208,22 @@ public class Principale extends JFrame {
 					riempitabellaAlberghi();
 				}
 			}});
-	} 
 	
-	
+	 //Doppio click mouse, apertura pagina recensioni 
+    elementi.addMouseListener(new MouseAdapter() {
+        public void mousePressed(MouseEvent mouseEvent) {
+            elementi =(JTable) mouseEvent.getSource();
+            Point point = mouseEvent.getPoint();
+            int row = elementi.rowAtPoint(point);
+            if (mouseEvent.getClickCount() == 2 && elementi.getSelectedRow() != -1) {
+            	String NomeSelezionato = elementi.getValueAt(elementi.getSelectedRow(), 1).toString(); //convertiamo il valore preso in stringa
+            	controller.setNomeDaRecensire(NomeSelezionato);//richiamiamo il controller per passargli il nome di albergo o attrazione o ristorante selezionato
+					controller.CambiaFrame(Principale.this, controller.getScriviRecensione());//apriamo la finestra scrivi recensione
+				
+            }
+        }
+    });
+	}
 	//-----------------------------------------------------------------------------------------------------------
 	//CHIUSURA CONTROLLER
 	//FUNZIONI PER RIEMPIRE LE TABELLE!!!!
@@ -214,6 +241,8 @@ public class Principale extends JFrame {
 			dtm.addRow(new Object[] {
 					listaAlberghi.get(i).getNome(), listaAlberghi.get(i).getStelle(),
 			});
+			dtm.isCellEditable(i, 1);
+			dtm.isCellEditable(i, 2);
 			i++;
 		}while(listaAlberghi.size() != i);
 	
@@ -234,9 +263,12 @@ public class Principale extends JFrame {
 			dtm.addRow(new Object[] {
 					listaRistoranti.get(i).getNome(), listaRistoranti.get(i).getStelle_Michelin(),
 			});
+			dtm.isCellEditable(i, 1);
+			dtm.isCellEditable(i, 2);
 			i++;
 			
 		}while(listaRistoranti.size() != i);
+	
 	
 
 	
@@ -256,6 +288,8 @@ public class Principale extends JFrame {
 			dtm.addRow(new Object[] {
 					listaAttrazioni.get(i).getNome(), listaAttrazioni.get(i).getDescrizione(),
 			});
+			dtm.isCellEditable(i, 1);
+			dtm.isCellEditable(i, 2);
 			i++;
 		}while(listaAttrazioni.size() != i);
 	
@@ -264,4 +298,20 @@ public class Principale extends JFrame {
 	}
 
 	
+
+
 }
+
+	
+
+
+
+/*elementi.addMouseListener(new MouseAdapter() {
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		boolean a = elementi.isEditing();
+		if(a == false) {
+			controller.CambiaFrame(Principale.this, controller.getHome());
+		}
+	}
+})*/

@@ -1,0 +1,116 @@
+package gui;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextArea;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
+
+import logic.Controller;
+
+public class ScriviRecensione extends JFrame {
+
+	private JPanel contentPane;
+
+	final static int FINESTRA_Y = 80;
+	final static int FINESTRA_X = 25;
+	final static int ALTEZZA_FINESTRA = 690;
+	final static int LUNGHEZZA_FINESTRA = 940;
+	
+	String nomeDaRecensire; //inizializziamo il nome della cosa che vogliamo recensire 
+
+public ScriviRecensione(Controller controller) {
+	setIconImage(Toolkit.getDefaultToolkit().getImage("images\\LogoPiccolo.png"));
+	setTitle("Recensione");
+	setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+	setBounds(FINESTRA_Y, FINESTRA_X, LUNGHEZZA_FINESTRA, ALTEZZA_FINESTRA);
+	
+	contentPane = new JPanel();
+	contentPane.setBackground(new Color(0, 191, 255));
+	contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+	setContentPane(contentPane);
+	contentPane.setLayout(null);
+	
+
+		
+		JTextArea txtrDescrizione = new JTextArea();
+		txtrDescrizione.setText("Recensione");
+		txtrDescrizione.setForeground(Color.WHITE);
+		txtrDescrizione.setFont(new Font("Parametric Glitch", Font.BOLD, 21));
+		txtrDescrizione.setEditable(false);
+		txtrDescrizione.setBackground(new Color(0, 191, 255));
+		txtrDescrizione.setBounds(24, 459, 128, 29);
+		contentPane.add(txtrDescrizione);
+		
+		JTextArea descrizione = new JTextArea();
+		descrizione.setFont(new Font("Parametric Glitch", Font.PLAIN, 16));
+		descrizione.setForeground(Color.BLACK);
+		descrizione.setLineWrap(true);
+		descrizione.setBackground(Color.WHITE);
+		descrizione.setBounds(24, 499, 664, 102);
+		contentPane.add(descrizione);
+		
+		JScrollPane scrollPane = new JScrollPane(descrizione);
+		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		scrollPane.setBounds(24, 499, 664, 102);
+		contentPane.add(scrollPane);
+		scrollPane.setViewportView(descrizione);
+		
+		JButton aggiungiRecensione = new JButton("Aggiungi recensione");
+		aggiungiRecensione.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		aggiungiRecensione.setForeground(Color.BLACK);
+		aggiungiRecensione.setFont(new Font("Parametric Glitch", Font.PLAIN, 14));
+		aggiungiRecensione.setBackground(Color.WHITE);
+		aggiungiRecensione.setBounds(721, 527, 177, 47);
+		contentPane.add(aggiungiRecensione);
+		
+		JLabel lblFoto = new JLabel("foto");
+		lblFoto.setBorder(new LineBorder(new Color(0, 191, 255), 2, true));
+		lblFoto.setBounds(42, 23, 160, 160);
+		contentPane.add(lblFoto);
+		
+		//---------------------------arrivare fino a sotto--------------------------------------------------------
+		
+		// ci servirà per mettere la foto dal database di quel determinato ristorante, attrazione o albergo aperto
+		
+	/*	byte[] imgBytes = controller.get
+		ByteArrayInputStream bis = new ByteArrayInputStream(imgBytes);
+	    BufferedImage bImage = ImageIO.read(bis);
+	    Image dimg = bImage.getScaledInstance(lblFoto.getWidth(), lblFoto.getHeight(), Image.SCALE_SMOOTH); 
+		ImageIcon imageIcon = new ImageIcon(dimg);
+		lblFoto.setIcon(imageIcon);
+		*/
+		
+		
+}
+
+// RICHIAMIAMO IL METODO GET DAL CONTROLLER E LO CONFRONTIAMO CON TUTTI I VALORI DEL DATABASE TRA ALBERGO, RISTORANTE E ATTRAZIONE
+// VA BENE COME METODO???? Chissà!!
+
+/*public void controlloNomeDaRecensire(Controller controller) {
+	if (controller.getNomeDaRecensire() == controller. {
+		
+	}
+}
+*/
+	///--------------------------------------------------------------------------------------------------------------
+	
+}
+
