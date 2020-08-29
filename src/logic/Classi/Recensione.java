@@ -80,6 +80,10 @@ public class Recensione {
 		Attrazione_FK = attrazione_FK;
 		Ristorante_FK = ristorante_FK;
 	}
+	
+	public Recensione() {
+		
+	}
 
 	
 }

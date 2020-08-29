@@ -7,6 +7,8 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -73,18 +75,32 @@ public ScriviRecensione(Controller controller) {
 		contentPane.add(scrollPane);
 		scrollPane.setViewportView(descrizione);
 		
-		JButton aggiungiRecensione = new JButton("Aggiungi recensione");
-		aggiungiRecensione.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		aggiungiRecensione.setForeground(Color.BLACK);
-		aggiungiRecensione.setFont(new Font("Parametric Glitch", Font.PLAIN, 14));
-		aggiungiRecensione.setBackground(Color.WHITE);
-		aggiungiRecensione.setBounds(721, 527, 177, 47);
-		contentPane.add(aggiungiRecensione);
+		JButton btnaggiungirecensione = new JButton("Aggiungi recensione");
+		btnaggiungirecensione.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnaggiungirecensione.setForeground(Color.BLACK);
+		btnaggiungirecensione.setFont(new Font("Parametric Glitch", Font.PLAIN, 14));
+		btnaggiungirecensione.setBackground(Color.WHITE);
+		btnaggiungirecensione.setBounds(721, 527, 177, 47);
+		contentPane.add(btnaggiungirecensione);
 		
 		JLabel lblFoto = new JLabel("foto");
 		lblFoto.setBorder(new LineBorder(new Color(0, 191, 255), 2, true));
 		lblFoto.setBounds(42, 23, 160, 160);
 		contentPane.add(lblFoto);
+		
+		
+
+		btnaggiungirecensione.addActionListener(new ActionListener() {
+			@SuppressWarnings("deprecation")
+			public void actionPerformed(ActionEvent e) {
+				String recensione = descrizione.getText();
+				controller.getRecensioneDAO().addRecensione(controller.getConnection(), "Bellissimo", 1);
+				
+				
+			}});
+		
+}
+
 		
 		//---------------------------arrivare fino a sotto--------------------------------------------------------
 		
@@ -112,5 +128,5 @@ public ScriviRecensione(Controller controller) {
 */
 	///--------------------------------------------------------------------------------------------------------------
 	
-}
+
 
