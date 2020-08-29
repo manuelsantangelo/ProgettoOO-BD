@@ -297,21 +297,6 @@ public class Principale extends JFrame {
 	
 	}
 
-	
-
-
 }
 
 	
-
-
-
-/*elementi.addMouseListener(new MouseAdapter() {
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		boolean a = elementi.isEditing();
-		if(a == false) {
-			controller.CambiaFrame(Principale.this, controller.getHome());
-		}
-	}
-})*/
