@@ -94,7 +94,7 @@ public ScriviRecensione(Controller controller) {
 			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
 				String recensione = descrizione.getText();
-				controller.getRecensioneDAO().addRecensione(controller.getConnection(), "Bellissimo", 1);
+				controller.getRecensioneDAO().addRecensione(controller.getConnection(), recensione, 3);
 				
 				
 			}});

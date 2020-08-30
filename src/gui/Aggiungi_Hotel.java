@@ -472,7 +472,7 @@ public class Aggiungi_Hotel extends JFrame {
 				String indirizzo1 = indirizzo.getText();
 				
 				prezzo price = prezzo.valueOf(prezzi.getSelectedItem().toString());
-				int stelleAlbergo1 = stelleAlbergo.getSelectedIndex();
+				int stelleAlbergo1 = (stelleAlbergo.getSelectedIndex() + 1);
 				int numerocamere = Integer.parseInt(camere.getText());
 				String descrizione1 = descrizione.getText();
 				ArrayList<String> numTelefono = new ArrayList<String>();

@@ -98,13 +98,14 @@ public class Principale extends JFrame {
 				controller.CambiaFrame(Principale.this, controller.getHome());
 			}
 		});
-		btnIndietro.setForeground(Color.CYAN);
-		btnIndietro.setFont(new Font("Parametric Glitch", Font.PLAIN, 14));
-		btnIndietro.setBackground(Color.RED);
+		btnIndietro.setForeground(new Color(0, 0, 0));
+		btnIndietro.setFont(new Font("Gadugi", Font.BOLD, 15));
+		btnIndietro.setBackground(new Color(0, 153, 255));
 		btnIndietro.setBounds(759, 553, 117, 29);
 		contentPane.add(btnIndietro);
 		
 		JPanel panel = new JPanel();
+		panel.setForeground(new Color(0, 0, 0));
 		panel.setBackground(new Color(0, 153, 255));
 		panel.setBounds(0, 0, 312, 651);
 		contentPane.add(panel);
@@ -298,3 +299,4 @@ public class Principale extends JFrame {
 	}
 
 }
+
