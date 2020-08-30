@@ -16,7 +16,7 @@ public class ModeratoreDAO {
 	private Moderatore moderatore = new Moderatore();
 	
 	public Moderatore getModeratore() {
-		return moderatore;
+		return this.moderatore;
 	}
 	
 	

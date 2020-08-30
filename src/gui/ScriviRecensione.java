@@ -14,8 +14,10 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -66,7 +68,7 @@ public ScriviRecensione(Controller controller) {
 		descrizione.setForeground(Color.BLACK);
 		descrizione.setLineWrap(true);
 		descrizione.setBackground(Color.WHITE);
-		descrizione.setBounds(24, 499, 664, 102);
+		descrizione.setBounds(10, 45, 664, 102);
 		contentPane.add(descrizione);
 		
 		JScrollPane scrollPane = new JScrollPane(descrizione);
@@ -80,7 +82,7 @@ public ScriviRecensione(Controller controller) {
 		btnaggiungirecensione.setForeground(Color.BLACK);
 		btnaggiungirecensione.setFont(new Font("Parametric Glitch", Font.PLAIN, 14));
 		btnaggiungirecensione.setBackground(Color.WHITE);
-		btnaggiungirecensione.setBounds(721, 527, 177, 47);
+		btnaggiungirecensione.setBounds(717, 554, 177, 47);
 		contentPane.add(btnaggiungirecensione);
 		
 		JLabel lblFoto = new JLabel("foto");
@@ -88,13 +90,32 @@ public ScriviRecensione(Controller controller) {
 		lblFoto.setBounds(42, 23, 160, 160);
 		contentPane.add(lblFoto);
 		
+		JComboBox valutazioneStelle = new JComboBox();
+
+		valutazioneStelle.setFont(new Font("Parametric Glitch", Font.PLAIN, 16));
+		valutazioneStelle.setBackground(new Color(20, 20, 20));
+		valutazioneStelle.setForeground(Color.BLUE);
+		DefaultComboBoxModel model = new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5"});
+		valutazioneStelle.setModel(model);
+		valutazioneStelle.setBounds(717, 498, 177, 29);
+		contentPane.add(valutazioneStelle);
 		
+		JTextArea txtrvalutazioneStelle = new JTextArea();
+		txtrvalutazioneStelle.setText("Stelle valutazione");
+		txtrvalutazioneStelle.setForeground(Color.WHITE);
+		txtrvalutazioneStelle.setFont(new Font("Parametric Glitch", Font.BOLD, 21));
+		txtrvalutazioneStelle.setEditable(false);
+		txtrvalutazioneStelle.setBackground(new Color(0, 191, 255));
+		txtrvalutazioneStelle.setBounds(713, 458, 181, 29);
+		contentPane.add(txtrvalutazioneStelle);
 
 		btnaggiungirecensione.addActionListener(new ActionListener() {
 			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
 				String recensione = descrizione.getText();
 				controller.getRecensioneDAO().addRecensione(controller.getConnection(), recensione, 3);
+				int stelle = valutazioneStelle.getSelectedIndex()+1;
+				controller.getRecensioneDAO().addRecensione(controller.getConnection(), recensione, stelle);
 				
 				
 			}});

@@ -59,18 +59,22 @@ public class Principale extends JFrame {
 	private JTextArea txtDomanda;
 
 	static DefaultTableModel dtm = new DefaultTableModel(0,0){       //Impostiamo le righe e colonne della JTable
-		                                                            //cliccabili ma non modificabili
+		                                                             //cliccabili ma non modificabili
 		@Override
 	    public boolean isCellEditable(int row, int column) {
 	        return false;
 	    }
 	};	
 	
-	private ArrayList<Albergo> listaAlberghi = new ArrayList<Albergo>();
+	
+	static int lista = 0; 
+	/*private ArrayList<Albergo> listaAlberghi = new ArrayList<Albergo>();
 	private ArrayList<Ristorante> listaRistoranti = new ArrayList<Ristorante>();
 	private ArrayList<Attrazione> listaAttrazioni = new ArrayList<Attrazione>();
-
+*/
 	public Principale(Controller controller) throws IOException{
+		
+		
 		
 		
 		setIconImage(Toolkit.getDefaultToolkit().getImage("images\\LogoPiccolo.png"));
@@ -197,15 +201,15 @@ public class Principale extends JFrame {
 				String nome = attrazioneristorantehotel.getSelectedItem().toString();
 	
 				if(nome == "Attrazione") {
-				listaAttrazioni = controller.getAttrazioni();
+				lista = 1;
 				riempitabellaAttrazioni();
 				
 				}else if(nome == "Ristorante"){
-					listaRistoranti = controller.getRistoranti();
+					lista = 2;
 					riempitabellaRistoranti();
 					
 				}else if(nome == "Albergo") {
-					listaAlberghi = controller.getAlberghi();
+					lista = 3;
 					riempitabellaAlberghi();
 				}
 			}});
@@ -217,8 +221,18 @@ public class Principale extends JFrame {
             Point point = mouseEvent.getPoint();
             int row = elementi.rowAtPoint(point);
             if (mouseEvent.getClickCount() == 2 && elementi.getSelectedRow() != -1) {
-            	String NomeSelezionato = elementi.getValueAt(elementi.getSelectedRow(), 1).toString(); //convertiamo il valore preso in stringa
+            	/*String NomeSelezionato = elementi.getValueAt(elementi.getSelectedRow(), 1).toString(); //convertiamo il valore preso in stringa
             	controller.setNomeDaRecensire(NomeSelezionato);//richiamiamo il controller per passargli il nome di albergo o attrazione o ristorante selezionato
+					*/
+            	int indice = elementi.getSelectedRow();
+            	if(lista == 1) {
+            	
+            		
+            	}else if(lista ==2) {
+            		
+            	}else if (lista == 3) {
+            		
+            	}
 					controller.CambiaFrame(Principale.this, controller.getScriviRecensione());//apriamo la finestra scrivi recensione
 				
             }
@@ -240,12 +254,12 @@ public class Principale extends JFrame {
 		int i = 0;
 	do {
 			dtm.addRow(new Object[] {
-					listaAlberghi.get(i).getNome(), listaAlberghi.get(i).getStelle(),
+					controller.getAlberghi().get(i).getNome(), controller.getAlberghi().get(i).getStelle(),
 			});
 			dtm.isCellEditable(i, 1);
 			dtm.isCellEditable(i, 2);
 			i++;
-		}while(listaAlberghi.size() != i);
+		}while(controller.getAlberghi().size() != i);
 	
 
 	}
@@ -262,21 +276,18 @@ public class Principale extends JFrame {
 		int i = 0;
 	do {
 			dtm.addRow(new Object[] {
-					listaRistoranti.get(i).getNome(), listaRistoranti.get(i).getStelle_Michelin(),
+					controller.getRistoranti().get(i).getNome(), controller.getRistoranti().get(i).getStelle_Michelin(),
 			});
 			dtm.isCellEditable(i, 1);
 			dtm.isCellEditable(i, 2);
 			i++;
 			
-		}while(listaRistoranti.size() != i);
+		}while(controller.getRistoranti().size() != i);
 	
-	
-
-	
-
 	}
 	
 	public void riempitabellaAttrazioni() {
+		controller.getAttrazioneDAO().setAllAttazioni(controller.getConnection());
 		while (dtm.getRowCount() > 0) {
 		    dtm.removeRow(0);
 		}
@@ -287,16 +298,14 @@ public class Principale extends JFrame {
 		int i = 0;
 	do {
 			dtm.addRow(new Object[] {
-					listaAttrazioni.get(i).getNome(), listaAttrazioni.get(i).getDescrizione(),
+					controller.getAttrazioneDAO().getAttrazioni().get(i).getNome(), controller.getAttrazioneDAO().getAttrazioni().get(i).getDescrizione(),
 			});
 			dtm.isCellEditable(i, 1);
 			dtm.isCellEditable(i, 2);
 			i++;
-		}while(listaAttrazioni.size() != i);
-	
-
-	
+		}while(controller.getAttrazioneDAO().getAttrazioni().size() != i);
 	}
+	
 
 }
 

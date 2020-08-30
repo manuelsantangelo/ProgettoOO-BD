@@ -34,7 +34,9 @@ public class RecensioneDAO {
 	
 	public void addRecensione(Connection conn, String testo, int stelle) {
 		String comando;
+	
 		comando = "INSERT INTO \"Recensione\" (\"Testo\", \"Stelle\") VALUES (?, ?);";
+		
 		
 		try {
 			PreparedStatement ps = null;
@@ -42,7 +44,7 @@ public class RecensioneDAO {
 			
 			ps.setString(1, testo);
 			ps.setInt(2, stelle);
-			
+
 			ps.executeUpdate();
 			JOptionPane.showMessageDialog(null, "Recensione aggiunta con successo!");
 			

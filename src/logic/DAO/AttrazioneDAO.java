@@ -22,6 +22,7 @@ public class AttrazioneDAO {
 
 	Controller controller;
 	private Attrazione attrazione = new Attrazione();
+	private ArrayList<Attrazione> attrazioni = new ArrayList<Attrazione>(0);
 	
 	public Attrazione getAttrazione() {
 		return attrazione;
@@ -143,43 +144,41 @@ public class AttrazioneDAO {
 		
 	}
 	
-public ArrayList<Attrazione> getAttrazioni(Connection conn){
-		
-		ArrayList<Attrazione> attrazioni = new ArrayList<Attrazione>();
-		
-try {		
-	Attrazione attrazione;
-	
-	String comando = "SELECT * FROM public.\"Attrazione\" ";
-	
-	PreparedStatement ps = null;
-	ResultSet rs = null;
-	
-	ps = conn.prepareStatement(comando);
-	rs = ps.executeQuery();
-	while (rs.next()) {
-		attrazione = new Attrazione();
-		attrazione.setAttrazione_ID(rs.getInt(1));
-		attrazione.setNome(rs.getString(2));
-		//attrazione.setTipo(tipo);
-		attrazione.setVoto(rs.getDouble(4));
-		attrazione.setDescrizione(rs.getString(5));
-		//ristorante.setFascia_Prezzo(fascia_Prezzo);
-		attrazione.setLuogo_FK(rs.getInt(7));
-		attrazione.setFoto(rs.getBytes(8));
-		attrazioni.add(attrazione);
-	
+	public ArrayList<Attrazione> getAttrazioni(){
+		return this.attrazioni;
 	}
 	
-} catch (Exception e) {
-	System.out.println("ERROR IN SQL" + e);
-	JOptionPane.showMessageDialog(null, "ERRORE! Qualcosa è andato storto con il recupero delle attrazioni");	
+	public void setAllAttazioni(Connection conn) {
+		this.attrazioni.clear();
+		
+		try {		
+			Attrazione attraction;
+			String comando = "SELECT * FROM public.\"Attrazione\" ";
 	
-}
+			PreparedStatement ps = null;
+			ResultSet rs = null;
+	
+			ps = conn.prepareStatement(comando);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				attraction = new Attrazione();
+				attraction.setAttrazione_ID(rs.getInt(1));
+				attraction.setNome(rs.getString(2));
+				//attrazione.setTipo(tipo);
+				attraction.setVoto(rs.getDouble(4));
+				attraction.setDescrizione(rs.getString(5));
+				//ristorante.setFascia_Prezzo(fascia_Prezzo);
+				attraction.setLuogo_FK(rs.getInt(7));
+				attraction.setFoto(rs.getBytes(8));
+				this.attrazioni.add(attraction);
+				System.out.println(this.attrazioni.get(0).getNome());
+			}
+		} catch (Exception e) {
+			System.out.println("ERROR IN SQL" + e);
+			JOptionPane.showMessageDialog(null, "ERRORE! Qualcosa è andato storto con il recupero delle attrazioni");	
+		}
+	}
 
-return attrazioni;
-	}
-	
 }
 
 

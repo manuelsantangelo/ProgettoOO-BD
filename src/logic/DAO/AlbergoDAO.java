@@ -18,6 +18,7 @@ import Tipi.categoriaalbergo;
 import Tipi.prezzo;
 import logic.Controller;
 import logic.Classi.Albergo;
+import logic.Classi.Moderatore;
 
 
 public class AlbergoDAO {
@@ -180,5 +181,47 @@ try {
 
 return alberghi;
 	}
+	
+	public Albergo getThisAlbergo(Connection conn, int row) {
+
+		Albergo alb = new Albergo();
+
+		String comando;
+		
+		//DA MODIFICARE LA RESTANTE PARTE
+		
+		comando = "SELECT * FROM public.\"Albergo\" ";
+		
+		/*try {
+			PreparedStatement ps = null;
+			ResultSet rs = null;
+			ps = conn.prepareStatement(comando);
+			ps.setString(1, nome);
+			ps.setString(2, pass);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+			mod.setModeratore_ID(rs.getInt(1));
+			mod.setSede(rs.getString(2));
+			mod.setNome(rs.getString(3));
+			mod.setCognome(rs.getString(4));
+			mod.setEmail(rs.getString(5));
+			mod.setIndirizzo(rs.getString(6));
+			mod.setData_Inizio_Lavoro(rs.getDate(7));
+			mod.setDataDiNascita(rs.getDate(8));
+			mod.setCF(rs.getString(9));
+			mod.setPassword(rs.getString(10));
+			}
+			
+		} catch (SQLException e2) {
+			System.out.println("ERROR IN SQL" + e2);
+			JOptionPane.showMessageDialog(null, "ERRORE! Qualcosa è andato storto con il recupero del Moderatore");	
+		}
+		
+		return mod;	
+		*/
+		return alb;
+	}
+	
+	
 	
 }
