@@ -163,10 +163,10 @@ public class AttrazioneDAO {
 				attraction = new Attrazione();
 				attraction.setAttrazione_ID(rs.getInt(1));
 				attraction.setNome(rs.getString(2));
-				//attrazione.setTipo(tipo);
+				attraction.setTipo(tipoattrazione.valueOf((rs.getObject(3).toString())));
 				attraction.setVoto(rs.getDouble(4));
 				attraction.setDescrizione(rs.getString(5));
-				//ristorante.setFascia_Prezzo(fascia_Prezzo);
+				attraction.setFascia_Prezzo(prezzo.valueOf(rs.getObject(6).toString()));
 				attraction.setLuogo_FK(rs.getInt(7));
 				attraction.setFoto(rs.getBytes(8));
 				this.attrazioni.add(attraction);
