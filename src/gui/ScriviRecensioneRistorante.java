@@ -28,6 +28,9 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import logic.Controller;
+import java.awt.Component;
+import javax.swing.JTextField;
+import javax.swing.JList;
 
 public class ScriviRecensioneRistorante extends JFrame {
 
@@ -40,7 +43,7 @@ public class ScriviRecensioneRistorante extends JFrame {
 	
 	String nomeDaRecensire; //inizializziamo il nome della cosa che vogliamo recensire 
 
-public ScriviRecensioneRistorante(Controller controller) {
+public ScriviRecensioneRistorante(Controller controller) throws IOException {
 	setIconImage(Toolkit.getDefaultToolkit().getImage("images\\LogoPiccolo.png"));
 	setTitle("Recensione " + controller.getRistoranteDAO().getRistorante().getNome());
 	setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -63,20 +66,6 @@ public ScriviRecensioneRistorante(Controller controller) {
 		txtrDescrizione.setBounds(24, 459, 128, 29);
 		contentPane.add(txtrDescrizione);
 		
-		JTextArea descrizione = new JTextArea();
-		descrizione.setFont(new Font("Parametric Glitch", Font.PLAIN, 16));
-		descrizione.setForeground(Color.BLACK);
-		descrizione.setLineWrap(true);
-		descrizione.setBackground(Color.WHITE);
-		descrizione.setBounds(10, 45, 664, 102);
-		contentPane.add(descrizione);
-		
-		JScrollPane scrollPane = new JScrollPane(descrizione);
-		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		scrollPane.setBounds(24, 499, 664, 102);
-		contentPane.add(scrollPane);
-		scrollPane.setViewportView(descrizione);
-		
 		JButton btnaggiungirecensione = new JButton("Aggiungi recensione");
 		btnaggiungirecensione.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnaggiungirecensione.setForeground(Color.BLACK);
@@ -86,15 +75,22 @@ public ScriviRecensioneRistorante(Controller controller) {
 		contentPane.add(btnaggiungirecensione);
 		
 		JLabel lblFoto = new JLabel("foto");
-		lblFoto.setBorder(new LineBorder(new Color(0, 191, 255), 2, true));
-		lblFoto.setBounds(42, 23, 187, 182);
+		lblFoto.setBackground(new Color(255, 255, 255));
+		lblFoto.setBounds(43, 48, 187, 182);
 		contentPane.add(lblFoto);
+		
+		byte[] imgBytes = controller.getRistoranteDAO().getRistorante().getFoto();
+		ByteArrayInputStream bis = new ByteArrayInputStream(imgBytes);
+	    BufferedImage bImage = ImageIO.read(bis);
+	    Image dimg = bImage.getScaledInstance(lblFoto.getWidth(), lblFoto.getHeight(), Image.SCALE_SMOOTH); 
+		ImageIcon imageIcon = new ImageIcon(dimg);
+		lblFoto.setIcon(imageIcon);
 		
 		JComboBox valutazioneStelle = new JComboBox();
 
 		valutazioneStelle.setFont(new Font("Parametric Glitch", Font.PLAIN, 16));
-		valutazioneStelle.setBackground(new Color(20, 20, 20));
-		valutazioneStelle.setForeground(Color.BLUE);
+		valutazioneStelle.setBackground(new Color(0, 191, 255));
+		valutazioneStelle.setForeground(new Color(0, 0, 0));
 		DefaultComboBoxModel model = new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5"});
 		valutazioneStelle.setModel(model);
 		valutazioneStelle.setBounds(717, 498, 177, 29);
@@ -108,11 +104,131 @@ public ScriviRecensioneRistorante(Controller controller) {
 		txtrvalutazioneStelle.setBackground(new Color(0, 191, 255));
 		txtrvalutazioneStelle.setBounds(713, 458, 181, 29);
 		contentPane.add(txtrvalutazioneStelle);
+		
+		JTextArea txtrNome = new JTextArea();
+		txtrNome.setEditable(false);
+		txtrNome.setFont(new Font("Gadugi", Font.BOLD, 18));
+		txtrNome.setText("Nome\r\n");
+		txtrNome.setBackground(new Color(0, 191, 255));
+		txtrNome.setBounds(41, 10, 189, 40);
+		contentPane.add(txtrNome);
+		
+		JTextArea txtrDescrizione_1 = new JTextArea();
+		txtrDescrizione_1.setEditable(false);
+		txtrDescrizione_1.setBackground(new Color(0, 191, 255));
+		txtrDescrizione_1.setFont(new Font("Gadugi", Font.BOLD, 18));
+		txtrDescrizione_1.setText("Descrizione");
+		txtrDescrizione_1.setBounds(270, 10, 294, 22);
+		contentPane.add(txtrDescrizione_1);
+		
+		JTextArea textAreaRecensione = new JTextArea();
+		textAreaRecensione.setBounds(24, 498, 624, 98);
+		contentPane.add(textAreaRecensione);
+		
+		JTextArea textAreaDescrizione = new JTextArea();
+		textAreaDescrizione.setFont(new Font("Gadugi", Font.ITALIC, 16));
+		textAreaDescrizione.setWrapStyleWord(true);
+		textAreaDescrizione.setLineWrap(true);
+		textAreaDescrizione.setEditable(false);
+		textAreaDescrizione.setText(controller.getRistoranteDAO().getRistorante().getDescizione());
+		textAreaDescrizione.setBackground(new Color(0, 191, 255));
+		textAreaDescrizione.setBounds(270, 48, 646, 182);
+		contentPane.add(textAreaDescrizione);
+		
+		JTextArea txtrStato = new JTextArea();
+		txtrStato.setBackground(new Color(0, 191, 255));
+		txtrStato.setEditable(false);
+		txtrStato.setText("Stato");
+		txtrStato.setFont(new Font("Gadugi", Font.BOLD, 18));
+		txtrStato.setBounds(43, 262, 118, 29);
+		contentPane.add(txtrStato);
+		
+		JTextArea txtrCittà = new JTextArea();
+		txtrCittà.setBackground(new Color(0, 191, 255));
+		txtrCittà.setEditable(false);
+		txtrCittà.setText("Citt\u00E0\r\n");
+		txtrCittà.setFont(new Font("Gadugi", Font.BOLD, 18));
+		txtrCittà.setBounds(328, 262, 101, 29);
+		contentPane.add(txtrCittà);
+		
+		JTextArea txtrProvincia = new JTextArea();
+		txtrProvincia.setBackground(new Color(0, 191, 255));
+		txtrProvincia.setEditable(false);
+		txtrProvincia.setText("Provincia\r\n");
+		txtrProvincia.setFont(new Font("Gadugi", Font.BOLD, 18));
+		txtrProvincia.setBounds(669, 262, 85, 29);
+		contentPane.add(txtrProvincia);
+		
+		JTextArea txtrIndirizzo = new JTextArea();
+		txtrIndirizzo.setBackground(new Color(0, 191, 255));
+		txtrIndirizzo.setEditable(false);
+		txtrIndirizzo.setText("Indirizzo\r\n");
+		txtrIndirizzo.setFont(new Font("Gadugi", Font.BOLD, 18));
+		txtrIndirizzo.setBounds(44, 365, 149, 29);
+		contentPane.add(txtrIndirizzo);
+		
+		JTextArea txtrContatti = new JTextArea();
+		txtrContatti.setBackground(new Color(0, 191, 255));
+		txtrContatti.setEditable(false);
+		txtrContatti.setText("Telefono");
+		txtrContatti.setFont(new Font("Gadugi", Font.BOLD, 18));
+		txtrContatti.setBounds(291, 365, 80, 29);
+		contentPane.add(txtrContatti);
+		
+		JTextArea txtrSitoWeb = new JTextArea();
+		txtrSitoWeb.setBackground(new Color(0, 191, 255));
+		txtrSitoWeb.setEditable(false);
+		txtrSitoWeb.setText("Sito Web");
+		txtrSitoWeb.setFont(new Font("Gadugi", Font.BOLD, 18));
+		txtrSitoWeb.setBounds(622, 365, 80, 29);
+		contentPane.add(txtrSitoWeb);
+		
+		JTextArea textStato = new JTextArea();
+		textStato.setFont(new Font("Gadugi", Font.PLAIN, 17));
+		textStato.setBackground(new Color(0, 191, 255));
+		textStato.setEditable(false);
+		textStato.setText(controller.getLuogoDAO().getLuogo().getStato());
+		textStato.setBounds(43, 301, 255, 29);
+		contentPane.add(textStato);
+		
+		JTextArea textCittà = new JTextArea();
+		textCittà.setFont(new Font("Gadugi", Font.PLAIN, 17));
+		textCittà.setBackground(new Color(0, 191, 255));
+		textCittà.setEditable(false);
+		textCittà.setText(controller.getLuogoDAO().getLuogo().getCittà());
+		textCittà.setBounds(328, 301, 308, 29);
+		contentPane.add(textCittà);
+		
+		JTextArea textProvincia = new JTextArea();
+		textProvincia.setFont(new Font("Gadugi", Font.PLAIN, 17));
+		textProvincia.setBackground(new Color(0, 191, 255));
+		textProvincia.setEditable(false);
+		textProvincia.setText(controller.getLuogoDAO().getLuogo().getPaese());
+		textProvincia.setBounds(669, 301, 247, 29);
+		contentPane.add(textProvincia);
+		
+		JTextArea textIndirizzo = new JTextArea();
+		textIndirizzo.setFont(new Font("Gadugi", Font.PLAIN, 16));
+		textIndirizzo.setBackground(new Color(0, 191, 255));
+		textIndirizzo.setEditable(false);
+		textIndirizzo.setText(controller.getLuogoDAO().getLuogo().getIndirizzo());
+		textIndirizzo.setBounds(43, 404, 238, 40);
+		contentPane.add(textIndirizzo);
+		
+		JList listTelefono = new JList();
+		listTelefono.setBackground(new Color(255, 255, 255));
+		
+		listTelefono.setBounds(291, 404, 273, 40);
+		contentPane.add(listTelefono);
+		
+		JList listSitoWeb = new JList();
+		listSitoWeb.setBounds(622, 404, 294, 40);
+		contentPane.add(listSitoWeb);
 
 		btnaggiungirecensione.addActionListener(new ActionListener() {
 			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
-				String recensione = descrizione.getText();
+				String recensione = textAreaRecensione.getText();
 				controller.getRecensioneDAO().addRecensione(controller.getConnection(), recensione, 3);
 				int stelle = valutazioneStelle.getSelectedIndex()+1;
 				controller.getRecensioneDAO().addRecensione(controller.getConnection(), recensione, stelle);
@@ -121,16 +237,6 @@ public ScriviRecensioneRistorante(Controller controller) {
 			}});
 		
 }
-
-	/*	byte[] imgBytes = controller.get
-		ByteArrayInputStream bis = new ByteArrayInputStream(imgBytes);
-	    BufferedImage bImage = ImageIO.read(bis);
-	    Image dimg = bImage.getScaledInstance(lblFoto.getWidth(), lblFoto.getHeight(), Image.SCALE_SMOOTH); 
-		ImageIcon imageIcon = new ImageIcon(dimg);
-		lblFoto.setIcon(imageIcon);
-		*/
-		
-		
 }
 
 

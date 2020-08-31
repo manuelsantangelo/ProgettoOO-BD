@@ -188,7 +188,7 @@ public class Controller {
 		return principale;
 	}
 	
-	public ScriviRecensioneRistorante getScriviRecensioneRis(){
+	public ScriviRecensioneRistorante getScriviRecensioneRis() throws IOException{
 		scriviRecRis = new ScriviRecensioneRistorante(this);
 		return scriviRecRis;
 	}
