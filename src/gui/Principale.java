@@ -75,8 +75,6 @@ public class Principale extends JFrame {
 	public Principale(Controller controller) throws IOException{
 		
 		
-		
-		
 		setIconImage(Toolkit.getDefaultToolkit().getImage("images\\LogoPiccolo.png"));
 		setTitle("Benvenuto " + controller.getUtenteDAO().getUtente().getNome() + " " + controller.getUtenteDAO().getUtente().getCognome());
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -202,15 +200,15 @@ public class Principale extends JFrame {
 	
 				if(nome == "Attrazione") {
 				lista = 1;
-				riempitabellaAttrazioni();
+				riempitabellaAttrazioni(controller);
 				
 				}else if(nome == "Ristorante"){
 					lista = 2;
-					riempitabellaRistoranti();
+					riempitabellaRistoranti(controller);
 					
 				}else if(nome == "Albergo") {
 					lista = 3;
-					riempitabellaAlberghi();
+					riempitabellaAlberghi(controller);
 				}
 			}});
 	
@@ -226,6 +224,7 @@ public class Principale extends JFrame {
 					*/
             	int indice = elementi.getSelectedRow();
             	if(lista == 1) {
+            		
             	
             		
             	}else if(lista ==2) {
@@ -240,11 +239,12 @@ public class Principale extends JFrame {
     });
 	}
 	//-----------------------------------------------------------------------------------------------------------
-	//CHIUSURA CONTROLLER
+	//CHIUSURA COSTRUTTORE
 	//FUNZIONI PER RIEMPIRE LE TABELLE!!!!
 	
 	
-	public void riempitabellaAlberghi() {
+	public void riempitabellaAlberghi(Controller controller) {
+		controller.getAlbergoDAO().setAllAlberghi(controller.getConnection());
 		while (dtm.getRowCount() > 0) {
 		    dtm.removeRow(0);
 		}
@@ -254,17 +254,18 @@ public class Principale extends JFrame {
 		int i = 0;
 	do {
 			dtm.addRow(new Object[] {
-					controller.getAlberghi().get(i).getNome(), controller.getAlberghi().get(i).getStelle(),
+					controller.getAlbergoDAO().getAlberghi().get(i).getNome(), controller.getAlbergoDAO().getAlberghi().get(i).getStelle(),
 			});
 			dtm.isCellEditable(i, 1);
 			dtm.isCellEditable(i, 2);
 			i++;
-		}while(controller.getAlberghi().size() != i);
+		}while(controller.getAlbergoDAO().getAlberghi().size() != i);
 	
 
 	}
 	
-	public void riempitabellaRistoranti() {
+	public void riempitabellaRistoranti(Controller controller) {
+		controller.getRistoranteDAO().setAllRistoranti(controller.getConnection());
 		int a = 0;
 		while (dtm.getRowCount() > 0) {
 		    dtm.removeRow(0);
@@ -276,18 +277,19 @@ public class Principale extends JFrame {
 		int i = 0;
 	do {
 			dtm.addRow(new Object[] {
-					controller.getRistoranti().get(i).getNome(), controller.getRistoranti().get(i).getStelle_Michelin(),
+					controller.getRistoranteDAO().getRistoranti().get(i).getNome(), controller.getRistoranteDAO().getRistoranti().get(i).getStelle_Michelin(),
 			});
 			dtm.isCellEditable(i, 1);
 			dtm.isCellEditable(i, 2);
 			i++;
 			
-		}while(controller.getRistoranti().size() != i);
+		}while(controller.getRistoranteDAO().getRistoranti().size() != i);
 	
 	}
 	
-	public void riempitabellaAttrazioni() {
-		controller.getAttrazioneDAO().setAllAttazioni(controller.getConnection());
+	public void riempitabellaAttrazioni(Controller controller) {
+		controller.getAttrazioneDAO().setAllAttrazioni(controller.getConnection());
+
 		while (dtm.getRowCount() > 0) {
 		    dtm.removeRow(0);
 		}

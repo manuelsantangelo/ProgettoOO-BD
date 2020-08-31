@@ -19,12 +19,15 @@ import Tipi.prezzo;
 import logic.Controller;
 import logic.Classi.Albergo;
 import logic.Classi.Moderatore;
+import logic.Classi.Ristorante;
 
 
 public class AlbergoDAO {
 	
 	Controller controller;
 	private Albergo albergo = new Albergo();
+	private ArrayList<Albergo> alberghi = new ArrayList<Albergo>();
+
 	
 	public Albergo getAlbergo() {
 		return albergo;
@@ -143,9 +146,12 @@ public class AlbergoDAO {
 		
 	}
 	
-	public ArrayList<Albergo> getAlberghi(Connection conn){
-		
-		ArrayList<Albergo> alberghi = new ArrayList<Albergo>();
+	public ArrayList<Albergo> getAlberghi(){
+		return this.alberghi;
+	}
+	
+	public void setAllAlberghi(Connection conn){
+		this.alberghi.clear();
 		
 try {		
 	Albergo albergo;
@@ -169,7 +175,7 @@ try {
 		albergo.setLuogo_FK(rs.getInt(8));
 		//albergo.setFascia_Prezzo((prezzo) rs.getObject(9));
 		albergo.setFoto(rs.getBytes(10));
-		alberghi.add(albergo);
+		this.alberghi.add(albergo);
 	
 	}
 	
@@ -178,8 +184,6 @@ try {
 	JOptionPane.showMessageDialog(null, "ERRORE! Qualcosa è andato storto con il recupero dell'albergo");	
 	
 }
-
-return alberghi;
 	}
 	
 	public Albergo getThisAlbergo(Connection conn, int row) {

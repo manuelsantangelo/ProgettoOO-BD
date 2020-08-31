@@ -15,13 +15,15 @@ import javax.swing.JOptionPane;
 import Tipi.prezzo;
 import logic.Controller;
 import logic.Classi.Albergo;
+import logic.Classi.Attrazione;
 import logic.Classi.Ristorante;
 
 public class RistoranteDAO {
 	
 	Controller controller;
 	private Ristorante ristorante = new Ristorante();
-	
+	private ArrayList<Ristorante> ristoranti = new ArrayList<Ristorante>();
+
 	public Ristorante getRistorante() {
 		return ristorante;
 	}
@@ -130,9 +132,13 @@ public class RistoranteDAO {
 	
 }
 	
-	public ArrayList<Ristorante> getRistoranti(Connection conn){
+	public ArrayList<Ristorante> getRistoranti(){
+		return this.ristoranti;
+	}
+	
+	public void setAllRistoranti(Connection conn){
 		
-		ArrayList<Ristorante> ristoranti = new ArrayList<Ristorante>();
+		this.ristoranti.clear();
 		
 try {		
 	Ristorante ristorante;
@@ -154,7 +160,7 @@ try {
 		//ristorante.setFascia_Prezzo(fascia_Prezzo);
 		ristorante.setLuogo_FK(rs.getInt(7));
 		ristorante.setFoto(rs.getBytes(8));
-		ristoranti.add(ristorante);
+		this.ristoranti.add(ristorante);
 	
 	}
 	
@@ -164,7 +170,6 @@ try {
 	
 }
 
-return ristoranti;
 	}
 	
 }

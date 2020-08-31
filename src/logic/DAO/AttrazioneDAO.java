@@ -22,7 +22,7 @@ public class AttrazioneDAO {
 
 	Controller controller;
 	private Attrazione attrazione = new Attrazione();
-	private ArrayList<Attrazione> attrazioni = new ArrayList<Attrazione>(0);
+	private ArrayList<Attrazione> attrazioni = new ArrayList<Attrazione>();
 	
 	public Attrazione getAttrazione() {
 		return attrazione;
@@ -148,9 +148,8 @@ public class AttrazioneDAO {
 		return this.attrazioni;
 	}
 	
-	public void setAllAttazioni(Connection conn) {
+	public void setAllAttrazioni(Connection conn) {
 		this.attrazioni.clear();
-		
 		try {		
 			Attrazione attraction;
 			String comando = "SELECT * FROM public.\"Attrazione\" ";
@@ -171,12 +170,13 @@ public class AttrazioneDAO {
 				attraction.setLuogo_FK(rs.getInt(7));
 				attraction.setFoto(rs.getBytes(8));
 				this.attrazioni.add(attraction);
-				System.out.println(this.attrazioni.get(0).getNome());
 			}
 		} catch (Exception e) {
 			System.out.println("ERROR IN SQL" + e);
 			JOptionPane.showMessageDialog(null, "ERRORE! Qualcosa è andato storto con il recupero delle attrazioni");	
 		}
+		System.out.println(this.attrazioni.get(1).getNome() );
+
 	}
 
 }
