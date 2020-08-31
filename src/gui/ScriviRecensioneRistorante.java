@@ -87,7 +87,7 @@ public ScriviRecensioneRistorante(Controller controller) {
 		
 		JLabel lblFoto = new JLabel("foto");
 		lblFoto.setBorder(new LineBorder(new Color(0, 191, 255), 2, true));
-		lblFoto.setBounds(42, 23, 160, 160);
+		lblFoto.setBounds(42, 23, 187, 182);
 		contentPane.add(lblFoto);
 		
 		JComboBox valutazioneStelle = new JComboBox();
@@ -122,11 +122,6 @@ public ScriviRecensioneRistorante(Controller controller) {
 		
 }
 
-		
-		//---------------------------arrivare fino a sotto--------------------------------------------------------
-		
-		// ci servirà per mettere la foto dal database di quel determinato ristorante, attrazione o albergo aperto
-		
 	/*	byte[] imgBytes = controller.get
 		ByteArrayInputStream bis = new ByteArrayInputStream(imgBytes);
 	    BufferedImage bImage = ImageIO.read(bis);
@@ -138,16 +133,5 @@ public ScriviRecensioneRistorante(Controller controller) {
 		
 }
 
-// RICHIAMIAMO IL METODO GET DAL CONTROLLER E LO CONFRONTIAMO CON TUTTI I VALORI DEL DATABASE TRA ALBERGO, RISTORANTE E ATTRAZIONE
-// VA BENE COME METODO???? Chissà!!
-
-/*public void controlloNomeDaRecensire(Controller controller) {
-	if (controller.getNomeDaRecensire() == controller. {
-		
-	}
-}
-*/
-	///--------------------------------------------------------------------------------------------------------------
-	
 
 
