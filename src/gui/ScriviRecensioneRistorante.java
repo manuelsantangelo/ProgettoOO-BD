@@ -138,16 +138,6 @@ public ScriviRecensioneRistorante(Controller controller) {
 		
 }
 
-// RICHIAMIAMO IL METODO GET DAL CONTROLLER E LO CONFRONTIAMO CON TUTTI I VALORI DEL DATABASE TRA ALBERGO, RISTORANTE E ATTRAZIONE
-// VA BENE COME METODO???? Chissà!!
 
-/*public void controlloNomeDaRecensire(Controller controller) {
-	if (controller.getNomeDaRecensire() == controller. {
-		
-	}
-}
-*/
-	///--------------------------------------------------------------------------------------------------------------
-	
 
 

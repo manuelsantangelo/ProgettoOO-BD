@@ -450,6 +450,21 @@ public class Aggiungi_Ristorante extends JFrame {
 				ID = controller.getRistoranteDAO().getLastRestaurant(controller.getConnection());
 				controller.getContattiDAO().addContattiRistorante(controller.getConnection(), numTelefono, webSite, ID);
 				controller.getAssociazione_Categoria_RistoranteDAO().addAssociazione_Categoria_Ristorante(controller.getConnection(), type, ID);
+			
+				nome.setText("");
+				stato.setText("");
+				città.setText("");
+				paese.setText("");
+				indirizzo.setText("");
+				descrizione.setText("");
+				numTelefono.clear();
+				txtTelefono.setText("");
+				DefaultListModel ripuliamo1 = (DefaultListModel)telefono.getModel();
+				ripuliamo1.removeAllElements();
+				txtSitoWeb.setText("");
+				webSite.clear();
+				DefaultListModel ripuliamo2 = (DefaultListModel)SitoWeb.getModel();
+				ripuliamo2.removeAllElements();
 			}
 		});
 

@@ -433,6 +433,27 @@ public class Aggiungi_Attrazione extends JFrame {
 				controller.getAttrazioneDAO().addAttrazione(controller.getConnection(), nome1, tipoattr, descrizione1, imgpath, price);
 				ID = controller.getAttrazioneDAO().getLastAttrazione(controller.getConnection());
 				controller.getContattiDAO().addContattiAttrazione(controller.getConnection(), numTelefono, webSite, ID);
+			
+
+				nome.setText("");
+				stato.setText("");
+				città.setText("");
+				paese.setText("");
+				indirizzo.setText("");
+				descrizione.setText("");
+				numTelefono.clear();
+				txtTelefono.setText("");
+				DefaultListModel ripuliamo1 = (DefaultListModel)telefono.getModel();
+				ripuliamo1.removeAllElements();
+				txtSitoWeb.setText("");
+				webSite.clear();
+				DefaultListModel ripuliamo2 = (DefaultListModel)SitoWeb.getModel();
+				ripuliamo2.removeAllElements();
+				
+				
+								
+				
+			
 			}
 		});
 

@@ -505,6 +505,22 @@ public class Aggiungi_Hotel extends JFrame {
 				ID = controller.getAlbergoDAO().getLastAlbergo(controller.getConnection());
 				controller.getContattiDAO().addContattiAlbergo(controller.getConnection(), numTelefono, webSite, ID);
 				controller.getAssociazione_Servizio_AlbergoDAO().addAssociazione_Servizio_Albergo(controller.getConnection(), tiposer, ID);
+			
+				nome.setText("");
+				stato.setText("");
+				città.setText("");
+				paese.setText("");
+				indirizzo.setText("");
+				camere.setText("");
+				descrizione.setText("");
+				numTelefono.clear();
+				txtTelefono.setText("");
+				DefaultListModel ripuliamo1 = (DefaultListModel)telefono.getModel();
+				ripuliamo1.removeAllElements();
+				txtSitoWeb.setText("");
+				webSite.clear();
+				DefaultListModel ripuliamo2 = (DefaultListModel)SitoWeb.getModel();
+				ripuliamo2.removeAllElements();
 			}
 		});
 
