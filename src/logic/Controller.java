@@ -192,16 +192,7 @@ public class Controller {
 		scriviRecRis = new ScriviRecensioneRistorante(this);
 		return scriviRecRis;
 	}
-	//-------------------------------------------------------------------------------------
-	// METODI CREATI PER SETTARE IL NOME CHE CI VIENE DATO DALLA TABELLA E PASSARLO POI ALLA FINESTRA "ScriviRecensione"
-	/*public void setNomeDaRecensire(String nomeDaRecensire) {
-	this.nomeDaRecensire = nomeDaRecensire;
-	}
 	
-	public String getNomeDaRecensire() {
-		return nomeDaRecensire;
-	}*/
-	//-----------------------------------------------------------------------------------------------------------
 	public Aggiungi_Hotel getAggiungi_Hotel() {
 		return addHotel;
 	}

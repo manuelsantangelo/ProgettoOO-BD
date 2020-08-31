@@ -68,12 +68,7 @@ public class Principale extends JFrame {
 	
 	
 	static int lista = 0; 
-	/*private ArrayList<Albergo> listaAlberghi = new ArrayList<Albergo>();
-	private ArrayList<Ristorante> listaRistoranti = new ArrayList<Ristorante>();
-	private ArrayList<Attrazione> listaAttrazioni = new ArrayList<Attrazione>();
-*/
 	public Principale(Controller controller) throws IOException{
-		
 		
 		setIconImage(Toolkit.getDefaultToolkit().getImage("images\\LogoPiccolo.png"));
 		setTitle("Benvenuto " + controller.getUtenteDAO().getUtente().getNome() + " " + controller.getUtenteDAO().getUtente().getCognome());
@@ -157,9 +152,9 @@ public class Principale extends JFrame {
 		
 		txtDomanda = new JTextArea();
 		txtDomanda.setEditable(false);
-		txtDomanda.setFont(new Font("MV Boli", Font.PLAIN, 30));
+		txtDomanda.setFont(new Font("Gadugi", Font.BOLD, 30));
 		txtDomanda.setText("Cosa si desidere recensire?");
-		txtDomanda.setForeground(Color.WHITE);
+		txtDomanda.setForeground(new Color(0, 0, 0));
 		txtDomanda.setBackground(new Color(0, 191, 255));
 		txtDomanda.setBounds(417, 10, 391, 54);
 		contentPane.add(txtDomanda);
@@ -175,11 +170,12 @@ public class Principale extends JFrame {
 		attrazioneristorantehotel.setModel(model);
 		attrazioneristorantehotel.setBounds(332, 81, 173, 29);
 		contentPane.add(attrazioneristorantehotel);
+		elementi.setShowVerticalLines(false);
 		
 	
-		elementi.setBackground(Color.WHITE);
+		elementi.setBackground(new Color(0, 153, 255));
 		elementi.setFont(new Font("Gadugi", Font.PLAIN, 14));
-		String nomeColonne[] = new String[] { "Nome", "Luogo" };
+		String nomeColonne[] = new String[] { "Nome", "Città", "Voto" };
 	    elementi.setModel(dtm);
 	    dtm.setColumnIdentifiers(nomeColonne);
 		elementi.setBounds(332, 148, 514, 304);
@@ -219,9 +215,6 @@ public class Principale extends JFrame {
             Point point = mouseEvent.getPoint();
             int row = elementi.rowAtPoint(point);
             if (mouseEvent.getClickCount() == 2 && elementi.getSelectedRow() != -1) {
-            	/*String NomeSelezionato = elementi.getValueAt(elementi.getSelectedRow(), 1).toString(); //convertiamo il valore preso in stringa
-            	controller.setNomeDaRecensire(NomeSelezionato);//richiamiamo il controller per passargli il nome di albergo o attrazione o ristorante selezionato
-					*/
             	int indice = elementi.getSelectedRow();
             	if(lista == 1) {
             		controller.getAttrazioneDAO().setAttrazione(controller.getAttrazioneDAO().getAttrazioni().get(indice));
@@ -253,8 +246,9 @@ public class Principale extends JFrame {
 
 		int i = 0;
 	do {
+
 			dtm.addRow(new Object[] {
-					controller.getAlbergoDAO().getAlberghi().get(i).getNome(), controller.getAlbergoDAO().getAlberghi().get(i).getStelle(),
+					controller.getAlbergoDAO().getAlberghi().get(i).getNome(),"ciao", controller.getAlbergoDAO().getAlberghi().get(i).getStelle(),
 			});
 			dtm.isCellEditable(i, 1);
 			dtm.isCellEditable(i, 2);
@@ -266,7 +260,6 @@ public class Principale extends JFrame {
 	
 	public void riempitabellaRistoranti(Controller controller) {
 		controller.getRistoranteDAO().setAllRistoranti(controller.getConnection());
-		int a = 0;
 		while (dtm.getRowCount() > 0) {
 		    dtm.removeRow(0);
 		}
@@ -276,8 +269,10 @@ public class Principale extends JFrame {
 
 		int i = 0;
 	do {
+		int luogoFK = controller.getAlbergoDAO().getAlberghi().get(i).getLuogo_FK();
+		controller.getLuogoDAO().setLuogoByID(controller.getConnection(), luogoFK);
 			dtm.addRow(new Object[] {
-					controller.getRistoranteDAO().getRistoranti().get(i).getNome(), controller.getRistoranteDAO().getRistoranti().get(i).getStelle_Michelin(),
+					controller.getRistoranteDAO().getRistoranti().get(i).getNome(), controller.getLuogoDAO().getLuogo().getCittà(), controller.getRistoranteDAO().getRistoranti().get(i).getStelle_Michelin(),
 			});
 			dtm.isCellEditable(i, 1);
 			dtm.isCellEditable(i, 2);

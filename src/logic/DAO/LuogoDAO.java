@@ -45,5 +45,12 @@ public class LuogoDAO {
 			JOptionPane.showMessageDialog(null, "ERRORE! Qualcossa è andato storto con il luogo");
 	}
 	}
+	
+	public void setLuogoByID(Connection conn, int luogoFK) {
+		String comando;
+		comando = "SELECT * FROM \"Luogo\" WHERE \"Luogo_ID\" = " + luogoFK;
+		
+		
+	}
 }
 
