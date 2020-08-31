@@ -59,7 +59,7 @@ public class Controller {
 	private Elimina_Attrazione delAtt;
 	private Elimina_Ristorante delRest;
 	private Elimina_Hotel delHotel;
-	private ScriviRecensione scriviRec;
+	private ScriviRecensioneRistorante scriviRecRis;
 	//Nome da passare per la recensione
 	//String nomeDaRecensire;
 	
@@ -188,9 +188,9 @@ public class Controller {
 		return principale;
 	}
 	
-	public ScriviRecensione getScriviRecensione(){
-		scriviRec = new ScriviRecensione(this);
-		return scriviRec;
+	public ScriviRecensioneRistorante getScriviRecensioneRis(){
+		scriviRecRis = new ScriviRecensioneRistorante(this);
+		return scriviRecRis;
 	}
 	//-------------------------------------------------------------------------------------
 	// METODI CREATI PER SETTARE IL NOME CHE CI VIENE DATO DALLA TABELLA E PASSARLO POI ALLA FINESTRA "ScriviRecensione"

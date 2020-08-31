@@ -224,15 +224,15 @@ public class Principale extends JFrame {
 					*/
             	int indice = elementi.getSelectedRow();
             	if(lista == 1) {
-            		
+            		controller.getAttrazioneDAO().setAttrazione(controller.getAttrazioneDAO().getAttrazioni().get(indice));
             	
-            		
-            	}else if(lista ==2) {
-            		
+            	}else if(lista == 2) {
+            		controller.getRistoranteDAO().setRistorante(controller.getRistoranteDAO().getRistoranti().get(indice));
+            		controller.CambiaFrame(Principale.this, controller.getScriviRecensioneRis());
             	}else if (lista == 3) {
-            		
+            		controller.getAlbergoDAO().setAlbergo(controller.getAlbergoDAO().getAlberghi().get(indice));
+	
             	}
-					controller.CambiaFrame(Principale.this, controller.getScriviRecensione());//apriamo la finestra scrivi recensione
 				
             }
         }

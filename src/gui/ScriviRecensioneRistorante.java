@@ -29,7 +29,7 @@ import javax.swing.border.LineBorder;
 
 import logic.Controller;
 
-public class ScriviRecensione extends JFrame {
+public class ScriviRecensioneRistorante extends JFrame {
 
 	private JPanel contentPane;
 
@@ -40,9 +40,9 @@ public class ScriviRecensione extends JFrame {
 	
 	String nomeDaRecensire; //inizializziamo il nome della cosa che vogliamo recensire 
 
-public ScriviRecensione(Controller controller) {
+public ScriviRecensioneRistorante(Controller controller) {
 	setIconImage(Toolkit.getDefaultToolkit().getImage("images\\LogoPiccolo.png"));
-	setTitle("Recensione");
+	setTitle("Recensione " + controller.getRistoranteDAO().getRistorante().getNome());
 	setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	setBounds(FINESTRA_Y, FINESTRA_X, LUNGHEZZA_FINESTRA, ALTEZZA_FINESTRA);
 	
