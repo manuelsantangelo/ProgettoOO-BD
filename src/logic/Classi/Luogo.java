@@ -8,6 +8,8 @@ public class Luogo {
 	private int Luogo_ID;
 	private int Ristorante_FK;
 	private int Albergo_FK;
+	private int Attrazione_FK;
+	
 	public String getStato() {
 		return Stato;
 	}
@@ -50,6 +52,15 @@ public class Luogo {
 	public void setAlbergo_FK(int albergo_FK) {
 		Albergo_FK = albergo_FK;
 	}
+	
+	public int getAttrazione_FK() {
+		return Attrazione_FK;
+	}
+	
+	public void setAttrazione_FK(int attrazione_FK) {
+		Attrazione_FK = attrazione_FK;
+	}
+	
 	
 	public Luogo(String stato, String città, String paese, String indirizzo) {
 		super();

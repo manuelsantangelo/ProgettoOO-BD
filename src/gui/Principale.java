@@ -70,6 +70,7 @@ public class Principale extends JFrame {
 	static int lista = 0; 
 	public Principale(Controller controller) throws IOException{
 		
+		
 		setIconImage(Toolkit.getDefaultToolkit().getImage("images\\LogoPiccolo.png"));
 		setTitle("Benvenuto " + controller.getUtenteDAO().getUtente().getNome() + " " + controller.getUtenteDAO().getUtente().getCognome());
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -170,7 +171,6 @@ public class Principale extends JFrame {
 		attrazioneristorantehotel.setModel(model);
 		attrazioneristorantehotel.setBounds(332, 81, 173, 29);
 		contentPane.add(attrazioneristorantehotel);
-		elementi.setShowVerticalLines(false);
 		
 	
 		elementi.setBackground(new Color(0, 153, 255));
@@ -215,6 +215,7 @@ public class Principale extends JFrame {
             Point point = mouseEvent.getPoint();
             int row = elementi.rowAtPoint(point);
             if (mouseEvent.getClickCount() == 2 && elementi.getSelectedRow() != -1) {
+            	
             	int indice = elementi.getSelectedRow();
             	if(lista == 1) {
             		controller.getAttrazioneDAO().setAttrazione(controller.getAttrazioneDAO().getAttrazioni().get(indice));
@@ -246,9 +247,10 @@ public class Principale extends JFrame {
 
 		int i = 0;
 	do {
-
+		int luogoFK = controller.getAlbergoDAO().getAlberghi().get(i).getLuogo_FK();
+		controller.getLuogoDAO().setLuogoByID(controller.getConnection(), luogoFK);
 			dtm.addRow(new Object[] {
-					controller.getAlbergoDAO().getAlberghi().get(i).getNome(),"ciao", controller.getAlbergoDAO().getAlberghi().get(i).getStelle(),
+					controller.getAlbergoDAO().getAlberghi().get(i).getNome(),controller.getLuogoDAO().getLuogo().getCittà() ,controller.getAlbergoDAO().getAlberghi().get(i).getVoto(),
 			});
 			dtm.isCellEditable(i, 1);
 			dtm.isCellEditable(i, 2);
@@ -260,6 +262,7 @@ public class Principale extends JFrame {
 	
 	public void riempitabellaRistoranti(Controller controller) {
 		controller.getRistoranteDAO().setAllRistoranti(controller.getConnection());
+		int a = 0;
 		while (dtm.getRowCount() > 0) {
 		    dtm.removeRow(0);
 		}
@@ -269,10 +272,10 @@ public class Principale extends JFrame {
 
 		int i = 0;
 	do {
-		int luogoFK = controller.getAlbergoDAO().getAlberghi().get(i).getLuogo_FK();
+		int luogoFK = controller.getRistoranteDAO().getRistoranti().get(i).getLuogo_FK();
 		controller.getLuogoDAO().setLuogoByID(controller.getConnection(), luogoFK);
 			dtm.addRow(new Object[] {
-					controller.getRistoranteDAO().getRistoranti().get(i).getNome(), controller.getLuogoDAO().getLuogo().getCittà(), controller.getRistoranteDAO().getRistoranti().get(i).getStelle_Michelin(),
+					controller.getRistoranteDAO().getRistoranti().get(i).getNome(), controller.getLuogoDAO().getLuogo().getCittà(), controller.getRistoranteDAO().getRistoranti().get(i).getVoto(),
 			});
 			dtm.isCellEditable(i, 1);
 			dtm.isCellEditable(i, 2);
@@ -294,8 +297,10 @@ public class Principale extends JFrame {
 		
 		int i = 0;
 	do {
+		int luogoFK = controller.getAttrazioneDAO().getAttrazioni().get(i).getLuogo_FK();
+		controller.getLuogoDAO().setLuogoByID(controller.getConnection(), luogoFK);
 			dtm.addRow(new Object[] {
-					controller.getAttrazioneDAO().getAttrazioni().get(i).getNome(), controller.getAttrazioneDAO().getAttrazioni().get(i).getDescrizione(),
+					controller.getAttrazioneDAO().getAttrazioni().get(i).getNome(),controller.getLuogoDAO().getLuogo().getCittà(), controller.getAttrazioneDAO().getAttrazioni().get(i).getVoto(),
 			});
 			dtm.isCellEditable(i, 1);
 			dtm.isCellEditable(i, 2);

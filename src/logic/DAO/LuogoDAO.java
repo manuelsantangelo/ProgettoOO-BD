@@ -2,6 +2,7 @@ package logic.DAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
@@ -49,6 +50,29 @@ public class LuogoDAO {
 	public void setLuogoByID(Connection conn, int luogoFK) {
 		String comando;
 		comando = "SELECT * FROM \"Luogo\" WHERE \"Luogo_ID\" = " + luogoFK;
+		
+		try {
+			Luogo luogo;
+		
+		PreparedStatement ps = conn.prepareStatement(comando);
+		ResultSet rs = ps.executeQuery();
+		while(rs.next()) {
+		luogo = new Luogo();
+		luogo.setStato(rs.getString(1));
+		luogo.setCittà(rs.getString(2));
+		luogo.setPaese(rs.getString(3));
+		luogo.setIndirizzo(rs.getString(4));
+		luogo.setLuogo_ID(rs.getInt(5));
+		luogo.setRistorante_FK(rs.getInt(6));
+		luogo.setAlbergo_FK(rs.getInt(7));
+		luogo.setAttrazione_FK(rs.getInt(8));
+		this.luogo = luogo;	
+		}
+		} catch (Exception e4) {
+			System.out.println("ERROR IN SQL" + e4);
+			JOptionPane.showMessageDialog(null, "ERRORE! Qualcossa è andato storto con la select");
+			
+		}
 		
 		
 	}
