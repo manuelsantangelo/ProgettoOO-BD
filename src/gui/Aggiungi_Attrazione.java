@@ -448,7 +448,9 @@ public class Aggiungi_Attrazione extends JFrame {
 				DefaultListModel ripuliamo2 = (DefaultListModel)SitoWeb.getModel();
 				ripuliamo2.removeAllElements();
 			
-		});
 
-	}
+	
+}});
+	
 }
+	}
