@@ -406,10 +406,7 @@ public class Aggiungi_Attrazione extends JFrame {
 				String città1 = città.getText();
 				String paese1 = paese.getText();
 				String indirizzo1 = indirizzo.getText();
-				
 				prezzo price = prezzo.valueOf(prezzi.getSelectedItem().toString());
-			
-				
 				String descrizione1 = descrizione.getText();
 				ArrayList<String> numTelefono = new ArrayList<String>();
 				Object tempObject[] = attrazione.getSelectedValues().clone();
@@ -433,6 +430,7 @@ public class Aggiungi_Attrazione extends JFrame {
 				controller.getAttrazioneDAO().addAttrazione(controller.getConnection(), nome1, tipoattr, descrizione1, imgpath, price);
 				ID = controller.getAttrazioneDAO().getLastAttrazione(controller.getConnection());
 				controller.getContattiDAO().addContattiAttrazione(controller.getConnection(), numTelefono, webSite, ID);
+
 			
 
 				nome.setText("");
@@ -449,12 +447,7 @@ public class Aggiungi_Attrazione extends JFrame {
 				webSite.clear();
 				DefaultListModel ripuliamo2 = (DefaultListModel)SitoWeb.getModel();
 				ripuliamo2.removeAllElements();
-				
-				
-								
-				
 			
-			}
 		});
 
 	}
