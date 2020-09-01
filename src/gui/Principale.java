@@ -55,7 +55,7 @@ public class Principale extends JFrame {
 	final static int FINESTRA_X = 25;
 	final static int ALTEZZA_FINESTRA = 690;
 	final static int LUNGHEZZA_FINESTRA = 940;
-	static private JTable elementi = new JTable();
+	private JTable elementi = new JTable();
 	private JTextArea txtDomanda;
 
 	static DefaultTableModel dtm = new DefaultTableModel(0,0){       //Impostiamo le righe e colonne della JTable
@@ -215,11 +215,18 @@ public class Principale extends JFrame {
             Point point = mouseEvent.getPoint();
             int row = elementi.rowAtPoint(point);
             if (mouseEvent.getClickCount() == 2 && elementi.getSelectedRow() != -1) {
+           	
             	
             	int indice = elementi.getSelectedRow();
             	if(lista == 1) {
             		controller.getAttrazioneDAO().setAttrazione(controller.getAttrazioneDAO().getAttrazioni().get(indice));
-            	
+            		controller.getLuogoDAO().setLuogo2(controller.getConnection(), controller.getAttrazioneDAO().getAttrazione().getLuogo_FK());
+            		try {
+						controller.CambiaFrame(Principale.this, controller.getScriviRecensioneAttr());
+						
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
             	}else if(lista == 2) {
             		controller.getRistoranteDAO().setRistorante(controller.getRistoranteDAO().getRistoranti().get(indice));
             		controller.getLuogoDAO().setLuogo2(controller.getConnection(), controller.getRistoranteDAO().getRistorante().getLuogo_FK());

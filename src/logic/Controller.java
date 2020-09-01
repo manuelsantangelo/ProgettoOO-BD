@@ -204,7 +204,7 @@ public class Controller {
 		return scriviRecAlb;
 	}
 	
-	public ScriviRecensioneAttrazione getScriviRecensioneAttrazione() throws IOException{
+	public ScriviRecensioneAttrazione getScriviRecensioneAttr() throws IOException{
 		scriviRecAttr = new ScriviRecensioneAttrazione(this);
 		return scriviRecAttr;
 		}

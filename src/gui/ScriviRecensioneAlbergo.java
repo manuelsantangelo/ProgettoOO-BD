@@ -108,7 +108,7 @@ public class ScriviRecensioneAlbergo extends JFrame {
 		JTextArea txtrNome = new JTextArea();
 		txtrNome.setEditable(false);
 		txtrNome.setFont(new Font("Gadugi", Font.BOLD, 18));
-		txtrNome.setText("Nome\r\n");
+		txtrNome.setText(controller.getAlbergoDAO().getAlbergo().getNome());
 		txtrNome.setBackground(new Color(0, 191, 255));
 		txtrNome.setBounds(41, 10, 189, 40);
 		contentPane.add(txtrNome);
