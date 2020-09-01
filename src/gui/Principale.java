@@ -222,10 +222,10 @@ public class Principale extends JFrame {
             	
             	}else if(lista == 2) {
             		controller.getRistoranteDAO().setRistorante(controller.getRistoranteDAO().getRistoranti().get(indice));
+            		controller.getLuogoDAO().setLuogo2(controller.getConnection(), controller.getRistoranteDAO().getRistorante().getLuogo_FK());
             		try {
 						controller.CambiaFrame(Principale.this, controller.getScriviRecensioneRis());
 					} catch (IOException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
             	}else if (lista == 3) {

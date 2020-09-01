@@ -187,7 +187,7 @@ public ScriviRecensioneRistorante(Controller controller) throws IOException {
 		textStato.setFont(new Font("Gadugi", Font.PLAIN, 17));
 		textStato.setBackground(new Color(0, 191, 255));
 		textStato.setEditable(false);
-		textStato.setText(controller.getLuogoDAO().getLuogo().getStato());
+		textStato.setText(controller.getLuogoDAO().getLuogo2().getStato());
 		textStato.setBounds(43, 301, 255, 29);
 		contentPane.add(textStato);
 		
@@ -195,7 +195,7 @@ public ScriviRecensioneRistorante(Controller controller) throws IOException {
 		textCittà.setFont(new Font("Gadugi", Font.PLAIN, 17));
 		textCittà.setBackground(new Color(0, 191, 255));
 		textCittà.setEditable(false);
-		textCittà.setText(controller.getLuogoDAO().getLuogo().getCittà());
+		textCittà.setText(controller.getLuogoDAO().getLuogo2().getCittà());
 		textCittà.setBounds(328, 301, 308, 29);
 		contentPane.add(textCittà);
 		
@@ -203,7 +203,7 @@ public ScriviRecensioneRistorante(Controller controller) throws IOException {
 		textProvincia.setFont(new Font("Gadugi", Font.PLAIN, 17));
 		textProvincia.setBackground(new Color(0, 191, 255));
 		textProvincia.setEditable(false);
-		textProvincia.setText(controller.getLuogoDAO().getLuogo().getPaese());
+		textProvincia.setText(controller.getLuogoDAO().getLuogo2().getPaese());
 		textProvincia.setBounds(669, 301, 247, 29);
 		contentPane.add(textProvincia);
 		
@@ -211,7 +211,7 @@ public ScriviRecensioneRistorante(Controller controller) throws IOException {
 		textIndirizzo.setFont(new Font("Gadugi", Font.PLAIN, 16));
 		textIndirizzo.setBackground(new Color(0, 191, 255));
 		textIndirizzo.setEditable(false);
-		textIndirizzo.setText(controller.getLuogoDAO().getLuogo().getIndirizzo());
+		textIndirizzo.setText(controller.getLuogoDAO().getLuogo2().getIndirizzo());
 		textIndirizzo.setBounds(43, 404, 238, 40);
 		contentPane.add(textIndirizzo);
 		

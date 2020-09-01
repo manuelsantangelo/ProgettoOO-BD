@@ -13,12 +13,46 @@ import logic.Classi.Luogo;
 public class LuogoDAO {
 	Controller controller;
 	private Luogo luogo = new Luogo();
+	private Luogo luogo2 = new Luogo();
 	
 	public Luogo getLuogo() {
 		return luogo;
 	}
 	public void setLuogo(Luogo luogo) {
 		this.luogo = luogo;
+	}
+	
+	public void setLuogo2(Connection conn, int fk) {
+		
+		String comando;
+		comando = "SELECT * FROM \"Luogo\" WHERE \"Luogo_ID\" = " + fk;
+		
+		try {
+			Luogo luogo;
+		
+		PreparedStatement ps = conn.prepareStatement(comando);
+		ResultSet rs = ps.executeQuery();
+		while(rs.next()) {
+		luogo = new Luogo();
+		luogo.setStato(rs.getString(1));
+		luogo.setCittà(rs.getString(2));
+		luogo.setPaese(rs.getString(3));
+		luogo.setIndirizzo(rs.getString(4));
+		luogo.setLuogo_ID(rs.getInt(5));
+		luogo.setRistorante_FK(rs.getInt(6));
+		luogo.setAlbergo_FK(rs.getInt(7));
+		luogo.setAttrazione_FK(rs.getInt(8));
+		this.luogo2 = luogo;	
+		}
+		} catch (Exception e4) {
+			System.out.println("ERROR IN SQL" + e4);
+			JOptionPane.showMessageDialog(null, "ERRORE! Qualcossa è andato storto con la select");
+			
+		}
+	}
+		
+	public Luogo getLuogo2() {
+		return luogo2;
 	}
 	
 	public LuogoDAO(Controller controller) {
