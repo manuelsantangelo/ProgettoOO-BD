@@ -47,7 +47,6 @@ public class Principale extends JFrame {
 	
 	private Controller controller;
 
-
 	private JPanel contentPane;
 	private JFrame frame;
 	
@@ -211,7 +210,7 @@ public class Principale extends JFrame {
 	 //Doppio click mouse, apertura pagina recensioni 
     elementi.addMouseListener(new MouseAdapter() {
         public void mousePressed(MouseEvent mouseEvent) {
-            elementi =(JTable) mouseEvent.getSource();
+            elementi = (JTable) mouseEvent.getSource();
             Point point = mouseEvent.getPoint();
             int row = elementi.rowAtPoint(point);
             if (mouseEvent.getClickCount() == 2 && elementi.getSelectedRow() != -1) {
