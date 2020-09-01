@@ -230,8 +230,13 @@ public class Principale extends JFrame {
 					}
             	}else if (lista == 3) {
             		controller.getAlbergoDAO().setAlbergo(controller.getAlbergoDAO().getAlberghi().get(indice));
-	
-            	}
+            		controller.getLuogoDAO().setLuogo2(controller.getConnection(), controller.getAlbergoDAO().getAlbergo().getLuogo_FK());
+            		try {
+						controller.CambiaFrame(Principale.this, controller.getScriviRecensioneAlb());
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+           }
 				
             }
         }

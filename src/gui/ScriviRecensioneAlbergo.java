@@ -1,5 +1,6 @@
 package gui;
 
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Cursor;
@@ -32,7 +33,7 @@ import java.awt.Component;
 import javax.swing.JTextField;
 import javax.swing.JList;
 
-public class ScriviRecensioneRistorante extends JFrame {
+public class ScriviRecensioneAlbergo extends JFrame {
 
 	private JPanel contentPane;
 
@@ -43,9 +44,9 @@ public class ScriviRecensioneRistorante extends JFrame {
 	
 	String nomeDaRecensire; //inizializziamo il nome della cosa che vogliamo recensire 
 
-public ScriviRecensioneRistorante(Controller controller) throws IOException {
+public ScriviRecensioneAlbergo(Controller controller) throws IOException {
 	setIconImage(Toolkit.getDefaultToolkit().getImage("images\\LogoPiccolo.png"));
-	setTitle("Recensione " + controller.getRistoranteDAO().getRistorante().getNome());
+	setTitle("Recensione " + controller.getAlbergoDAO().getAlbergo().getNome());
 	setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	setBounds(FINESTRA_Y, FINESTRA_X, LUNGHEZZA_FINESTRA, ALTEZZA_FINESTRA);
 	
@@ -69,9 +70,9 @@ public ScriviRecensioneRistorante(Controller controller) throws IOException {
 		JButton btnaggiungirecensione = new JButton("Aggiungi recensione");
 		btnaggiungirecensione.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnaggiungirecensione.setForeground(Color.BLACK);
-		btnaggiungirecensione.setFont(new Font("Parametric Glitch", Font.PLAIN, 14));
+		btnaggiungirecensione.setFont(new Font("Gadugi", Font.BOLD, 14));
 		btnaggiungirecensione.setBackground(Color.WHITE);
-		btnaggiungirecensione.setBounds(717, 554, 177, 47);
+		btnaggiungirecensione.setBounds(717, 537, 177, 47);
 		contentPane.add(btnaggiungirecensione);
 		
 		JLabel lblFoto = new JLabel("foto");
@@ -79,7 +80,7 @@ public ScriviRecensioneRistorante(Controller controller) throws IOException {
 		lblFoto.setBounds(43, 48, 187, 182);
 		contentPane.add(lblFoto);
 		
-		byte[] imgBytes = controller.getRistoranteDAO().getRistorante().getFoto();
+		byte[] imgBytes = controller.getAlbergoDAO().getAlbergo().getFoto();
 		ByteArrayInputStream bis = new ByteArrayInputStream(imgBytes);
 	    BufferedImage bImage = ImageIO.read(bis);
 	    Image dimg = bImage.getScaledInstance(lblFoto.getWidth(), lblFoto.getHeight(), Image.SCALE_SMOOTH); 
@@ -130,7 +131,7 @@ public ScriviRecensioneRistorante(Controller controller) throws IOException {
 		textAreaDescrizione.setWrapStyleWord(true);
 		textAreaDescrizione.setLineWrap(true);
 		textAreaDescrizione.setEditable(false);
-		textAreaDescrizione.setText(controller.getRistoranteDAO().getRistorante().getDescizione());
+		textAreaDescrizione.setText(controller.getAlbergoDAO().getAlbergo().getTesto());
 		textAreaDescrizione.setBackground(new Color(0, 191, 255));
 		textAreaDescrizione.setBounds(270, 48, 646, 182);
 		contentPane.add(textAreaDescrizione);
@@ -156,7 +157,7 @@ public ScriviRecensioneRistorante(Controller controller) throws IOException {
 		txtrProvincia.setEditable(false);
 		txtrProvincia.setText("Provincia\r\n");
 		txtrProvincia.setFont(new Font("Gadugi", Font.BOLD, 18));
-		txtrProvincia.setBounds(669, 262, 85, 29);
+		txtrProvincia.setBounds(597, 262, 85, 29);
 		contentPane.add(txtrProvincia);
 		
 		JTextArea txtrIndirizzo = new JTextArea();
@@ -196,7 +197,7 @@ public ScriviRecensioneRistorante(Controller controller) throws IOException {
 		textCittà.setBackground(new Color(0, 191, 255));
 		textCittà.setEditable(false);
 		textCittà.setText(controller.getLuogoDAO().getLuogo2().getCittà());
-		textCittà.setBounds(328, 301, 308, 29);
+		textCittà.setBounds(328, 301, 265, 29);
 		contentPane.add(textCittà);
 		
 		JTextArea textProvincia = new JTextArea();
@@ -204,7 +205,7 @@ public ScriviRecensioneRistorante(Controller controller) throws IOException {
 		textProvincia.setBackground(new Color(0, 191, 255));
 		textProvincia.setEditable(false);
 		textProvincia.setText(controller.getLuogoDAO().getLuogo2().getPaese());
-		textProvincia.setBounds(669, 301, 247, 29);
+		textProvincia.setBounds(597, 301, 208, 29);
 		contentPane.add(textProvincia);
 		
 		JTextArea textIndirizzo = new JTextArea();
@@ -224,14 +225,30 @@ public ScriviRecensioneRistorante(Controller controller) throws IOException {
 		JList listSitoWeb = new JList();
 		listSitoWeb.setBounds(622, 404, 294, 40);
 		contentPane.add(listSitoWeb);
-
+		
+		JTextArea txtrCamere = new JTextArea();
+		txtrCamere.setText("Numero camere");
+		txtrCamere.setFont(new Font("Gadugi", Font.BOLD, 18));
+		txtrCamere.setEditable(false);
+		txtrCamere.setBackground(new Color(0, 191, 255));
+		txtrCamere.setBounds(774, 262, 142, 29);
+		contentPane.add(txtrCamere);
+		
+		JTextArea textCamere = new JTextArea();
+		textCamere.setText(String.valueOf(controller.getAlbergoDAO().getAlbergo().getNumero_Camere()));
+		textCamere.setFont(new Font("Gadugi", Font.PLAIN, 17));
+		textCamere.setEditable(false);
+		textCamere.setBackground(new Color(0, 191, 255));
+		textCamere.setBounds(815, 301, 63, 29);
+		contentPane.add(textCamere);
+		
 		JButton btnIndietro = new JButton("Indietro");
 		btnIndietro.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnIndietro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					controller.CambiaFrame(ScriviRecensioneRistorante.this, controller.getPrincipale());
-					controller.ChiudiFrame(ScriviRecensioneRistorante.this);
+					controller.CambiaFrame(ScriviRecensioneAlbergo.this, controller.getPrincipale());
+					controller.ChiudiFrame(ScriviRecensioneAlbergo.this);
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -243,6 +260,7 @@ public ScriviRecensioneRistorante(Controller controller) throws IOException {
 		btnIndietro.setBackground(new Color(0, 153, 255));
 		btnIndietro.setBounds(717, 594, 177, 29);
 		contentPane.add(btnIndietro);
+		
 		
 		btnaggiungirecensione.addActionListener(new ActionListener() {
 			@SuppressWarnings("deprecation")

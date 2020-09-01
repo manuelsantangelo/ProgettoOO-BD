@@ -60,8 +60,8 @@ public class Controller {
 	private Elimina_Ristorante delRest;
 	private Elimina_Hotel delHotel;
 	private ScriviRecensioneRistorante scriviRecRis;
-	//Nome da passare per la recensione
-	//String nomeDaRecensire;
+	private ScriviRecensioneAlbergo scriviRecAlb;
+	
 	
 	private int indice;
 	
@@ -193,6 +193,11 @@ public class Controller {
 		return scriviRecRis;
 	}
 	
+	public ScriviRecensioneAlbergo getScriviRecensioneAlb() throws IOException {
+		scriviRecAlb = new ScriviRecensioneAlbergo(this);
+		return scriviRecAlb;
+	}
+	
 	public Aggiungi_Hotel getAggiungi_Hotel() {
 		return addHotel;
 	}
@@ -223,5 +228,6 @@ public class Controller {
 	public void setIndice(int indice) {
 		this.indice = indice;
 	}
+
 	
 }
