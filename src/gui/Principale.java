@@ -51,6 +51,7 @@ public class Principale extends JFrame {
 	private JPanel contentPane;
 	private JFrame frame;
 	
+	
 	final static int FINESTRA_Y = 80;
 	final static int FINESTRA_X = 25;
 	final static int ALTEZZA_FINESTRA = 690;
@@ -225,6 +226,7 @@ public class Principale extends JFrame {
             		controller.getLuogoDAO().setLuogo2(controller.getConnection(), controller.getRistoranteDAO().getRistorante().getLuogo_FK());
             		try {
 						controller.CambiaFrame(Principale.this, controller.getScriviRecensioneRis());
+						
 					} catch (IOException e) {
 						e.printStackTrace();
 					}

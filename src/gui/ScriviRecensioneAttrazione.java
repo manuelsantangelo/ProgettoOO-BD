@@ -32,8 +32,8 @@ import java.awt.Component;
 import javax.swing.JTextField;
 import javax.swing.JList;
 
-public class ScriviRecensioneRistorante extends JFrame {
-
+public class ScriviRecensioneAttrazione extends JFrame {
+	
 	private JPanel contentPane;
 
 	final static int FINESTRA_Y = 80;
@@ -43,10 +43,10 @@ public class ScriviRecensioneRistorante extends JFrame {
 	
 	String nomeDaRecensire; //inizializziamo il nome della cosa che vogliamo recensire 
 
-public ScriviRecensioneRistorante(Controller controller) throws IOException {
+public ScriviRecensioneAttrazione(Controller controller) throws IOException {
 	
 	setIconImage(Toolkit.getDefaultToolkit().getImage("images\\LogoPiccolo.png"));
-	setTitle("Recensione " + controller.getRistoranteDAO().getRistorante().getNome());
+	setTitle("Recensione " + controller.getAttrazioneDAO().getAttrazione().getNome());
 	setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	setBounds(FINESTRA_Y, FINESTRA_X, LUNGHEZZA_FINESTRA, ALTEZZA_FINESTRA);
 	
@@ -72,7 +72,7 @@ public ScriviRecensioneRistorante(Controller controller) throws IOException {
 		btnaggiungirecensione.setForeground(Color.BLACK);
 		btnaggiungirecensione.setFont(new Font("Parametric Glitch", Font.PLAIN, 14));
 		btnaggiungirecensione.setBackground(Color.WHITE);
-		btnaggiungirecensione.setBounds(717, 554, 177, 47);
+		btnaggiungirecensione.setBounds(717, 537, 177, 47);
 		contentPane.add(btnaggiungirecensione);
 		
 		JLabel lblFoto = new JLabel("foto");
@@ -80,7 +80,7 @@ public ScriviRecensioneRistorante(Controller controller) throws IOException {
 		lblFoto.setBounds(43, 48, 187, 182);
 		contentPane.add(lblFoto);
 		
-		byte[] imgBytes = controller.getRistoranteDAO().getRistorante().getFoto();
+		byte[] imgBytes = controller.getAttrazioneDAO().getAttrazione().getFoto();
 		ByteArrayInputStream bis = new ByteArrayInputStream(imgBytes);
 	    BufferedImage bImage = ImageIO.read(bis);
 	    Image dimg = bImage.getScaledInstance(lblFoto.getWidth(), lblFoto.getHeight(), Image.SCALE_SMOOTH); 
@@ -131,9 +131,9 @@ public ScriviRecensioneRistorante(Controller controller) throws IOException {
 		textAreaDescrizione.setWrapStyleWord(true);
 		textAreaDescrizione.setLineWrap(true);
 		textAreaDescrizione.setEditable(false);
-		textAreaDescrizione.setText(controller.getRistoranteDAO().getRistorante().getDescizione());
+		textAreaDescrizione.setText(controller.getAttrazioneDAO().getAttrazione().getDescrizione());
 		textAreaDescrizione.setBackground(new Color(0, 191, 255));
-		textAreaDescrizione.setBounds(270, 48, 489, 182);
+		textAreaDescrizione.setBounds(270, 48, 483, 182);
 		contentPane.add(textAreaDescrizione);
 		
 		JTextArea txtrStato = new JTextArea();
@@ -157,7 +157,7 @@ public ScriviRecensioneRistorante(Controller controller) throws IOException {
 		txtrProvincia.setEditable(false);
 		txtrProvincia.setText("Provincia\r\n");
 		txtrProvincia.setFont(new Font("Gadugi", Font.BOLD, 18));
-		txtrProvincia.setBounds(599, 262, 85, 29);
+		txtrProvincia.setBounds(581, 262, 85, 29);
 		contentPane.add(txtrProvincia);
 		
 		JTextArea txtrIndirizzo = new JTextArea();
@@ -197,7 +197,7 @@ public ScriviRecensioneRistorante(Controller controller) throws IOException {
 		textCittà.setBackground(new Color(0, 191, 255));
 		textCittà.setEditable(false);
 		textCittà.setText(controller.getLuogoDAO().getLuogo2().getCittà());
-		textCittà.setBounds(328, 301, 238, 29);
+		textCittà.setBounds(328, 301, 236, 29);
 		contentPane.add(textCittà);
 		
 		JTextArea textProvincia = new JTextArea();
@@ -205,7 +205,7 @@ public ScriviRecensioneRistorante(Controller controller) throws IOException {
 		textProvincia.setBackground(new Color(0, 191, 255));
 		textProvincia.setEditable(false);
 		textProvincia.setText(controller.getLuogoDAO().getLuogo2().getPaese());
-		textProvincia.setBounds(599, 301, 177, 29);
+		textProvincia.setBounds(581, 301, 121, 29);
 		contentPane.add(textProvincia);
 		
 		JTextArea textIndirizzo = new JTextArea();
@@ -231,7 +231,7 @@ public ScriviRecensioneRistorante(Controller controller) throws IOException {
 		btnIndietro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					controller.CambiaFrame(ScriviRecensioneRistorante.this, controller.getPrincipale());
+					controller.CambiaFrame(ScriviRecensioneAttrazione.this, controller.getPrincipale());
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -244,21 +244,21 @@ public ScriviRecensioneRistorante(Controller controller) throws IOException {
 		btnIndietro.setBounds(717, 594, 177, 29);
 		contentPane.add(btnIndietro);
 		
-		JTextArea txtrCategoriaRistoramte = new JTextArea();
-		txtrCategoriaRistoramte.setText("Categoria ");
-		txtrCategoriaRistoramte.setFont(new Font("Gadugi", Font.BOLD, 18));
-		txtrCategoriaRistoramte.setEditable(false);
-		txtrCategoriaRistoramte.setBackground(new Color(0, 191, 255));
-		txtrCategoriaRistoramte.setBounds(787, 262, 85, 29);
-		contentPane.add(txtrCategoriaRistoramte);
+		JTextArea txtrTipoAttrazione = new JTextArea();
+		txtrTipoAttrazione.setText("Tipo Attrazione\r\n");
+		txtrTipoAttrazione.setFont(new Font("Gadugi", Font.BOLD, 18));
+		txtrTipoAttrazione.setEditable(false);
+		txtrTipoAttrazione.setBackground(new Color(0, 191, 255));
+		txtrTipoAttrazione.setBounds(740, 262, 139, 29);
+		contentPane.add(txtrTipoAttrazione);
 		
-		JTextArea txtrFasciaPrezzo = new JTextArea();
-		txtrFasciaPrezzo.setText("Fascia prezzo");
-		txtrFasciaPrezzo.setFont(new Font("Gadugi", Font.BOLD, 18));
-		txtrFasciaPrezzo.setEditable(false);
-		txtrFasciaPrezzo.setBackground(new Color(0, 191, 255));
-		txtrFasciaPrezzo.setBounds(786, 10, 118, 29);
-		contentPane.add(txtrFasciaPrezzo);
+		JTextArea txtrFascia_Prezzo = new JTextArea();
+		txtrFascia_Prezzo.setText("Fascia prezzo");
+		txtrFascia_Prezzo.setFont(new Font("Gadugi", Font.BOLD, 18));
+		txtrFascia_Prezzo.setEditable(false);
+		txtrFascia_Prezzo.setBackground(new Color(0, 191, 255));
+		txtrFascia_Prezzo.setBounds(760, 16, 139, 29);
+		contentPane.add(txtrFascia_Prezzo);
 		
 		btnaggiungirecensione.addActionListener(new ActionListener() {
 			@SuppressWarnings("deprecation")

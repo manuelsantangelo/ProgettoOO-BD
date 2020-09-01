@@ -133,7 +133,7 @@ public ScriviRecensioneAlbergo(Controller controller) throws IOException {
 		textAreaDescrizione.setEditable(false);
 		textAreaDescrizione.setText(controller.getAlbergoDAO().getAlbergo().getTesto());
 		textAreaDescrizione.setBackground(new Color(0, 191, 255));
-		textAreaDescrizione.setBounds(270, 48, 646, 182);
+		textAreaDescrizione.setBounds(270, 48, 441, 182);
 		contentPane.add(textAreaDescrizione);
 		
 		JTextArea txtrStato = new JTextArea();
@@ -248,7 +248,6 @@ public ScriviRecensioneAlbergo(Controller controller) throws IOException {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					controller.CambiaFrame(ScriviRecensioneAlbergo.this, controller.getPrincipale());
-					controller.ChiudiFrame(ScriviRecensioneAlbergo.this);
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -260,6 +259,30 @@ public ScriviRecensioneAlbergo(Controller controller) throws IOException {
 		btnIndietro.setBackground(new Color(0, 153, 255));
 		btnIndietro.setBounds(717, 594, 177, 29);
 		contentPane.add(btnIndietro);
+		
+		JTextArea txtrFascia_Prezzo = new JTextArea();
+		txtrFascia_Prezzo.setText("Fascia prezzo");
+		txtrFascia_Prezzo.setFont(new Font("Gadugi", Font.BOLD, 18));
+		txtrFascia_Prezzo.setEditable(false);
+		txtrFascia_Prezzo.setBackground(new Color(0, 191, 255));
+		txtrFascia_Prezzo.setBounds(774, 16, 118, 34);
+		contentPane.add(txtrFascia_Prezzo);
+		
+		JTextArea txtrDescrizione_1_1 = new JTextArea();
+		txtrDescrizione_1_1.setText("Categoria");
+		txtrDescrizione_1_1.setFont(new Font("Gadugi", Font.BOLD, 18));
+		txtrDescrizione_1_1.setEditable(false);
+		txtrDescrizione_1_1.setBackground(new Color(0, 191, 255));
+		txtrDescrizione_1_1.setBounds(774, 72, 104, 29);
+		contentPane.add(txtrDescrizione_1_1);
+		
+		JTextArea txtrDescrizione_1_1_1 = new JTextArea();
+		txtrDescrizione_1_1_1.setText("Servizio");
+		txtrDescrizione_1_1_1.setFont(new Font("Gadugi", Font.BOLD, 18));
+		txtrDescrizione_1_1_1.setEditable(false);
+		txtrDescrizione_1_1_1.setBackground(new Color(0, 191, 255));
+		txtrDescrizione_1_1_1.setBounds(774, 127, 104, 29);
+		contentPane.add(txtrDescrizione_1_1_1);
 		
 		
 		btnaggiungirecensione.addActionListener(new ActionListener() {

@@ -61,7 +61,7 @@ public class Controller {
 	private Elimina_Hotel delHotel;
 	private ScriviRecensioneRistorante scriviRecRis;
 	private ScriviRecensioneAlbergo scriviRecAlb;
-	
+	private ScriviRecensioneAttrazione scriviRecAttr;
 	
 	private int indice;
 	
@@ -186,6 +186,7 @@ public class Controller {
 	public Principale getPrincipale() throws IOException {
 		principale = new Principale(this);
 		return principale;
+		
 	}
 	
 	public ScriviRecensioneRistorante getScriviRecensioneRis() throws IOException{
@@ -197,6 +198,11 @@ public class Controller {
 		scriviRecAlb = new ScriviRecensioneAlbergo(this);
 		return scriviRecAlb;
 	}
+	
+	public ScriviRecensioneAttrazione getScriviRecensioneAttrazione() throws IOException{
+		scriviRecAttr = new ScriviRecensioneAttrazione(this);
+		return scriviRecAttr;
+		}
 	
 	public Aggiungi_Hotel getAggiungi_Hotel() {
 		return addHotel;
@@ -221,13 +227,5 @@ public class Controller {
 		return delHotel;
 			}
 	
-	public int getIndice() {
-		return indice;
-	}
-	
-	public void setIndice(int indice) {
-		this.indice = indice;
-	}
 
-	
 }
