@@ -35,6 +35,7 @@ import javax.swing.JList;
 public class ScriviRecensioneRistorante extends JFrame {
 
 	private JPanel contentPane;
+	private Controller controller;
 
 	final static int FINESTRA_Y = 80;
 	final static int FINESTRA_X = 25;
@@ -43,20 +44,18 @@ public class ScriviRecensioneRistorante extends JFrame {
 	
 	String nomeDaRecensire; //inizializziamo il nome della cosa che vogliamo recensire 
 
-public ScriviRecensioneRistorante(Controller controller) throws IOException {
-	
-	setIconImage(Toolkit.getDefaultToolkit().getImage("images\\LogoPiccolo.png"));
-	setTitle("Recensione " + controller.getRistoranteDAO().getRistorante().getNome());
-	setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-	setBounds(FINESTRA_Y, FINESTRA_X, LUNGHEZZA_FINESTRA, ALTEZZA_FINESTRA);
-	
-	contentPane = new JPanel();
-	contentPane.setBackground(new Color(0, 191, 255));
-	contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-	setContentPane(contentPane);
-	contentPane.setLayout(null);
-	
 
+	public ScriviRecensioneRistorante(Controller controller) throws IOException {
+		setIconImage(Toolkit.getDefaultToolkit().getImage("images\\LogoPiccolo.png"));
+		setTitle("Recensione " + controller.getRistoranteDAO().getRistorante().getNome());
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setBounds(FINESTRA_Y, FINESTRA_X, LUNGHEZZA_FINESTRA, ALTEZZA_FINESTRA);
+	
+		contentPane = new JPanel();
+		contentPane.setBackground(new Color(0, 191, 255));
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
 		
 		JTextArea txtrDescrizione = new JTextArea();
 		txtrDescrizione.setText("Recensione");
@@ -233,7 +232,6 @@ public ScriviRecensioneRistorante(Controller controller) throws IOException {
 				try {
 					controller.CambiaFrame(ScriviRecensioneRistorante.this, controller.getPrincipale());
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}

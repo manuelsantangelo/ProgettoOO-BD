@@ -113,11 +113,16 @@ public class Controller {
 		 ChiudiFrame(frameDaNascondere);
 		 frameDaMostrare.setVisible(true);
 	}
+	
+	public void CambiaFrame2(JFrame frameDaNascondere, JFrame frameDaMostrare) {
+		ChiudiFrame(frameDaNascondere);
+		frameDaNascondere = null;
+		frameDaMostrare.setVisible(true);
+	}
 
 	//metodo per chiudere finestra
 	public void ChiudiFrame(JFrame frameDaChiudere) {
-		frameDaChiudere.dispose();
-		
+		frameDaChiudere.dispose();	
 	}
 
 
