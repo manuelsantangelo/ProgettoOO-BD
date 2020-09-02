@@ -235,6 +235,13 @@ public class Iscrizione extends JFrame{
 		btnAnnulla.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
+				nome.setText("");
+				password.setText("");
+				nickname.setText("");
+				email.setText("");
+				cognome.setText("");
+				city.setText("");
+				
 			controller.CambiaFrame(Iscrizione.this, controller.getHome());
 				}
 		});
@@ -253,7 +260,9 @@ public class Iscrizione extends JFrame{
 				String città1 = city.getText();
 				
 				controller.getUtenteDAO().addUtente(controller.getConnection(), nome1, password1, nickname1, email1, cognome1, dataNascita1, città1, imgpath);
-				}
+				
+				
+			}
 		});
 		
 		

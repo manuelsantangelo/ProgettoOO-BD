@@ -315,13 +315,13 @@ public class ScriviRecensioneAlbergo extends JFrame {
 		Categoria.setModel(dlm3);
 		contentPane.add(Categoria);
 		
-		JList Servizio = new JList();
+		/*JList Servizio = new JList();
 		Servizio.setFont(new Font("Gadugi", Font.PLAIN, 13));
 		Servizio.setBackground(new Color(0, 191, 255));
 		Servizio.setBounds(792, 397, 101, 51);
 		dlm4.addElement(controller.getAlbergoDAO().getAlberghi().get(controller.getIndice()).getServizio());
 		Servizio.setModel(dlm4);
-		contentPane.add(Servizio);
+		contentPane.add(Servizio);*/
 		
 		
 		

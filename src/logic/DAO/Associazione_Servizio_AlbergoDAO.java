@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
+
 import Tipi.categoriaalbergo;
 import Tipi.tiporistorante;
 import Tipi.tiposervizio;
@@ -47,8 +48,13 @@ public class Associazione_Servizio_AlbergoDAO {
 			System.out.println("ERROR IN SQL" + e2);
 			JOptionPane.showMessageDialog(null, "ERRORE! Qualcosa è andato storto con l'Associazione dei tipi degli alberghi");
 		}
+		
+		/*public void setServizioByID (Connection co) {
+			
+		}*/
+		
 
 	
-}
+}}
 
-}
+

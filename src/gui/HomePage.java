@@ -130,10 +130,14 @@ public class HomePage extends JFrame {
 				
 				if(flagMod) {
 				controller.getModeratoreDAO().setModeratore(controller.getModeratoreDAO().getThisModeratore(controller.getConnection(), nick, pass));
+				textField.setText("");
+				textField_1.setText("");
 				controller.CambiaFrame(HomePage.this, controller.getModeratore_Homepage());
 				}else if (flagUser) {
 					controller.getUtenteDAO().setUtente(controller.getUtenteDAO().getThisUtente(controller.getConnection(), nick, pass));
-						try {
+						textField.setText("");
+						textField_1.setText("");
+					try {
 							controller.CambiaFrame(HomePage.this, controller.getPrincipale());
 						} catch (IOException e1) {
 							// TODO Auto-generated catch block

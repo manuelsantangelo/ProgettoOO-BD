@@ -5,7 +5,6 @@ public class Albergo {
 	private int Albergo_ID;
 	private String Nome;
 	private categoriaalbergo Categoria;
-	private tiposervizio Servizio;
 	private int Stelle;
 	private double Voto;
 	private String Testo;
@@ -80,13 +79,7 @@ public class Albergo {
 		Luogo_FK = luogo_FK;
 	}
 	
-	public void setServizio(tiposervizio servizio) {
-		Servizio = servizio;
-	}
-	
-	public tiposervizio getServizio() {
-		return Servizio;
-	}
+
 	
 	public Albergo(String nome, categoriaalbergo categoria, int stelle, String testo, int numero_Camere, int luogo_FK) {
 		super();

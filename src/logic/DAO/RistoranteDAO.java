@@ -37,9 +37,9 @@ public class RistoranteDAO {
 		this.controller = controller;	
 	}
 	
-	public void addRistorante(Connection conn, String nome1, prezzo price, int stelleMichelin1, String descrizione1, File immagine, ArrayList<tiporistorante> tipoRistorante) {
+	public void addRistorante(Connection conn, String nome1, prezzo price, int stelleMichelin1, String descrizione1, File immagine) {
 		String comando;
-		comando = "INSERT INTO \"Ristorante\"(\"Nome\", \"Stelle_Michelin\", \"Descrizione\", \"Fascia_Prezzo\", \"Foto\", \"Categoria\") VALUES (?, ?, ?, ?, ?, ?);";
+		comando = "INSERT INTO \"Ristorante\"(\"Nome\", \"Stelle_Michelin\", \"Descrizione\", \"Fascia_Prezzo\", \"Foto\") VALUES (?, ?, ?, ?, ?);";
 		
 		try {
 			PreparedStatement ps = null;
@@ -54,10 +54,7 @@ public class RistoranteDAO {
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			}
-			for(int i = 0; i < tipoRistorante.size(); i++) {
-				ps.setObject(6, tipoRistorante.get(i), Types.OTHER);
-			}
-			
+		
 			
 			ps.executeUpdate();
 			JOptionPane.showMessageDialog(null, "Ristorante aggiunto con successo!");
@@ -165,7 +162,6 @@ try {
 		ristorante.setFascia_Prezzo(prezzo.valueOf(rs.getObject(6).toString()));
 		ristorante.setLuogo_FK(rs.getInt(7));
 		ristorante.setFoto(rs.getBytes(8));
-		ristorante.setCategoria(tiporistorante.valueOf(rs.getObject(9).toString()));
 		this.ristoranti.add(ristorante);
 	
 	}

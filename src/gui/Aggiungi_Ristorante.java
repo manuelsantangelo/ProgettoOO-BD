@@ -446,7 +446,7 @@ public class Aggiungi_Ristorante extends JFrame {
 				}
 				
 				controller.getLuogoDAO().addLuogo(controller.getConnection(), stato1, città1, paese1, indirizzo1);
-				controller.getRistoranteDAO().addRistorante(controller.getConnection(), nome1, price, stelleMichelin1, descrizione1, imgpath, type);
+				controller.getRistoranteDAO().addRistorante(controller.getConnection(), nome1, price, stelleMichelin1, descrizione1, imgpath);
 				ID = controller.getRistoranteDAO().getLastRestaurant(controller.getConnection());
 				controller.getContattiDAO().addContattiRistorante(controller.getConnection(), numTelefono, webSite, ID);
 				controller.getAssociazione_Categoria_RistoranteDAO().addAssociazione_Categoria_Ristorante(controller.getConnection(), type, ID);
