@@ -15,6 +15,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -42,7 +43,10 @@ public class ScriviRecensioneRistorante extends JFrame {
 	final static int ALTEZZA_FINESTRA = 690;
 	final static int LUNGHEZZA_FINESTRA = 940;
 	
-	String nomeDaRecensire; //inizializziamo il nome della cosa che vogliamo recensire 
+	private DefaultListModel dlm = new DefaultListModel();
+	private DefaultListModel dlm1 = new DefaultListModel();
+	private DefaultListModel dlm2 = new DefaultListModel();
+
 
 
 	public ScriviRecensioneRistorante(Controller controller) throws IOException {
@@ -71,7 +75,7 @@ public class ScriviRecensioneRistorante extends JFrame {
 		btnaggiungirecensione.setForeground(Color.BLACK);
 		btnaggiungirecensione.setFont(new Font("Parametric Glitch", Font.PLAIN, 14));
 		btnaggiungirecensione.setBackground(Color.WHITE);
-		btnaggiungirecensione.setBounds(717, 554, 177, 47);
+		btnaggiungirecensione.setBounds(717, 537, 177, 47);
 		contentPane.add(btnaggiungirecensione);
 		
 		JLabel lblFoto = new JLabel("foto");
@@ -216,21 +220,41 @@ public class ScriviRecensioneRistorante extends JFrame {
 		contentPane.add(textIndirizzo);
 		
 		JList listTelefono = new JList();
-		listTelefono.setBackground(new Color(255, 255, 255));
-		
+		listTelefono.setFont(new Font("Gadugi", Font.PLAIN, 13));
+		listTelefono.setBackground(new Color(0, 191, 255));
 		listTelefono.setBounds(291, 404, 273, 40);
+	for(int i = 0; i<controller.getContattiDAO().getSitoEtelefono().size(); i++) 
+		dlm.addElement(controller.getContattiDAO().getSitoEtelefono().get(i).getTelefono());
+		listTelefono.setModel(dlm);
+	
 		contentPane.add(listTelefono);
 		
 		JList listSitoWeb = new JList();
+		listSitoWeb.setFont(new Font("Gadugi", Font.PLAIN, 13));
+		listSitoWeb.setBackground(new Color(0, 191, 255));
 		listSitoWeb.setBounds(622, 404, 294, 40);
+		for(int i = 0; i<controller.getContattiDAO().getSitoEtelefono().size(); i++) 
+			dlm1.addElement(controller.getContattiDAO().getSitoEtelefono().get(i).getSitoWeb());
+		listSitoWeb.setModel(dlm1);
 		contentPane.add(listSitoWeb);
+		
+		JList Fascia_Prezzo = new JList();
+		Fascia_Prezzo.setBackground(new Color(0, 191, 255));
+		Fascia_Prezzo.setFont(new Font("Gadugi", Font.PLAIN, 13));
+		Fascia_Prezzo.setBounds(786, 48, 118, 47);
+			dlm2.addElement(controller.getRistoranteDAO().getRistoranti().get(controller.getIndice()).getFascia_Prezzo());
+		Fascia_Prezzo.setModel(dlm2);
+		contentPane.add(Fascia_Prezzo);
+		
 
 		JButton btnIndietro = new JButton("Indietro");
 		btnIndietro.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnIndietro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
+					controller.getContattiDAO().getSitoEtelefono().clear();
 					controller.CambiaFrame(ScriviRecensioneRistorante.this, controller.getPrincipale());
+					
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}
@@ -247,7 +271,7 @@ public class ScriviRecensioneRistorante extends JFrame {
 		txtrCategoriaRistoramte.setFont(new Font("Gadugi", Font.BOLD, 18));
 		txtrCategoriaRistoramte.setEditable(false);
 		txtrCategoriaRistoramte.setBackground(new Color(0, 191, 255));
-		txtrCategoriaRistoramte.setBounds(787, 262, 85, 29);
+		txtrCategoriaRistoramte.setBounds(786, 102, 85, 29);
 		contentPane.add(txtrCategoriaRistoramte);
 		
 		JTextArea txtrFasciaPrezzo = new JTextArea();
@@ -257,6 +281,17 @@ public class ScriviRecensioneRistorante extends JFrame {
 		txtrFasciaPrezzo.setBackground(new Color(0, 191, 255));
 		txtrFasciaPrezzo.setBounds(786, 10, 118, 29);
 		contentPane.add(txtrFasciaPrezzo);
+		
+		
+		/*JList Categoria = new JList();
+		Categoria.setBounds(786, 144, 118, 86);
+		dlm3.addElement(controller.getAssociazione_Categoria_RistoranteDAO().getAssociazione_categoria_ristorante()
+		Fascia_Prezzo.setModel(dlm3);
+		contentPane.add(Categoria);
+		*/
+		
+		
+		
 		
 		btnaggiungirecensione.addActionListener(new ActionListener() {
 			@SuppressWarnings("deprecation")

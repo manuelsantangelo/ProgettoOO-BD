@@ -199,7 +199,7 @@ public class Aggiungi_Attrazione extends JFrame {
 		attrazione.setForeground(Color.GREEN);
 		attrazione.setFont(new Font("Parametric Glitch", Font.PLAIN, 16));
 		attrazione.setBackground(Color.BLACK);
-		attrazione.setBounds(499, 263, 142, 176);
+		attrazione.setBounds(499, 263, 142, 184);
 		contentPane.add(attrazione);		
 		
 		JTextArea txtrTipologia = new JTextArea();

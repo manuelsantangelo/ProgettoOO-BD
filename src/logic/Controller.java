@@ -34,6 +34,7 @@ public class Controller {
 	
 	private Connection conn;
 	
+	
 	//inizializza DAO
 	
 	private UtenteDAO utenteDAO = new UtenteDAO(this);
@@ -231,6 +232,14 @@ public class Controller {
 	public Elimina_Hotel getElimina_Hotel() {
 		return delHotel;
 			}
+	
+	public void setIndice(int indice) {
+		this.indice = indice;
+	}
+	
+	public int getIndice() {
+		return indice;
+	}
 	
 
 }
