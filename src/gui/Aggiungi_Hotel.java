@@ -501,7 +501,7 @@ public class Aggiungi_Hotel extends JFrame {
 				}
 				
 				controller.getLuogoDAO().addLuogo(controller.getConnection(), stato1, città1, paese1, indirizzo1);
-				controller.getAlbergoDAO().addAlbergo(controller.getConnection(), nome1, catalbergo, stelleAlbergo1, numerocamere, descrizione1, imgpath, price);
+				controller.getAlbergoDAO().addAlbergo(controller.getConnection(), nome1, catalbergo, stelleAlbergo1, numerocamere, descrizione1, imgpath, price, tiposer);
 				ID = controller.getAlbergoDAO().getLastAlbergo(controller.getConnection());
 				controller.getContattiDAO().addContattiAlbergo(controller.getConnection(), numTelefono, webSite, ID);
 				controller.getAssociazione_Servizio_AlbergoDAO().addAssociazione_Servizio_Albergo(controller.getConnection(), tiposer, ID);

@@ -28,6 +28,7 @@ import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+import Tipi.tipoattrazione;
 import logic.Controller;
 import java.awt.Component;
 import javax.swing.JTextField;
@@ -45,6 +46,8 @@ public class ScriviRecensioneAttrazione extends JFrame {
 	private DefaultListModel dlm = new DefaultListModel();
 	private DefaultListModel dlm1 = new DefaultListModel();
 	private DefaultListModel dlm2 = new DefaultListModel();
+	private DefaultListModel dlm3 = new DefaultListModel();
+
 
 	
 public ScriviRecensioneAttrazione(Controller controller) throws IOException {
@@ -244,6 +247,14 @@ public ScriviRecensioneAttrazione(Controller controller) throws IOException {
 		dlm2.addElement(controller.getAttrazioneDAO().getAttrazioni().get(controller.getIndice()).getFascia_Prezzo());
 		Fascia_Prezzo.setModel(dlm2);
 		contentPane.add(Fascia_Prezzo);
+		
+		JList TipoAttrazione = new JList();
+		TipoAttrazione.setBackground(new Color(0, 191, 255));
+		TipoAttrazione.setFont(new Font("Gadugi", Font.PLAIN, 13));
+		TipoAttrazione.setBounds(750, 301, 128, 72);
+		dlm3.addElement(controller.getAttrazioneDAO().getAttrazioni().get(controller.getIndice()).getTipo());
+		TipoAttrazione.setModel(dlm3);
+		contentPane.add(TipoAttrazione);
 
 		JButton btnIndietro = new JButton("Indietro");
 		btnIndietro.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -279,6 +290,7 @@ public ScriviRecensioneAttrazione(Controller controller) throws IOException {
 		txtrFascia_Prezzo.setBackground(new Color(0, 191, 255));
 		txtrFascia_Prezzo.setBounds(760, 16, 139, 29);
 		contentPane.add(txtrFascia_Prezzo);
+		
 		
 		
 		

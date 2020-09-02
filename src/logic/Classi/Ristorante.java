@@ -1,4 +1,5 @@
 package logic.Classi;
+
 import Tipi.*;
 
 public class Ristorante {
@@ -8,6 +9,7 @@ public class Ristorante {
 	private double Voto;
 	private String Descizione;
 	private prezzo Fascia_Prezzo;
+	private tiporistorante Categoria;
 	private int Luogo_FK;
 	private byte[] Foto;
 	
@@ -60,6 +62,16 @@ public class Ristorante {
 	public void setLuogo_FK(int luogo_FK) {
 		Luogo_FK = luogo_FK;
 	}
+	
+	public void setCategoria(tiporistorante categoria) {
+		Categoria = categoria;
+	}
+	
+	public tiporistorante getCategoria() {
+		return Categoria;
+	}
+	
+	
 	public Ristorante(String nome, int stelle_Michelin, String descizione, prezzo fascia_Prezzo, int luogo_FK) {
 		super();
 		Nome = nome;

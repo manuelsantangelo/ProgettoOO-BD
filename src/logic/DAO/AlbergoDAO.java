@@ -16,6 +16,7 @@ import javax.swing.JOptionPane;
 
 import Tipi.categoriaalbergo;
 import Tipi.prezzo;
+import Tipi.tiposervizio;
 import logic.Controller;
 import logic.Classi.Albergo;
 import logic.Classi.Moderatore;
@@ -41,9 +42,9 @@ public class AlbergoDAO {
 		this.controller = controller;	
 	}
 	
-	public void addAlbergo(Connection conn, String nome1, ArrayList<categoriaalbergo> type, int stelleAlbergo, int numeroCamere, String descrizione1, File immagine, prezzo price) {
+	public void addAlbergo(Connection conn, String nome1, ArrayList<categoriaalbergo> type, int stelleAlbergo, int numeroCamere, String descrizione1, File immagine, prezzo price, ArrayList<tiposervizio> tipoServizio) {
 		String comando;
-		comando = "INSERT INTO \"Albergo\"(\"Nome\", \"Stelle\", \"Descrizione\", \"Categoria\", \"Foto\",\"Numero_Camere\", \"Fascia_Prezzo\" ) VALUES (?, ?, ?, ?, ?, ?, ?);";
+		comando = "INSERT INTO \"Albergo\"(\"Nome\", \"Stelle\", \"Descrizione\", \"Categoria\", \"Foto\",\"Numero_Camere\", \"Fascia_Prezzo\" , \"Servizio\") VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
 		
 		try {
 			PreparedStatement ps = null;
@@ -64,6 +65,10 @@ public class AlbergoDAO {
 			
 			ps.setInt(6, numeroCamere);
 			ps.setObject(7, price, Types.OTHER);
+			for(int i = 0; i < tipoServizio.size(); i++) {
+				ps.setObject(8, tipoServizio.get(i), Types.OTHER);
+			}
+			
 			
 			ps.executeUpdate();
 			JOptionPane.showMessageDialog(null, "Albergo aggiunto con successo!");
@@ -175,6 +180,7 @@ try {
 		albergo.setLuogo_FK(rs.getInt(8));
 		albergo.setFascia_Prezzo(prezzo.valueOf(rs.getObject(9).toString()));
 		albergo.setFoto(rs.getBytes(10));
+		albergo.setServizio(tiposervizio.valueOf(rs.getObject(11).toString()));
 		this.alberghi.add(albergo);
 	
 	}
@@ -186,7 +192,7 @@ try {
 }
 	}
 	
-	public Albergo getThisAlbergo(Connection conn, int row) {
+	/*public Albergo getThisAlbergo(Connection conn, int row) {
 
 		Albergo alb = new Albergo();
 
@@ -222,10 +228,10 @@ try {
 		}
 		
 		return mod;	
-		*/
+		
 		return alb;
 	}
-	
+	*/
 	
 	
 }

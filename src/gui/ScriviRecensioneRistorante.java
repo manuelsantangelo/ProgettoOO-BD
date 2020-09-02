@@ -46,6 +46,8 @@ public class ScriviRecensioneRistorante extends JFrame {
 	private DefaultListModel dlm = new DefaultListModel();
 	private DefaultListModel dlm1 = new DefaultListModel();
 	private DefaultListModel dlm2 = new DefaultListModel();
+	private DefaultListModel dlm3 = new DefaultListModel();
+
 
 
 
@@ -282,13 +284,16 @@ public class ScriviRecensioneRistorante extends JFrame {
 		txtrFasciaPrezzo.setBounds(786, 10, 118, 29);
 		contentPane.add(txtrFasciaPrezzo);
 		
-		
-		/*JList Categoria = new JList();
-		Categoria.setBounds(786, 144, 118, 86);
-		dlm3.addElement(controller.getAssociazione_Categoria_RistoranteDAO().getAssociazione_categoria_ristorante()
-		Fascia_Prezzo.setModel(dlm3);
+		JList Categoria = new JList();
+		Categoria.setFont(new Font("Gadugi", Font.PLAIN, 13));
+		Categoria.setBackground(new Color(0, 191, 255));
+		Categoria.setBounds(786, 142, 118, 73);
+		dlm3.addElement(controller.getRistoranteDAO().getRistoranti().get(controller.getIndice()).getCategoria());
+		Categoria.setModel(dlm3);
 		contentPane.add(Categoria);
-		*/
+		
+		
+		
 		
 		
 		

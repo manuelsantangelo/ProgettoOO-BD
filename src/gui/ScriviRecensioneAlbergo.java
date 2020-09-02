@@ -48,6 +48,8 @@ public class ScriviRecensioneAlbergo extends JFrame {
 	private DefaultListModel dlm = new DefaultListModel();
 	private DefaultListModel dlm1 = new DefaultListModel();
 	private DefaultListModel dlm2 = new DefaultListModel();
+	private DefaultListModel dlm3 = new DefaultListModel();
+	private DefaultListModel dlm4 = new DefaultListModel();
 
 
 
@@ -304,6 +306,22 @@ public class ScriviRecensioneAlbergo extends JFrame {
 		txtrDescrizione_1_1_1.setBackground(new Color(0, 191, 255));
 		txtrDescrizione_1_1_1.setBounds(792, 365, 104, 29);
 		contentPane.add(txtrDescrizione_1_1_1);
+		
+		JList Categoria = new JList();
+		Categoria.setFont(new Font("Gadugi", Font.PLAIN, 13));
+		Categoria.setBackground(new Color(0, 191, 255));
+		Categoria.setBounds(636, 393, 85, 61);
+		dlm3.addElement(controller.getAlbergoDAO().getAlberghi().get(controller.getIndice()).getCategoria());
+		Categoria.setModel(dlm3);
+		contentPane.add(Categoria);
+		
+		JList Servizio = new JList();
+		Servizio.setFont(new Font("Gadugi", Font.PLAIN, 13));
+		Servizio.setBackground(new Color(0, 191, 255));
+		Servizio.setBounds(792, 397, 101, 51);
+		dlm4.addElement(controller.getAlbergoDAO().getAlberghi().get(controller.getIndice()).getServizio());
+		Servizio.setModel(dlm4);
+		contentPane.add(Servizio);
 		
 		
 		
