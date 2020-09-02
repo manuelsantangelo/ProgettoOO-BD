@@ -302,9 +302,8 @@ public class ScriviRecensioneRistorante extends JFrame {
 			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
 				String recensione = textAreaRecensione.getText();
-				controller.getRecensioneDAO().addRecensione(controller.getConnection(), recensione, 3);
 				int stelle = valutazioneStelle.getSelectedIndex()+1;
-				controller.getRecensioneDAO().addRecensione(controller.getConnection(), recensione, stelle);
+				controller.getRecensioneDAO().addRecensioneRis(controller.getConnection(), recensione, stelle);
 				
 				
 			}});

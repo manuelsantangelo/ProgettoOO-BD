@@ -32,25 +32,72 @@ public class RecensioneDAO {
 		this.controller = controller;
 	}
 	
-	public void addRecensione(Connection conn, String testo, int stelle) {
+	public void addRecensioneAttr(Connection conn, String testo, int stelle) {
 		String comando;
 	
-		comando = "INSERT INTO \"Recensione\" (\"Testo\", \"Stelle\") VALUES (?, ?);";
-		
-		
+		comando = "INSERT INTO public.\"Recensione\"(\"Testo\", \"Stelle\", \"User_FK1\", \"Attrazione_FK\") VALUES (?, ?, ?, ?);";
+
 		try {
 			PreparedStatement ps = null;
 			ps = conn.prepareStatement(comando);
 			
 			ps.setString(1, testo);
 			ps.setInt(2, stelle);
+			ps.setInt(3, controller.getUtenteDAO().getUtente().getUser_ID());
+			ps.setInt(4, controller.getAttrazioneDAO().getAttrazione().getAttrazione_ID());
 
 			ps.executeUpdate();
 			JOptionPane.showMessageDialog(null, "Recensione aggiunta con successo!");
 			
 		} catch (SQLException e2) {
 			System.out.println("ERROR IN SQL" + e2);
-			JOptionPane.showMessageDialog(null, "ERRORE! Qualcosa è andato storto con la Recensione");
+			JOptionPane.showMessageDialog(null, "ATTENZIONE! Non puoi recensire la stessa Attrazione più di una volta!");
+	}
+	}
+	
+	public void addRecensioneRis(Connection conn, String testo, int stelle) {
+		String comando;
+	
+		comando = "INSERT INTO public.\"Recensione\"(\"Testo\", \"Stelle\", \"User_FK1\", \"Ristorante_FK\") VALUES (?, ?, ?, ?);";
+
+		try {
+			PreparedStatement ps = null;
+			ps = conn.prepareStatement(comando);
+			
+			ps.setString(1, testo);
+			ps.setInt(2, stelle);
+			ps.setInt(3, controller.getUtenteDAO().getUtente().getUser_ID());
+			ps.setInt(4, controller.getRistoranteDAO().getRistorante().getRistorante_ID());
+
+			ps.executeUpdate();
+			JOptionPane.showMessageDialog(null, "Recensione aggiunta con successo!");
+			
+		} catch (SQLException e2) {
+			System.out.println("ERROR IN SQL" + e2);
+			JOptionPane.showMessageDialog(null, "ATTENZIONE! Non puoi recensire lo stesso Ristorante più di una volta!");
+	}
+	}
+	
+	public void addRecensioneAlb(Connection conn, String testo, int stelle) {
+		String comando;
+	
+		comando = "INSERT INTO public.\"Recensione\"(\"Testo\", \"Stelle\", \"User_FK1\", \"Albergo_FK\") VALUES (?, ?, ?, ?);";
+
+		try {
+			PreparedStatement ps = null;
+			ps = conn.prepareStatement(comando);
+			
+			ps.setString(1, testo);
+			ps.setInt(2, stelle);
+			ps.setInt(3, controller.getUtenteDAO().getUtente().getUser_ID());
+			ps.setInt(4, controller.getAlbergoDAO().getAlbergo().getAlbergo_ID());
+
+			ps.executeUpdate();
+			JOptionPane.showMessageDialog(null, "Recensione aggiunta con successo!");
+			
+		} catch (SQLException e2) {
+			System.out.println("ERROR IN SQL" + e2);
+			JOptionPane.showMessageDialog(null, "ATTENZIONE! Non puoi recensire lo stesso Albergo più di una volta!");
 	}
 	}
 
