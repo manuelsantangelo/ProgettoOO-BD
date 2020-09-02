@@ -15,6 +15,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -41,8 +42,11 @@ public class ScriviRecensioneAttrazione extends JFrame {
 	final static int ALTEZZA_FINESTRA = 690;
 	final static int LUNGHEZZA_FINESTRA = 940;
 	
-	String nomeDaRecensire; //inizializziamo il nome della cosa che vogliamo recensire 
+	private DefaultListModel dlm = new DefaultListModel();
+	private DefaultListModel dlm1 = new DefaultListModel();
+	private DefaultListModel dlm2 = new DefaultListModel();
 
+	
 public ScriviRecensioneAttrazione(Controller controller) throws IOException {
 	
 	setIconImage(Toolkit.getDefaultToolkit().getImage("images\\LogoPiccolo.png"));
@@ -181,7 +185,7 @@ public ScriviRecensioneAttrazione(Controller controller) throws IOException {
 		txtrSitoWeb.setEditable(false);
 		txtrSitoWeb.setText("Sito Web");
 		txtrSitoWeb.setFont(new Font("Gadugi", Font.BOLD, 18));
-		txtrSitoWeb.setBounds(622, 365, 80, 29);
+		txtrSitoWeb.setBounds(480, 365, 80, 29);
 		contentPane.add(txtrSitoWeb);
 		
 		JTextArea textStato = new JTextArea();
@@ -217,20 +221,36 @@ public ScriviRecensioneAttrazione(Controller controller) throws IOException {
 		contentPane.add(textIndirizzo);
 		
 		JList listTelefono = new JList();
-		listTelefono.setBackground(new Color(255, 255, 255));
-		
-		listTelefono.setBounds(291, 404, 273, 40);
+		listTelefono.setFont(new Font("Gadugi", Font.PLAIN, 13));
+		listTelefono.setBackground(new Color(0, 191, 255));
+		for(int i = 0; i<controller.getContattiDAO().getSitoEtelefono().size(); i++) 
+			dlm.addElement(controller.getContattiDAO().getSitoEtelefono().get(0).getTelefono());
+			listTelefono.setModel(dlm);
+		listTelefono.setBounds(291, 404, 168, 40);
 		contentPane.add(listTelefono);
 		
 		JList listSitoWeb = new JList();
-		listSitoWeb.setBounds(622, 404, 294, 40);
+		listSitoWeb.setFont(new Font("Gadugi", Font.PLAIN, 13));
+		listSitoWeb.setBackground(new Color(0, 191, 255));
+			dlm1.addElement(controller.getContattiDAO().getSitoEtelefono().get(0).getSitoWeb());
+		listSitoWeb.setModel(dlm1);
+		listSitoWeb.setBounds(490, 404, 128, 40);
 		contentPane.add(listSitoWeb);
+		
+		JList Fascia_Prezzo = new JList();
+		Fascia_Prezzo.setBackground(new Color(0, 191, 255));
+		Fascia_Prezzo.setFont(new Font("Gadugi", Font.PLAIN, 13));
+		Fascia_Prezzo.setBounds(763, 57, 139, 34);
+		dlm2.addElement(controller.getAttrazioneDAO().getAttrazioni().get(controller.getIndice()).getFascia_Prezzo());
+		Fascia_Prezzo.setModel(dlm2);
+		contentPane.add(Fascia_Prezzo);
 
 		JButton btnIndietro = new JButton("Indietro");
 		btnIndietro.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnIndietro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try {
+				try {					
+					controller.getContattiDAO().getSitoEtelefono().clear();
 					controller.CambiaFrame(ScriviRecensioneAttrazione.this, controller.getPrincipale());
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
@@ -259,6 +279,8 @@ public ScriviRecensioneAttrazione(Controller controller) throws IOException {
 		txtrFascia_Prezzo.setBackground(new Color(0, 191, 255));
 		txtrFascia_Prezzo.setBounds(760, 16, 139, 29);
 		contentPane.add(txtrFascia_Prezzo);
+		
+		
 		
 		btnaggiungirecensione.addActionListener(new ActionListener() {
 			@SuppressWarnings("deprecation")

@@ -175,7 +175,6 @@ public class AttrazioneDAO {
 			System.out.println("ERROR IN SQL" + e);
 			JOptionPane.showMessageDialog(null, "ERRORE! Qualcosa è andato storto con il recupero delle attrazioni");	
 		}
-		System.out.println(this.attrazioni.get(1).getNome() );
 
 	}
 

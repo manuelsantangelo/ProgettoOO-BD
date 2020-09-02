@@ -218,9 +218,12 @@ public class Principale extends JFrame {
            	
             	
             	int indice = elementi.getSelectedRow();
+            	controller.setIndice(indice);
             	if(lista == 1) {
             		controller.getAttrazioneDAO().setAttrazione(controller.getAttrazioneDAO().getAttrazioni().get(indice));
             		controller.getLuogoDAO().setLuogo2(controller.getConnection(), controller.getAttrazioneDAO().getAttrazione().getLuogo_FK());
+            		controller.getContattiDAO().setContattiAttrazioni(controller.getConnection());
+
             		try {
 						controller.CambiaFrame(Principale.this, controller.getScriviRecensioneAttr());
 						
@@ -228,9 +231,13 @@ public class Principale extends JFrame {
 						e.printStackTrace();
 					}
             	}else if(lista == 2) {
+            		
+            		
             		controller.getRistoranteDAO().setRistorante(controller.getRistoranteDAO().getRistoranti().get(indice));
             		controller.getLuogoDAO().setLuogo2(controller.getConnection(), controller.getRistoranteDAO().getRistorante().getLuogo_FK());
+            		controller.getContattiDAO().setContattiRistorante(controller.getConnection());
             		try {
+            			
 						controller.CambiaFrame(Principale.this, controller.getScriviRecensioneRis());
 						
 					} catch (IOException e) {
@@ -239,6 +246,8 @@ public class Principale extends JFrame {
             	}else if (lista == 3) {
             		controller.getAlbergoDAO().setAlbergo(controller.getAlbergoDAO().getAlberghi().get(indice));
             		controller.getLuogoDAO().setLuogo2(controller.getConnection(), controller.getAlbergoDAO().getAlbergo().getLuogo_FK());
+            		controller.getContattiDAO().setContattiAlbergo(controller.getConnection());
+
             		try {
 						controller.CambiaFrame(Principale.this, controller.getScriviRecensioneAlb());
 					} catch (IOException e) {
@@ -267,7 +276,7 @@ public class Principale extends JFrame {
 	do {
 		int luogoFK = controller.getAlbergoDAO().getAlberghi().get(i).getLuogo_FK();
 		controller.getLuogoDAO().setLuogoByID(controller.getConnection(), luogoFK);
-			dtm.addRow(new Object[] {
+		dtm.addRow(new Object[] {
 					controller.getAlbergoDAO().getAlberghi().get(i).getNome(),controller.getLuogoDAO().getLuogo().getCittà() ,controller.getAlbergoDAO().getAlberghi().get(i).getVoto(),
 			});
 			dtm.isCellEditable(i, 1);
@@ -292,6 +301,8 @@ public class Principale extends JFrame {
 	do {
 		int luogoFK = controller.getRistoranteDAO().getRistoranti().get(i).getLuogo_FK();
 		controller.getLuogoDAO().setLuogoByID(controller.getConnection(), luogoFK);
+		
+		
 			dtm.addRow(new Object[] {
 					controller.getRistoranteDAO().getRistoranti().get(i).getNome(), controller.getLuogoDAO().getLuogo().getCittà(), controller.getRistoranteDAO().getRistoranti().get(i).getVoto(),
 			});
@@ -317,6 +328,7 @@ public class Principale extends JFrame {
 	do {
 		int luogoFK = controller.getAttrazioneDAO().getAttrazioni().get(i).getLuogo_FK();
 		controller.getLuogoDAO().setLuogoByID(controller.getConnection(), luogoFK);
+		
 			dtm.addRow(new Object[] {
 					controller.getAttrazioneDAO().getAttrazioni().get(i).getNome(),controller.getLuogoDAO().getLuogo().getCittà(), controller.getAttrazioneDAO().getAttrazioni().get(i).getVoto(),
 			});

@@ -16,6 +16,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -44,7 +45,11 @@ public class ScriviRecensioneAlbergo extends JFrame {
 	final static int ALTEZZA_FINESTRA = 690;
 	final static int LUNGHEZZA_FINESTRA = 940;
 	
-	String nomeDaRecensire; //inizializziamo il nome della cosa che vogliamo recensire 
+	private DefaultListModel dlm = new DefaultListModel();
+	private DefaultListModel dlm1 = new DefaultListModel();
+	private DefaultListModel dlm2 = new DefaultListModel();
+
+
 
 	public ScriviRecensioneAlbergo(Controller controller) throws IOException {
 		setIconImage(Toolkit.getDefaultToolkit().getImage("images\\LogoPiccolo.png"));
@@ -180,7 +185,7 @@ public class ScriviRecensioneAlbergo extends JFrame {
 		txtrSitoWeb.setEditable(false);
 		txtrSitoWeb.setText("Sito Web");
 		txtrSitoWeb.setFont(new Font("Gadugi", Font.BOLD, 18));
-		txtrSitoWeb.setBounds(622, 365, 80, 29);
+		txtrSitoWeb.setBounds(485, 365, 80, 29);
 		contentPane.add(txtrSitoWeb);
 		
 		JTextArea textStato = new JTextArea();
@@ -216,14 +221,30 @@ public class ScriviRecensioneAlbergo extends JFrame {
 		contentPane.add(textIndirizzo);
 		
 		JList listTelefono = new JList();
-		listTelefono.setBackground(new Color(255, 255, 255));
-		
-		listTelefono.setBounds(291, 404, 273, 40);
+		listTelefono.setFont(new Font("Gadugi", Font.PLAIN, 13));
+		listTelefono.setBackground(new Color(0, 191, 255));
+		for(int i = 0; i<controller.getContattiDAO().getSitoEtelefono().size(); i++) 
+			dlm.addElement(controller.getContattiDAO().getSitoEtelefono().get(i).getTelefono());
+			listTelefono.setModel(dlm);
+		listTelefono.setBounds(291, 404, 157, 40);
 		contentPane.add(listTelefono);
 		
 		JList listSitoWeb = new JList();
-		listSitoWeb.setBounds(622, 404, 294, 40);
+		listSitoWeb.setFont(new Font("Gadugi", Font.PLAIN, 13));
+		listSitoWeb.setBackground(new Color(0, 191, 255));
+		listSitoWeb.setBounds(485, 408, 128, 40);
+		for(int i = 0; i<controller.getContattiDAO().getSitoEtelefono().size(); i++) 
+			dlm1.addElement(controller.getContattiDAO().getSitoEtelefono().get(i).getSitoWeb());
+		listSitoWeb.setModel(dlm1);
 		contentPane.add(listSitoWeb);
+		
+		JList Fascia_Prezzo = new JList();
+		Fascia_Prezzo.setBackground(new Color(0, 191, 255));
+		Fascia_Prezzo.setFont(new Font("Gadugi", Font.PLAIN, 13));
+		Fascia_Prezzo.setBounds(774, 48, 118, 40);
+		dlm2.addElement(controller.getAlbergoDAO().getAlberghi().get(controller.getIndice()).getFascia_Prezzo());
+		Fascia_Prezzo.setModel(dlm2);
+		contentPane.add(Fascia_Prezzo);
 		
 		JTextArea txtrCamere = new JTextArea();
 		txtrCamere.setText("Numero camere");
@@ -246,6 +267,7 @@ public class ScriviRecensioneAlbergo extends JFrame {
 		btnIndietro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
+					controller.getContattiDAO().getSitoEtelefono().clear();
 					controller.CambiaFrame(ScriviRecensioneAlbergo.this, controller.getPrincipale());
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
@@ -264,7 +286,7 @@ public class ScriviRecensioneAlbergo extends JFrame {
 		txtrFascia_Prezzo.setFont(new Font("Gadugi", Font.BOLD, 18));
 		txtrFascia_Prezzo.setEditable(false);
 		txtrFascia_Prezzo.setBackground(new Color(0, 191, 255));
-		txtrFascia_Prezzo.setBounds(774, 16, 118, 34);
+		txtrFascia_Prezzo.setBounds(774, 10, 118, 34);
 		contentPane.add(txtrFascia_Prezzo);
 		
 		JTextArea txtrDescrizione_1_1 = new JTextArea();
@@ -272,7 +294,7 @@ public class ScriviRecensioneAlbergo extends JFrame {
 		txtrDescrizione_1_1.setFont(new Font("Gadugi", Font.BOLD, 18));
 		txtrDescrizione_1_1.setEditable(false);
 		txtrDescrizione_1_1.setBackground(new Color(0, 191, 255));
-		txtrDescrizione_1_1.setBounds(774, 72, 104, 29);
+		txtrDescrizione_1_1.setBounds(636, 365, 104, 29);
 		contentPane.add(txtrDescrizione_1_1);
 		
 		JTextArea txtrDescrizione_1_1_1 = new JTextArea();
@@ -280,8 +302,10 @@ public class ScriviRecensioneAlbergo extends JFrame {
 		txtrDescrizione_1_1_1.setFont(new Font("Gadugi", Font.BOLD, 18));
 		txtrDescrizione_1_1_1.setEditable(false);
 		txtrDescrizione_1_1_1.setBackground(new Color(0, 191, 255));
-		txtrDescrizione_1_1_1.setBounds(774, 127, 104, 29);
+		txtrDescrizione_1_1_1.setBounds(792, 365, 104, 29);
 		contentPane.add(txtrDescrizione_1_1_1);
+		
+		
 		
 		
 		btnaggiungirecensione.addActionListener(new ActionListener() {
