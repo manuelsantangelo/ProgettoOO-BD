@@ -282,19 +282,38 @@ public class ScriviRecensioneRistorante extends JFrame {
 		txtrFasciaPrezzo.setBounds(786, 10, 118, 29);
 		contentPane.add(txtrFasciaPrezzo);
 		
+<<<<<<< HEAD
+		JList Categoria = new JList();
+=======
 		JLabel lblIconadescrizione = new JLabel("iconaDescrizione");
 		lblIconadescrizione.setBounds(251, 10, 62, 29);
 		contentPane.add(lblIconadescrizione);
 		
 		/*JList Categoria = new JList();
+>>>>>>> branch 'master' of https://github.com/manuelsantangelo/ProgettoOO-BD.git
 		Categoria.setFont(new Font("Gadugi", Font.PLAIN, 13));
 		Categoria.setBackground(new Color(0, 191, 255));
 		Categoria.setBounds(786, 142, 118, 73);
-		dlm3.addElement(controller.getRistoranteDAO().getRistorante().get
+		for(int i = 0; i<controller.getCategoriaristoranteDAO().getTipoRistoranteList().size(); i++)
+		dlm3.addElement(controller.getCategoriaristoranteDAO().getTipoRistoranteList().get(i));
 		Categoria.setModel(dlm3);
+<<<<<<< HEAD
+		contentPane.add(Categoria);
+		
+		
+		
+		
+		
+		
+=======
 		contentPane.add(Categoria);*/
 			
+<<<<<<< HEAD
 
+=======
+>>>>>>> branch 'master' of https://github.com/manuelsantangelo/ProgettoOO-BD.git
+		
+>>>>>>> branch 'master' of https://github.com/manuelsantangelo/ProgettoOO-BD.git
 		btnaggiungirecensione.addActionListener(new ActionListener() {
 			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {

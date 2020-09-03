@@ -9,6 +9,7 @@ import logic.DAO.AlbergoDAO;
 import logic.DAO.Associazione_Categoria_RistoranteDAO;
 import logic.DAO.Associazione_Servizio_AlbergoDAO;
 import logic.DAO.AttrazioneDAO;
+import logic.DAO.CategoriaRistoranteDAO;
 import logic.DAO.ContattiDAO;
 import logic.DAO.LuogoDAO;
 import logic.DAO.ModeratoreDAO;
@@ -47,6 +48,7 @@ public class Controller {
 	private AttrazioneDAO attrazioneDAO = new AttrazioneDAO(this);
 	private ModeratoreDAO moderatoreDAO = new ModeratoreDAO(this);
 	private RecensioneDAO recensioneDAO = new RecensioneDAO(this);
+	private CategoriaRistoranteDAO categoriaristoranteDAO = new CategoriaRistoranteDAO();
 
 	
 	//inizializza FINESTRE
@@ -169,7 +171,10 @@ public class Controller {
 	public RecensioneDAO getRecensioneDAO() {
 		return recensioneDAO;
 	}
-	
+
+	public CategoriaRistoranteDAO getCategoriaristoranteDAO() {
+		return categoriaristoranteDAO;
+	}
 // i metodi seguenti servono per passare le finestre quando vengono chiamati i metodi CambiaFrame e ChiudiFrame
 	
 	public Iscrizione getIscrizione() {
