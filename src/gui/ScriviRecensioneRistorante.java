@@ -49,8 +49,6 @@ public class ScriviRecensioneRistorante extends JFrame {
 	private DefaultListModel dlm3 = new DefaultListModel();
 
 
-
-
 	public ScriviRecensioneRistorante(Controller controller) throws IOException {
 		setIconImage(Toolkit.getDefaultToolkit().getImage("images\\LogoPiccolo.png"));
 		setTitle("Recensione " + controller.getRistoranteDAO().getRistorante().getNome());
@@ -296,15 +294,14 @@ public class ScriviRecensioneRistorante extends JFrame {
 		Categoria.setModel(dlm3);
 		contentPane.add(Categoria);*/
 			
-		
+
 		btnaggiungirecensione.addActionListener(new ActionListener() {
 			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
 				String recensione = textAreaRecensione.getText();
 				int stelle = valutazioneStelle.getSelectedIndex()+1;
 				controller.getRecensioneDAO().addRecensioneRis(controller.getConnection(), recensione, stelle);
-				
-				
+						
 			}});
 		
 }
