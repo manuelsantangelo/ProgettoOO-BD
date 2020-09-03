@@ -338,7 +338,7 @@ public class Aggiungi_Hotel extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				JFileChooser fc = new JFileChooser();
-				fc.setCurrentDirectory(new java.io.File("C:\\Users\\manue\\Desktop"));
+				fc.setCurrentDirectory(new java.io.File("C:\\Users"));
 				fc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
 				if(fc.showOpenDialog(btnCerca) == JFileChooser.APPROVE_OPTION) {
 					String path = fc.getSelectedFile().getAbsolutePath();
