@@ -17,7 +17,12 @@ import logic.Classi.Contatti;
 public class Associazione_Categoria_RistoranteDAO {
 	Controller controller;
 	private Associazione_Categoria_Ristorante associazione_categoria_ristorante = new Associazione_Categoria_Ristorante();
+    private ArrayList<Associazione_Categoria_Ristorante> categorie = new ArrayList<Associazione_Categoria_Ristorante>();
 	
+	public ArrayList<Associazione_Categoria_Ristorante> getCategorie() {
+		return categorie;
+	}
+
 	public Associazione_Categoria_Ristorante getAssociazione_categoria_ristorante() {
 		return associazione_categoria_ristorante;
 	}
@@ -52,10 +57,9 @@ public class Associazione_Categoria_RistoranteDAO {
 		
 		public void setAssociazione_Categoria_RistoranteByID (Connection conn) {
 		
-			String comando = "Select \"CategoriaRistorante_FK\" from  \"Associazione_Categoria_Ristorante\" where "
+			String comando = "Select * from \"Associazione_Categoria_Ristorante\" where "
 					+ "\"Ristorante_FK\" = " + controller.getRistoranteDAO().getRistorante().getRistorante_ID();
-			
-			
+		
 			try {
 				Associazione_Categoria_Ristorante asscatris;
 				
@@ -63,26 +67,14 @@ public class Associazione_Categoria_RistoranteDAO {
 				ResultSet rs = ps.executeQuery();
 				while(rs.next()) {
 					asscatris = new Associazione_Categoria_Ristorante();
-					
-					asscatris.setCategoria_Ristorante_FK(tiporistorante.valueOf(rs.getObject(1).toString()));
-					this.associazione_categoria_ristorante = asscatris;
-					System.out.println(asscatris.getCategoria_Ristorante_FK());
-				
-					/*tiporistorante tiporis;
-					tiporis = tiporistorante.valueOf(rs.getObject(1).toString());
-					setAssociazione_categoria_ristorante(associazione_categoria_ristorante);
-					tipoR.add(tiporis);*/
+					asscatris.setRistorante_FK(rs.getInt(1));
+					asscatris.setCategoria_Ristorante_FK(tiporistorante.valueOf(rs.getObject(2).toString()));
+					this.categorie.add(asscatris);
 				}
-				
 				
 			} catch (Exception e) {
 				 System.out.println("ERROR IN SQL" + e);
 					JOptionPane.showMessageDialog(null, "ERRORE! Qualcosa è andato storto con il recupero dell primo sql");			}
 		}
 		
-		
-
-	
-
-	
 }

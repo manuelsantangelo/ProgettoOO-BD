@@ -236,7 +236,7 @@ public class Principale extends JFrame {
             		controller.getLuogoDAO().setLuogo2(controller.getConnection(), controller.getRistoranteDAO().getRistorante().getLuogo_FK());
             		controller.getContattiDAO().setContattiRistorante(controller.getConnection());
             		controller.getAssociazione_Categoria_RistoranteDAO().setAssociazione_Categoria_RistoranteByID(controller.getConnection());
-            		controller.getCategoriaristoranteDAO().setTipo(controller.getConnection());
+         
             		try {
             			
 						controller.CambiaFrame(Principale.this, controller.getScriviRecensioneRis());
