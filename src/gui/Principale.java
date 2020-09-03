@@ -50,7 +50,6 @@ public class Principale extends JFrame {
 	private JPanel contentPane;
 	private JFrame frame;
 	
-	
 	final static int FINESTRA_Y = 80;
 	final static int FINESTRA_X = 25;
 	final static int ALTEZZA_FINESTRA = 690;
