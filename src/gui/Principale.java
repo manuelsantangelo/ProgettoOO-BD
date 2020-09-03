@@ -248,7 +248,7 @@ public class Principale extends JFrame {
             		controller.getAlbergoDAO().setAlbergo(controller.getAlbergoDAO().getAlberghi().get(indice));
             		controller.getLuogoDAO().setLuogo2(controller.getConnection(), controller.getAlbergoDAO().getAlbergo().getLuogo_FK());
             		controller.getContattiDAO().setContattiAlbergo(controller.getConnection());
-
+            		controller.getAssociazione_Servizio_AlbergoDAO().setAssociazione_Servizio_AlbergoByID(controller.getConnection());
             		try {
 						controller.CambiaFrame(Principale.this, controller.getScriviRecensioneAlb());
 					} catch (IOException e) {

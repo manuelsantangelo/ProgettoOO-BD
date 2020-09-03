@@ -8,17 +8,25 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
+import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
+import Tipi.categoriaalbergo;
 import Tipi.prezzo;
 import logic.Controller;
+import logic.Classi.Albergo;
 import logic.Classi.Recensione;
 
 public class RecensioneDAO {
 	Controller controller;
 	
 	private Recensione recensione = new Recensione();
+	private ArrayList<Recensione> recensioni = new ArrayList<Recensione>();
+	
+	public ArrayList<Recensione> getRecensioni() {
+		return recensioni;
+	}
 	
 	public Recensione getRecensione() {
 		return recensione;
@@ -99,6 +107,38 @@ public class RecensioneDAO {
 			System.out.println("ERROR IN SQL" + e2);
 			JOptionPane.showMessageDialog(null, "ATTENZIONE! Non puoi recensire lo stesso Albergo più di una volta!");
 	}
+	}
+	
+
+	public void setAllRecensioni(Connection conn){
+		this.recensioni.clear();
+		
+try {		
+	Recensione recensione;
+	
+	String comando = "SELECT * FROM public.\"Recensione\" where \"Approvata\" = false ";
+	
+	PreparedStatement ps = null;
+	ResultSet rs = null;
+	
+	ps = conn.prepareStatement(comando);
+	rs = ps.executeQuery();
+	while (rs.next()) {
+		recensione = new Recensione();
+		recensione.setReview_ID(rs.getInt(1));
+		recensione.setTesto(rs.getString(2));
+		recensione.setApprovata(rs.getBoolean(5));
+		recensione.setUser_FK1(rs.getInt(6));
+		
+		this.recensioni.add(recensione);
+	
+	}
+	
+} catch (Exception e) {
+	System.out.println("ERROR IN SQL" + e);
+	JOptionPane.showMessageDialog(null, "ERRORE! Qualcosa è andato storto con il recupero delle recensioni");	
+	
+}
 	}
 
 }

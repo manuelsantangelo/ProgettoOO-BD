@@ -181,5 +181,14 @@ btnEliminaHotel.addActionListener(new ActionListener() {
 	controller.CambiaFrame(Moderatore_Homepage.this, controller.getElimina_Hotel());
 		}
 });
+
+btnApprovarecensione.addActionListener(new ActionListener() {
+	
+	public void actionPerformed(ActionEvent e) {
+		controller.CambiaFrame(Moderatore_Homepage.this, controller.getApprovaRecensione());
+	}
+	
+	
+});
 	}
 }

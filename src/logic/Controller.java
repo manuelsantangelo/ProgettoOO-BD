@@ -55,6 +55,7 @@ public class Controller {
 	private HomePage home;
 	private Iscrizione iscrizione;
 	private Moderatore_Homepage mod;
+	private ApprovaRecensione approvaRecensione;
 	private Aggiungi_Ristorante addRest;
 	private Aggiungi_Hotel addHotel;
 	private Aggiungi_Attrazione addAtt;
@@ -65,6 +66,7 @@ public class Controller {
 	private ScriviRecensioneRistorante scriviRecRis;
 	private ScriviRecensioneAlbergo scriviRecAlb;
 	private ScriviRecensioneAttrazione scriviRecAttr;
+	
 	
 	private int indice;
 	
@@ -194,6 +196,10 @@ public class Controller {
 		return mod;
 	}
 	
+	public ApprovaRecensione getApprovaRecensione() {
+		approvaRecensione = new ApprovaRecensione(this);
+		return approvaRecensione;
+	}
 	public Principale getPrincipale() throws IOException {
 		principale = new Principale(this);
 		return principale;

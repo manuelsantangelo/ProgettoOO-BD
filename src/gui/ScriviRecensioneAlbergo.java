@@ -59,12 +59,14 @@ public class ScriviRecensioneAlbergo extends JFrame {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(FINESTRA_Y, FINESTRA_X, LUNGHEZZA_FINESTRA, ALTEZZA_FINESTRA);	
 		contentPane = new JPanel();
+		contentPane.setEnabled(false);
 		contentPane.setBackground(new Color(0, 191, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 	
 		JTextArea txtrDescrizione = new JTextArea();
+		txtrDescrizione.setFocusable(false);
 		txtrDescrizione.setText("Recensione");
 		txtrDescrizione.setForeground(Color.WHITE);
 		txtrDescrizione.setFont(new Font("Parametric Glitch", Font.BOLD, 21));
@@ -82,6 +84,7 @@ public class ScriviRecensioneAlbergo extends JFrame {
 		contentPane.add(btnaggiungirecensione);
 		
 		JLabel lblFoto = new JLabel("foto");
+		lblFoto.setFocusable(false);
 		lblFoto.setBackground(new Color(255, 255, 255));
 		lblFoto.setBounds(43, 48, 187, 182);
 		contentPane.add(lblFoto);
@@ -104,6 +107,7 @@ public class ScriviRecensioneAlbergo extends JFrame {
 		contentPane.add(valutazioneStelle);
 		
 		JTextArea txtrvalutazioneStelle = new JTextArea();
+		txtrvalutazioneStelle.setFocusable(false);
 		txtrvalutazioneStelle.setText("Stelle valutazione");
 		txtrvalutazioneStelle.setForeground(Color.WHITE);
 		txtrvalutazioneStelle.setFont(new Font("Parametric Glitch", Font.BOLD, 21));
@@ -113,6 +117,7 @@ public class ScriviRecensioneAlbergo extends JFrame {
 		contentPane.add(txtrvalutazioneStelle);
 		
 		JTextArea txtrNome = new JTextArea();
+		txtrNome.setFocusable(false);
 		txtrNome.setEditable(false);
 		txtrNome.setFont(new Font("Gadugi", Font.BOLD, 18));
 		txtrNome.setText(controller.getAlbergoDAO().getAlbergo().getNome());
@@ -121,6 +126,7 @@ public class ScriviRecensioneAlbergo extends JFrame {
 		contentPane.add(txtrNome);
 		
 		JTextArea txtrDescrizione_1 = new JTextArea();
+		txtrDescrizione_1.setFocusable(false);
 		txtrDescrizione_1.setEditable(false);
 		txtrDescrizione_1.setBackground(new Color(0, 191, 255));
 		txtrDescrizione_1.setFont(new Font("Gadugi", Font.BOLD, 18));
@@ -132,7 +138,14 @@ public class ScriviRecensioneAlbergo extends JFrame {
 		textAreaRecensione.setBounds(24, 498, 624, 98);
 		contentPane.add(textAreaRecensione);
 		
+		JScrollPane scrollPane = new JScrollPane(textAreaRecensione);
+		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		scrollPane.setBounds(24, 498, 624, 98);
+		scrollPane.getViewport().setBackground(Color.WHITE);
+		add(scrollPane);
+		
 		JTextArea textAreaDescrizione = new JTextArea();
+		textAreaDescrizione.setFocusable(false);
 		textAreaDescrizione.setFont(new Font("Gadugi", Font.ITALIC, 16));
 		textAreaDescrizione.setWrapStyleWord(true);
 		textAreaDescrizione.setLineWrap(true);
@@ -143,6 +156,7 @@ public class ScriviRecensioneAlbergo extends JFrame {
 		contentPane.add(textAreaDescrizione);
 		
 		JTextArea txtrStato = new JTextArea();
+		txtrStato.setFocusable(false);
 		txtrStato.setBackground(new Color(0, 191, 255));
 		txtrStato.setEditable(false);
 		txtrStato.setText("Stato");
@@ -151,6 +165,7 @@ public class ScriviRecensioneAlbergo extends JFrame {
 		contentPane.add(txtrStato);
 		
 		JTextArea txtrCittà = new JTextArea();
+		txtrCittà.setFocusable(false);
 		txtrCittà.setBackground(new Color(0, 191, 255));
 		txtrCittà.setEditable(false);
 		txtrCittà.setText("Citt\u00E0\r\n");
@@ -159,6 +174,7 @@ public class ScriviRecensioneAlbergo extends JFrame {
 		contentPane.add(txtrCittà);
 		
 		JTextArea txtrProvincia = new JTextArea();
+		txtrProvincia.setFocusable(false);
 		txtrProvincia.setBackground(new Color(0, 191, 255));
 		txtrProvincia.setEditable(false);
 		txtrProvincia.setText("Provincia\r\n");
@@ -167,6 +183,7 @@ public class ScriviRecensioneAlbergo extends JFrame {
 		contentPane.add(txtrProvincia);
 		
 		JTextArea txtrIndirizzo = new JTextArea();
+		txtrIndirizzo.setFocusable(false);
 		txtrIndirizzo.setBackground(new Color(0, 191, 255));
 		txtrIndirizzo.setEditable(false);
 		txtrIndirizzo.setText("Indirizzo\r\n");
@@ -175,6 +192,7 @@ public class ScriviRecensioneAlbergo extends JFrame {
 		contentPane.add(txtrIndirizzo);
 		
 		JTextArea txtrContatti = new JTextArea();
+		txtrContatti.setFocusable(false);
 		txtrContatti.setBackground(new Color(0, 191, 255));
 		txtrContatti.setEditable(false);
 		txtrContatti.setText("Telefono");
@@ -183,6 +201,7 @@ public class ScriviRecensioneAlbergo extends JFrame {
 		contentPane.add(txtrContatti);
 		
 		JTextArea txtrSitoWeb = new JTextArea();
+		txtrSitoWeb.setFocusable(false);
 		txtrSitoWeb.setBackground(new Color(0, 191, 255));
 		txtrSitoWeb.setEditable(false);
 		txtrSitoWeb.setText("Sito Web");
@@ -191,6 +210,7 @@ public class ScriviRecensioneAlbergo extends JFrame {
 		contentPane.add(txtrSitoWeb);
 		
 		JTextArea textStato = new JTextArea();
+		textStato.setFocusable(false);
 		textStato.setFont(new Font("Gadugi", Font.PLAIN, 17));
 		textStato.setBackground(new Color(0, 191, 255));
 		textStato.setEditable(false);
@@ -199,6 +219,7 @@ public class ScriviRecensioneAlbergo extends JFrame {
 		contentPane.add(textStato);
 		
 		JTextArea textCittà = new JTextArea();
+		textCittà.setFocusable(false);
 		textCittà.setFont(new Font("Gadugi", Font.PLAIN, 17));
 		textCittà.setBackground(new Color(0, 191, 255));
 		textCittà.setEditable(false);
@@ -207,6 +228,7 @@ public class ScriviRecensioneAlbergo extends JFrame {
 		contentPane.add(textCittà);
 		
 		JTextArea textProvincia = new JTextArea();
+		textProvincia.setFocusable(false);
 		textProvincia.setFont(new Font("Gadugi", Font.PLAIN, 17));
 		textProvincia.setBackground(new Color(0, 191, 255));
 		textProvincia.setEditable(false);
@@ -215,6 +237,7 @@ public class ScriviRecensioneAlbergo extends JFrame {
 		contentPane.add(textProvincia);
 		
 		JTextArea textIndirizzo = new JTextArea();
+		textIndirizzo.setFocusable(false);
 		textIndirizzo.setFont(new Font("Gadugi", Font.PLAIN, 16));
 		textIndirizzo.setBackground(new Color(0, 191, 255));
 		textIndirizzo.setEditable(false);
@@ -232,6 +255,7 @@ public class ScriviRecensioneAlbergo extends JFrame {
 		contentPane.add(listTelefono);
 		
 		JList listSitoWeb = new JList();
+		listSitoWeb.setFocusable(false);
 		listSitoWeb.setFont(new Font("Gadugi", Font.PLAIN, 13));
 		listSitoWeb.setBackground(new Color(0, 191, 255));
 		listSitoWeb.setBounds(485, 408, 128, 40);
@@ -249,6 +273,7 @@ public class ScriviRecensioneAlbergo extends JFrame {
 		contentPane.add(Fascia_Prezzo);
 		
 		JTextArea txtrCamere = new JTextArea();
+		txtrCamere.setFocusable(false);
 		txtrCamere.setText("Numero camere");
 		txtrCamere.setFont(new Font("Gadugi", Font.BOLD, 18));
 		txtrCamere.setEditable(false);
@@ -257,6 +282,7 @@ public class ScriviRecensioneAlbergo extends JFrame {
 		contentPane.add(txtrCamere);
 		
 		JTextArea textCamere = new JTextArea();
+		textCamere.setFocusable(false);
 		textCamere.setText(String.valueOf(controller.getAlbergoDAO().getAlbergo().getNumero_Camere()));
 		textCamere.setFont(new Font("Gadugi", Font.PLAIN, 17));
 		textCamere.setEditable(false);
@@ -270,6 +296,7 @@ public class ScriviRecensioneAlbergo extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					controller.getContattiDAO().getSitoEtelefono().clear();
+					controller.getAssociazione_Servizio_AlbergoDAO().getServizi().clear();
 					controller.CambiaFrame(ScriviRecensioneAlbergo.this, controller.getPrincipale());
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
@@ -284,6 +311,7 @@ public class ScriviRecensioneAlbergo extends JFrame {
 		contentPane.add(btnIndietro);
 		
 		JTextArea txtrFascia_Prezzo = new JTextArea();
+		txtrFascia_Prezzo.setFocusable(false);
 		txtrFascia_Prezzo.setText("Fascia prezzo");
 		txtrFascia_Prezzo.setFont(new Font("Gadugi", Font.BOLD, 18));
 		txtrFascia_Prezzo.setEditable(false);
@@ -292,6 +320,7 @@ public class ScriviRecensioneAlbergo extends JFrame {
 		contentPane.add(txtrFascia_Prezzo);
 		
 		JTextArea txtrDescrizione_1_1 = new JTextArea();
+		txtrDescrizione_1_1.setFocusable(false);
 		txtrDescrizione_1_1.setText("Categoria");
 		txtrDescrizione_1_1.setFont(new Font("Gadugi", Font.BOLD, 18));
 		txtrDescrizione_1_1.setEditable(false);
@@ -300,6 +329,7 @@ public class ScriviRecensioneAlbergo extends JFrame {
 		contentPane.add(txtrDescrizione_1_1);
 		
 		JTextArea txtrDescrizione_1_1_1 = new JTextArea();
+		txtrDescrizione_1_1_1.setFocusable(false);
 		txtrDescrizione_1_1_1.setText("Servizio");
 		txtrDescrizione_1_1_1.setFont(new Font("Gadugi", Font.BOLD, 18));
 		txtrDescrizione_1_1_1.setEditable(false);
@@ -308,6 +338,7 @@ public class ScriviRecensioneAlbergo extends JFrame {
 		contentPane.add(txtrDescrizione_1_1_1);
 		
 		JList Categoria = new JList();
+		Categoria.setFocusable(false);
 		Categoria.setFont(new Font("Gadugi", Font.PLAIN, 13));
 		Categoria.setBackground(new Color(0, 191, 255));
 		Categoria.setBounds(636, 393, 85, 61);
@@ -315,13 +346,15 @@ public class ScriviRecensioneAlbergo extends JFrame {
 		Categoria.setModel(dlm3);
 		contentPane.add(Categoria);
 		
-		/*JList Servizio = new JList();
+		JList Servizio = new JList();
+		Servizio.setFocusable(false);
 		Servizio.setFont(new Font("Gadugi", Font.PLAIN, 13));
 		Servizio.setBackground(new Color(0, 191, 255));
 		Servizio.setBounds(792, 397, 101, 51);
-		dlm4.addElement(controller.getAlbergoDAO().getAlberghi().get(controller.getIndice()).getServizio());
+		for(int i = 0; i < controller.getAssociazione_Servizio_AlbergoDAO().getServizi().size(); i++)
+			dlm4.addElement(controller.getAssociazione_Servizio_AlbergoDAO().getServizi().get(i).getServizio_FK().toString());
 		Servizio.setModel(dlm4);
-		contentPane.add(Servizio);*/
+		contentPane.add(Servizio);
 		
 		
 		
