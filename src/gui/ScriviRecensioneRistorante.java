@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -41,7 +42,7 @@ public class ScriviRecensioneRistorante extends JFrame {
 	final static int FINESTRA_Y = 80;
 	final static int FINESTRA_X = 25;
 	final static int ALTEZZA_FINESTRA = 690;
-	final static int LUNGHEZZA_FINESTRA = 940;
+	final static int LUNGHEZZA_FINESTRA = 1260;
 	
 	private DefaultListModel dlm = new DefaultListModel();
 	private DefaultListModel dlm1 = new DefaultListModel();
@@ -82,7 +83,7 @@ public class ScriviRecensioneRistorante extends JFrame {
 		JLabel lblFoto = new JLabel("foto");
 		lblFoto.setFocusable(false);
 		lblFoto.setBackground(new Color(255, 255, 255));
-		lblFoto.setBounds(43, 48, 187, 182);
+		lblFoto.setBounds(43, 78, 187, 182);
 		contentPane.add(lblFoto);
 		
 		byte[] imgBytes = controller.getRistoranteDAO().getRistorante().getFoto();
@@ -118,7 +119,7 @@ public class ScriviRecensioneRistorante extends JFrame {
 		txtrNome.setFont(new Font("Gadugi", Font.BOLD, 18));
 		txtrNome.setText(controller.getRistoranteDAO().getRistorante().getNome());
 		txtrNome.setBackground(new Color(0, 191, 255));
-		txtrNome.setBounds(41, 10, 189, 40);
+		txtrNome.setBounds(41, 10, 189, 34);
 		contentPane.add(txtrNome);
 		
 		JTextArea txtrDescrizione_1 = new JTextArea();
@@ -127,7 +128,7 @@ public class ScriviRecensioneRistorante extends JFrame {
 		txtrDescrizione_1.setBackground(new Color(0, 191, 255));
 		txtrDescrizione_1.setFont(new Font("Gadugi", Font.BOLD, 18));
 		txtrDescrizione_1.setText("Descrizione");
-		txtrDescrizione_1.setBounds(318, 10, 111, 22);
+		txtrDescrizione_1.setBounds(308, 13, 111, 22);
 		contentPane.add(txtrDescrizione_1);
 		
 		JTextArea textAreaRecensione = new JTextArea();
@@ -149,9 +150,10 @@ public class ScriviRecensioneRistorante extends JFrame {
 		textAreaDescrizione.setEditable(false);
 		textAreaDescrizione.setText(controller.getRistoranteDAO().getRistorante().getDescizione());
 		textAreaDescrizione.setBackground(new Color(0, 191, 255));
-		textAreaDescrizione.setBounds(270, 48, 489, 182);
+		textAreaDescrizione.setBounds(270, 78, 489, 182);
 		contentPane.add(textAreaDescrizione);
 		
+<<<<<<< HEAD
 		JTextArea txtrStato = new JTextArea();
 		txtrStato.setFocusable(false);
 		txtrStato.setBackground(new Color(0, 191, 255));
@@ -179,6 +181,8 @@ public class ScriviRecensioneRistorante extends JFrame {
 		txtrProvincia.setBounds(599, 262, 85, 29);
 		contentPane.add(txtrProvincia);
 		
+=======
+>>>>>>> branch 'master' of https://github.com/manuelsantangelo/ProgettoOO-BD.git
 		JTextArea txtrIndirizzo = new JTextArea();
 		txtrIndirizzo.setFocusable(false);
 		txtrIndirizzo.setBackground(new Color(0, 191, 255));
@@ -206,6 +210,7 @@ public class ScriviRecensioneRistorante extends JFrame {
 		txtrSitoWeb.setBounds(622, 365, 80, 29);
 		contentPane.add(txtrSitoWeb);
 		
+<<<<<<< HEAD
 		JTextArea textStato = new JTextArea();
 		textStato.setFocusable(false);
 		textStato.setFont(new Font("Gadugi", Font.PLAIN, 17));
@@ -242,6 +247,8 @@ public class ScriviRecensioneRistorante extends JFrame {
 		textIndirizzo.setBounds(43, 404, 238, 40);
 		contentPane.add(textIndirizzo);
 		
+=======
+>>>>>>> branch 'master' of https://github.com/manuelsantangelo/ProgettoOO-BD.git
 		JList listTelefono = new JList();
 		listTelefono.setFocusable(false);
 		listTelefono.setFont(new Font("Gadugi", Font.PLAIN, 13));
@@ -257,20 +264,21 @@ public class ScriviRecensioneRistorante extends JFrame {
 		listSitoWeb.setFocusable(false);
 		listSitoWeb.setFont(new Font("Gadugi", Font.PLAIN, 13));
 		listSitoWeb.setBackground(new Color(0, 191, 255));
-		listSitoWeb.setBounds(622, 404, 294, 40);
+		listSitoWeb.setBounds(622, 404, 280, 40);
 		for(int i = 0; i<controller.getContattiDAO().getSitoEtelefono().size(); i++) 
 			dlm1.addElement(controller.getContattiDAO().getSitoEtelefono().get(i).getSitoWeb());
 		listSitoWeb.setModel(dlm1);
 		contentPane.add(listSitoWeb);
+<<<<<<< HEAD
 		
 		JList Fascia_Prezzo = new JList();
 		Fascia_Prezzo.setFocusable(false);
 		Fascia_Prezzo.setBackground(new Color(0, 191, 255));
 		Fascia_Prezzo.setFont(new Font("Gadugi", Font.PLAIN, 13));
 		Fascia_Prezzo.setBounds(786, 48, 118, 47);
+=======
+>>>>>>> branch 'master' of https://github.com/manuelsantangelo/ProgettoOO-BD.git
 			dlm2.addElement(controller.getRistoranteDAO().getRistoranti().get(controller.getIndice()).getFascia_Prezzo());
-		Fascia_Prezzo.setModel(dlm2);
-		contentPane.add(Fascia_Prezzo);
 		
 
 		JButton btnIndietro = new JButton("Indietro");
@@ -293,6 +301,7 @@ public class ScriviRecensioneRistorante extends JFrame {
 		btnIndietro.setBounds(717, 594, 177, 29);
 		contentPane.add(btnIndietro);
 		
+<<<<<<< HEAD
 		JTextArea txtrCategoriaRistoramte = new JTextArea();
 		txtrCategoriaRistoramte.setFocusable(false);
 		txtrCategoriaRistoramte.setText("Categoria ");
@@ -311,19 +320,217 @@ public class ScriviRecensioneRistorante extends JFrame {
 		txtrFasciaPrezzo.setBounds(786, 10, 118, 29);
 		contentPane.add(txtrFasciaPrezzo);
 		
+=======
+>>>>>>> branch 'master' of https://github.com/manuelsantangelo/ProgettoOO-BD.git
 		JLabel lblIconadescrizione = new JLabel("iconaDescrizione");
-		lblIconadescrizione.setBounds(251, 10, 62, 29);
+		lblIconadescrizione.setBounds(270, 14, 28, 29);
+		File nota = new File("images\\nota.png");
+		BufferedImage img = ImageIO.read(nota);
+		Image img2 = img.getScaledInstance(lblIconadescrizione.getWidth(), lblIconadescrizione.getHeight(), Image.SCALE_SMOOTH); 
+		ImageIcon icona_nota = new ImageIcon(img2);
+		lblIconadescrizione.setIcon(icona_nota);
 		contentPane.add(lblIconadescrizione);
+<<<<<<< HEAD
 		
 		JList category = new JList();
 		category.setFocusable(false);
 		category.setFont(new Font("Gadugi", Font.PLAIN, 13));
 		category.setBackground(new Color(0, 191, 255));
 		category.setBounds(786, 142, 118, 73);
+=======
+>>>>>>> branch 'master' of https://github.com/manuelsantangelo/ProgettoOO-BD.git
 		for(int i = 0; i < controller.getAssociazione_Categoria_RistoranteDAO().getCategorie().size(); i++)
 		dlm3.addElement(controller.getAssociazione_Categoria_RistoranteDAO().getCategorie().get(i).getCategoria_Ristorante_FK().toString());
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(0, 153, 255));
+		panel.setBounds(912, 0, 332, 651);
+		contentPane.add(panel);
+		panel.setLayout(null);
+		
+		JLabel lblIconaprezzo = new JLabel("iconaPrezzo");
+		lblIconaprezzo.setBounds(43, 42, 28, 29);
+		File price = new File("images\\prezzo.png");
+		BufferedImage imgprice = ImageIO.read(price);
+		Image imgprice2 = imgprice.getScaledInstance(lblIconaprezzo.getWidth(), lblIconaprezzo.getHeight(), Image.SCALE_SMOOTH); 
+		ImageIcon icona_prezzo = new ImageIcon(imgprice2);
+		contentPane.add(lblIconaprezzo);
+		lblIconaprezzo.setIcon(icona_prezzo);
+		
+		JList category = new JList();
+		category.setLayoutOrientation(JList.HORIZONTAL_WRAP);
+		category.setBounds(54, 227, 249, 98);
+		panel.add(category);
+		category.setFont(new Font("Gadugi", Font.PLAIN, 13));
+		category.setBackground(new Color(0, 191, 255));
 		category.setModel(dlm3);
-		contentPane.add(category);
+		
+		JLabel lblIconacategoria = new JLabel("iconaCategoria");
+		lblIconacategoria.setBounds(16, 251, 28, 29);
+		File category_icon = new File("images\\ristorante.png");
+		BufferedImage imgcat = ImageIO.read(category_icon);
+		Image img2cat = imgcat.getScaledInstance(lblIconacategoria.getWidth(), lblIconacategoria.getHeight(), Image.SCALE_SMOOTH); 
+		ImageIcon icona_categoria = new ImageIcon(img2cat);
+		lblIconacategoria.setIcon(icona_categoria);
+		panel.add(lblIconacategoria);
+		
+		JTextArea textStato = new JTextArea();
+		textStato.setBounds(26, 55, 128, 29);
+		panel.add(textStato);
+		textStato.setFont(new Font("Gadugi", Font.PLAIN, 17));
+		textStato.setBackground(new Color(0, 191, 255));
+		textStato.setEditable(false);
+		textStato.setText(controller.getLuogoDAO().getLuogo2().getStato());
+		
+		JLabel lblIconaMappa = new JLabel("iconaMappa");
+		lblIconaMappa.setBounds(16, 15, 28, 29);
+		File imgmap = new File("images\\mappa.png");
+		BufferedImage imgmap2 = ImageIO.read(imgmap);
+		Image imgmap3 = imgmap2.getScaledInstance(lblIconaMappa.getWidth(), lblIconaMappa.getHeight(), Image.SCALE_SMOOTH); 
+		ImageIcon icona_mappa = new ImageIcon(imgmap3);
+		lblIconaMappa.setIcon(icona_mappa);
+		panel.add(lblIconaMappa);
+		
+		JTextArea textCittà = new JTextArea();
+		textCittà.setBounds(164, 55, 139, 29);
+		panel.add(textCittà);
+		textCittà.setFont(new Font("Gadugi", Font.PLAIN, 17));
+		textCittà.setBackground(new Color(0, 191, 255));
+		textCittà.setEditable(false);
+		textCittà.setText(controller.getLuogoDAO().getLuogo2().getCittà());
+		
+		JTextArea textProvincia = new JTextArea();
+		textProvincia.setBounds(26, 101, 128, 29);
+		panel.add(textProvincia);
+		textProvincia.setFont(new Font("Gadugi", Font.PLAIN, 17));
+		textProvincia.setBackground(new Color(0, 191, 255));
+		textProvincia.setEditable(false);
+		textProvincia.setText(controller.getLuogoDAO().getLuogo2().getPaese());
+		
+		JTextArea textIndirizzo = new JTextArea();
+		textIndirizzo.setBounds(164, 102, 139, 29);
+		panel.add(textIndirizzo);
+		textIndirizzo.setFont(new Font("Gadugi", Font.PLAIN, 16));
+		textIndirizzo.setBackground(new Color(0, 191, 255));
+		textIndirizzo.setEditable(false);
+		textIndirizzo.setText(controller.getLuogoDAO().getLuogo2().getIndirizzo());
+		
+		JTextArea txtrDoveSiamo = new JTextArea();
+		txtrDoveSiamo.setText("Informazioni");
+		txtrDoveSiamo.setFont(new Font("Gadugi", Font.BOLD, 18));
+		txtrDoveSiamo.setEditable(false);
+		txtrDoveSiamo.setBackground(new Color(0, 153, 255));
+		txtrDoveSiamo.setBounds(54, 11, 118, 22);
+		panel.add(txtrDoveSiamo);
+		
+		JLabel lblAereo1 = new JLabel("");
+		lblAereo1.setBounds(61, 170, 41, 39);
+		panel.add(lblAereo1);
+		
+		JLabel lblAereo2 = new JLabel("");
+		lblAereo2.setBounds(113, 152, 41, 39);
+		panel.add(lblAereo2);
+		
+		JLabel lblAereo3 = new JLabel("");
+		lblAereo3.setBounds(164, 170, 41, 39);
+		panel.add(lblAereo3);
+		
+		JLabel lblAereo4 = new JLabel("");
+		lblAereo4.setBounds(215, 152, 41, 39);
+		panel.add(lblAereo4);
+		
+		JLabel lblAereo5 = new JLabel("");
+		lblAereo5.setBounds(266, 170, 41, 39);
+		panel.add(lblAereo5);
+		
+		JLabel lblAereo6 = new JLabel("");
+		lblAereo6.setBounds(16, 152, 41, 39);
+		panel.add(lblAereo6);
+		
+		File aereo = new File("images\\aereo.png");
+		BufferedImage imgaereo = ImageIO.read(aereo);
+		Image aereoimg = imgaereo.getScaledInstance(lblAereo1.getWidth(), lblAereo1.getHeight(), Image.SCALE_SMOOTH); 
+		ImageIcon icona_aereo = new ImageIcon(aereoimg);
+		
+		lblAereo1.setIcon(icona_aereo);
+		lblAereo2.setIcon(icona_aereo);
+		lblAereo3.setIcon(icona_aereo);
+		lblAereo4.setIcon(icona_aereo);
+		lblAereo5.setIcon(icona_aereo);
+		lblAereo6.setIcon(icona_aereo);
+		
+		JLabel lblNave1 = new JLabel("");
+		lblNave1.setBounds(61, 371, 41, 39);
+		panel.add(lblNave1);
+		
+		JLabel lblNave2 = new JLabel("");
+		lblNave2.setBounds(113, 353, 41, 39);
+		panel.add(lblNave2);
+		
+		JLabel lblNave3 = new JLabel("");
+		lblNave3.setBounds(164, 371, 41, 39);
+		panel.add(lblNave3);
+		
+		JLabel lblNave4 = new JLabel("");
+		lblNave4.setBounds(215, 353, 41, 39);
+		panel.add(lblNave4);
+		
+		JLabel lblNave5 = new JLabel("");
+		lblNave5.setBounds(266, 371, 41, 39);
+		panel.add(lblNave5);
+		
+		JLabel lblNave6 = new JLabel("");
+		lblNave6.setBounds(16, 353, 41, 39);
+		panel.add(lblNave6);
+
+		File nave = new File("images\\nave.png");
+		BufferedImage imgnave = ImageIO.read(nave);
+		Image naveimg = imgnave.getScaledInstance(lblNave1.getWidth(), lblNave1.getHeight(), Image.SCALE_SMOOTH); 
+		ImageIcon icona_nave = new ImageIcon(naveimg);
+		
+		lblNave1.setIcon(icona_nave);
+		lblNave2.setIcon(icona_nave);
+		lblNave3.setIcon(icona_nave);
+		lblNave4.setIcon(icona_nave);
+		lblNave5.setIcon(icona_nave);
+		lblNave6.setIcon(icona_nave);
+		
+		JList Fascia_Prezzo = new JList();
+		Fascia_Prezzo.setBounds(81, 45, 118, 22);
+		contentPane.add(Fascia_Prezzo);
+		Fascia_Prezzo.setBackground(new Color(0, 191, 255));
+		Fascia_Prezzo.setFont(new Font("Gadugi", Font.PLAIN, 13));
+		Fascia_Prezzo.setModel(dlm2);
+		
+		JLabel lblIconamichelin = new JLabel("");
+		lblIconamichelin.setBounds(308, 46, 22, 21);
+		contentPane.add(lblIconamichelin);
+		
+		JLabel lblIconamichelin_1 = new JLabel("");
+		lblIconamichelin_1.setBounds(337, 46, 22, 21);
+		contentPane.add(lblIconamichelin_1);
+		
+		JLabel lblIconamichelin_2 = new JLabel("");
+		lblIconamichelin_2.setBounds(366, 46, 22, 21);
+		contentPane.add(lblIconamichelin_2);
+		
+		File stellaM = new File("images\\michelin.png");
+		BufferedImage imgstar = ImageIO.read(stellaM);
+		Image stella1 = imgstar.getScaledInstance(lblIconamichelin.getWidth(), lblIconamichelin.getHeight(), Image.SCALE_SMOOTH); 
+		ImageIcon icona_stella = new ImageIcon(stella1);
+		
+		if(controller.getRistoranteDAO().getRistorante().getStelle_Michelin() > 0) {
+			lblIconamichelin.setIcon(icona_stella);
+			
+			if(controller.getRistoranteDAO().getRistorante().getStelle_Michelin() > 1) {
+				lblIconamichelin_1.setIcon(icona_stella);
+				
+				if(controller.getRistoranteDAO().getRistorante().getStelle_Michelin() == 3) {
+					lblIconamichelin_2.setIcon(icona_stella);
+				}			
+			}
+		}
+		
 		
 		btnaggiungirecensione.addActionListener(new ActionListener() {
 			@SuppressWarnings("deprecation")
