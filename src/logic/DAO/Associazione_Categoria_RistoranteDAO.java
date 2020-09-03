@@ -2,6 +2,7 @@ package logic.DAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ import javax.swing.JOptionPane;
 import Tipi.tiporistorante;
 import logic.Controller;
 import logic.Classi.Associazione_Categoria_Ristorante;
+import logic.Classi.Contatti;
 
 public class Associazione_Categoria_RistoranteDAO {
 	Controller controller;
@@ -25,6 +27,8 @@ public class Associazione_Categoria_RistoranteDAO {
 	public Associazione_Categoria_RistoranteDAO(Controller controller) {
 		this.controller = controller;	
 	}
+	
+	
 	
 	public void addAssociazione_Categoria_Ristorante(Connection conn, ArrayList<tiporistorante> type, int ID) {
 		String comando;
@@ -44,7 +48,41 @@ public class Associazione_Categoria_RistoranteDAO {
 			System.out.println("ERROR IN SQL" + e2);
 			JOptionPane.showMessageDialog(null, "ERRORE! Qualcosa è andato storto con l'Associazione dei tipi dei Ristoranti");
 		}
+	}
+		
+		public void setAssociazione_Categoria_RistoranteByID (Connection conn) {
+		
+			String comando = "Select \"CategoriaRistorante_FK\" from  \"Associazione_Categoria_Ristorante\" where "
+					+ "\"Ristorante_FK\" = " + controller.getRistoranteDAO().getRistorante().getRistorante_ID();
+			
+			
+			try {
+				Associazione_Categoria_Ristorante asscatris;
+				
+				PreparedStatement ps = conn.prepareStatement(comando);
+				ResultSet rs = ps.executeQuery();
+				while(rs.next()) {
+					asscatris = new Associazione_Categoria_Ristorante();
+					
+					asscatris.setCategoria_Ristorante_FK(tiporistorante.valueOf(rs.getObject(1).toString()));
+					this.associazione_categoria_ristorante = asscatris;
+					System.out.println(asscatris.getCategoria_Ristorante_FK());
+				
+					/*tiporistorante tiporis;
+					tiporis = tiporistorante.valueOf(rs.getObject(1).toString());
+					setAssociazione_categoria_ristorante(associazione_categoria_ristorante);
+					tipoR.add(tiporis);*/
+				}
+				
+				
+			} catch (Exception e) {
+				 System.out.println("ERROR IN SQL" + e);
+					JOptionPane.showMessageDialog(null, "ERRORE! Qualcosa è andato storto con il recupero dell primo sql");			}
+		}
+		
+		
 
 	
-}
+
+	
 }
