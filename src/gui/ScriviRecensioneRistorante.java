@@ -124,7 +124,7 @@ public class ScriviRecensioneRistorante extends JFrame {
 		txtrDescrizione_1.setBackground(new Color(0, 191, 255));
 		txtrDescrizione_1.setFont(new Font("Gadugi", Font.BOLD, 18));
 		txtrDescrizione_1.setText("Descrizione");
-		txtrDescrizione_1.setBounds(270, 10, 294, 22);
+		txtrDescrizione_1.setBounds(318, 10, 111, 22);
 		contentPane.add(txtrDescrizione_1);
 		
 		JTextArea textAreaRecensione = new JTextArea();
@@ -284,6 +284,10 @@ public class ScriviRecensioneRistorante extends JFrame {
 		txtrFasciaPrezzo.setBounds(786, 10, 118, 29);
 		contentPane.add(txtrFasciaPrezzo);
 		
+		JLabel lblIconadescrizione = new JLabel("iconaDescrizione");
+		lblIconadescrizione.setBounds(251, 10, 62, 29);
+		contentPane.add(lblIconadescrizione);
+		
 		/*JList Categoria = new JList();
 		Categoria.setFont(new Font("Gadugi", Font.PLAIN, 13));
 		Categoria.setBackground(new Color(0, 191, 255));
@@ -291,12 +295,7 @@ public class ScriviRecensioneRistorante extends JFrame {
 		dlm3.addElement(controller.getRistoranteDAO().getRistorante().get
 		Categoria.setModel(dlm3);
 		contentPane.add(Categoria);*/
-		
-		
-		
-		
-		
-		
+			
 		
 		btnaggiungirecensione.addActionListener(new ActionListener() {
 			@SuppressWarnings("deprecation")
