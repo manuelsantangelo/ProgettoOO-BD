@@ -140,5 +140,40 @@ try {
 	
 }
 	}
+	
+	public void approvaRecensione (Connection conn, String testoRecensione) {
+		String comando;
+		comando = "Update \"Recensione\" set \"Approvata\" = true where \"Testo\" = ? ";
+		
+		try {
+			
+			PreparedStatement ps = conn.prepareStatement(comando);
+			ps.setString(1, testoRecensione);
+			ps.executeUpdate();
+			JOptionPane.showMessageDialog(null, "Recensione approvata con successo!");
+		} catch (Exception e) {
+			System.out.println("ERROR IN SQL" + e);
+			JOptionPane.showMessageDialog(null, "ERRORE! Qualcosa è andato storto con l'approvazione della recensione");
+	
+		}
+		
+	}
+
+	public void rifiutaRecensione(Connection conn, String testoRecensione) {
+		String comando;
+		comando = "Delete from \"Recensione\" where \"Testo\" = ? ";
+		
+try {
+			
+			PreparedStatement ps = conn.prepareStatement(comando);
+			ps.setString(1, testoRecensione);
+			ps.executeUpdate();
+			JOptionPane.showMessageDialog(null, "Recensione rifiutata con successo!");
+		} catch (Exception e) {
+			System.out.println("ERROR IN SQL" + e);
+			JOptionPane.showMessageDialog(null, "ERRORE! Qualcosa è andato storto con l'eliminazione della recensione");
+	
+		}
+	}
 
 }
