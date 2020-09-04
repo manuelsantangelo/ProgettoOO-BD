@@ -153,7 +153,6 @@ public class ScriviRecensioneRistorante extends JFrame {
 		textAreaDescrizione.setBounds(270, 78, 489, 182);
 		contentPane.add(textAreaDescrizione);
 		
-<<<<<<< HEAD
 		JTextArea txtrStato = new JTextArea();
 		txtrStato.setFocusable(false);
 		txtrStato.setBackground(new Color(0, 191, 255));
@@ -181,8 +180,6 @@ public class ScriviRecensioneRistorante extends JFrame {
 		txtrProvincia.setBounds(599, 262, 85, 29);
 		contentPane.add(txtrProvincia);
 		
-=======
->>>>>>> branch 'master' of https://github.com/manuelsantangelo/ProgettoOO-BD.git
 		JTextArea txtrIndirizzo = new JTextArea();
 		txtrIndirizzo.setFocusable(false);
 		txtrIndirizzo.setBackground(new Color(0, 191, 255));
@@ -210,7 +207,6 @@ public class ScriviRecensioneRistorante extends JFrame {
 		txtrSitoWeb.setBounds(622, 365, 80, 29);
 		contentPane.add(txtrSitoWeb);
 		
-<<<<<<< HEAD
 		JTextArea textStato = new JTextArea();
 		textStato.setFocusable(false);
 		textStato.setFont(new Font("Gadugi", Font.PLAIN, 17));
@@ -247,8 +243,7 @@ public class ScriviRecensioneRistorante extends JFrame {
 		textIndirizzo.setBounds(43, 404, 238, 40);
 		contentPane.add(textIndirizzo);
 		
-=======
->>>>>>> branch 'master' of https://github.com/manuelsantangelo/ProgettoOO-BD.git
+
 		JList listTelefono = new JList();
 		listTelefono.setFocusable(false);
 		listTelefono.setFont(new Font("Gadugi", Font.PLAIN, 13));
@@ -269,16 +264,13 @@ public class ScriviRecensioneRistorante extends JFrame {
 			dlm1.addElement(controller.getContattiDAO().getSitoEtelefono().get(i).getSitoWeb());
 		listSitoWeb.setModel(dlm1);
 		contentPane.add(listSitoWeb);
-<<<<<<< HEAD
 		
 		JList Fascia_Prezzo = new JList();
 		Fascia_Prezzo.setFocusable(false);
 		Fascia_Prezzo.setBackground(new Color(0, 191, 255));
 		Fascia_Prezzo.setFont(new Font("Gadugi", Font.PLAIN, 13));
 		Fascia_Prezzo.setBounds(786, 48, 118, 47);
-=======
->>>>>>> branch 'master' of https://github.com/manuelsantangelo/ProgettoOO-BD.git
-			dlm2.addElement(controller.getRistoranteDAO().getRistoranti().get(controller.getIndice()).getFascia_Prezzo());
+		dlm2.addElement(controller.getRistoranteDAO().getRistoranti().get(controller.getIndice()).getFascia_Prezzo());
 		
 
 		JButton btnIndietro = new JButton("Indietro");
@@ -301,7 +293,6 @@ public class ScriviRecensioneRistorante extends JFrame {
 		btnIndietro.setBounds(717, 594, 177, 29);
 		contentPane.add(btnIndietro);
 		
-<<<<<<< HEAD
 		JTextArea txtrCategoriaRistoramte = new JTextArea();
 		txtrCategoriaRistoramte.setFocusable(false);
 		txtrCategoriaRistoramte.setText("Categoria ");
@@ -320,8 +311,6 @@ public class ScriviRecensioneRistorante extends JFrame {
 		txtrFasciaPrezzo.setBounds(786, 10, 118, 29);
 		contentPane.add(txtrFasciaPrezzo);
 		
-=======
->>>>>>> branch 'master' of https://github.com/manuelsantangelo/ProgettoOO-BD.git
 		JLabel lblIconadescrizione = new JLabel("iconaDescrizione");
 		lblIconadescrizione.setBounds(270, 14, 28, 29);
 		File nota = new File("images\\nota.png");
@@ -330,15 +319,12 @@ public class ScriviRecensioneRistorante extends JFrame {
 		ImageIcon icona_nota = new ImageIcon(img2);
 		lblIconadescrizione.setIcon(icona_nota);
 		contentPane.add(lblIconadescrizione);
-<<<<<<< HEAD
 		
 		JList category = new JList();
 		category.setFocusable(false);
 		category.setFont(new Font("Gadugi", Font.PLAIN, 13));
 		category.setBackground(new Color(0, 191, 255));
 		category.setBounds(786, 142, 118, 73);
-=======
->>>>>>> branch 'master' of https://github.com/manuelsantangelo/ProgettoOO-BD.git
 		for(int i = 0; i < controller.getAssociazione_Categoria_RistoranteDAO().getCategorie().size(); i++)
 		dlm3.addElement(controller.getAssociazione_Categoria_RistoranteDAO().getCategorie().get(i).getCategoria_Ristorante_FK().toString());
 		
@@ -357,13 +343,13 @@ public class ScriviRecensioneRistorante extends JFrame {
 		contentPane.add(lblIconaprezzo);
 		lblIconaprezzo.setIcon(icona_prezzo);
 		
-		JList category = new JList();
-		category.setLayoutOrientation(JList.HORIZONTAL_WRAP);
-		category.setBounds(54, 227, 249, 98);
-		panel.add(category);
-		category.setFont(new Font("Gadugi", Font.PLAIN, 13));
-		category.setBackground(new Color(0, 191, 255));
-		category.setModel(dlm3);
+		JList categoryList = new JList();
+		categoryList.setLayoutOrientation(JList.HORIZONTAL_WRAP);
+		categoryList.setBounds(54, 227, 249, 98);
+		panel.add(categoryList);
+		categoryList.setFont(new Font("Gadugi", Font.PLAIN, 13));
+		categoryList.setBackground(new Color(0, 191, 255));
+		categoryList.setModel(dlm3);
 		
 		JLabel lblIconacategoria = new JLabel("iconaCategoria");
 		lblIconacategoria.setBounds(16, 251, 28, 29);
@@ -374,13 +360,13 @@ public class ScriviRecensioneRistorante extends JFrame {
 		lblIconacategoria.setIcon(icona_categoria);
 		panel.add(lblIconacategoria);
 		
-		JTextArea textStato = new JTextArea();
-		textStato.setBounds(26, 55, 128, 29);
-		panel.add(textStato);
-		textStato.setFont(new Font("Gadugi", Font.PLAIN, 17));
-		textStato.setBackground(new Color(0, 191, 255));
-		textStato.setEditable(false);
-		textStato.setText(controller.getLuogoDAO().getLuogo2().getStato());
+		JTextArea txtStato = new JTextArea();
+		txtStato.setBounds(26, 55, 128, 29);
+		panel.add(txtStato);
+		txtStato.setFont(new Font("Gadugi", Font.PLAIN, 17));
+		txtStato.setBackground(new Color(0, 191, 255));
+		txtStato.setEditable(false);
+		txtStato.setText(controller.getLuogoDAO().getLuogo2().getStato());
 		
 		JLabel lblIconaMappa = new JLabel("iconaMappa");
 		lblIconaMappa.setBounds(16, 15, 28, 29);
@@ -391,29 +377,29 @@ public class ScriviRecensioneRistorante extends JFrame {
 		lblIconaMappa.setIcon(icona_mappa);
 		panel.add(lblIconaMappa);
 		
-		JTextArea textCittà = new JTextArea();
-		textCittà.setBounds(164, 55, 139, 29);
-		panel.add(textCittà);
-		textCittà.setFont(new Font("Gadugi", Font.PLAIN, 17));
-		textCittà.setBackground(new Color(0, 191, 255));
-		textCittà.setEditable(false);
-		textCittà.setText(controller.getLuogoDAO().getLuogo2().getCittà());
+		JTextArea txtrCity = new JTextArea();
+		txtrCity.setBounds(164, 55, 139, 29);
+		panel.add(txtrCity);
+		txtrCity.setFont(new Font("Gadugi", Font.PLAIN, 17));
+		txtrCity.setBackground(new Color(0, 191, 255));
+		txtrCity.setEditable(false);
+		txtrCity.setText(controller.getLuogoDAO().getLuogo2().getCittà());
 		
-		JTextArea textProvincia = new JTextArea();
-		textProvincia.setBounds(26, 101, 128, 29);
-		panel.add(textProvincia);
-		textProvincia.setFont(new Font("Gadugi", Font.PLAIN, 17));
-		textProvincia.setBackground(new Color(0, 191, 255));
-		textProvincia.setEditable(false);
-		textProvincia.setText(controller.getLuogoDAO().getLuogo2().getPaese());
+		JTextArea textprovincia = new JTextArea();
+		textprovincia.setBounds(26, 101, 128, 29);
+		panel.add(textprovincia);
+		textprovincia.setFont(new Font("Gadugi", Font.PLAIN, 17));
+		textprovincia.setBackground(new Color(0, 191, 255));
+		textprovincia.setEditable(false);
+		textprovincia.setText(controller.getLuogoDAO().getLuogo2().getPaese());
 		
-		JTextArea textIndirizzo = new JTextArea();
-		textIndirizzo.setBounds(164, 102, 139, 29);
-		panel.add(textIndirizzo);
-		textIndirizzo.setFont(new Font("Gadugi", Font.PLAIN, 16));
-		textIndirizzo.setBackground(new Color(0, 191, 255));
-		textIndirizzo.setEditable(false);
-		textIndirizzo.setText(controller.getLuogoDAO().getLuogo2().getIndirizzo());
+		JTextArea indirizzo = new JTextArea();
+		indirizzo.setBounds(164, 102, 139, 29);
+		panel.add(indirizzo);
+		indirizzo.setFont(new Font("Gadugi", Font.PLAIN, 16));
+		indirizzo.setBackground(new Color(0, 191, 255));
+		indirizzo.setEditable(false);
+		indirizzo.setText(controller.getLuogoDAO().getLuogo2().getIndirizzo());
 		
 		JTextArea txtrDoveSiamo = new JTextArea();
 		txtrDoveSiamo.setText("Informazioni");
@@ -495,12 +481,12 @@ public class ScriviRecensioneRistorante extends JFrame {
 		lblNave5.setIcon(icona_nave);
 		lblNave6.setIcon(icona_nave);
 		
-		JList Fascia_Prezzo = new JList();
-		Fascia_Prezzo.setBounds(81, 45, 118, 22);
-		contentPane.add(Fascia_Prezzo);
-		Fascia_Prezzo.setBackground(new Color(0, 191, 255));
-		Fascia_Prezzo.setFont(new Font("Gadugi", Font.PLAIN, 13));
-		Fascia_Prezzo.setModel(dlm2);
+		JList FasciaPrezzo = new JList();
+		FasciaPrezzo.setBounds(81, 45, 118, 22);
+		contentPane.add(FasciaPrezzo);
+		FasciaPrezzo.setBackground(new Color(0, 191, 255));
+		FasciaPrezzo.setFont(new Font("Gadugi", Font.PLAIN, 13));
+		FasciaPrezzo.setModel(dlm2);
 		
 		JLabel lblIconamichelin = new JLabel("");
 		lblIconamichelin.setBounds(308, 46, 22, 21);

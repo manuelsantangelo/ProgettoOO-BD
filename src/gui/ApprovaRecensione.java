@@ -96,10 +96,6 @@ public class ApprovaRecensione extends JFrame{
 		contentPane.add(scrollPane);
 		scrollPane.setViewportView(textAreaVisualizzaRecensione);*/
 		
-		
-		
-		
-		
 		recensioni.addMouseListener(new MouseAdapter() {
 	        public void mousePressed(MouseEvent mouseEvent) {
 	            recensioni = (JTable) mouseEvent.getSource();

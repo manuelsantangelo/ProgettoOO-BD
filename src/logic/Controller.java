@@ -35,7 +35,6 @@ public class Controller {
 	
 	private Connection conn;
 	
-	
 	//inizializza DAO
 	
 	private UtenteDAO utenteDAO = new UtenteDAO(this);

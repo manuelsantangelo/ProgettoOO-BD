@@ -42,6 +42,7 @@ import javax.swing.border.LineBorder;
 import java.awt.SystemColor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JTextField;
 
 public class Principale extends JFrame {
 	
@@ -67,6 +68,10 @@ public class Principale extends JFrame {
 	
 	
 	static int lista = 0; 
+	private JTextField areaNome;
+	private JTextField textField;
+	private JTextField textField_1;
+	private JTextField textField_2;
 	public Principale(Controller controller) throws IOException{
 		
 		
@@ -168,7 +173,7 @@ public class Principale extends JFrame {
 		String [] tipi = {"Attrazione","Ristorante","Albergo"};
 		DefaultComboBoxModel model = new DefaultComboBoxModel(tipi);
 		attrazioneristorantehotel.setModel(model);
-		attrazioneristorantehotel.setBounds(332, 81, 173, 29);
+		attrazioneristorantehotel.setBounds(332, 81, 117, 29);
 		contentPane.add(attrazioneristorantehotel);
 		
 	
@@ -185,6 +190,70 @@ public class Principale extends JFrame {
 		scrollPane.setBounds(332, 194, 563, 316);
 		contentPane.add(scrollPane);
 		scrollPane.setViewportView(elementi);
+		
+		JTextArea txtrNome = new JTextArea();
+		txtrNome.setText("Nome\r\n");
+		txtrNome.setForeground(Color.BLACK);
+		txtrNome.setFont(new Font("Gadugi", Font.BOLD, 17));
+		txtrNome.setEditable(false);
+		txtrNome.setColumns(10);
+		txtrNome.setBackground(new Color(0, 191, 255));
+		txtrNome.setBounds(331, 121, 60, 29);
+		contentPane.add(txtrNome);
+		
+		areaNome = new JTextField();
+		areaNome.setFont(new Font("Gadugi", Font.BOLD, 14));
+		areaNome.setBounds(389, 128, 173, 20);
+		contentPane.add(areaNome);
+		areaNome.setColumns(10);
+		
+		JTextArea txtrStato = new JTextArea();
+		txtrStato.setText("Stato\r\n");
+		txtrStato.setForeground(Color.BLACK);
+		txtrStato.setFont(new Font("Gadugi", Font.BOLD, 17));
+		txtrStato.setEditable(false);
+		txtrStato.setColumns(10);
+		txtrStato.setBackground(new Color(0, 191, 255));
+		txtrStato.setBounds(332, 154, 60, 29);
+		contentPane.add(txtrStato);
+		
+		textField = new JTextField();
+		textField.setFont(new Font("Gadugi", Font.BOLD, 14));
+		textField.setColumns(10);
+		textField.setBounds(389, 161, 173, 20);
+		contentPane.add(textField);
+		
+		JTextArea txtrPaese = new JTextArea();
+		txtrPaese.setText("Paese\r\n");
+		txtrPaese.setForeground(Color.BLACK);
+		txtrPaese.setFont(new Font("Gadugi", Font.BOLD, 17));
+		txtrPaese.setEditable(false);
+		txtrPaese.setColumns(10);
+		txtrPaese.setBackground(new Color(0, 191, 255));
+		txtrPaese.setBounds(633, 121, 50, 29);
+		contentPane.add(txtrPaese);
+		
+		JTextArea txtrProvincia = new JTextArea();
+		txtrProvincia.setText("Provincia");
+		txtrProvincia.setForeground(Color.BLACK);
+		txtrProvincia.setFont(new Font("Gadugi", Font.BOLD, 17));
+		txtrProvincia.setEditable(false);
+		txtrProvincia.setColumns(10);
+		txtrProvincia.setBackground(new Color(0, 191, 255));
+		txtrProvincia.setBounds(606, 154, 77, 29);
+		contentPane.add(txtrProvincia);
+		
+		textField_1 = new JTextField();
+		textField_1.setFont(new Font("Gadugi", Font.BOLD, 14));
+		textField_1.setColumns(10);
+		textField_1.setBounds(693, 128, 173, 20);
+		contentPane.add(textField_1);
+		
+		textField_2 = new JTextField();
+		textField_2.setFont(new Font("Gadugi", Font.BOLD, 14));
+		textField_2.setColumns(10);
+		textField_2.setBounds(693, 161, 173, 20);
+		contentPane.add(textField_2);
 		
 		
 	
@@ -337,7 +406,5 @@ public class Principale extends JFrame {
 			i++;
 		}while(controller.getAttrazioneDAO().getAttrazioni().size() != i);
 	}
-	
-
 }
 
