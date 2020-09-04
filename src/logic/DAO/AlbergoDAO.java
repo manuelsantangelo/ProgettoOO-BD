@@ -190,24 +190,72 @@ try {
 	
 	public void setAlbergoByFiltro(Connection conn, String nome, String città, String stato, String provincia) {
 		this.alberghi.clear();
+		int flag = 0;
+		int flagNome = 0;
+		int flagStato = 0;
+		int flagCittà = 0;
+		int flagProvincia = 0;
+		String comando = "Select * from \"Albergo\" as al join \"Luogo\" as lu on al.\"Luogo_FK\" = lu.\"Luogo_ID\" where ";
 		
-		String comando;
-		if (nome != null) {
+		if(nome != null) {
+		comando = comando + "\"Nome\" = ? ";
+		flagNome++;
+		}
 		
-		try {		
-			Albergo albergo;
-			comando = "Select * from \"Albergo\"  join \"Luogo\" on \"Luogo_FK\" = \"Luogo_ID\" where"
-					+ " \"Nome\" = ?";
-			
-			
-			PreparedStatement ps = null;
+		if(stato != null) {
+			if(flagNome == 1) {
+				comando = comando + "AND ";
+				comando = comando + "\"Stato\" = ? ";
+			}
+			else {
+				comando = comando + "\"Stato\" = ? ";
+			}	
+			flagStato++;
+		}
+		
+		if(città != null) {
+			if(flagNome == 1 || flagStato == 1) {
+				comando = comando + "AND ";
+				comando = comando + "\"Città\" = ? ";
+			}
+			else {
+				comando = comando + "\"Città\" = ? ";
+			}
+			flagCittà++;
+		}
+		
+		if(provincia != null) {
+			if(flagNome == 1 || flagStato == 1 || flagCittà == 1) {
+				comando = comando + "AND ";
+				comando = comando + "\"Paese\" = ? ";
+			}
+			else {
+				comando = comando + "\"Paese\" = ?";
+			}
+			flagProvincia++;
+		}
+		
+		try {
+		    PreparedStatement ps = null;
 			ResultSet rs = null;
 			
 			ps = conn.prepareStatement(comando);
-			ps.setString(1, nome);
-			ps.setString(2, città);
-			ps.setString(3, stato);
-			ps.setString(4, provincia);
+			if(flagNome == 1) {
+				flag++;
+				ps.setString(flag, nome);
+			}
+			if(flagStato == 1) {
+				flag++;
+				ps.setString(flag, stato);
+			}	
+			if(flagCittà == 1) {
+				flag++;
+				ps.setString(flag, città);
+			}
+			if(flagProvincia == 1) {
+				flag++;
+				ps.setString(flag, provincia);
+			}
 			
 			rs = ps.executeQuery();
 			while (rs.next()) {
@@ -223,14 +271,11 @@ try {
 				albergo.setFascia_Prezzo(prezzo.valueOf(rs.getObject(9).toString()));
 				albergo.setFoto(rs.getBytes(10));
 				this.alberghi.add(albergo);
-			
-			}
-			
-		} catch (Exception e) {
-			System.out.println("ERROR IN SQL" + e);
-			JOptionPane.showMessageDialog(null, "ERRORE! Qualcosa è andato storto con il recupero dell'albergo");	
-			
-		}
-	} else if (città != null)
-	
+			} 
+		
+	} catch (Exception e) {
+		System.out.println("ERROR IN SQL" + e);
+		JOptionPane.showMessageDialog(null, "ERRORE! Qualcosa è andato storto con il recupero dell'albergo by filtro");	
+		
+	}
 }}
