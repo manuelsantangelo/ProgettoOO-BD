@@ -130,6 +130,15 @@ public class ApprovaRecensione extends JFrame{
 		btnIndietro.setBounds(843, 519, 117, 45);
 		contentPane.add(btnIndietro);
 		
+		JTextArea txtrRecensioneCompleta = new JTextArea();
+		txtrRecensioneCompleta.setText("Testo recensione completa\r\n");
+		txtrRecensioneCompleta.setForeground(Color.GREEN);
+		txtrRecensioneCompleta.setFont(new Font("Parametric Glitch", Font.BOLD, 21));
+		txtrRecensioneCompleta.setEditable(false);
+		txtrRecensioneCompleta.setBackground(Color.BLACK);
+		txtrRecensioneCompleta.setBounds(24, 274, 284, 29);
+		contentPane.add(txtrRecensioneCompleta);
+		
 		recensioni.addMouseListener(new MouseAdapter() {
 	        public void mousePressed(MouseEvent mouseEvent) {
 	            recensioni = (JTable) mouseEvent.getSource();
