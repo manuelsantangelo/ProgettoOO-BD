@@ -141,14 +141,16 @@ try {
 }
 	}
 	
-	public void approvaRecensione (Connection conn, String testoRecensione) {
+	public void approvaRecensione (Connection conn, String testoRecensione, int Moderatore_ID) {
 		String comando;
-		comando = "Update \"Recensione\" set \"Approvata\" = true where \"Testo\" = ? ";
+		comando = "Update \"Recensione\" set \"Approvata\" = true, \"Moderatore_FK\" = ? where \"Testo\" = ? ";
 		
 		try {
 			
 			PreparedStatement ps = conn.prepareStatement(comando);
-			ps.setString(1, testoRecensione);
+			ps.setInt(1, Moderatore_ID);
+			ps.setString(2, testoRecensione);
+
 			ps.executeUpdate();
 			JOptionPane.showMessageDialog(null, "Recensione approvata con successo!");
 		} catch (Exception e) {

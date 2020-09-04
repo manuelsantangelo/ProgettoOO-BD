@@ -61,6 +61,7 @@ public class ApprovaRecensione extends JFrame{
 		txtrRecensioni.setBackground(Color.BLACK);
 		txtrRecensioni.setForeground(Color.GREEN);
 		txtrRecensioni.setEditable(false);
+		txtrRecensioni.setLineWrap(true);
 		txtrRecensioni.setFont(new Font("Parametric Glitch", Font.BOLD, 21));
 		txtrRecensioni.setText("Recensioni da approvare");
 		txtrRecensioni.setBounds(24, 11, 268, 29);
@@ -91,6 +92,7 @@ public class ApprovaRecensione extends JFrame{
 		JTextArea textAreaVisualizzaRecensione = new JTextArea();
 		textAreaVisualizzaRecensione.setFont(new Font("Gadugi", Font.PLAIN, 18));
 		textAreaVisualizzaRecensione.setEditable(false);
+		textAreaVisualizzaRecensione.setLineWrap(true);
 		textAreaVisualizzaRecensione.setBounds(24, 313, 513, 198);
 		contentPane.add(textAreaVisualizzaRecensione);
 		
@@ -135,6 +137,7 @@ public class ApprovaRecensione extends JFrame{
 		txtrRecensioneCompleta.setForeground(Color.GREEN);
 		txtrRecensioneCompleta.setFont(new Font("Parametric Glitch", Font.BOLD, 21));
 		txtrRecensioneCompleta.setEditable(false);
+		txtrRecensioneCompleta.setLineWrap(true);
 		txtrRecensioneCompleta.setBackground(Color.BLACK);
 		txtrRecensioneCompleta.setBounds(24, 274, 284, 29);
 		contentPane.add(txtrRecensioneCompleta);
@@ -159,7 +162,8 @@ public class ApprovaRecensione extends JFrame{
 				
 				int indice = recensioni.getSelectedRow();
 				String testoRecensione = recensioni.getModel().getValueAt(indice, 1).toString();
-				controller.getRecensioneDAO().approvaRecensione(controller.getConnection(), testoRecensione);
+				controller.getRecensioneDAO().approvaRecensione(controller.getConnection(), testoRecensione, controller.getModeratoreDAO().getModeratore().getModeratore_ID());
+				
 				}
 		});
 		

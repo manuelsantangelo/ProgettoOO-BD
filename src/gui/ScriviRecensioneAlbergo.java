@@ -136,6 +136,7 @@ public class ScriviRecensioneAlbergo extends JFrame {
 		
 		JTextArea textAreaRecensione = new JTextArea();
 		textAreaRecensione.setBounds(24, 498, 624, 98);
+		textAreaRecensione.setLineWrap(true);
 		contentPane.add(textAreaRecensione);
 		
 		JScrollPane scrollPane = new JScrollPane(textAreaRecensione);

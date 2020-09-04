@@ -1,49 +1,48 @@
 package gui;
 
-import java.awt.Toolkit;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.border.Border;
-import javax.swing.border.EmptyBorder;
 import java.awt.Color;
-import javax.swing.JTextArea;
+import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.Image;
-
-import javax.swing.JTextField;
-import javax.swing.ListSelectionModel;
-import javax.swing.JList;
-import javax.swing.JOptionPane;
-import javax.imageio.ImageIO;
-import javax.swing.AbstractListModel;
-import javax.swing.BorderFactory;
-import javax.swing.JComboBox;
-import javax.swing.JFileChooser;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.DefaultListModel;
-import javax.swing.ImageIcon;
-
-import Tipi.categoriaalbergo;
-import Tipi.prezzo;
-import Tipi.tipoattrazione;
-import Tipi.tiposervizio;
-import logic.Controller;
-import javax.swing.JButton;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.awt.event.ActionEvent;
+
+import javax.imageio.ImageIO;
+import javax.swing.AbstractListModel;
+import javax.swing.BorderFactory;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
+import javax.swing.border.Border;
+import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
-import java.awt.Cursor;
+
+import Tipi.prezzo;
+import Tipi.tipoattrazione;
+import logic.Controller;
 
 public class Aggiungi_Attrazione extends JFrame {
-	
+
+	private static final long serialVersionUID = 1L;
+
 	private Controller controller;
 
 	private JPanel contentPane;

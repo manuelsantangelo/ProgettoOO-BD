@@ -188,4 +188,49 @@ try {
 }
 	}
 	
-}
+	public void setAlbergoByFiltro(Connection conn, String nome, String città, String stato, String provincia) {
+		this.alberghi.clear();
+		
+		String comando;
+		if (nome != null) {
+		
+		try {		
+			Albergo albergo;
+			comando = "Select * from \"Albergo\"  join \"Luogo\" on \"Luogo_FK\" = \"Luogo_ID\" where"
+					+ " \"Nome\" = ?";
+			
+			
+			PreparedStatement ps = null;
+			ResultSet rs = null;
+			
+			ps = conn.prepareStatement(comando);
+			ps.setString(1, nome);
+			ps.setString(2, città);
+			ps.setString(3, stato);
+			ps.setString(4, provincia);
+			
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				albergo = new Albergo();
+				albergo.setAlbergo_ID(rs.getInt(1));
+				albergo.setNome(rs.getString(2));
+				albergo.setCategoria(categoriaalbergo.valueOf(rs.getObject(3).toString()));
+				albergo.setStelle(rs.getInt(4));
+				albergo.setVoto(rs.getDouble(5));
+				albergo.setTesto(rs.getString(6));
+				albergo.setNumero_Camere(rs.getInt(7));
+				albergo.setLuogo_FK(rs.getInt(8));
+				albergo.setFascia_Prezzo(prezzo.valueOf(rs.getObject(9).toString()));
+				albergo.setFoto(rs.getBytes(10));
+				this.alberghi.add(albergo);
+			
+			}
+			
+		} catch (Exception e) {
+			System.out.println("ERROR IN SQL" + e);
+			JOptionPane.showMessageDialog(null, "ERRORE! Qualcosa è andato storto con il recupero dell'albergo");	
+			
+		}
+	} else if (città != null)
+	
+}}

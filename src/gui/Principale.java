@@ -69,9 +69,9 @@ public class Principale extends JFrame {
 	
 	static int lista = 0; 
 	private JTextField areaNome;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
+	private JTextField areaStato;
+	private JTextField areaCittà;
+	private JTextField areaProvincia;
 	public Principale(Controller controller) throws IOException{
 		
 		
@@ -217,21 +217,21 @@ public class Principale extends JFrame {
 		txtrStato.setBounds(332, 154, 60, 29);
 		contentPane.add(txtrStato);
 		
-		textField = new JTextField();
-		textField.setFont(new Font("Gadugi", Font.BOLD, 14));
-		textField.setColumns(10);
-		textField.setBounds(389, 161, 173, 20);
-		contentPane.add(textField);
+		areaStato = new JTextField();
+		areaStato.setFont(new Font("Gadugi", Font.BOLD, 14));
+		areaStato.setColumns(10);
+		areaStato.setBounds(389, 161, 173, 20);
+		contentPane.add(areaStato);
 		
-		JTextArea txtrPaese = new JTextArea();
-		txtrPaese.setText("Paese\r\n");
-		txtrPaese.setForeground(Color.BLACK);
-		txtrPaese.setFont(new Font("Gadugi", Font.BOLD, 17));
-		txtrPaese.setEditable(false);
-		txtrPaese.setColumns(10);
-		txtrPaese.setBackground(new Color(0, 191, 255));
-		txtrPaese.setBounds(633, 121, 50, 29);
-		contentPane.add(txtrPaese);
+		JTextArea txtrCittà = new JTextArea();
+		txtrCittà.setText("Citt\u00E0");
+		txtrCittà.setForeground(Color.BLACK);
+		txtrCittà.setFont(new Font("Gadugi", Font.BOLD, 17));
+		txtrCittà.setEditable(false);
+		txtrCittà.setColumns(10);
+		txtrCittà.setBackground(new Color(0, 191, 255));
+		txtrCittà.setBounds(633, 121, 50, 29);
+		contentPane.add(txtrCittà);
 		
 		JTextArea txtrProvincia = new JTextArea();
 		txtrProvincia.setText("Provincia");
@@ -243,17 +243,17 @@ public class Principale extends JFrame {
 		txtrProvincia.setBounds(606, 154, 77, 29);
 		contentPane.add(txtrProvincia);
 		
-		textField_1 = new JTextField();
-		textField_1.setFont(new Font("Gadugi", Font.BOLD, 14));
-		textField_1.setColumns(10);
-		textField_1.setBounds(693, 128, 173, 20);
-		contentPane.add(textField_1);
+		areaCittà = new JTextField();
+		areaCittà.setFont(new Font("Gadugi", Font.BOLD, 14));
+		areaCittà.setColumns(10);
+		areaCittà.setBounds(693, 128, 173, 20);
+		contentPane.add(areaCittà);
 		
-		textField_2 = new JTextField();
-		textField_2.setFont(new Font("Gadugi", Font.BOLD, 14));
-		textField_2.setColumns(10);
-		textField_2.setBounds(693, 161, 173, 20);
-		contentPane.add(textField_2);
+		areaProvincia = new JTextField();
+		areaProvincia.setFont(new Font("Gadugi", Font.BOLD, 14));
+		areaProvincia.setColumns(10);
+		areaProvincia.setBounds(693, 161, 173, 20);
+		contentPane.add(areaProvincia);
 		
 		
 	
