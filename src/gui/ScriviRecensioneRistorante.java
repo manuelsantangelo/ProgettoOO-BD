@@ -187,15 +187,6 @@ public class ScriviRecensioneRistorante extends JFrame {
 		btnIndietro.setBounds(717, 594, 177, 29);
 		contentPane.add(btnIndietro);
 		
-		JTextArea txtrFasciaPrezzo = new JTextArea();
-		txtrFasciaPrezzo.setFocusable(false);
-		txtrFasciaPrezzo.setText("Fascia prezzo");
-		txtrFasciaPrezzo.setFont(new Font("Gadugi", Font.BOLD, 18));
-		txtrFasciaPrezzo.setEditable(false);
-		txtrFasciaPrezzo.setBackground(new Color(0, 191, 255));
-		txtrFasciaPrezzo.setBounds(786, 10, 118, 29);
-		contentPane.add(txtrFasciaPrezzo);
-		
 		JLabel lblIconadescrizione = new JLabel("iconaDescrizione");
 		lblIconadescrizione.setBounds(270, 14, 28, 29);
 		File nota = new File("images\\nota.png");

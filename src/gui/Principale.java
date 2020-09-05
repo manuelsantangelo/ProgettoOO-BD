@@ -89,23 +89,10 @@ public class Principale extends JFrame {
 		JButton cerca = new JButton("Cerca");
 		cerca.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		cerca.setForeground(Color.BLACK);
-		cerca.setFont(new Font("Parametric Glitch", Font.PLAIN, 14));
+		cerca.setFont(new Font("Gadugi", Font.BOLD, 16));
 		cerca.setBackground(Color.WHITE);
-		cerca.setBounds(729, 82, 117, 28);
+		cerca.setBounds(777, 534, 117, 28);
 		contentPane.add(cerca);
-		
-		JButton btnIndietro = new JButton("Logout");
-		btnIndietro.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnIndietro.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				controller.CambiaFrame(Principale.this, controller.getHome());
-			}
-		});
-		btnIndietro.setForeground(new Color(0, 0, 0));
-		btnIndietro.setFont(new Font("Gadugi", Font.BOLD, 15));
-		btnIndietro.setBackground(new Color(0, 153, 255));
-		btnIndietro.setBounds(759, 553, 117, 29);
-		contentPane.add(btnIndietro);
 		
 		JPanel panel = new JPanel();
 		panel.setForeground(new Color(0, 0, 0));
@@ -156,6 +143,19 @@ public class Principale extends JFrame {
 		lblDescrizioniEffettuate.setBounds(42, 320, 235, 35);
 		panel.add(lblDescrizioniEffettuate);
 		
+		JButton btnIndietro = new JButton("Logout");
+		btnIndietro.setBounds(93, 506, 117, 29);
+		panel.add(btnIndietro);
+		btnIndietro.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnIndietro.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				controller.CambiaFrame(Principale.this, controller.getHome());
+			}
+		});
+		btnIndietro.setForeground(new Color(0, 0, 0));
+		btnIndietro.setFont(new Font("Gadugi", Font.BOLD, 15));
+		btnIndietro.setBackground(new Color(0, 153, 255));
+		
 		txtDomanda = new JTextArea();
 		txtDomanda.setEditable(false);
 		txtDomanda.setFont(new Font("Gadugi", Font.BOLD, 30));
@@ -199,12 +199,12 @@ public class Principale extends JFrame {
 		txtrNome.setEditable(false);
 		txtrNome.setColumns(10);
 		txtrNome.setBackground(new Color(0, 191, 255));
-		txtrNome.setBounds(331, 121, 60, 29);
+		txtrNome.setBounds(332, 125, 60, 29);
 		contentPane.add(txtrNome);
 		
 		areaNome = new JTextField();
 		areaNome.setFont(new Font("Gadugi", Font.BOLD, 14));
-		areaNome.setBounds(389, 121, 173, 20);
+		areaNome.setBounds(389, 130, 173, 20);
 		contentPane.add(areaNome);
 		areaNome.setColumns(10);
 		
