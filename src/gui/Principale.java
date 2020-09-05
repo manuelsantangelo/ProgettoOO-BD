@@ -334,10 +334,15 @@ public class Principale extends JFrame {
 	
 	
 	public void riempitabellaAlberghi(Controller controller) {
-	if(areaNome.getText() != null || areaCittà.getText() != null|| areaProvincia.getText() != null || areaStato.getText()!= null) {
+	
+		if(areaNome.getText() == "" && areaStato.getText() == "" && areaCittà.getText() == "" && areaProvincia.getText() == "")
+		{
+			System.out.println("ciao");
+			controller.getAlbergoDAO().setAllAlberghi(controller.getConnection());
+			
+		}
+		else {
 			controller.getAlbergoDAO().setAlbergoByFiltro(controller.getConnection(), areaNome.getText(), areaCittà.getText(), areaStato.getText(), areaProvincia.getText());
-		}else {
-		controller.getAlbergoDAO().setAllAlberghi(controller.getConnection());
 		}
 		while (dtm.getRowCount() > 0) {
 		    dtm.removeRow(0);
@@ -346,6 +351,8 @@ public class Principale extends JFrame {
 		dtm.setRowCount(0);
 
 		int i = 0;
+		if(controller.getAlbergoDAO().getAlberghi().isEmpty()) {}	
+		else {
 	do {
 		int luogoFK = controller.getAlbergoDAO().getAlberghi().get(i).getLuogo_FK();
 		controller.getLuogoDAO().setLuogoByID(controller.getConnection(), luogoFK);
@@ -357,7 +364,7 @@ public class Principale extends JFrame {
 			i++;
 		}while(controller.getAlbergoDAO().getAlberghi().size() != i);
 	
-
+		}
 	}
 	
 	public void riempitabellaRistoranti(Controller controller) {
