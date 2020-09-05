@@ -203,7 +203,7 @@ public class Principale extends JFrame {
 		
 		areaNome = new JTextField();
 		areaNome.setFont(new Font("Gadugi", Font.BOLD, 14));
-		areaNome.setBounds(389, 128, 173, 20);
+		areaNome.setBounds(389, 121, 173, 20);
 		contentPane.add(areaNome);
 		areaNome.setColumns(10);
 		
@@ -335,9 +335,9 @@ public class Principale extends JFrame {
 	
 	public void riempitabellaAlberghi(Controller controller) {
 	
-		if(areaNome.getText() == "" && areaStato.getText() == "" && areaCittà.getText() == "" && areaProvincia.getText() == "")
+		if(areaNome.getText().isEmpty() && areaStato.getText().isEmpty() && areaCittà.getText().isEmpty() && areaProvincia.getText().isEmpty())
 		{
-			System.out.println("ciao");
+		
 			controller.getAlbergoDAO().setAllAlberghi(controller.getConnection());
 			
 		}
@@ -369,7 +369,7 @@ public class Principale extends JFrame {
 	
 	public void riempitabellaRistoranti(Controller controller) {
 		controller.getRistoranteDAO().setAllRistoranti(controller.getConnection());
-		int a = 0;
+	//	int a = 0;
 		while (dtm.getRowCount() > 0) {
 		    dtm.removeRow(0);
 		}
@@ -378,6 +378,7 @@ public class Principale extends JFrame {
 
 
 		int i = 0;
+		if(controller.getRistoranteDAO().getRistoranti().isEmpty()) {}	
 	do {
 		int luogoFK = controller.getRistoranteDAO().getRistoranti().get(i).getLuogo_FK();
 		controller.getLuogoDAO().setLuogoByID(controller.getConnection(), luogoFK);
@@ -405,6 +406,7 @@ public class Principale extends JFrame {
 
 		
 		int i = 0;
+		if(controller.getAttrazioneDAO().getAttrazioni().isEmpty()) {}	
 	do {
 		int luogoFK = controller.getAttrazioneDAO().getAttrazioni().get(i).getLuogo_FK();
 		controller.getLuogoDAO().setLuogoByID(controller.getConnection(), luogoFK);

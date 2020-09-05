@@ -190,6 +190,7 @@ try {
 	
 	public void setAlbergoByFiltro(Connection conn, String nome, String città, String stato, String provincia) {
 		this.alberghi.clear();
+		
 		int flag = 0;
 		int flagNome = 0;
 		int flagStato = 0;
@@ -197,37 +198,37 @@ try {
 		int flagProvincia = 0;
 		String comando = "Select * from \"Albergo\" as al join \"Luogo\" as lu on al.\"Luogo_FK\" = lu.\"Luogo_ID\" where ";
 		
-		if(nome != null) {
-		comando = comando + "\"Nome\" = ? ";
+		if(!nome.isEmpty()) {
+		comando = comando + "\"Nome\" = " + "'" + nome + "'";
 		flagNome++;
 		}
 		
-		if(stato != null) {
+		if(!stato.isEmpty()) {
 			if(flagNome == 1) {
-				comando = comando + " and \"Stato\" = ? ";
+				comando = comando + " and \"Stato\" = " + "'" + stato + "'";
 			}
 			else {
-				comando = comando + "\"Stato\" = ? ";
+				comando = comando + "\"Stato\" = " + "'" + stato + "'";
 			}	
 			flagStato++;
 		}
 		
-		if(città != null) {
+		if(!città.isEmpty()) {
 			if(flagNome == 1 || flagStato == 1) {
-				comando = comando + " and \"Città\" = ? ";
+				comando = comando + " and \"Città\" = " + "'" + città + "'";
 			}
 			else {
-				comando = comando + "\"Città\" = ? ";
+				comando = comando + "\"Città\" = " + "'" + città + "'";
 			}
 			flagCittà++;
 		}
 		
-		if(provincia != null) {
+		if(!provincia.isEmpty()) {
 			if(flagNome == 1 || flagStato == 1 || flagCittà == 1) {
-				comando = comando + " and \"Paese\" = ?";
+				comando = comando + " and \"Paese\" = " + "'" + provincia + "'";
 			}
 			else {
-				comando = comando + "\"Paese\" = ?";
+				comando = comando + "\"Paese\" = " + "'" + provincia + "'";
 			}
 			flagProvincia++;
 		}
@@ -235,29 +236,12 @@ try {
 		try {
 			
 			Albergo albergo;
-		    PreparedStatement ps = conn.prepareStatement(comando);
-		    java.sql.Statement stmt = conn.createStatement();
-		    
-			if(flagNome == 1) {
-				flag++;
-				ps.setString(flag, nome);
-			}
-			if(flagStato == 1) {
-				flag++;
-				ps.setString(flag, stato);
-			}	
-			if(flagCittà == 1) {
-				flag++;
-				ps.setString(flag, città);
-			}
-			if(flagProvincia == 1) {
-				flag++;
-				ps.setString(flag, provincia);
-			}
+			PreparedStatement ps = null;
+			ResultSet rs = null;
 
-		
-
-			ResultSet rs = stmt.executeQuery(comando);
+			ps = conn.prepareStatement(comando);
+			rs = ps.executeQuery();
+			
 			while (rs.next()) {
 				albergo = new Albergo();
 				albergo.setAlbergo_ID(rs.getInt(1));
