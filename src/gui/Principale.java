@@ -36,6 +36,7 @@ import javax.swing.table.DefaultTableModel;
 
 import javax.swing.JScrollPane;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import java.awt.Component;
 import javax.swing.border.LineBorder;
@@ -158,7 +159,7 @@ public class Principale extends JFrame {
 		txtDomanda = new JTextArea();
 		txtDomanda.setEditable(false);
 		txtDomanda.setFont(new Font("Gadugi", Font.BOLD, 30));
-		txtDomanda.setText("Cosa si desidere recensire?");
+		txtDomanda.setText("Cosa si desidera recensire?");
 		txtDomanda.setForeground(new Color(0, 0, 0));
 		txtDomanda.setBackground(new Color(0, 191, 255));
 		txtDomanda.setBounds(417, 10, 391, 54);
@@ -351,7 +352,9 @@ public class Principale extends JFrame {
 		dtm.setRowCount(0);
 
 		int i = 0;
-		if(controller.getAlbergoDAO().getAlberghi().isEmpty()) {}	
+		if(controller.getAlbergoDAO().getAlberghi().isEmpty()) {
+			JOptionPane.showMessageDialog(null, "La ricerca non ha prodotto risultati!");
+		}	
 		else {
 	do {
 		int luogoFK = controller.getAlbergoDAO().getAlberghi().get(i).getLuogo_FK();
@@ -368,8 +371,15 @@ public class Principale extends JFrame {
 	}
 	
 	public void riempitabellaRistoranti(Controller controller) {
-		controller.getRistoranteDAO().setAllRistoranti(controller.getConnection());
-	//	int a = 0;
+		if(areaNome.getText().isEmpty() && areaStato.getText().isEmpty() && areaCittà.getText().isEmpty() && areaProvincia.getText().isEmpty())
+		{
+		
+			controller.getRistoranteDAO().setAllRistoranti(controller.getConnection());
+			
+		}
+		else {
+			controller.getRistoranteDAO().setRistoranteByFiltro(controller.getConnection(), areaNome.getText(), areaCittà.getText(), areaStato.getText(), areaProvincia.getText());
+		}
 		while (dtm.getRowCount() > 0) {
 		    dtm.removeRow(0);
 		}
@@ -378,7 +388,10 @@ public class Principale extends JFrame {
 
 
 		int i = 0;
-		if(controller.getRistoranteDAO().getRistoranti().isEmpty()) {}	
+		if(controller.getRistoranteDAO().getRistoranti().isEmpty()) {
+			JOptionPane.showMessageDialog(null, "La ricerca non ha prodotto risultati!");
+
+		}	else {
 	do {
 		int luogoFK = controller.getRistoranteDAO().getRistoranti().get(i).getLuogo_FK();
 		controller.getLuogoDAO().setLuogoByID(controller.getConnection(), luogoFK);
@@ -394,10 +407,18 @@ public class Principale extends JFrame {
 		}while(controller.getRistoranteDAO().getRistoranti().size() != i);
 	
 	}
+	}
 	
 	public void riempitabellaAttrazioni(Controller controller) {
-		controller.getAttrazioneDAO().setAllAttrazioni(controller.getConnection());
-
+		if(areaNome.getText().isEmpty() && areaStato.getText().isEmpty() && areaCittà.getText().isEmpty() && areaProvincia.getText().isEmpty())
+		{
+		
+			controller.getAttrazioneDAO().setAllAttrazioni(controller.getConnection());
+			
+		}
+		else {
+			controller.getAttrazioneDAO().setAttrazioneByFiltro(controller.getConnection(), areaNome.getText(), areaCittà.getText(), areaStato.getText(), areaProvincia.getText());
+		}
 		while (dtm.getRowCount() > 0) {
 		    dtm.removeRow(0);
 		}
@@ -406,7 +427,9 @@ public class Principale extends JFrame {
 
 		
 		int i = 0;
-		if(controller.getAttrazioneDAO().getAttrazioni().isEmpty()) {}	
+		if(controller.getAttrazioneDAO().getAttrazioni().isEmpty()) {
+			JOptionPane.showMessageDialog(null, "La ricerca non ha prodotto risultati!");
+		}	else {
 	do {
 		int luogoFK = controller.getAttrazioneDAO().getAttrazioni().get(i).getLuogo_FK();
 		controller.getLuogoDAO().setLuogoByID(controller.getConnection(), luogoFK);
@@ -420,4 +443,7 @@ public class Principale extends JFrame {
 		}while(controller.getAttrazioneDAO().getAttrazioni().size() != i);
 	}
 }
+	
+}
+	
 

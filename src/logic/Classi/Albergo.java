@@ -56,6 +56,7 @@ public class Albergo {
 	}
 	public double getVoto() {
 		return Voto;
+		
 	}
 	public void setVoto(double voto) {
 		Voto = voto;

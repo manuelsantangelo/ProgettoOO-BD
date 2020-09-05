@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
+import Tipi.categoriaalbergo;
 import Tipi.prezzo;
 import Tipi.tiporistorante;
 import logic.Controller;
@@ -173,6 +174,81 @@ try {
 }
 
 	}
+	
+	public void setRistoranteByFiltro(Connection conn, String nome, String città, String stato, String provincia) {
+		this.ristoranti.clear();
+		
+		int flagNome = 0;
+		int flagStato = 0;
+		int flagCittà = 0;
+		int flagProvincia = 0;
+		String comando = "Select * from \"Ristorante\" as ris join \"Luogo\" as lu on ris.\"Luogo_FK\" = lu.\"Luogo_ID\" where ";
+		
+		if(!nome.isEmpty()) {
+		comando = comando + "\"Nome\" = " + "'" + nome + "'";
+		flagNome++;
+		}
+		
+		if(!stato.isEmpty()) {
+			if(flagNome == 1) {
+				comando = comando + " and \"Stato\" = " + "'" + stato + "'";
+			}
+			else {
+				comando = comando + "\"Stato\" = " + "'" + stato + "'";
+			}	
+			flagStato++;
+		}
+		
+		if(!città.isEmpty()) {
+			if(flagNome == 1 || flagStato == 1) {
+				comando = comando + " and \"Città\" = " + "'" + città + "'";
+			}
+			else {
+				comando = comando + "\"Città\" = " + "'" + città + "'";
+			}
+			flagCittà++;
+		}
+		
+		if(!provincia.isEmpty()) {
+			if(flagNome == 1 || flagStato == 1 || flagCittà == 1) {
+				comando = comando + " and \"Paese\" = " + "'" + provincia + "'";
+			}
+			else {
+				comando = comando + "\"Paese\" = " + "'" + provincia + "'";
+			}
+			flagProvincia++;
+		}
+		
+		try {
+			
+			Ristorante ristorante;
+			PreparedStatement ps = null;
+			ResultSet rs = null;
+
+			ps = conn.prepareStatement(comando);
+			rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				
+				ristorante = new Ristorante();
+				ristorante.setRistorante_ID(rs.getInt(1));
+				ristorante.setNome(rs.getString(2));
+				ristorante.setStelle_Michelin(rs.getInt(3));
+				ristorante.setVoto(rs.getDouble(4));
+				ristorante.setDescizione(rs.getString(5));
+				ristorante.setFascia_Prezzo(prezzo.valueOf(rs.getObject(6).toString()));
+				ristorante.setLuogo_FK(rs.getInt(7));
+				ristorante.setFoto(rs.getBytes(8));
+				this.ristoranti.add(ristorante);
+				
+			} 
+		
+	} catch (Exception e) {
+		System.out.println("ERROR IN SQL" + e);
+		JOptionPane.showMessageDialog(null, "ERRORE! Qualcosa è andato storto con il recupero del ristorante by filtro");	
+		
+	}
+}
 	
 	
 	

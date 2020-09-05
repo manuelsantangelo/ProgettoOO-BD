@@ -13,8 +13,10 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 import Tipi.tipoattrazione;
+import Tipi.categoriaalbergo;
 import Tipi.prezzo;
 import logic.Controller;
+import logic.Classi.Albergo;
 import logic.Classi.Attrazione;
 import logic.Classi.Ristorante;
 
@@ -151,7 +153,7 @@ public class AttrazioneDAO {
 	public void setAllAttrazioni(Connection conn) {
 		this.attrazioni.clear();
 		try {		
-			Attrazione attraction;
+			Attrazione attrazione;
 			String comando = "SELECT * FROM public.\"Attrazione\" ";
 	
 			PreparedStatement ps = null;
@@ -160,16 +162,16 @@ public class AttrazioneDAO {
 			ps = conn.prepareStatement(comando);
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				attraction = new Attrazione();
-				attraction.setAttrazione_ID(rs.getInt(1));
-				attraction.setNome(rs.getString(2));
-				attraction.setTipo(tipoattrazione.valueOf((rs.getObject(3).toString())));
-				attraction.setVoto(rs.getDouble(4));
-				attraction.setDescrizione(rs.getString(5));
-				attraction.setFascia_Prezzo(prezzo.valueOf(rs.getObject(6).toString()));
-				attraction.setLuogo_FK(rs.getInt(7));
-				attraction.setFoto(rs.getBytes(8));
-				this.attrazioni.add(attraction);
+				attrazione = new Attrazione();
+				attrazione.setAttrazione_ID(rs.getInt(1));
+				attrazione.setNome(rs.getString(2));
+				attrazione.setTipo(tipoattrazione.valueOf((rs.getObject(3).toString())));
+				attrazione.setVoto(rs.getDouble(4));
+				attrazione.setDescrizione(rs.getString(5));
+				attrazione.setFascia_Prezzo(prezzo.valueOf(rs.getObject(6).toString()));
+				attrazione.setLuogo_FK(rs.getInt(7));
+				attrazione.setFoto(rs.getBytes(8));
+				this.attrazioni.add(attrazione);
 			}
 		} catch (Exception e) {
 			System.out.println("ERROR IN SQL" + e);
@@ -177,7 +179,79 @@ public class AttrazioneDAO {
 		}
 
 	}
+	
 
-}
+	public void setAttrazioneByFiltro(Connection conn, String nome, String città, String stato, String provincia) {
+		this.attrazioni.clear();
+		
+		int flagNome = 0;
+		int flagStato = 0;
+		int flagCittà = 0;
+		int flagProvincia = 0;
+		String comando = "Select * from \"Attrazione\" as attr join \"Luogo\" as lu on attr.\"Luogo_FK\" = lu.\"Luogo_ID\" where ";
+		
+		if(!nome.isEmpty()) {
+		comando = comando + "\"Nome\" = " + "'" + nome + "'";
+		flagNome++;
+		}
+		
+		if(!stato.isEmpty()) {
+			if(flagNome == 1) {
+				comando = comando + " and \"Stato\" = " + "'" + stato + "'";
+			}
+			else {
+				comando = comando + "\"Stato\" = " + "'" + stato + "'";
+			}	
+			flagStato++;
+		}
+		
+		if(!città.isEmpty()) {
+			if(flagNome == 1 || flagStato == 1) {
+				comando = comando + " and \"Città\" = " + "'" + città + "'";
+			}
+			else {
+				comando = comando + "\"Città\" = " + "'" + città + "'";
+			}
+			flagCittà++;
+		}
+		
+		if(!provincia.isEmpty()) {
+			if(flagNome == 1 || flagStato == 1 || flagCittà == 1) {
+				comando = comando + " and \"Paese\" = " + "'" + provincia + "'";
+			}
+			else {
+				comando = comando + "\"Paese\" = " + "'" + provincia + "'";
+			}
+			flagProvincia++;
+		}
+		
+		try {
+			
+			Attrazione attrazione;
+			PreparedStatement ps = null;
+			ResultSet rs = null;
+
+			ps = conn.prepareStatement(comando);
+			rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				attrazione = new Attrazione();
+				attrazione.setAttrazione_ID(rs.getInt(1));
+				attrazione.setNome(rs.getString(2));
+				attrazione.setTipo(tipoattrazione.valueOf((rs.getObject(3).toString())));
+				attrazione.setVoto(rs.getDouble(4));
+				attrazione.setDescrizione(rs.getString(5));
+				attrazione.setFascia_Prezzo(prezzo.valueOf(rs.getObject(6).toString()));
+				attrazione.setLuogo_FK(rs.getInt(7));
+				attrazione.setFoto(rs.getBytes(8));
+				this.attrazioni.add(attrazione);
+			} 
+		
+	} catch (Exception e) {
+		System.out.println("ERROR IN SQL" + e);
+		JOptionPane.showMessageDialog(null, "ERRORE! Qualcosa è andato storto con il recupero dell'alttrazione by filtro");	
+		
+	}
+}}
 
 
