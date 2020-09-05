@@ -204,8 +204,7 @@ try {
 		
 		if(stato != null) {
 			if(flagNome == 1) {
-				comando = comando + "AND ";
-				comando = comando + "\"Stato\" = ? ";
+				comando = comando + " and \"Stato\" = ? ";
 			}
 			else {
 				comando = comando + "\"Stato\" = ? ";
@@ -215,8 +214,7 @@ try {
 		
 		if(città != null) {
 			if(flagNome == 1 || flagStato == 1) {
-				comando = comando + "AND ";
-				comando = comando + "\"Città\" = ? ";
+				comando = comando + " and \"Città\" = ? ";
 			}
 			else {
 				comando = comando + "\"Città\" = ? ";
@@ -226,8 +224,7 @@ try {
 		
 		if(provincia != null) {
 			if(flagNome == 1 || flagStato == 1 || flagCittà == 1) {
-				comando = comando + "AND ";
-				comando = comando + "\"Paese\" = ? ";
+				comando = comando + " and \"Paese\" = ?";
 			}
 			else {
 				comando = comando + "\"Paese\" = ?";
@@ -236,10 +233,11 @@ try {
 		}
 		
 		try {
-		    PreparedStatement ps = null;
-			ResultSet rs = null;
 			
-			ps = conn.prepareStatement(comando);
+			Albergo albergo;
+		    PreparedStatement ps = conn.prepareStatement(comando);
+		    java.sql.Statement stmt = conn.createStatement();
+		    
 			if(flagNome == 1) {
 				flag++;
 				ps.setString(flag, nome);
@@ -256,8 +254,10 @@ try {
 				flag++;
 				ps.setString(flag, provincia);
 			}
-			
-			rs = ps.executeQuery();
+
+		
+
+			ResultSet rs = stmt.executeQuery(comando);
 			while (rs.next()) {
 				albergo = new Albergo();
 				albergo.setAlbergo_ID(rs.getInt(1));

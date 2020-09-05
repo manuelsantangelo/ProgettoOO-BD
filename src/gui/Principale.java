@@ -152,7 +152,7 @@ public class Principale extends JFrame {
 		JLabel lblDescrizioniEffettuate = new JLabel("Descrizioni effettuate: " + controller.getUtenteDAO().getUtente().getContributi());
 		lblDescrizioniEffettuate.setFont(new Font("Gadugi", Font.BOLD, 17));
 		lblDescrizioniEffettuate.setAlignmentX(0.5f);
-		lblDescrizioniEffettuate.setBounds(42, 320, 194, 35);
+		lblDescrizioniEffettuate.setBounds(42, 320, 235, 35);
 		panel.add(lblDescrizioniEffettuate);
 		
 		txtDomanda = new JTextArea();
@@ -334,7 +334,11 @@ public class Principale extends JFrame {
 	
 	
 	public void riempitabellaAlberghi(Controller controller) {
+	if(areaNome.getText() != null || areaCittà.getText() != null|| areaProvincia.getText() != null || areaStato.getText()!= null) {
+			controller.getAlbergoDAO().setAlbergoByFiltro(controller.getConnection(), areaNome.getText(), areaCittà.getText(), areaStato.getText(), areaProvincia.getText());
+		}else {
 		controller.getAlbergoDAO().setAllAlberghi(controller.getConnection());
+		}
 		while (dtm.getRowCount() > 0) {
 		    dtm.removeRow(0);
 		}

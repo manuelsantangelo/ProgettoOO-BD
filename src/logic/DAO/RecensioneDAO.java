@@ -177,5 +177,37 @@ try {
 	
 		}
 	}
+	
+	public void setAllRecensioniApprovate(Connection conn){
+		this.recensioni.clear();
+		
+try {		
+	Recensione recensione;
+	
+	String comando = "SELECT * FROM public.\"Recensione\" where \"Approvata\" = true ";
+	
+	PreparedStatement ps = null;
+	ResultSet rs = null;
+	
+	ps = conn.prepareStatement(comando);
+	rs = ps.executeQuery();
+	while (rs.next()) {
+		recensione = new Recensione();
+		recensione.setReview_ID(rs.getInt(1));
+		recensione.setTesto(rs.getString(2));
+		recensione.setApprovata(rs.getBoolean(5));
+		recensione.setUser_FK1(rs.getInt(6));
+		
+		this.recensioni.add(recensione);
+	
+	}
+	
+} catch (Exception e) {
+	System.out.println("ERROR IN SQL" + e);
+	JOptionPane.showMessageDialog(null, "ERRORE! Qualcosa è andato storto con il recupero delle recensioni");	
+	
+}
+	}
+	
 
 }
