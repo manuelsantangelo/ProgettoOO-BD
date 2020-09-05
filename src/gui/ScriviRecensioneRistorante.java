@@ -141,7 +141,7 @@ public class ScriviRecensioneRistorante extends JFrame {
 		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane.setBounds(24, 498, 624, 98);
 		scrollPane.getViewport().setBackground(Color.WHITE);
-		add(scrollPane);
+		getContentPane().add(scrollPane);
 		
 		
 		JTextArea textAreaDescrizione = new JTextArea();
@@ -154,118 +154,10 @@ public class ScriviRecensioneRistorante extends JFrame {
 		textAreaDescrizione.setBackground(new Color(0, 191, 255));
 		textAreaDescrizione.setBounds(270, 78, 489, 182);
 		contentPane.add(textAreaDescrizione);
-		
-		JTextArea txtrStato = new JTextArea();
-		txtrStato.setFocusable(false);
-		txtrStato.setBackground(new Color(0, 191, 255));
-		txtrStato.setEditable(false);
-		txtrStato.setText("Stato");
-		txtrStato.setFont(new Font("Gadugi", Font.BOLD, 18));
-		txtrStato.setBounds(43, 262, 118, 29);
-		contentPane.add(txtrStato);
-		
-		JTextArea txtrCittà = new JTextArea();
-		txtrCittà.setFocusable(false);
-		txtrCittà.setBackground(new Color(0, 191, 255));
-		txtrCittà.setEditable(false);
-		txtrCittà.setText("Citt\u00E0\r\n");
-		txtrCittà.setFont(new Font("Gadugi", Font.BOLD, 18));
-		txtrCittà.setBounds(328, 262, 101, 29);
-		contentPane.add(txtrCittà);
-		
-		JTextArea txtrProvincia = new JTextArea();
-		txtrProvincia.setFocusable(false);
-		txtrProvincia.setBackground(new Color(0, 191, 255));
-		txtrProvincia.setEditable(false);
-		txtrProvincia.setText("Provincia\r\n");
-		txtrProvincia.setFont(new Font("Gadugi", Font.BOLD, 18));
-		txtrProvincia.setBounds(599, 262, 85, 29);
-		contentPane.add(txtrProvincia);
-		
-		JTextArea txtrIndirizzo = new JTextArea();
-		txtrIndirizzo.setFocusable(false);
-		txtrIndirizzo.setBackground(new Color(0, 191, 255));
-		txtrIndirizzo.setEditable(false);
-		txtrIndirizzo.setText("Indirizzo\r\n");
-		txtrIndirizzo.setFont(new Font("Gadugi", Font.BOLD, 18));
-		txtrIndirizzo.setBounds(44, 365, 149, 29);
-		contentPane.add(txtrIndirizzo);
-		
-		JTextArea txtrContatti = new JTextArea();
-		txtrContatti.setFocusable(false);
-		txtrContatti.setBackground(new Color(0, 191, 255));
-		txtrContatti.setEditable(false);
-		txtrContatti.setText("Telefono");
-		txtrContatti.setFont(new Font("Gadugi", Font.BOLD, 18));
-		txtrContatti.setBounds(291, 365, 80, 29);
-		contentPane.add(txtrContatti);
-		
-		JTextArea txtrSitoWeb = new JTextArea();
-		txtrSitoWeb.setFocusable(false);
-		txtrSitoWeb.setBackground(new Color(0, 191, 255));
-		txtrSitoWeb.setEditable(false);
-		txtrSitoWeb.setText("Sito Web");
-		txtrSitoWeb.setFont(new Font("Gadugi", Font.BOLD, 18));
-		txtrSitoWeb.setBounds(622, 365, 80, 29);
-		contentPane.add(txtrSitoWeb);
-		
-		JTextArea textStato = new JTextArea();
-		textStato.setFocusable(false);
-		textStato.setFont(new Font("Gadugi", Font.PLAIN, 17));
-		textStato.setBackground(new Color(0, 191, 255));
-		textStato.setEditable(false);
-		textStato.setText(controller.getLuogoDAO().getLuogo2().getStato());
-		textStato.setBounds(43, 301, 255, 29);
-		contentPane.add(textStato);
-		
-		JTextArea textCittà = new JTextArea();
-		textCittà.setFocusable(false);
-		textCittà.setFont(new Font("Gadugi", Font.PLAIN, 17));
-		textCittà.setBackground(new Color(0, 191, 255));
-		textCittà.setEditable(false);
-		textCittà.setText(controller.getLuogoDAO().getLuogo2().getCittà());
-		textCittà.setBounds(328, 301, 238, 29);
-		contentPane.add(textCittà);
-		
-		JTextArea textProvincia = new JTextArea();
-		textProvincia.setFocusable(false);
-		textProvincia.setFont(new Font("Gadugi", Font.PLAIN, 17));
-		textProvincia.setBackground(new Color(0, 191, 255));
-		textProvincia.setEditable(false);
-		textProvincia.setText(controller.getLuogoDAO().getLuogo2().getPaese());
-		textProvincia.setBounds(599, 301, 177, 29);
-		contentPane.add(textProvincia);
-		
-		JTextArea textIndirizzo = new JTextArea();
-		textIndirizzo.setFocusable(false);
-		textIndirizzo.setFont(new Font("Gadugi", Font.PLAIN, 16));
-		textIndirizzo.setBackground(new Color(0, 191, 255));
-		textIndirizzo.setEditable(false);
-		textIndirizzo.setText(controller.getLuogoDAO().getLuogo2().getIndirizzo());
-		textIndirizzo.setBounds(43, 404, 238, 40);
-		contentPane.add(textIndirizzo);
-		
-
-		JList listTelefono = new JList();
-		listTelefono.setFocusable(false);
-		listTelefono.setFont(new Font("Gadugi", Font.PLAIN, 13));
-		listTelefono.setBackground(new Color(0, 191, 255));
-		listTelefono.setBounds(291, 404, 273, 40);
 	for(int i = 0; i<controller.getContattiDAO().getSitoEtelefono().size(); i++) 
 		dlm.addElement(controller.getContattiDAO().getSitoEtelefono().get(i).getTelefono());
-		listTelefono.setModel(dlm);
-	
-		contentPane.add(listTelefono);
-		
-		JList listSitoWeb = new JList();
-		listSitoWeb.setFocusable(false);
-		listSitoWeb.setFont(new Font("Gadugi", Font.PLAIN, 13));
-		listSitoWeb.setBackground(new Color(0, 191, 255));
-		listSitoWeb.setBounds(622, 404, 280, 40);
 		for(int i = 0; i<controller.getContattiDAO().getSitoEtelefono().size(); i++) 
 			dlm1.addElement(controller.getContattiDAO().getSitoEtelefono().get(i).getSitoWeb());
-		listSitoWeb.setModel(dlm1);
-		contentPane.add(listSitoWeb);
 		
 		JList Fascia_Prezzo = new JList();
 		Fascia_Prezzo.setFocusable(false);
@@ -294,15 +186,6 @@ public class ScriviRecensioneRistorante extends JFrame {
 		btnIndietro.setBackground(new Color(0, 153, 255));
 		btnIndietro.setBounds(717, 594, 177, 29);
 		contentPane.add(btnIndietro);
-		
-		JTextArea txtrCategoriaRistoramte = new JTextArea();
-		txtrCategoriaRistoramte.setFocusable(false);
-		txtrCategoriaRistoramte.setText("Categoria ");
-		txtrCategoriaRistoramte.setFont(new Font("Gadugi", Font.BOLD, 18));
-		txtrCategoriaRistoramte.setEditable(false);
-		txtrCategoriaRistoramte.setBackground(new Color(0, 191, 255));
-		txtrCategoriaRistoramte.setBounds(786, 102, 85, 29);
-		contentPane.add(txtrCategoriaRistoramte);
 		
 		JTextArea txtrFasciaPrezzo = new JTextArea();
 		txtrFasciaPrezzo.setFocusable(false);
@@ -347,14 +230,14 @@ public class ScriviRecensioneRistorante extends JFrame {
 		
 		JList categoryList = new JList();
 		categoryList.setLayoutOrientation(JList.HORIZONTAL_WRAP);
-		categoryList.setBounds(54, 227, 249, 98);
+		categoryList.setBounds(20, 196, 283, 98);
 		panel.add(categoryList);
 		categoryList.setFont(new Font("Gadugi", Font.PLAIN, 13));
 		categoryList.setBackground(new Color(0, 191, 255));
 		categoryList.setModel(dlm3);
 		
 		JLabel lblIconacategoria = new JLabel("iconaCategoria");
-		lblIconacategoria.setBounds(16, 251, 28, 29);
+		lblIconacategoria.setBounds(16, 156, 28, 29);
 		File category_icon = new File("images\\ristorante.png");
 		BufferedImage imgcat = ImageIO.read(category_icon);
 		Image img2cat = imgcat.getScaledInstance(lblIconacategoria.getWidth(), lblIconacategoria.getHeight(), Image.SCALE_SMOOTH); 
@@ -404,84 +287,55 @@ public class ScriviRecensioneRistorante extends JFrame {
 		indirizzo.setText(controller.getLuogoDAO().getLuogo2().getIndirizzo());
 		
 		JTextArea txtrDoveSiamo = new JTextArea();
-		txtrDoveSiamo.setText("Informazioni");
+		txtrDoveSiamo.setText("Dove siamo?");
 		txtrDoveSiamo.setFont(new Font("Gadugi", Font.BOLD, 18));
 		txtrDoveSiamo.setEditable(false);
 		txtrDoveSiamo.setBackground(new Color(0, 153, 255));
 		txtrDoveSiamo.setBounds(54, 11, 118, 22);
 		panel.add(txtrDoveSiamo);
 		
-		JLabel lblAereo1 = new JLabel("");
-		lblAereo1.setBounds(61, 170, 41, 39);
-		panel.add(lblAereo1);
+		JTextArea txtrCucine = new JTextArea();
+		txtrCucine.setText("Cucine");
+		txtrCucine.setFont(new Font("Gadugi", Font.BOLD, 18));
+		txtrCucine.setEditable(false);
+		txtrCucine.setBackground(new Color(0, 153, 255));
+		txtrCucine.setBounds(54, 152, 71, 22);
+		panel.add(txtrCucine);
 		
-		JLabel lblAereo2 = new JLabel("");
-		lblAereo2.setBounds(113, 152, 41, 39);
-		panel.add(lblAereo2);
+		JTextArea txtrComeContattarci = new JTextArea();
+		txtrComeContattarci.setText("Come contattarci");
+		txtrComeContattarci.setFont(new Font("Gadugi", Font.BOLD, 18));
+		txtrComeContattarci.setEditable(false);
+		txtrComeContattarci.setBackground(new Color(0, 153, 255));
+		txtrComeContattarci.setBounds(54, 324, 164, 22);
+		panel.add(txtrComeContattarci);
 		
-		JLabel lblAereo3 = new JLabel("");
-		lblAereo3.setBounds(164, 170, 41, 39);
-		panel.add(lblAereo3);
+		JLabel lblIconacontatti = new JLabel("iconaContatti");
+		lblIconacontatti.setBounds(16, 324, 28, 29);
+		File imgtelefono = new File("images\\telefono.png");
+		BufferedImage imgtelefono2 = ImageIO.read(imgtelefono);
+		Image imgtelefono3 = imgtelefono2.getScaledInstance(lblIconaMappa.getWidth(), lblIconaMappa.getHeight(), Image.SCALE_SMOOTH); 
+		ImageIcon icona_telefono = new ImageIcon(imgtelefono3);
+		lblIconacontatti.setIcon(icona_telefono);
+		panel.add(lblIconacontatti);
 		
-		JLabel lblAereo4 = new JLabel("");
-		lblAereo4.setBounds(215, 152, 41, 39);
-		panel.add(lblAereo4);
-		
-		JLabel lblAereo5 = new JLabel("");
-		lblAereo5.setBounds(266, 170, 41, 39);
-		panel.add(lblAereo5);
-		
-		JLabel lblAereo6 = new JLabel("");
-		lblAereo6.setBounds(16, 152, 41, 39);
-		panel.add(lblAereo6);
-		
-		File aereo = new File("images\\aereo.png");
-		BufferedImage imgaereo = ImageIO.read(aereo);
-		Image aereoimg = imgaereo.getScaledInstance(lblAereo1.getWidth(), lblAereo1.getHeight(), Image.SCALE_SMOOTH); 
-		ImageIcon icona_aereo = new ImageIcon(aereoimg);
-		
-		lblAereo1.setIcon(icona_aereo);
-		lblAereo2.setIcon(icona_aereo);
-		lblAereo3.setIcon(icona_aereo);
-		lblAereo4.setIcon(icona_aereo);
-		lblAereo5.setIcon(icona_aereo);
-		lblAereo6.setIcon(icona_aereo);
-		
-		JLabel lblNave1 = new JLabel("");
-		lblNave1.setBounds(61, 371, 41, 39);
-		panel.add(lblNave1);
-		
-		JLabel lblNave2 = new JLabel("");
-		lblNave2.setBounds(113, 353, 41, 39);
-		panel.add(lblNave2);
-		
-		JLabel lblNave3 = new JLabel("");
-		lblNave3.setBounds(164, 371, 41, 39);
-		panel.add(lblNave3);
-		
-		JLabel lblNave4 = new JLabel("");
-		lblNave4.setBounds(215, 353, 41, 39);
-		panel.add(lblNave4);
-		
-		JLabel lblNave5 = new JLabel("");
-		lblNave5.setBounds(266, 371, 41, 39);
-		panel.add(lblNave5);
-		
-		JLabel lblNave6 = new JLabel("");
-		lblNave6.setBounds(16, 353, 41, 39);
-		panel.add(lblNave6);
 
-		File nave = new File("images\\nave.png");
-		BufferedImage imgnave = ImageIO.read(nave);
-		Image naveimg = imgnave.getScaledInstance(lblNave1.getWidth(), lblNave1.getHeight(), Image.SCALE_SMOOTH); 
-		ImageIcon icona_nave = new ImageIcon(naveimg);
+		JList listTelefono = new JList();
+		listTelefono.setLayoutOrientation(JList.HORIZONTAL_WRAP);
+		listTelefono.setBounds(10, 385, 300, 105);
+		panel.add(listTelefono);
+		listTelefono.setFocusable(false);
+		listTelefono.setFont(new Font("Gadugi", Font.PLAIN, 13));
+		listTelefono.setBackground(new Color(0, 191, 255));
+		listTelefono.setModel(dlm);
 		
-		lblNave1.setIcon(icona_nave);
-		lblNave2.setIcon(icona_nave);
-		lblNave3.setIcon(icona_nave);
-		lblNave4.setIcon(icona_nave);
-		lblNave5.setIcon(icona_nave);
-		lblNave6.setIcon(icona_nave);
+		JList listSitoWeb = new JList();
+		listSitoWeb.setBounds(16, 520, 294, 105);
+		panel.add(listSitoWeb);
+		listSitoWeb.setFocusable(false);
+		listSitoWeb.setFont(new Font("Gadugi", Font.PLAIN, 13));
+		listSitoWeb.setBackground(new Color(0, 191, 255));
+		listSitoWeb.setModel(dlm1);
 		
 		JList FasciaPrezzo = new JList();
 		FasciaPrezzo.setBounds(81, 45, 118, 22);

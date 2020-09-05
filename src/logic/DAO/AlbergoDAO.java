@@ -237,7 +237,6 @@ try {
 			Albergo albergo;
 			PreparedStatement ps = null;
 			ResultSet rs = null;
-
 			ps = conn.prepareStatement(comando);
 			rs = ps.executeQuery();
 			
