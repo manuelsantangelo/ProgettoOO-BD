@@ -191,7 +191,6 @@ try {
 	public void setAlbergoByFiltro(Connection conn, String nome, String città, String stato, String provincia) {
 		this.alberghi.clear();
 		
-		int flag = 0;
 		int flagNome = 0;
 		int flagStato = 0;
 		int flagCittà = 0;
@@ -238,7 +237,6 @@ try {
 			Albergo albergo;
 			PreparedStatement ps = null;
 			ResultSet rs = null;
-
 			ps = conn.prepareStatement(comando);
 			rs = ps.executeQuery();
 			
