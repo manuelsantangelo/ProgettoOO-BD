@@ -127,11 +127,15 @@ try {
 		recensione = new Recensione();
 		recensione.setReview_ID(rs.getInt(1));
 		recensione.setTesto(rs.getString(2));
+		recensione.setStelle(rs.getInt(3));
+		recensione.setMiPiace(rs.getInt(4));
 		recensione.setApprovata(rs.getBoolean(5));
 		recensione.setUser_FK1(rs.getInt(6));
-		
-		this.recensioni.add(recensione);
-	
+		recensione.setModeratore_FK(rs.getInt(7));
+		recensione.setAlbergo_FK(rs.getInt(8));
+		recensione.setAttrazione_FK(rs.getInt(9));
+		recensione.setRistorante_FK(rs.getInt(10));
+		this.recensioni.add(recensione);	
 	}
 	
 } catch (Exception e) {
@@ -195,9 +199,14 @@ try {
 		recensione = new Recensione();
 		recensione.setReview_ID(rs.getInt(1));
 		recensione.setTesto(rs.getString(2));
+		recensione.setStelle(rs.getInt(3));
+		recensione.setMiPiace(rs.getInt(4));
 		recensione.setApprovata(rs.getBoolean(5));
 		recensione.setUser_FK1(rs.getInt(6));
-		
+		recensione.setModeratore_FK(rs.getInt(7));
+		recensione.setAlbergo_FK(rs.getInt(8));
+		recensione.setAttrazione_FK(rs.getInt(9));
+		recensione.setRistorante_FK(rs.getInt(10));
 		this.recensioni.add(recensione);
 	
 	}
@@ -209,25 +218,31 @@ try {
 }
 	}
 
-public void setRecensioniDaVisualizzareAlbergo(Connection conn, String nomeAlbergo){
+public void setRecensioniDaVisualizzareAlbergo(Connection conn){
 	this.recensioni.clear();
 	
 try {		
 	Recensione recensione;
-	String comando = "SELECT * FROM public.\"Recensione\" as rec join \"Albergo\" as al on al.\"Albergo_ID\" = rec.\"Albergo_FK\" where rec.\"Approvata\" = true and al.\"Nome\" = ?" ;
+	String comando = "SELECT * FROM public.\"Recensione\" where \"Approvata\" = true and \"Albergo_FK\" = " + controller.getAlbergoDAO().getAlbergo().getAlbergo_ID() ;
 	
 	PreparedStatement ps = null;
 	ResultSet rs = null;
 	
 	
 	ps = conn.prepareStatement(comando);
-	ps.setString(1, nomeAlbergo);
 	rs = ps.executeQuery();
 while (rs.next()) {
 	recensione = new Recensione();
+	recensione.setReview_ID(rs.getInt(1));
 	recensione.setTesto(rs.getString(2));
+	recensione.setStelle(rs.getInt(3));
+	recensione.setMiPiace(rs.getInt(4));
 	recensione.setApprovata(rs.getBoolean(5));
-	
+	recensione.setUser_FK1(rs.getInt(6));
+	recensione.setModeratore_FK(rs.getInt(7));
+	recensione.setAlbergo_FK(rs.getInt(8));
+	recensione.setAttrazione_FK(rs.getInt(9));
+	recensione.setRistorante_FK(rs.getInt(10));
 	this.recensioni.add(recensione);
 
 }
@@ -240,28 +255,34 @@ JOptionPane.showMessageDialog(null, "ERRORE! Qualcosa è andato storto con il rec
 
 	}
 
-public void setRecensioniDaVisualizzareRistorante(Connection conn, String nomeRistorante){
+public void setRecensioniDaVisualizzareRistorante(Connection conn){
 	this.recensioni.clear();
 	
 try {		
 	Recensione recensione;
-	String comando = "SELECT * FROM public.\"Recensione\" as rec join \"Ristorante\" as ris on ris.\"Ristorante_ID\" = rec.\"Ristorante_FK\" where rec.\"Approvata\" = true and ris.\"Nome\" = ?" ;
+	String comando = "SELECT * FROM public.\"Recensione\" where \"Approvata\" = true and \"Ristorante_FK\" = " +
+	controller.getRistoranteDAO().getRistorante().getRistorante_ID();
 	
 	PreparedStatement ps = null;
 	ResultSet rs = null;
 	
 	
 	ps = conn.prepareStatement(comando);
-	ps.setString(1, nomeRistorante);
 	rs = ps.executeQuery();
 	
 while (rs.next()) {
 	recensione = new Recensione();
+	recensione.setReview_ID(rs.getInt(1));
 	recensione.setTesto(rs.getString(2));
+	recensione.setStelle(rs.getInt(3));
+	recensione.setMiPiace(rs.getInt(4));
 	recensione.setApprovata(rs.getBoolean(5));
-	
+	recensione.setUser_FK1(rs.getInt(6));
+	recensione.setModeratore_FK(rs.getInt(7));
+	recensione.setAlbergo_FK(rs.getInt(8));
+	recensione.setAttrazione_FK(rs.getInt(9));
+	recensione.setRistorante_FK(rs.getInt(10));
 	this.recensioni.add(recensione);
-
 }
 
 } catch (Exception e) {
@@ -271,28 +292,34 @@ JOptionPane.showMessageDialog(null, "ERRORE! Qualcosa è andato storto con il rec
 }
 	}
 	
-public void setRecensioniDaVisualizzareAttrazione(Connection conn, String nomeAttrazione){
+public void setRecensioniDaVisualizzareAttrazione(Connection conn){
 	this.recensioni.clear();
 	
 try {		
 	Recensione recensione;
-	String comando = "SELECT * FROM public.\"Recensione\" as rec join \"Attrazione\" as attr on attr.\"Attrazione_ID\" = rec.\"Attrazione_FK\" where rec.\"Approvata\" = true and attr.\"Nome\" = ?" ;
+	String comando = "SELECT * FROM public.\"Recensione\"  where \"Approvata\" = true and \"Attrazione_FK\" = "
+			+ controller.getAttrazioneDAO().getAttrazione().getAttrazione_ID() ;
 	
 	PreparedStatement ps = null;
 	ResultSet rs = null;
 	
 	
 	ps = conn.prepareStatement(comando);
-	ps.setString(1, nomeAttrazione);
 	rs = ps.executeQuery();
 	
 while (rs.next()) {
 	recensione = new Recensione();
+	recensione.setReview_ID(rs.getInt(1));
 	recensione.setTesto(rs.getString(2));
+	recensione.setStelle(rs.getInt(3));
+	recensione.setMiPiace(rs.getInt(4));
 	recensione.setApprovata(rs.getBoolean(5));
-	
+	recensione.setUser_FK1(rs.getInt(6));
+	recensione.setModeratore_FK(rs.getInt(7));
+	recensione.setAlbergo_FK(rs.getInt(8));
+	recensione.setAttrazione_FK(rs.getInt(9));
+	recensione.setRistorante_FK(rs.getInt(10));
 	this.recensioni.add(recensione);
-
 }
 
 } catch (Exception e) {

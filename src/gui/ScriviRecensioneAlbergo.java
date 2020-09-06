@@ -392,7 +392,7 @@ public boolean isCellEditable(int row, int column) {
 
 		tabellaRecensioni.setBackground(Color.WHITE);
 		tabellaRecensioni.setFont(new Font("Gadugi", Font.PLAIN, 14));
-		String nomeColonne[] = new String[] { "Recensioni" };
+		String nomeColonne[] = new String[] { "Recensioni", "Stelle", "Like" };
 	    tabellaRecensioni.setModel(dtm);
 	    dtm.setColumnIdentifiers(nomeColonne);
 		tabellaRecensioni.setBounds(41, 279, 441, 173);
@@ -447,7 +447,7 @@ public boolean isCellEditable(int row, int column) {
 	
 public void riempitabellaRecensioni (Controller controller) {
 		
-		controller.getRecensioneDAO().setRecensioniDaVisualizzareAlbergo(controller.getConnection(), controller.getAlbergoDAO().getAlbergo().getNome());
+		controller.getRecensioneDAO().setRecensioniDaVisualizzareAlbergo(controller.getConnection());
 		
 		while (dtm.getRowCount() > 0) {
 		    dtm.removeRow(0);
@@ -461,7 +461,7 @@ public void riempitabellaRecensioni (Controller controller) {
 	do {
 		
 		dtm.addRow(new Object[] {
-					controller.getRecensioneDAO().getRecensioni().get(i).getTesto(),
+					controller.getRecensioneDAO().getRecensioni().get(i).getTesto(), controller.getRecensioneDAO().getRecensioni().get(i).getStelle(), controller.getRecensioneDAO().getRecensioni().get(i).getMiPiace()
 			});
 			dtm.isCellEditable(i, 1);
 			dtm.isCellEditable(i, 2);

@@ -205,8 +205,7 @@ public ScriviRecensioneAttrazione(Controller controller) throws IOException {
 		category.setFont(new Font("Gadugi", Font.PLAIN, 13));
 		category.setBackground(new Color(0, 191, 255));
 		category.setBounds(786, 142, 118, 73);
-		for(int i = 0; i < controller.getAttrazioneDAO().getAttrazioni().size(); i++)
-		dlm3.addElement(controller.getAttrazioneDAO().getAttrazioni().get(i).getTipo().toString());
+		dlm3.addElement(controller.getAttrazioneDAO().getAttrazioni().get(controller.getIndice()).getTipo().toString());
 		
 		
 		JPanel panel = new JPanel();
@@ -346,7 +345,7 @@ public ScriviRecensioneAttrazione(Controller controller) throws IOException {
 		
 		tabellaRecensioni.setBackground(Color.WHITE);
 		tabellaRecensioni.setFont(new Font("Gadugi", Font.PLAIN, 14));
-		String nomeColonne[] = new String[] { "Recensioni" };
+		String nomeColonne[] = new String[] { "Recensioni", "Stelle", "Like" };
 	    tabellaRecensioni.setModel(dtm);
 	    dtm.setColumnIdentifiers(nomeColonne);
 		tabellaRecensioni.setBounds(41, 279, 441, 173);
@@ -403,7 +402,7 @@ public ScriviRecensioneAttrazione(Controller controller) throws IOException {
 
 public void riempitabellaRecensioni (Controller controller) {
 	
-	controller.getRecensioneDAO().setRecensioniDaVisualizzareAttrazione(controller.getConnection(), controller.getAttrazioneDAO().getAttrazione().getNome());
+	controller.getRecensioneDAO().setRecensioniDaVisualizzareAttrazione(controller.getConnection());
 	
 	while (dtm.getRowCount() > 0) {
 	    dtm.removeRow(0);
@@ -417,7 +416,7 @@ public void riempitabellaRecensioni (Controller controller) {
 do {
 	
 	dtm.addRow(new Object[] {
-				controller.getRecensioneDAO().getRecensioni().get(i).getTesto(),
+				controller.getRecensioneDAO().getRecensioni().get(i).getTesto(),controller.getRecensioneDAO().getRecensioni().get(i).getStelle(), controller.getRecensioneDAO().getRecensioni().get(i).getMiPiace()
 		});
 		dtm.isCellEditable(i, 1);
 		dtm.isCellEditable(i, 2);
