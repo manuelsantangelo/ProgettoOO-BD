@@ -4,7 +4,6 @@ public class Recensione {
 	private int Review_ID;
 	private String Testo;
 	private int Stelle;
-	private int MiPiace;
 	private boolean Approvata;
 	private int User_FK1;
 	private int Moderatore_FK;
@@ -29,12 +28,7 @@ public class Recensione {
 	public void setStelle(int stelle) {
 		Stelle = stelle;
 	}
-	public int getMiPiace() {
-		return MiPiace;
-	}
-	public void setMiPiace(int miPiace) {
-		MiPiace = miPiace;
-	}
+
 	public boolean isApprovata() {
 		return Approvata;
 	}

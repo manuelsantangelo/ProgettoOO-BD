@@ -448,7 +448,7 @@ public void riempitabellaRecensioni(Controller controller) {
 	do {
 		
 		dtm.addRow(new Object[] {
-					controller.getRecensioneDAO().getRecensioni().get(i).getTesto(),controller.getRecensioneDAO().getRecensioni().get(i).getStelle(), controller.getRecensioneDAO().getRecensioni().get(i).getMiPiace()
+					controller.getRecensioneDAO().getRecensioni().get(i).getTesto(),controller.getRecensioneDAO().getRecensioni().get(i).getStelle()
 			});
 			dtm.isCellEditable(i, 1);
 			dtm.isCellEditable(i, 2);
