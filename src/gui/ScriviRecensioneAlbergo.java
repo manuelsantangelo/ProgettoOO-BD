@@ -454,7 +454,7 @@ public boolean isCellEditable(int row, int column) {
 	            if (mouseEvent.getClickCount() == 2 && tabellaRecensioni.getSelectedRow() != -1) {
 	            	int indice = tabellaRecensioni.getSelectedRow();
 	            	
-	            	textAreaVisualizzaRecensione.setText(controller.getRecensioneDAO().getRecensioni().get(indice).getTesto());
+	            	textAreaVisualizzaRecensione.setText(controller.getRecensioneDAO().getRecensioni().get(indice).getTesto() + controller.getRecensioneDAO().getNomeUtenteRecensione(controller.getConnection()));
 	            	
 	           	
 	            }

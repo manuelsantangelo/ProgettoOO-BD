@@ -329,6 +329,38 @@ JOptionPane.showMessageDialog(null, "ERRORE! Qualcosa è andato storto con il rec
 }
 	}
 
+public String getNomeUtenteRecensione(Connection conn) {
+	
+	String nomeUtente = null;
+
+	
+
+	try {
+		String comando;
+		comando = "Select \"Nome\" from \"Utente\" where \"User_ID\" =  " + controller.getRecensioneDAO().getRecensione().getReview_ID();
+		
+		
+
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		
+		ps = conn.prepareStatement(comando);
+		rs = ps.executeQuery();
+		while (rs.next()) 
+		nomeUtente = rs.getString(3);		
+		
+		
+		
+	} catch (Exception e) {
+		System.out.println("ERROR IN SQL" + e);
+		JOptionPane.showMessageDialog(null, "ERRORE! Qualcosa è andato storto con il recupero del nome utente");	
+	}
+	
+	return nomeUtente;
+
+}
+
 	
 	
 	

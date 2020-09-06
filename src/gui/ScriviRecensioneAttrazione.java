@@ -393,7 +393,6 @@ public class ScriviRecensioneAttrazione extends JFrame {
 	            	int indice = tabellaRecensioni.getSelectedRow();
 	            	
 	            	textAreaVisualizzaRecensione.setText(controller.getRecensioneDAO().getRecensioni().get(indice).getTesto());
-	            	
 	           	
 	            }
 	        }
