@@ -295,7 +295,7 @@ public boolean isCellEditable(int row, int column) {
 		txtrTipoDiStruttura.setFont(new Font("Gadugi", Font.BOLD, 18));
 		txtrTipoDiStruttura.setEditable(false);
 		txtrTipoDiStruttura.setBackground(new Color(0, 153, 255));
-		txtrTipoDiStruttura.setBounds(54, 152, 150, 33);
+		txtrTipoDiStruttura.setBounds(54, 152, 139, 33);
 		panel.add(txtrTipoDiStruttura);
 		
 		JTextArea txtrComeContattarci = new JTextArea();
@@ -303,11 +303,11 @@ public boolean isCellEditable(int row, int column) {
 		txtrComeContattarci.setFont(new Font("Gadugi", Font.BOLD, 18));
 		txtrComeContattarci.setEditable(false);
 		txtrComeContattarci.setBackground(new Color(0, 153, 255));
-		txtrComeContattarci.setBounds(54, 416, 164, 22);
+		txtrComeContattarci.setBounds(54, 481, 164, 22);
 		panel.add(txtrComeContattarci);
 		
 		JLabel lblIconacontatti = new JLabel("iconaContatti");
-		lblIconacontatti.setBounds(16, 420, 28, 29);
+		lblIconacontatti.setBounds(16, 481, 28, 29);
 		File imgtelefono = new File("images\\telefono.png");
 		BufferedImage imgtelefono2 = ImageIO.read(imgtelefono);
 		Image imgtelefono3 = imgtelefono2.getScaledInstance(lblIconaMappa.getWidth(), lblIconaMappa.getHeight(), Image.SCALE_SMOOTH); 
@@ -317,7 +317,7 @@ public boolean isCellEditable(int row, int column) {
 		
 		JList listTelefono = new JList();
 		listTelefono.setLayoutOrientation(JList.HORIZONTAL_WRAP);
-		listTelefono.setBounds(16, 460, 300, 54);
+		listTelefono.setBounds(9, 521, 300, 54);
 		panel.add(listTelefono);
 		listTelefono.setFocusable(false);
 		listTelefono.setFont(new Font("Gadugi", Font.PLAIN, 13));
@@ -329,7 +329,7 @@ public boolean isCellEditable(int row, int column) {
 	
 		
 		JList listSitoWeb = new JList();
-		listSitoWeb.setBounds(16, 571, 294, 54);
+		listSitoWeb.setBounds(9, 586, 294, 54);
 		panel.add(listSitoWeb);
 		listSitoWeb.setFocusable(false);
 		listSitoWeb.setFont(new Font("Gadugi", Font.PLAIN, 13));
@@ -342,16 +342,16 @@ public boolean isCellEditable(int row, int column) {
 		
 		
 		JTextArea txtrCamere = new JTextArea();
-		txtrCamere.setBounds(228, 141, 75, 54);
+		txtrCamere.setBounds(54, 437, 139, 29);
 		panel.add(txtrCamere);
 		txtrCamere.setFocusable(false);
-		txtrCamere.setText("Numero\r\ncamere");
+		txtrCamere.setText("Numero camere");
 		txtrCamere.setFont(new Font("Gadugi", Font.BOLD, 18));
 		txtrCamere.setEditable(false);
 		txtrCamere.setBackground(new Color(0, 153, 255));
 		
 		JTextArea textCamere = new JTextArea();
-		textCamere.setBounds(238, 196, 65, 29);
+		textCamere.setBounds(202, 438, 65, 29);
 		panel.add(textCamere);
 		textCamere.setFocusable(false);
 		textCamere.setText(String.valueOf(controller.getAlbergoDAO().getAlbergo().getNumero_Camere()));
@@ -360,7 +360,7 @@ public boolean isCellEditable(int row, int column) {
 		textCamere.setBackground(new Color(0, 191, 255));
 		
 		JList TipoDiServizio = new JList();
-		TipoDiServizio.setBounds(54, 185, 139, 40);
+		TipoDiServizio.setBounds(54, 185, 139, 22);
 		panel.add(TipoDiServizio);
 		TipoDiServizio.setFocusable(false);
 		TipoDiServizio.setFont(new Font("Gadugi", Font.PLAIN, 13));
@@ -382,6 +382,24 @@ public boolean isCellEditable(int row, int column) {
 		txtrServizio.setBackground(new Color(0, 153, 255));
 		txtrServizio.setBounds(54, 235, 150, 29);
 		panel.add(txtrServizio);
+		
+		JLabel lblIconaservizio = new JLabel("iconaServizio");
+		lblIconaservizio.setBounds(16, 235, 28, 29);
+		File imginfo = new File("images\\info.png");
+		BufferedImage imginfo2 = ImageIO.read(imginfo);
+		Image imginfo3 = imginfo2.getScaledInstance(lblIconaservizio.getWidth(), lblIconaservizio.getHeight(), Image.SCALE_SMOOTH); 
+		ImageIcon icona_info = new ImageIcon(imginfo3);
+		lblIconaservizio.setIcon(icona_info);
+		panel.add(lblIconaservizio);
+		
+		JLabel labelIconaCamere = new JLabel("iconaCamere");
+		labelIconaCamere.setBounds(16, 437, 28, 29);
+		File imgcamere = new File("images\\camere.png");
+		BufferedImage imgcamere2 = ImageIO.read(imgcamere);
+		Image imgcamere3 = imgcamere2.getScaledInstance(labelIconaCamere.getWidth(), labelIconaCamere.getHeight(), Image.SCALE_SMOOTH); 
+		ImageIcon icona_camere = new ImageIcon(imgcamere3);
+		labelIconaCamere.setIcon(icona_camere);
+		panel.add(labelIconaCamere);
 		
 		JList FasciaPrezzo = new JList();
 		FasciaPrezzo.setBounds(81, 45, 118, 22);
