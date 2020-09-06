@@ -6,10 +6,13 @@ import java.awt.Cursor;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.Point;
 import java.awt.ScrollPane;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -29,6 +32,7 @@ import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableModel;
 
 import Tipi.tipoattrazione;
 import logic.Controller;
@@ -49,7 +53,15 @@ public class ScriviRecensioneAttrazione extends JFrame {
 	private DefaultListModel dlm2 = new DefaultListModel();
 	private DefaultListModel dlm3 = new DefaultListModel();
 
+	private JTable tabellaRecensioni = new JTable();
+	static DefaultTableModel dtm = new DefaultTableModel(0,0){       //Impostiamo le righe e colonne della JTable
+                                                                     //cliccabili ma non modificabili
+@Override
+public boolean isCellEditable(int row, int column) {
 
+	return false;
+}
+};	
 	
 public ScriviRecensioneAttrazione(Controller controller) throws IOException {
 	
@@ -332,7 +344,34 @@ public ScriviRecensioneAttrazione(Controller controller) throws IOException {
 		FasciaPrezzo.setFont(new Font("Gadugi", Font.PLAIN, 13));
 		FasciaPrezzo.setModel(dlm2);
 		
+		tabellaRecensioni.setBackground(Color.WHITE);
+		tabellaRecensioni.setFont(new Font("Gadugi", Font.PLAIN, 14));
+		String nomeColonne[] = new String[] { "Recensioni" };
+	    tabellaRecensioni.setModel(dtm);
+	    dtm.setColumnIdentifiers(nomeColonne);
+		tabellaRecensioni.setBounds(41, 279, 441, 173);
+		contentPane.add(tabellaRecensioni);
 		
+		JScrollPane scrollPane2 = new JScrollPane(tabellaRecensioni);
+		scrollPane2.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS); 
+		scrollPane2.setBounds(24, 301, 488, 148);
+		contentPane.add(scrollPane2);
+		scrollPane2.setViewportView(tabellaRecensioni);
+		
+		riempitabellaRecensioni(controller);
+		
+		JTextArea textAreaVisualizzaRecensione = new JTextArea();
+		textAreaVisualizzaRecensione.setFont(new Font("Gadugi", Font.PLAIN, 18));
+		textAreaVisualizzaRecensione.setEditable(false);
+		textAreaVisualizzaRecensione.setLineWrap(true);
+		textAreaVisualizzaRecensione.setBounds(619, 255, 263, 193);
+		contentPane.add(textAreaVisualizzaRecensione);
+		
+		JScrollPane scrollPane3 = new JScrollPane(textAreaVisualizzaRecensione);
+		scrollPane3.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		scrollPane3.setBounds(619, 255, 263, 193);
+		scrollPane3.getViewport().setBackground(Color.WHITE);
+		getContentPane().add(scrollPane3);
 		
 		
 		btnaggiungirecensione.addActionListener(new ActionListener() {
@@ -345,7 +384,46 @@ public ScriviRecensioneAttrazione(Controller controller) throws IOException {
 				
 			}});
 		
+		
+		tabellaRecensioni.addMouseListener(new MouseAdapter() {
+	        public void mousePressed(MouseEvent mouseEvent) {
+	            tabellaRecensioni = (JTable) mouseEvent.getSource();
+	            Point point = mouseEvent.getPoint();
+	            int row = tabellaRecensioni.rowAtPoint(point);
+	            if (mouseEvent.getClickCount() == 2 && tabellaRecensioni.getSelectedRow() != -1) {
+	            	int indice = tabellaRecensioni.getSelectedRow();
+	            	
+	            	textAreaVisualizzaRecensione.setText(controller.getRecensioneDAO().getRecensioni().get(indice).getTesto());
+	            	
+	           	
+	            }
+	        }
+		});
 }
+
+public void riempitabellaRecensioni (Controller controller) {
+	
+	controller.getRecensioneDAO().setRecensioniDaVisualizzareAttrazione(controller.getConnection(), controller.getAttrazioneDAO().getAttrazione().getNome());
+	
+	while (dtm.getRowCount() > 0) {
+	    dtm.removeRow(0);
+	}
+	
+	dtm.setRowCount(0);
+
+	int i = 0;
+	if(controller.getRecensioneDAO().getRecensioni().isEmpty()) {}
+	else {
+do {
+	
+	dtm.addRow(new Object[] {
+				controller.getRecensioneDAO().getRecensioni().get(i).getTesto(),
+		});
+		dtm.isCellEditable(i, 1);
+		dtm.isCellEditable(i, 2);
+		i++;
+	}while(controller.getRecensioneDAO().getRecensioni().size() != i);
 }
+}}
 
 

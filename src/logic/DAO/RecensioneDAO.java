@@ -208,6 +208,101 @@ try {
 	
 }
 	}
+
+public void setRecensioniDaVisualizzareAlbergo(Connection conn, String nomeAlbergo){
+	this.recensioni.clear();
+	
+try {		
+	Recensione recensione;
+	String comando = "SELECT * FROM public.\"Recensione\" as rec join \"Albergo\" as al on al.\"Albergo_ID\" = rec.\"Albergo_FK\" where rec.\"Approvata\" = true and al.\"Nome\" = ?" ;
+	
+	PreparedStatement ps = null;
+	ResultSet rs = null;
+	
+	
+	ps = conn.prepareStatement(comando);
+	ps.setString(1, nomeAlbergo);
+	rs = ps.executeQuery();
+while (rs.next()) {
+	recensione = new Recensione();
+	recensione.setTesto(rs.getString(2));
+	recensione.setApprovata(rs.getBoolean(5));
+	
+	this.recensioni.add(recensione);
+
+}
+
+} catch (Exception e) {
+System.out.println("ERROR IN SQL" + e);
+JOptionPane.showMessageDialog(null, "ERRORE! Qualcosa è andato storto con il recupero delle recensioni");	
+
+}
+
+	}
+
+public void setRecensioniDaVisualizzareRistorante(Connection conn, String nomeRistorante){
+	this.recensioni.clear();
+	
+try {		
+	Recensione recensione;
+	String comando = "SELECT * FROM public.\"Recensione\" as rec join \"Ristorante\" as ris on ris.\"Ristorante_ID\" = rec.\"Ristorante_FK\" where rec.\"Approvata\" = true and ris.\"Nome\" = ?" ;
+	
+	PreparedStatement ps = null;
+	ResultSet rs = null;
+	
+	
+	ps = conn.prepareStatement(comando);
+	ps.setString(1, nomeRistorante);
+	rs = ps.executeQuery();
+	
+while (rs.next()) {
+	recensione = new Recensione();
+	recensione.setTesto(rs.getString(2));
+	recensione.setApprovata(rs.getBoolean(5));
+	
+	this.recensioni.add(recensione);
+
+}
+
+} catch (Exception e) {
+System.out.println("ERROR IN SQL" + e);
+JOptionPane.showMessageDialog(null, "ERRORE! Qualcosa è andato storto con il recupero delle recensioni");	
+
+}
+	}
+	
+public void setRecensioniDaVisualizzareAttrazione(Connection conn, String nomeAttrazione){
+	this.recensioni.clear();
+	
+try {		
+	Recensione recensione;
+	String comando = "SELECT * FROM public.\"Recensione\" as rec join \"Attrazione\" as attr on attr.\"Attrazione_ID\" = rec.\"Attrazione_FK\" where rec.\"Approvata\" = true and attr.\"Nome\" = ?" ;
+	
+	PreparedStatement ps = null;
+	ResultSet rs = null;
+	
+	
+	ps = conn.prepareStatement(comando);
+	ps.setString(1, nomeAttrazione);
+	rs = ps.executeQuery();
+	
+while (rs.next()) {
+	recensione = new Recensione();
+	recensione.setTesto(rs.getString(2));
+	recensione.setApprovata(rs.getBoolean(5));
+	
+	this.recensioni.add(recensione);
+
+}
+
+} catch (Exception e) {
+System.out.println("ERROR IN SQL" + e);
+JOptionPane.showMessageDialog(null, "ERRORE! Qualcosa è andato storto con il recupero delle recensioni");	
+
+}
+	}
+
+	
 	
 	
 	
