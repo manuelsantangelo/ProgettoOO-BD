@@ -56,25 +56,25 @@ public class ScriviRecensioneAttrazione extends JFrame {
 	private JTable tabellaRecensioni = new JTable();
 	static DefaultTableModel dtm = new DefaultTableModel(0,0){       //Impostiamo le righe e colonne della JTable
                                                                      //cliccabili ma non modificabili
-@Override
-public boolean isCellEditable(int row, int column) {
+	@Override
+	public boolean isCellEditable(int row, int column) {
 
-	return false;
-}
-};	
+		return false;
+	}
+	};	
 	
-public ScriviRecensioneAttrazione(Controller controller) throws IOException {
+	public ScriviRecensioneAttrazione(Controller controller) throws IOException {
 	
-	setIconImage(Toolkit.getDefaultToolkit().getImage("images\\LogoPiccolo.png"));
-	setTitle("Recensione " + controller.getAttrazioneDAO().getAttrazione().getNome());
-	setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-	setBounds(FINESTRA_Y, FINESTRA_X, LUNGHEZZA_FINESTRA, ALTEZZA_FINESTRA);
+		setIconImage(Toolkit.getDefaultToolkit().getImage("images\\LogoPiccolo.png"));
+		setTitle("Recensione " + controller.getAttrazioneDAO().getAttrazione().getNome());
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setBounds(FINESTRA_Y, FINESTRA_X, LUNGHEZZA_FINESTRA, ALTEZZA_FINESTRA);
 	
-	contentPane = new JPanel();
-	contentPane.setBackground(new Color(0, 191, 255));
-	contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-	setContentPane(contentPane);
-	contentPane.setLayout(null);
+		contentPane = new JPanel();
+		contentPane.setBackground(new Color(0, 191, 255));
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
 
 
 		JTextArea txtrDescrizione = new JTextArea();
@@ -234,7 +234,7 @@ public ScriviRecensioneAttrazione(Controller controller) throws IOException {
 		
 		JLabel lblIconacategoria = new JLabel("iconaCategoria");
 		lblIconacategoria.setBounds(16, 156, 28, 29);
-		File category_icon = new File("images\\ristorante.png");
+		File category_icon = new File("images\\museo.png");
 		BufferedImage imgcat = ImageIO.read(category_icon);
 		Image img2cat = imgcat.getScaledInstance(lblIconacategoria.getWidth(), lblIconacategoria.getHeight(), Image.SCALE_SMOOTH); 
 		ImageIcon icona_categoria = new ImageIcon(img2cat);
