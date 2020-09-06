@@ -80,22 +80,8 @@ public class Albergo {
 		Luogo_FK = luogo_FK;
 	}
 	
-
-	
-	public Albergo(String nome, categoriaalbergo categoria, int stelle, String testo, int numero_Camere, int luogo_FK) {
-		super();
-		Nome = nome;
-		Categoria = categoria;
-		Stelle = stelle;
-		Testo = testo;
-		Numero_Camere = numero_Camere;
-		Luogo_FK = luogo_FK;
-		
-	}
-	
 	public Albergo() {
 		
 	}
 	
-
 }

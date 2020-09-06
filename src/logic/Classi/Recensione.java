@@ -65,15 +65,6 @@ public class Recensione {
 	public void setRistorante_FK(int ristorante_FK) {
 		Ristorante_FK = ristorante_FK;
 	}
-	public Recensione(String testo, int stelle, int user_FK1, int albergo_FK, int attrazione_FK, int ristorante_FK) {
-		super();
-		Testo = testo;
-		Stelle = stelle;
-		User_FK1 = user_FK1;
-		Albergo_FK = albergo_FK;
-		Attrazione_FK = attrazione_FK;
-		Ristorante_FK = ristorante_FK;
-	}
 	
 	public Recensione() {
 		

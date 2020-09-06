@@ -83,18 +83,5 @@ public class Utente {
 	
 	public Utente() {	
 	}
-	
-	public Utente(String password, String nome, String nickname, String email, Date data_di_Nascita, String cognome,
-			String città, byte[] propic) {
-		super();
-		Password = password;
-		Nome = nome;
-		Nickname = nickname;
-		Email = email;
-		Data_di_Nascita = data_di_Nascita;
-		Cognome = cognome;
-		Città = città;
-		Propic = propic;
-	}
 
 }

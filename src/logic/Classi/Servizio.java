@@ -16,10 +16,5 @@ public class Servizio {
 	public void setServizio_ID(int servizio_ID) {
 		Servizio_ID = servizio_ID;
 	}
-	public Servizio(tiposervizio tipoDiServizio) {
-		super();
-		TipoDiServizio = tipoDiServizio;
-	}
-	
 	
 }
