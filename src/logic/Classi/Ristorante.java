@@ -62,16 +62,6 @@ public class Ristorante {
 		Luogo_FK = luogo_FK;
 	}
 	
-	
-	
-	public Ristorante(String nome, int stelle_Michelin, String descizione, prezzo fascia_Prezzo, int luogo_FK) {
-		super();
-		Nome = nome;
-		Stelle_Michelin = stelle_Michelin;
-		Descizione = descizione;
-		Fascia_Prezzo = fascia_Prezzo;
-		Luogo_FK = luogo_FK;
-	}
 	public Ristorante() {
 		
 	}

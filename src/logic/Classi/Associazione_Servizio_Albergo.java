@@ -23,9 +23,4 @@ public class Associazione_Servizio_Albergo {
 		Servizio_FK = servizio_FK;
 	}
 	
-	public Associazione_Servizio_Albergo(int albergo_FK, tiposervizio servizio_FK) {
-		super();
-		Albergo_FK = albergo_FK;
-		Servizio_FK = servizio_FK;
-	}
 }

@@ -11,10 +11,5 @@ public class CategoriaRistorante {
 	public void setTipo(tiporistorante tipo) {
 		Tipo = tipo;
 	}
-
-	public CategoriaRistorante(tiporistorante tipo) {
-		super();
-		Tipo = tipo;
-	}
 		
 }

@@ -43,21 +43,7 @@ public class Contatti {
 	public void setAttrazione_FK(int attrazione_FK) {
 		Attrazione_FK = attrazione_FK;
 	}
-	/**
-	 * @param telefono
-	 * @param sitoWeb
-	 * @param ristorante_FK (Se decido di voler associare
-	 * @param albergo_FK     il contatto ad uno solo dei
-	 * @param attrazione_FK  tre valori imposto gli altri a null)
-	 */
-	public Contatti(String telefono, String sitoWeb, int ristorante_FK, int albergo_FK, int attrazione_FK) {
-		super();
-		Telefono = telefono;
-		SitoWeb = sitoWeb;
-		Ristorante_FK = ristorante_FK;
-		Albergo_FK = albergo_FK;
-		Attrazione_FK = attrazione_FK;
-	}
+
 	public Contatti() {
 	}
 	

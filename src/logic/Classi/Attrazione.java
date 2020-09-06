@@ -59,14 +59,6 @@ public class Attrazione {
 	public void setFoto(byte[] foto) {
 		Foto = foto;
 	}
-	public Attrazione(String nome, tipoattrazione tipo, String descrizione, prezzo fascia_Prezzo, int luogo_FK) {
-		super();
-		Nome = nome;
-		Tipo = tipo;
-		Descrizione = descrizione;
-		Fascia_Prezzo = fascia_Prezzo;
-		Luogo_FK = luogo_FK;
-	}
 	
 	public Attrazione() {
 		

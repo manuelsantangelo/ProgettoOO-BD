@@ -61,14 +61,6 @@ public class Luogo {
 		Attrazione_FK = attrazione_FK;
 	}
 	
-	
-	public Luogo(String stato, String città, String paese, String indirizzo) {
-		super();
-		Stato = stato;
-		Città = città;
-		Paese = paese;
-		Indirizzo = indirizzo;
-	}
 	public Luogo() {
 
 	}

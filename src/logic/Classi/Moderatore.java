@@ -74,19 +74,7 @@ public class Moderatore {
 	public void setPassword(String password) {
 		Password = password;
 	}
-	public Moderatore(String sede, String nome, String cognome, String email, String indirizzo,
-			Date data_Inizio_Lavoro, Date dataDiNascita, String cF, String password) {
-		super();
-		Sede = sede;
-		Nome = nome;
-		Cognome = cognome;
-		Email = email;
-		Indirizzo = indirizzo;
-		Data_Inizio_Lavoro = data_Inizio_Lavoro;
-		DataDiNascita = dataDiNascita;
-		CF = cF;
-		Password = password;
-	}
+
 	public Moderatore() {
 	}
 	
