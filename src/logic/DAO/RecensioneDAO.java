@@ -324,15 +324,16 @@ JOptionPane.showMessageDialog(null, "ERRORE! Qualcosa è andato storto con il rec
 }
 	}
 
-public String getNomeUtenteRecensione(Connection conn) {
+public String getNomeUtenteRecensione(Connection conn, int codiceRecensione) {
 	
-	String nomeUtente = null;
+	String nickname = new String();
 
 	
 
 	try {
+		
 		String comando;
-		comando = "Select \"Nome\" from \"Utente\" where \"User_ID\" =  " + controller.getRecensioneDAO().getRecensione().getReview_ID();
+		comando = "Select \"NickName\" from \"Utente\" as ut join \"Recensione\" as rec on ut.\"User_ID\" = rec.\"User_FK1\" where rec.\"Review_ID\" =  " + codiceRecensione;
 		
 		
 
@@ -342,9 +343,10 @@ public String getNomeUtenteRecensione(Connection conn) {
 		
 		ps = conn.prepareStatement(comando);
 		rs = ps.executeQuery();
-		while (rs.next()) 
-		nomeUtente = rs.getString(3);		
+		while (rs.next()) {
+		nickname = rs.getString(1);	
 		
+		}
 		
 		
 	} catch (Exception e) {
@@ -352,7 +354,7 @@ public String getNomeUtenteRecensione(Connection conn) {
 		JOptionPane.showMessageDialog(null, "ERRORE! Qualcosa è andato storto con il recupero del nome utente");	
 	}
 	
-	return nomeUtente;
+	return nickname;
 
 }
 

@@ -82,22 +82,22 @@ public boolean isCellEditable(int row, int column) {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 	
-		JTextArea txtrDescrizione = new JTextArea();
-		txtrDescrizione.setFocusable(false);
-		txtrDescrizione.setText("Recensione");
-		txtrDescrizione.setForeground(Color.WHITE);
-		txtrDescrizione.setFont(new Font("Parametric Glitch", Font.BOLD, 21));
-		txtrDescrizione.setEditable(false);
-		txtrDescrizione.setBackground(new Color(0, 191, 255));
-		txtrDescrizione.setBounds(24, 459, 128, 29);
-		contentPane.add(txtrDescrizione);
+		JTextArea txtrScriviRecensione = new JTextArea();
+		txtrScriviRecensione.setFocusable(false);
+		txtrScriviRecensione.setText("Dicci cosa ne pensi");
+		txtrScriviRecensione.setForeground(Color.BLACK);
+		txtrScriviRecensione.setFont(new Font("Parametric Glitch", Font.BOLD, 21));
+		txtrScriviRecensione.setEditable(false);
+		txtrScriviRecensione.setBackground(new Color(0, 191, 255));
+		txtrScriviRecensione.setBounds(24, 475, 205, 29);
+		contentPane.add(txtrScriviRecensione);
 		
 		JButton btnaggiungirecensione = new JButton("Aggiungi recensione");
 		btnaggiungirecensione.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnaggiungirecensione.setForeground(Color.BLACK);
 		btnaggiungirecensione.setFont(new Font("Gadugi", Font.BOLD, 14));
-		btnaggiungirecensione.setBackground(Color.WHITE);
-		btnaggiungirecensione.setBounds(717, 537, 177, 47);
+		btnaggiungirecensione.setBackground(new Color(0, 153, 255));
+		btnaggiungirecensione.setBounds(720, 519, 180, 54);
 		contentPane.add(btnaggiungirecensione);
 		
 		JLabel lblFoto = new JLabel("foto");
@@ -120,17 +120,17 @@ public boolean isCellEditable(int row, int column) {
 		valutazioneStelle.setForeground(new Color(0, 0, 0));
 		DefaultComboBoxModel model = new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5"});
 		valutazioneStelle.setModel(model);
-		valutazioneStelle.setBounds(717, 498, 177, 29);
+		valutazioneStelle.setBounds(668, 520, 42, 29);
 		contentPane.add(valutazioneStelle);
 		
 		JTextArea txtrvalutazioneStelle = new JTextArea();
 		txtrvalutazioneStelle.setFocusable(false);
-		txtrvalutazioneStelle.setText("Stelle valutazione");
-		txtrvalutazioneStelle.setForeground(Color.WHITE);
+		txtrvalutazioneStelle.setText("Stelle");
+		txtrvalutazioneStelle.setForeground(Color.BLACK);
 		txtrvalutazioneStelle.setFont(new Font("Parametric Glitch", Font.BOLD, 21));
 		txtrvalutazioneStelle.setEditable(false);
 		txtrvalutazioneStelle.setBackground(new Color(0, 191, 255));
-		txtrvalutazioneStelle.setBounds(713, 458, 181, 29);
+		txtrvalutazioneStelle.setBounds(658, 487, 61, 29);
 		contentPane.add(txtrvalutazioneStelle);
 		
 		JTextArea txtrNome = new JTextArea();
@@ -158,7 +158,7 @@ public boolean isCellEditable(int row, int column) {
 		
 		JScrollPane scrollPane = new JScrollPane(textAreaRecensione);
 		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		scrollPane.setBounds(24, 498, 624, 98);
+		scrollPane.setBounds(24, 514, 624, 98);
 		scrollPane.getViewport().setBackground(Color.WHITE);
 		getContentPane().add(scrollPane);
 		
@@ -189,10 +189,11 @@ public boolean isCellEditable(int row, int column) {
 			}
 		});
 		btnIndietro.setForeground(new Color(0, 0, 0));
-		btnIndietro.setFont(new Font("Gadugi", Font.PLAIN, 15));
+		btnIndietro.setFont(new Font("Gadugi", Font.BOLD, 15));
 		btnIndietro.setBackground(new Color(0, 153, 255));
-		btnIndietro.setBounds(717, 594, 177, 29);
+		btnIndietro.setBounds(685, 583, 215, 29);
 		contentPane.add(btnIndietro);
+		
 		dlm3.addElement(controller.getAlbergoDAO().getAlberghi().get(controller.getIndice()).getCategoria());
 		for(int i = 0; i < controller.getAssociazione_Servizio_AlbergoDAO().getServizi().size(); i++)
 			dlm4.addElement(controller.getAssociazione_Servizio_AlbergoDAO().getServizi().get(i).getServizio_FK().toString());
@@ -242,10 +243,11 @@ public boolean isCellEditable(int row, int column) {
 		panel.add(lblIconacategoria);
 		
 		JTextArea txtStato = new JTextArea();
-		txtStato.setBounds(26, 55, 128, 29);
+		txtStato.setBorder(new LineBorder(new Color(0, 191, 255), 2, true));
+		txtStato.setBounds(175, 54, 128, 29);
 		panel.add(txtStato);
 		txtStato.setFont(new Font("Gadugi", Font.PLAIN, 17));
-		txtStato.setBackground(new Color(0, 191, 255));
+		txtStato.setBackground(new Color(0, 153, 255));
 		txtStato.setEditable(false);
 		txtStato.setText(controller.getLuogoDAO().getLuogo2().getStato());
 		
@@ -259,26 +261,29 @@ public boolean isCellEditable(int row, int column) {
 		panel.add(lblIconaMappa);
 		
 		JTextArea txtrCity = new JTextArea();
-		txtrCity.setBounds(164, 55, 139, 29);
+		txtrCity.setBorder(new LineBorder(new Color(0, 191, 255), 2, true));
+		txtrCity.setBounds(16, 54, 139, 29);
 		panel.add(txtrCity);
 		txtrCity.setFont(new Font("Gadugi", Font.PLAIN, 17));
-		txtrCity.setBackground(new Color(0, 191, 255));
+		txtrCity.setBackground(new Color(0, 153, 255));
 		txtrCity.setEditable(false);
 		txtrCity.setText(controller.getLuogoDAO().getLuogo2().getCittà());
 		
 		JTextArea textprovincia = new JTextArea();
-		textprovincia.setBounds(26, 101, 128, 29);
+		textprovincia.setBorder(new LineBorder(new Color(0, 191, 255), 2, true));
+		textprovincia.setBounds(16, 117, 128, 29);
 		panel.add(textprovincia);
 		textprovincia.setFont(new Font("Gadugi", Font.PLAIN, 17));
-		textprovincia.setBackground(new Color(0, 191, 255));
+		textprovincia.setBackground(new Color(0, 153, 255));
 		textprovincia.setEditable(false);
 		textprovincia.setText(controller.getLuogoDAO().getLuogo2().getPaese());
 		
 		JTextArea indirizzo = new JTextArea();
-		indirizzo.setBounds(164, 102, 139, 29);
+		indirizzo.setBorder(new LineBorder(new Color(0, 191, 255), 2, true));
+		indirizzo.setBounds(175, 118, 139, 29);
 		panel.add(indirizzo);
 		indirizzo.setFont(new Font("Gadugi", Font.PLAIN, 16));
-		indirizzo.setBackground(new Color(0, 191, 255));
+		indirizzo.setBackground(new Color(0, 153, 255));
 		indirizzo.setEditable(false);
 		indirizzo.setText(controller.getLuogoDAO().getLuogo2().getIndirizzo());
 		
@@ -316,12 +321,13 @@ public boolean isCellEditable(int row, int column) {
 		panel.add(lblIconacontatti);
 		
 		JList listTelefono = new JList();
+		listTelefono.setBorder(new LineBorder(new Color(0, 191, 255), 2, true));
 		listTelefono.setLayoutOrientation(JList.HORIZONTAL_WRAP);
 		listTelefono.setBounds(9, 521, 300, 54);
 		panel.add(listTelefono);
 		listTelefono.setFocusable(false);
 		listTelefono.setFont(new Font("Gadugi", Font.PLAIN, 13));
-		listTelefono.setBackground(new Color(0, 191, 255));
+		listTelefono.setBackground(new Color(0, 153, 255));
 		for(int i = 0; i<controller.getContattiDAO().getSitoEtelefono().size(); i++) 
 			dlm.addElement(controller.getContattiDAO().getSitoEtelefono().get(i).getTelefono());
 			listTelefono.setModel(dlm);
@@ -329,11 +335,12 @@ public boolean isCellEditable(int row, int column) {
 	
 		
 		JList listSitoWeb = new JList();
-		listSitoWeb.setBounds(9, 586, 294, 54);
+		listSitoWeb.setBorder(new LineBorder(new Color(0, 191, 255), 2, true));
+		listSitoWeb.setBounds(9, 586, 300, 54);
 		panel.add(listSitoWeb);
 		listSitoWeb.setFocusable(false);
 		listSitoWeb.setFont(new Font("Gadugi", Font.PLAIN, 13));
-		listSitoWeb.setBackground(new Color(0, 191, 255));
+		listSitoWeb.setBackground(new Color(0, 153, 255));
 		for(int i = 0; i<controller.getContattiDAO().getSitoEtelefono().size(); i++) 
 			dlm1.addElement(controller.getContattiDAO().getSitoEtelefono().get(i).getSitoWeb());
 		listSitoWeb.setModel(dlm1);
@@ -351,28 +358,31 @@ public boolean isCellEditable(int row, int column) {
 		txtrCamere.setBackground(new Color(0, 153, 255));
 		
 		JTextArea textCamere = new JTextArea();
+		textCamere.setBorder(new LineBorder(new Color(0, 191, 255), 2, true));
 		textCamere.setBounds(202, 438, 65, 29);
 		panel.add(textCamere);
 		textCamere.setFocusable(false);
 		textCamere.setText(String.valueOf(controller.getAlbergoDAO().getAlbergo().getNumero_Camere()));
 		textCamere.setFont(new Font("Gadugi", Font.PLAIN, 17));
 		textCamere.setEditable(false);
-		textCamere.setBackground(new Color(0, 191, 255));
+		textCamere.setBackground(new Color(0, 153, 255));
 		
 		JList TipoDiServizio = new JList();
+		TipoDiServizio.setBorder(new LineBorder(new Color(0, 191, 255), 2, true));
 		TipoDiServizio.setBounds(54, 185, 139, 22);
 		panel.add(TipoDiServizio);
 		TipoDiServizio.setFocusable(false);
 		TipoDiServizio.setFont(new Font("Gadugi", Font.PLAIN, 13));
-		TipoDiServizio.setBackground(new Color(0, 191, 255));
+		TipoDiServizio.setBackground(new Color(0, 153, 255));
 		TipoDiServizio.setModel(dlm3);
 		
 		JList Servizio = new JList();
+		Servizio.setBorder(new LineBorder(new Color(0, 191, 255), 2, true));
 		Servizio.setBounds(54, 269, 213, 135);
 		panel.add(Servizio);
 		Servizio.setFocusable(false);
 		Servizio.setFont(new Font("Gadugi", Font.PLAIN, 13));
-		Servizio.setBackground(new Color(0, 191, 255));
+		Servizio.setBackground(new Color(0, 153, 255));
 		Servizio.setModel(dlm4);
 		
 		JTextArea txtrServizio = new JTextArea();
@@ -401,16 +411,25 @@ public boolean isCellEditable(int row, int column) {
 		labelIconaCamere.setIcon(icona_camere);
 		panel.add(labelIconaCamere);
 		
+		JTextArea txtrProvincia = new JTextArea();
+		txtrProvincia.setText("Provincia");
+		txtrProvincia.setFont(new Font("Gadugi", Font.BOLD, 14));
+		txtrProvincia.setEditable(false);
+		txtrProvincia.setBackground(new Color(0, 153, 255));
+		txtrProvincia.setBounds(16, 85, 103, 22);
+		panel.add(txtrProvincia);
+		
 		JList FasciaPrezzo = new JList();
 		FasciaPrezzo.setBounds(81, 45, 118, 22);
 		contentPane.add(FasciaPrezzo);
 		FasciaPrezzo.setBackground(new Color(0, 191, 255));
 		FasciaPrezzo.setFont(new Font("Gadugi", Font.PLAIN, 13));
 		FasciaPrezzo.setModel(dlm2);
+		tabellaRecensioni.setRowHeight(20);
 
 		tabellaRecensioni.setBackground(Color.WHITE);
 		tabellaRecensioni.setFont(new Font("Gadugi", Font.PLAIN, 14));
-		String nomeColonne[] = new String[] { "Recensioni", "Stelle", "Like" };
+		String nomeColonne[] = new String[] { "Recensioni", "Stelle" };
 	    tabellaRecensioni.setModel(dtm);
 	    dtm.setColumnIdentifiers(nomeColonne);
 		tabellaRecensioni.setBounds(41, 279, 441, 173);
@@ -418,14 +437,14 @@ public boolean isCellEditable(int row, int column) {
 		
 		JScrollPane scrollPane2 = new JScrollPane(tabellaRecensioni);
 		scrollPane2.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS); 
-		scrollPane2.setBounds(24, 301, 488, 148);
+		scrollPane2.setBounds(24, 310, 488, 148);
 		contentPane.add(scrollPane2);
 		scrollPane2.setViewportView(tabellaRecensioni);
 		
 		riempitabellaRecensioni(controller);
 		
 		JTextArea textAreaVisualizzaRecensione = new JTextArea();
-		textAreaVisualizzaRecensione.setFont(new Font("Gadugi", Font.PLAIN, 18));
+		textAreaVisualizzaRecensione.setFont(new Font("Gadugi", Font.PLAIN, 16));
 		textAreaVisualizzaRecensione.setEditable(false);
 		textAreaVisualizzaRecensione.setLineWrap(true);
 		textAreaVisualizzaRecensione.setBounds(619, 255, 263, 193);
@@ -433,9 +452,29 @@ public boolean isCellEditable(int row, int column) {
 		
 		JScrollPane scrollPane3 = new JScrollPane(textAreaVisualizzaRecensione);
 		scrollPane3.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		scrollPane3.setBounds(619, 255, 263, 193);
+		scrollPane3.setBounds(563, 311, 319, 147);
 		scrollPane3.getViewport().setBackground(Color.WHITE);
 		getContentPane().add(scrollPane3);
+		
+		JTextArea txtrRecensioni = new JTextArea();
+		txtrRecensioni.setText("Recensioni");
+		txtrRecensioni.setForeground(Color.BLACK);
+		txtrRecensioni.setFont(new Font("Dialog", Font.BOLD, 21));
+		txtrRecensioni.setFocusable(false);
+		txtrRecensioni.setEditable(false);
+		txtrRecensioni.setBackground(new Color(0, 191, 255));
+		txtrRecensioni.setBounds(24, 271, 128, 29);
+		contentPane.add(txtrRecensioni);
+		
+		JTextArea txtrVisualizzaRecensione = new JTextArea();
+		txtrVisualizzaRecensione.setText("Visualizza recensione");
+		txtrVisualizzaRecensione.setForeground(Color.BLACK);
+		txtrVisualizzaRecensione.setFont(new Font("Dialog", Font.BOLD, 21));
+		txtrVisualizzaRecensione.setFocusable(false);
+		txtrVisualizzaRecensione.setEditable(false);
+		txtrVisualizzaRecensione.setBackground(new Color(0, 191, 255));
+		txtrVisualizzaRecensione.setBounds(563, 271, 233, 29);
+		contentPane.add(txtrVisualizzaRecensione);
 		
 		btnaggiungirecensione.addActionListener(new ActionListener() {
 			@SuppressWarnings("deprecation")
@@ -453,8 +492,8 @@ public boolean isCellEditable(int row, int column) {
 	            int row = tabellaRecensioni.rowAtPoint(point);
 	            if (mouseEvent.getClickCount() == 2 && tabellaRecensioni.getSelectedRow() != -1) {
 	            	int indice = tabellaRecensioni.getSelectedRow();
-	            	
-	            	textAreaVisualizzaRecensione.setText(controller.getRecensioneDAO().getRecensioni().get(indice).getTesto() + controller.getRecensioneDAO().getNomeUtenteRecensione(controller.getConnection()));
+	            	int codiceRecensione = controller.getRecensioneDAO().getRecensioni().get(indice).getReview_ID();
+	            	textAreaVisualizzaRecensione.setText(controller.getRecensioneDAO().getRecensioni().get(indice).getTesto() + "\n - " + controller.getRecensioneDAO().getNomeUtenteRecensione(controller.getConnection(), codiceRecensione));
 	            	
 	           	
 	            }

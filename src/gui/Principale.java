@@ -44,6 +44,7 @@ import java.awt.SystemColor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
 
 public class Principale extends JFrame {
 	
@@ -176,10 +177,12 @@ public class Principale extends JFrame {
 		attrazioneristorantehotel.setModel(model);
 		attrazioneristorantehotel.setBounds(332, 81, 117, 29);
 		contentPane.add(attrazioneristorantehotel);
+		elementi.setSelectionBackground(UIManager.getColor("Table.selectionBackground"));
+		elementi.setRowHeight(25);
 		
 	
-		elementi.setBackground(new Color(0, 153, 255));
-		elementi.setFont(new Font("Gadugi", Font.PLAIN, 14));
+		elementi.setBackground(new Color(255, 255, 255));
+		elementi.setFont(new Font("Gadugi", Font.PLAIN, 18));
 		String nomeColonne[] = new String[] { "Nome", "Città", "Voto" };
 	    elementi.setModel(dtm);
 	    dtm.setColumnIdentifiers(nomeColonne);
