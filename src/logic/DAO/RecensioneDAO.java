@@ -128,13 +128,12 @@ try {
 		recensione.setReview_ID(rs.getInt(1));
 		recensione.setTesto(rs.getString(2));
 		recensione.setStelle(rs.getInt(3));
-		recensione.setMiPiace(rs.getInt(4));
-		recensione.setApprovata(rs.getBoolean(5));
-		recensione.setUser_FK1(rs.getInt(6));
-		recensione.setModeratore_FK(rs.getInt(7));
-		recensione.setAlbergo_FK(rs.getInt(8));
-		recensione.setAttrazione_FK(rs.getInt(9));
-		recensione.setRistorante_FK(rs.getInt(10));
+		recensione.setApprovata(rs.getBoolean(4));
+		recensione.setUser_FK1(rs.getInt(5));
+		recensione.setModeratore_FK(rs.getInt(6));
+		recensione.setAlbergo_FK(rs.getInt(7));
+		recensione.setAttrazione_FK(rs.getInt(8));
+		recensione.setRistorante_FK(rs.getInt(9));
 		this.recensioni.add(recensione);	
 	}
 	
@@ -200,13 +199,12 @@ try {
 		recensione.setReview_ID(rs.getInt(1));
 		recensione.setTesto(rs.getString(2));
 		recensione.setStelle(rs.getInt(3));
-		recensione.setMiPiace(rs.getInt(4));
-		recensione.setApprovata(rs.getBoolean(5));
-		recensione.setUser_FK1(rs.getInt(6));
-		recensione.setModeratore_FK(rs.getInt(7));
-		recensione.setAlbergo_FK(rs.getInt(8));
-		recensione.setAttrazione_FK(rs.getInt(9));
-		recensione.setRistorante_FK(rs.getInt(10));
+		recensione.setApprovata(rs.getBoolean(4));
+		recensione.setUser_FK1(rs.getInt(5));
+		recensione.setModeratore_FK(rs.getInt(6));
+		recensione.setAlbergo_FK(rs.getInt(7));
+		recensione.setAttrazione_FK(rs.getInt(8));
+		recensione.setRistorante_FK(rs.getInt(9));
 		this.recensioni.add(recensione);
 	
 	}
@@ -236,13 +234,12 @@ while (rs.next()) {
 	recensione.setReview_ID(rs.getInt(1));
 	recensione.setTesto(rs.getString(2));
 	recensione.setStelle(rs.getInt(3));
-	recensione.setMiPiace(rs.getInt(4));
-	recensione.setApprovata(rs.getBoolean(5));
-	recensione.setUser_FK1(rs.getInt(6));
-	recensione.setModeratore_FK(rs.getInt(7));
-	recensione.setAlbergo_FK(rs.getInt(8));
-	recensione.setAttrazione_FK(rs.getInt(9));
-	recensione.setRistorante_FK(rs.getInt(10));
+	recensione.setApprovata(rs.getBoolean(4));
+	recensione.setUser_FK1(rs.getInt(5));
+	recensione.setModeratore_FK(rs.getInt(6));
+	recensione.setAlbergo_FK(rs.getInt(7));
+	recensione.setAttrazione_FK(rs.getInt(8));
+	recensione.setRistorante_FK(rs.getInt(9));
 	this.recensioni.add(recensione);
 
 }
@@ -275,13 +272,12 @@ while (rs.next()) {
 	recensione.setReview_ID(rs.getInt(1));
 	recensione.setTesto(rs.getString(2));
 	recensione.setStelle(rs.getInt(3));
-	recensione.setMiPiace(rs.getInt(4));
-	recensione.setApprovata(rs.getBoolean(5));
-	recensione.setUser_FK1(rs.getInt(6));
-	recensione.setModeratore_FK(rs.getInt(7));
-	recensione.setAlbergo_FK(rs.getInt(8));
-	recensione.setAttrazione_FK(rs.getInt(9));
-	recensione.setRistorante_FK(rs.getInt(10));
+	recensione.setApprovata(rs.getBoolean(4));
+	recensione.setUser_FK1(rs.getInt(5));
+	recensione.setModeratore_FK(rs.getInt(6));
+	recensione.setAlbergo_FK(rs.getInt(7));
+	recensione.setAttrazione_FK(rs.getInt(8));
+	recensione.setRistorante_FK(rs.getInt(9));
 	this.recensioni.add(recensione);
 }
 
@@ -312,13 +308,12 @@ while (rs.next()) {
 	recensione.setReview_ID(rs.getInt(1));
 	recensione.setTesto(rs.getString(2));
 	recensione.setStelle(rs.getInt(3));
-	recensione.setMiPiace(rs.getInt(4));
-	recensione.setApprovata(rs.getBoolean(5));
-	recensione.setUser_FK1(rs.getInt(6));
-	recensione.setModeratore_FK(rs.getInt(7));
-	recensione.setAlbergo_FK(rs.getInt(8));
-	recensione.setAttrazione_FK(rs.getInt(9));
-	recensione.setRistorante_FK(rs.getInt(10));
+	recensione.setApprovata(rs.getBoolean(4));
+	recensione.setUser_FK1(rs.getInt(5));
+	recensione.setModeratore_FK(rs.getInt(6));
+	recensione.setAlbergo_FK(rs.getInt(7));
+	recensione.setAttrazione_FK(rs.getInt(8));
+	recensione.setRistorante_FK(rs.getInt(9));
 	this.recensioni.add(recensione);
 }
 
