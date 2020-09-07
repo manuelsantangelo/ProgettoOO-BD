@@ -15,6 +15,9 @@ public class ContattiDAO {
 	
 	Controller controller;
 	private Contatti contatti = new Contatti();
+	
+	//ArrayList utilizzato per contenere i contatti
+	//presenti nel database quando viene effettuata una ricerca
 	private ArrayList<Contatti> sitoEtelefono = new ArrayList<Contatti>();
 	
 	public ArrayList<Contatti> getSitoEtelefono() {
@@ -31,6 +34,9 @@ public class ContattiDAO {
 		this.controller = controller;	
 	}
 	
+	//Metodo utilizzato per inserire all'interno del database
+	//un telefono (o più telefoni) e un sito web (o più siti web) 
+	//per il corrispondente ristorante
 	public void addContattiRistorante(Connection conn, ArrayList<String> numTelefono, ArrayList<String> webSite, int ID) {
 		String comando;
 		comando = "INSERT INTO public.\"Contatti\"(\"Telefono\", \"SitoWeb\", \"Ristorante_FK\")VALUES (?, ?, ?);";
@@ -104,8 +110,12 @@ public class ContattiDAO {
 		}
 	}
 
-
-public void addContattiAlbergo(Connection conn, ArrayList<String> numTelefono, ArrayList<String> webSite, int ID) {
+	
+	//Metodo utilizzato per inserire all'interno del database
+	//un telefono (o più telefoni) e un sito web (o più siti web) 
+	//per il corrispondente albergo
+	
+	public void addContattiAlbergo(Connection conn, ArrayList<String> numTelefono, ArrayList<String> webSite, int ID) {
 	String comando;
 	comando = "INSERT INTO public.\"Contatti\"(\"Telefono\", \"SitoWeb\", \"Albergo_FK\")VALUES (?, ?, ?);";
 	
@@ -178,7 +188,10 @@ public void addContattiAlbergo(Connection conn, ArrayList<String> numTelefono, A
 	}
 }
 
-public void addContattiAttrazione(Connection conn, ArrayList<String> numTelefono, ArrayList<String> webSite, int ID) {
+	//Metodo utilizzato per inserire all'interno del database
+	//un telefono (o più telefoni) e un sito web (o più siti web) 
+	//per la corrispondente attrazione
+	public void addContattiAttrazione(Connection conn, ArrayList<String> numTelefono, ArrayList<String> webSite, int ID) {
 	String comando;
 	comando = "INSERT INTO public.\"Contatti\"(\"Telefono\", \"SitoWeb\", \"Attrazione_FK\")VALUES (?, ?, ?);";
 	
@@ -251,6 +264,9 @@ public void addContattiAttrazione(Connection conn, ArrayList<String> numTelefono
 	}
 }
 
+	//Metodo che viene utilizzato per inserire nell'ArrayList di contatti
+	//il sito web (o siti web) presenti all'interno del database
+	//in corrispondenza di una determinata attrazione
       public void setContattiAttrazioni(Connection conn) {
     	  String comando;
     	  comando = "Select * from \"Contatti\" where \"Attrazione_FK\" = " + controller.getAttrazioneDAO().getAttrazione().getAttrazione_ID();
@@ -278,6 +294,10 @@ public void addContattiAttrazione(Connection conn, ArrayList<String> numTelefono
 			JOptionPane.showMessageDialog(null, "ERRORE! Qualcossa è andato storto con la select");		} 
     	  }
       
+      
+    //Metodo che viene utilizzato per inserire nell'ArrayList di contatti
+  	//il sito web (o siti web) presenti all'interno del database
+  	//in corrispondenza di un determinato albergo
       public void setContattiAlbergo(Connection conn) {
     	  String comando;
     	  comando = "Select * from \"Contatti\" where \"Albergo_FK\" = " + controller.getAlbergoDAO().getAlbergo().getAlbergo_ID();
@@ -304,6 +324,9 @@ public void addContattiAttrazione(Connection conn, ArrayList<String> numTelefono
 			JOptionPane.showMessageDialog(null, "ERRORE! Qualcossa è andato storto con la select");		} 
     	  }
       
+    //Metodo che viene utilizzato per inserire nell'ArrayList di contatti
+  	//il sito web (o siti web) presenti all'interno del database
+  	//in corrispondenza di un determinato ristorante
       public void setContattiRistorante(Connection conn) {
     	  String comando;
     	  comando = "Select * from \"Contatti\" where \"Ristorante_FK\" = " + controller.getRistoranteDAO().getRistorante().getRistorante_ID();

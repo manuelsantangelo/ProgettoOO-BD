@@ -12,18 +12,17 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
-import Tipi.categoriaalbergo;
 import Tipi.prezzo;
-import Tipi.tiporistorante;
 import logic.Controller;
-import logic.Classi.Albergo;
-import logic.Classi.Attrazione;
 import logic.Classi.Ristorante;
 
 public class RistoranteDAO {
 	
 	Controller controller;
 	private Ristorante ristorante = new Ristorante();
+	
+	//ArrayList utilizzato per contenere i ristoranti
+	//presenti nel database quando viene effettuata una ricerca
 	private ArrayList<Ristorante> ristoranti = new ArrayList<Ristorante>();
 
 	public Ristorante getRistorante() {
@@ -38,6 +37,12 @@ public class RistoranteDAO {
 		this.controller = controller;	
 	}
 	
+	public ArrayList<Ristorante> getRistoranti(){
+		return this.ristoranti;
+	}
+	
+	//Metodo utilizzato per inserire all'interno del database
+	//un nuovo ristorante
 	public void addRistorante(Connection conn, String nome1, prezzo price, int stelleMichelin1, String descrizione1, File immagine) {
 		String comando;
 		comando = "INSERT INTO \"Ristorante\"(\"Nome\", \"Stelle_Michelin\", \"Descrizione\", \"Fascia_Prezzo\", \"Foto\") VALUES (?, ?, ?, ?, ?);";
@@ -66,6 +71,7 @@ public class RistoranteDAO {
 	}
 	}
 
+	//Metodo che restituisce l'ID dell'ultimo ristorante inserito
 	public int getLastRestaurant(Connection conn) {
 		int ID = 0;
 		String comando;
@@ -88,6 +94,9 @@ public class RistoranteDAO {
 		return ID;
 	}
 	
+	
+	//Metodo che restituisce un ArrayList di stringhe contentente
+	//tutti i nomi dei ristoranti presenti nel database
 	public ArrayList<String> getNomeRistorante (Connection conn) {
 		ArrayList<String> nome =  new ArrayList<String>();
 		String comando;
@@ -114,6 +123,7 @@ public class RistoranteDAO {
 		return nome;
 	}
 	
+	//Metodo utilizzato per eliminare un ristorante dal database
 	public void deleteRistorante(Connection conn, String nome1) {
 		String comando;
 		comando = "Delete From \"Ristorante\" where \"Nome\" = ? ";
@@ -135,10 +145,10 @@ public class RistoranteDAO {
 	
 }
 	
-	public ArrayList<Ristorante> getRistoranti(){
-		return this.ristoranti;
-	}
-	
+
+	//Metodo che inizialmente pulisce l'ArrayList di ristoranti
+	// e poi viene utilizzato per inserire nell'ArrayList stesso
+	//tutti i ristoranti presenti all'interno del database
 	public void setAllRistoranti(Connection conn){
 		
 		this.ristoranti.clear();
@@ -175,12 +185,18 @@ try {
 
 	}
 	
+	
+	//Metodo che inizialmente pulisce l'ArrayList di ristoranti
+	// e poi viene utilizzato per inserire nell'ArrayList stesso
+	//i ristoranti presenti all'interno del database però effettuando
+	//una ricerca con dei filtri in base a ciò che viene inserito dall'utente
 	public void setRistoranteByFiltro(Connection conn, String nome, String città, String stato, String provincia) {
 		this.ristoranti.clear();
 		
 		int flagNome = 0;
 		int flagStato = 0;
 		int flagCittà = 0;
+		@SuppressWarnings("unused")
 		int flagProvincia = 0;
 		String comando = "Select * from \"Ristorante\" as ris join \"Luogo\" as lu on ris.\"Luogo_FK\" = lu.\"Luogo_ID\" where ";
 		

@@ -12,11 +12,11 @@ import javax.swing.JOptionPane;
 import Tipi.tiporistorante;
 import logic.Controller;
 import logic.Classi.Associazione_Categoria_Ristorante;
-import logic.Classi.Contatti;
 
 public class Associazione_Categoria_RistoranteDAO {
 	Controller controller;
 	private Associazione_Categoria_Ristorante associazione_categoria_ristorante = new Associazione_Categoria_Ristorante();
+	//ArrayList utilizzato per contenere associazioni tra categorie e ristoranti
     private ArrayList<Associazione_Categoria_Ristorante> categorie = new ArrayList<Associazione_Categoria_Ristorante>();
 	
 	public ArrayList<Associazione_Categoria_Ristorante> getCategorie() {
@@ -34,7 +34,8 @@ public class Associazione_Categoria_RistoranteDAO {
 	}
 	
 	
-	
+	//Metodo utilizzato per creare un associazione tra un ristorante
+	//e le categorie selezionate in fase di inserimento
 	public void addAssociazione_Categoria_Ristorante(Connection conn, ArrayList<tiporistorante> type, int ID) {
 		String comando;
 		comando = "INSERT INTO public.\"Associazione_Categoria_Ristorante\"(\"Ristorante_FK\", \"CategoriaRistorante_FK\") VALUES (?, ?);";
@@ -55,6 +56,8 @@ public class Associazione_Categoria_RistoranteDAO {
 		}
 	}
 		
+	//Metodo utilizzato per inserire nell'ArrayList di associazioni
+	//tra categorie e ristorante le categorie che appartengono ad un determinato ristorante
 		public void setAssociazione_Categoria_RistoranteByID (Connection conn) {
 		
 			String comando = "Select * from \"Associazione_Categoria_Ristorante\" where "

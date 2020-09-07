@@ -23,6 +23,7 @@ public class Elimina_Attrazione extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 
+	@SuppressWarnings("unused") // Utilizzato per ignorare il warning che non crea problemi
 	private Controller controller;
 
 	private JPanel contentPane;
@@ -32,15 +33,18 @@ public class Elimina_Attrazione extends JFrame {
 	final static int ALTEZZA_FINESTRA = 200;
 	final static int LUNGHEZZA_FINESTRA = 400;
 	static File imgpath = null;
-	private DefaultListModel dlm;
-	private DefaultListModel dlm1;
+	@SuppressWarnings({ "unused", "rawtypes" })// Utilizzato per ignorare il warning che non crea problemi
+	private DefaultListModel modello_numero1;
+	@SuppressWarnings({ "unused", "rawtypes" })// Utilizzato per ignorare il warning che non crea problemi
+	private DefaultListModel modello_numero2;
 
+	@SuppressWarnings("rawtypes")// Utilizzato per ignorare il warning che non crea problemi
 	public Elimina_Attrazione(Controller controller) {
 		
 this.controller = controller;
 		
-		dlm = new DefaultListModel();
-		dlm1 = new DefaultListModel();
+		modello_numero1 = new DefaultListModel();
+		modello_numero2 = new DefaultListModel();
 
 		setTitle("Elimina Attrazione");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -53,68 +57,75 @@ this.controller = controller;
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JTextArea txtrAttrazione = new JTextArea();
-		txtrAttrazione.setBackground(Color.BLACK);
-		txtrAttrazione.setForeground(Color.GREEN);
-		txtrAttrazione.setEditable(false);
-		txtrAttrazione.setFont(new Font("Parametric Glitch", Font.BOLD, 21));
-		txtrAttrazione.setText("Attrazione");
-		txtrAttrazione.setBounds(24, 11, 114, 29);
-		contentPane.add(txtrAttrazione);
+		JTextArea testo_Attrazione = new JTextArea();
+		testo_Attrazione.setBackground(Color.BLACK);
+		testo_Attrazione.setForeground(Color.GREEN);
+		testo_Attrazione.setEditable(false);
+		testo_Attrazione.setFont(new Font("Parametric Glitch", Font.BOLD, 21));
+		testo_Attrazione.setText("Attrazione");
+		testo_Attrazione.setBounds(24, 11, 114, 29);
+		contentPane.add(testo_Attrazione);
 		
-		JComboBox attrazioni = new JComboBox();
-
-		attrazioni.setFont(new Font("Parametric Glitch", Font.PLAIN, 16));
-		attrazioni.setBackground(new Color(20, 20, 20));
-		attrazioni.setForeground(Color.GREEN);
+		//combobox contenente le attrazioni presenti nel database 
+		//e che possono essere eliminate
+		
+		JComboBox nomeAttrazioni = new JComboBox();
+		nomeAttrazioni.setFont(new Font("Parametric Glitch", Font.PLAIN, 16));
+		nomeAttrazioni.setBackground(new Color(20, 20, 20));
+		nomeAttrazioni.setForeground(Color.GREEN);
 		DefaultComboBoxModel model = new DefaultComboBoxModel(controller.getAttrazioneDAO().getNomeAttrazione(controller.getConnection()).toArray());
-		attrazioni.setModel(model);
-		attrazioni.setBounds(24, 50, 173, 29);
-		contentPane.add(attrazioni);
+		nomeAttrazioni.setModel(model);
+		nomeAttrazioni.setBounds(24, 50, 173, 29);
+		contentPane.add(nomeAttrazioni);
 		
-		JButton btnElimina = new JButton("Elimina");
-		btnElimina.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnElimina.setForeground(Color.GREEN);
-		btnElimina.setFont(new Font("Parametric Glitch", Font.PLAIN, 14));
-		btnElimina.setBackground(Color.BLACK);
-		btnElimina.setBounds(281, 51, 117, 28);
-		contentPane.add(btnElimina);
+		// bottone utilizzato in seguito per eliminare un attrazione
 		
-		JButton btnIndietro = new JButton("Indietro");
-		btnIndietro.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnIndietro.addActionListener(new ActionListener() {
+		JButton bottone_elimina_attrazione = new JButton("Elimina");
+		bottone_elimina_attrazione.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		bottone_elimina_attrazione.setForeground(Color.GREEN);
+		bottone_elimina_attrazione.setFont(new Font("Parametric Glitch", Font.PLAIN, 14));
+		bottone_elimina_attrazione.setBackground(Color.BLACK);
+		bottone_elimina_attrazione.setBounds(281, 51, 117, 28);
+		contentPane.add(bottone_elimina_attrazione);
+		
+		// bottone con il suo ActionListener che ha il compito
+		// di farci tornare alla homepage del moderatore
+		
+		JButton bottone_indietro = new JButton("Indietro");
+		bottone_indietro.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		bottone_indietro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				controller.CambiaFrame(Elimina_Attrazione.this, controller.getModeratore_Homepage());
 			}
 		});
-		btnIndietro.setForeground(Color.GREEN);
-		btnIndietro.setFont(new Font("Parametric Glitch", Font.PLAIN, 14));
-		btnIndietro.setBackground(Color.BLACK);
-		btnIndietro.setBounds(281, 103, 117, 29);
-		contentPane.add(btnIndietro);
+		bottone_indietro.setForeground(Color.GREEN);
+		bottone_indietro.setFont(new Font("Parametric Glitch", Font.PLAIN, 14));
+		bottone_indietro.setBackground(Color.BLACK);
+		bottone_indietro.setBounds(281, 103, 117, 29);
+		contentPane.add(bottone_indietro);
 		
 		
-		JButton btnAggiorna = new JButton("Aggiorna");
-		btnAggiorna.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnAggiorna.addActionListener(new ActionListener() {
+		JButton bottone_aggiorna = new JButton("Aggiorna");
+		bottone_aggiorna.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		bottone_aggiorna.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				DefaultComboBoxModel model = new DefaultComboBoxModel(controller.getAttrazioneDAO().getNomeAttrazione(controller.getConnection()).toArray());
-				attrazioni.setModel(model);
+				nomeAttrazioni.setModel(model);
 
 			
 			}
 		});
-		btnAggiorna.setForeground(Color.GREEN);
-		btnAggiorna.setFont(new Font("Parametric Glitch", Font.PLAIN, 14));
-		btnAggiorna.setBackground(Color.BLACK);
-		btnAggiorna.setBounds(438, 50, 117, 29);
-		contentPane.add(btnAggiorna);
+		bottone_aggiorna.setForeground(Color.GREEN);
+		bottone_aggiorna.setFont(new Font("Parametric Glitch", Font.PLAIN, 14));
+		bottone_aggiorna.setBackground(Color.BLACK);
+		bottone_aggiorna.setBounds(438, 50, 117, 29);
+		contentPane.add(bottone_aggiorna);
 	
 		
-		btnElimina.addActionListener(new ActionListener() {
+		bottone_elimina_attrazione.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				String nome = attrazioni.getSelectedItem().toString();
+				String nome = nomeAttrazioni.getSelectedItem().toString();
 	
 				controller.getAttrazioneDAO().deleteAttrazione(controller.getConnection(), nome);
 				

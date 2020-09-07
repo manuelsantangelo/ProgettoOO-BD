@@ -12,18 +12,18 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
-import Tipi.tipoattrazione;
-import Tipi.categoriaalbergo;
 import Tipi.prezzo;
+import Tipi.tipoattrazione;
 import logic.Controller;
-import logic.Classi.Albergo;
 import logic.Classi.Attrazione;
-import logic.Classi.Ristorante;
 
 public class AttrazioneDAO {
 
 	Controller controller;
 	private Attrazione attrazione = new Attrazione();
+
+	//ArrayList utilizzato per contenere le attrazioni
+	//presenti nel database quando viene effettuata una ricerca
 	private ArrayList<Attrazione> attrazioni = new ArrayList<Attrazione>();
 	
 	public Attrazione getAttrazione() {
@@ -38,6 +38,13 @@ public class AttrazioneDAO {
 		this.controller = controller;	
 	}
 	
+	public ArrayList<Attrazione> getAttrazioni(){
+		return this.attrazioni;
+	}
+	
+	
+	//Metodo utilizzato per inserire all'interno del database
+	//una nuova attrazione
 	public void addAttrazione(Connection conn, String nome1, ArrayList<tipoattrazione> type, String descrizione1, File immagine, prezzo price) {
 		String comando;
 		comando = "INSERT INTO \"Attrazione\"(\"Nome\", \"Descrizione\", \"Tipo\", \"Foto\", \"Fascia_Prezzo\" ) VALUES (?, ?, ?, ?, ?);";
@@ -52,9 +59,7 @@ public class AttrazioneDAO {
 			for(int i = 0; i < type.size(); i++) {
 				ps.setObject(3, type.get(i), Types.OTHER);
 			}
-			
-			
-			
+				
 			try {
 				ps.setBinaryStream(4 ,new FileInputStream(immagine), immagine.length());
 			} catch (FileNotFoundException e) {
@@ -73,7 +78,7 @@ public class AttrazioneDAO {
 		
 	}
 	
-
+	//Metodo che restituisce l'ID dell'ultima attrazione inserita
 	public int getLastAttrazione(Connection conn) {
 		int ID = 0;
 		String comando;
@@ -96,7 +101,8 @@ public class AttrazioneDAO {
 		return ID;
 	}
 	
-	
+	//Metodo che restituisce un ArrayList di stringhe contentente
+	//tutti i nomi delle attrazioni presenti nel database
 	public ArrayList<String> getNomeAttrazione (Connection conn) {
 		ArrayList<String> nome =  new ArrayList<String>();
 		String comando;
@@ -124,7 +130,7 @@ public class AttrazioneDAO {
 	}
 	
 	
-	
+	//Metodo utilizzato per eliminare un'attrazione dal database
 	public void deleteAttrazione(Connection conn, String nome1) {
 		String comando;
 		comando = "Delete From \"Attrazione\" where \"Nome\" = ? ";
@@ -146,10 +152,9 @@ public class AttrazioneDAO {
 		
 	}
 	
-	public ArrayList<Attrazione> getAttrazioni(){
-		return this.attrazioni;
-	}
-	
+	//Metodo che inizialmente pulisce l'ArrayList di attrazioni
+	// e poi viene utilizzato per inserire nell'ArrayList stesso
+	//tutte le attrazioni presenti all'interno del database
 	public void setAllAttrazioni(Connection conn) {
 		this.attrazioni.clear();
 		try {		
@@ -180,13 +185,18 @@ public class AttrazioneDAO {
 
 	}
 	
-
+	
+	//Metodo che inizialmente pulisce l'ArrayList di attrazioni
+	// e poi viene utilizzato per inserire nell'ArrayList stesso
+	//le attrazioni presenti all'interno del database però effettuando
+	//una ricerca con dei filtri in base a ciò che viene inserito dall'utente
 	public void setAttrazioneByFiltro(Connection conn, String nome, String città, String stato, String provincia) {
 		this.attrazioni.clear();
 		
 		int flagNome = 0;
 		int flagStato = 0;
 		int flagCittà = 0;
+		@SuppressWarnings("unused")
 		int flagProvincia = 0;
 		String comando = "Select * from \"Attrazione\" as attr join \"Luogo\" as lu on attr.\"Luogo_FK\" = lu.\"Luogo_ID\" where ";
 		

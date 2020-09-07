@@ -22,6 +22,17 @@ public class LuogoDAO {
 		this.luogo = luogo;
 	}
 	
+	public Luogo getLuogo2() {
+		return luogo2;
+	}
+	
+	public LuogoDAO(Controller controller) {
+		this.controller = controller;	
+	}
+	
+	
+	//Metodo utilizzato per settare un determinato luogo 
+	//in base al suo ID
 	public void setLuogo2(Connection conn, int fk) {
 		
 		String comando;
@@ -51,14 +62,9 @@ public class LuogoDAO {
 		}
 	}
 		
-	public Luogo getLuogo2() {
-		return luogo2;
-	}
-	
-	public LuogoDAO(Controller controller) {
-		this.controller = controller;	
-	}
-	
+
+	//Metodo utilizzato per inserire all'interno del database
+	//un nuovo luogo
 	public void addLuogo(Connection conn, String stato1, String città1, String paese1, String indirizzo1) {
 		String comando;
 		comando = "INSERT INTO public.\"Luogo\"(\"Stato\", \"Città\", \"Paese\", \"Indirizzo\") VALUES (?, ?, ?, ?);";
@@ -81,6 +87,9 @@ public class LuogoDAO {
 	}
 	}
 	
+	//Metodo utilizzato per settare il luogo in base all'ID
+	//quando viene riempita la tabella delle attrazioni o 
+	// dei ristoranti o degli alberghi
 	public void setLuogoByID(Connection conn, int luogoFK) {
 		String comando;
 		comando = "SELECT * FROM \"Luogo\" WHERE \"Luogo_ID\" = " + luogoFK;

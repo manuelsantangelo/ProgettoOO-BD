@@ -1,10 +1,27 @@
  package logic;
 
-import gui.*;
-import logic.Classi.Albergo;
-import logic.Classi.Attrazione;
-import logic.Classi.Moderatore;
-import logic.Classi.Ristorante;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
+import gui.Aggiungi_Attrazione;
+import gui.Aggiungi_Hotel;
+import gui.Aggiungi_Ristorante;
+import gui.ApprovaRecensione;
+import gui.Elimina_Attrazione;
+import gui.Elimina_Hotel;
+import gui.Elimina_Ristorante;
+import gui.HomePage;
+import gui.Iscrizione;
+import gui.Moderatore_Homepage;
+import gui.Principale;
+import gui.ScriviRecensioneAlbergo;
+import gui.ScriviRecensioneAttrazione;
+import gui.ScriviRecensioneRistorante;
 import logic.DAO.AlbergoDAO;
 import logic.DAO.Associazione_Categoria_RistoranteDAO;
 import logic.DAO.Associazione_Servizio_AlbergoDAO;
@@ -17,25 +34,17 @@ import logic.DAO.RecensioneDAO;
 import logic.DAO.RistoranteDAO;
 import logic.DAO.UtenteDAO;
 
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.util.ArrayList;
-
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-
 
 public class Controller {
-	//CAMBIARE VALORI URL, USERNAME E PASS IN BASE AL PROPRIO DATABASE!!!!
+	
+	//ElephantSQL database online
 	private String  url =  "jdbc:postgresql://rogue.db.elephantsql.com:5432/tdzrnvmi";
 	private String username = "tdzrnvmi";
 	private String pass = "Qs1bbw564IBF7ktInw6e0CAa8EH2jKUR";
 	
 	private Connection conn;
 	
-	//inizializza DAO
+	//inizializza DAO 
 	
 	private UtenteDAO utenteDAO = new UtenteDAO(this);
 	private LuogoDAO luogoDAO = new LuogoDAO(this);
@@ -50,7 +59,7 @@ public class Controller {
 	private CategoriaRistoranteDAO categoriaristoranteDAO = new CategoriaRistoranteDAO();
 
 	
-	//inizializza FINESTRE
+	//dichiara FINESTRE
 	private HomePage home;
 	private Iscrizione iscrizione;
 	private Moderatore_Homepage mod;
@@ -66,7 +75,7 @@ public class Controller {
 	private ScriviRecensioneAlbergo scriviRecAlb;
 	private ScriviRecensioneAttrazione scriviRecAttr;
 	
-	
+	//Indice utilizzato in alcuni casi per capire quale elemento si stesse selezionando nelle tabelle
 	private int indice;
 	
 	
@@ -77,7 +86,10 @@ public class Controller {
 		InizializzaFinestre();
 		
 	}
-
+	
+	//****************************************
+	
+	
 	public void ConnectToDatabase() {
 		try {
 			Class.forName("org.postgresql.Driver");
@@ -118,12 +130,6 @@ public class Controller {
 		 frameDaMostrare.setVisible(true);
 	}
 	
-	public void CambiaFrame2(JFrame frameDaNascondere, JFrame frameDaMostrare) {
-		ChiudiFrame(frameDaNascondere);
-		frameDaNascondere = null;
-		frameDaMostrare.setVisible(true);
-	}
-
 	//metodo per chiudere finestra
 	public void ChiudiFrame(JFrame frameDaChiudere) {
 		frameDaChiudere.dispose();	
@@ -176,6 +182,8 @@ public class Controller {
 	public CategoriaRistoranteDAO getCategoriaristoranteDAO() {
 		return categoriaristoranteDAO;
 	}
+	
+	
 // i metodi seguenti servono per passare le finestre quando vengono chiamati i metodi CambiaFrame e ChiudiFrame
 	
 	public Iscrizione getIscrizione() {
@@ -189,6 +197,35 @@ public class Controller {
 	public Aggiungi_Ristorante getAggiungi_Ristorante() {
 		return addRest;
 	}
+
+	public Aggiungi_Hotel getAggiungi_Hotel() {
+		return addHotel;
+	}
+	
+	public Aggiungi_Attrazione getAggiungi_Attrazione() {
+		return addAtt;
+	}
+	
+	public Connection getConnection() {
+		return conn;
+	}
+	
+	public Elimina_Attrazione getElimina_Attrazione() {
+		return delAtt;
+	}
+	
+	public Elimina_Ristorante getElimina_Ristorante() {
+		return delRest;
+	}
+
+	public Elimina_Hotel getElimina_Hotel() {
+		return delHotel;
+			}
+	
+	//Nei casi seguenti le finestre vengono inizializzate
+	//esclusivamente quando si passa da una finestra a quella da utilizzare.
+	//In tal modo si riesce a creare un collegamento tra la finestra precedente 
+	//e quella successiva.
 	
 	public Moderatore_Homepage getModeratore_Homepage() {
 		mod = new Moderatore_Homepage(this);
@@ -220,30 +257,8 @@ public class Controller {
 		return scriviRecAttr;
 		}
 	
-	public Aggiungi_Hotel getAggiungi_Hotel() {
-		return addHotel;
-	}
-	
-	public Aggiungi_Attrazione getAggiungi_Attrazione() {
-		return addAtt;
-	}
-	
-	public Connection getConnection() {
-		return conn;
-	}
-	
-	public Elimina_Attrazione getElimina_Attrazione() {
-		return delAtt;
-	}
-	
-	public Elimina_Ristorante getElimina_Ristorante() {
-		return delRest;
-	}
-
-	public Elimina_Hotel getElimina_Hotel() {
-		return delHotel;
-			}
-	
+	//Metodi utilizzati per settare l'indice e per prelevarlo dalle classi 
+	//che ne necessitano
 	public void setIndice(int indice) {
 		this.indice = indice;
 	}

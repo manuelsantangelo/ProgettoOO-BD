@@ -1,12 +1,10 @@
 package logic.DAO;
 
-import java.beans.Statement;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
@@ -16,20 +14,19 @@ import javax.swing.JOptionPane;
 
 import Tipi.categoriaalbergo;
 import Tipi.prezzo;
-import Tipi.tiposervizio;
 import logic.Controller;
 import logic.Classi.Albergo;
-import logic.Classi.Moderatore;
-import logic.Classi.Ristorante;
 
 
 public class AlbergoDAO {
 	
 	Controller controller;
 	private Albergo albergo = new Albergo();
+	
+	//ArrayList utilizzato per contenere gli alberghi
+	//presenti nel database quando viene effettuata una ricerca
 	private ArrayList<Albergo> alberghi = new ArrayList<Albergo>();
 
-	
 	public Albergo getAlbergo() {
 		return albergo;
 	}
@@ -42,6 +39,12 @@ public class AlbergoDAO {
 		this.controller = controller;	
 	}
 	
+	public ArrayList<Albergo> getAlberghi(){
+		return this.alberghi;
+	}
+	
+	//Metodo utilizzato per inserire all'interno del database
+	//un nuovo albergo
 	public void addAlbergo(Connection conn, String nome1, ArrayList<categoriaalbergo> type, int stelleAlbergo, int numeroCamere, String descrizione1, File immagine, prezzo price) {
 		String comando;
 		comando = "INSERT INTO \"Albergo\"(\"Nome\", \"Stelle\", \"Descrizione\", \"Categoria\", \"Foto\",\"Numero_Camere\", \"Fascia_Prezzo\" ) VALUES (?, ?, ?, ?, ?, ?, ?);";
@@ -77,7 +80,9 @@ public class AlbergoDAO {
 		
 	}
 	
+	
 
+	//Metodo che restituisce l'ID dell'ultimo albergo inserito
 	public int getLastAlbergo(Connection conn) {
 		int ID = 0;
 		String comando;
@@ -100,7 +105,8 @@ public class AlbergoDAO {
 		return ID;
 	}
 	
-	
+	//Metodo che restituisce un ArrayList di stringhe contentente
+	//tutti i nomi degli alberghi presenti nel database
 	public ArrayList<String> getNomeAlbergo (Connection conn) {
 		ArrayList<String> nome =  new ArrayList<String>();
 		String comando;
@@ -127,6 +133,7 @@ public class AlbergoDAO {
 		return nome;
 	}
 	
+	//Metodo utilizzato per eliminare un albergo dal database
 	public void deleteAlbergo(Connection conn, String nome1) {
 		String comando;
 		comando = "Delete From \"Albergo\" where \"Nome\" = ? ";
@@ -148,10 +155,10 @@ public class AlbergoDAO {
 		
 	}
 	
-	public ArrayList<Albergo> getAlberghi(){
-		return this.alberghi;
-	}
 	
+	//Metodo che inizialmente pulisce l'ArrayList di alberghi
+	// e poi viene utilizzato per inserire nell'ArrayList stesso
+	//tutti gli alberghi presenti all'interno del database
 	public void setAllAlberghi(Connection conn){
 		this.alberghi.clear();
 		
@@ -188,12 +195,17 @@ try {
 }
 	}
 	
+	//Metodo che inizialmente pulisce l'ArrayList di alberghi
+	// e poi viene utilizzato per inserire nell'ArrayList stesso
+	//gli alberghi presenti all'interno del database però effettuando
+	//una ricerca con dei filtri in base a ciò che viene inserito dall'utente
 	public void setAlbergoByFiltro(Connection conn, String nome, String città, String stato, String provincia) {
 		this.alberghi.clear();
 		
 		int flagNome = 0;
 		int flagStato = 0;
 		int flagCittà = 0;
+		@SuppressWarnings("unused") // Utilizzato per ignorare il warning che non crea problemi
 		int flagProvincia = 0;
 		String comando = "Select * from \"Albergo\" as al join \"Luogo\" as lu on al.\"Luogo_FK\" = lu.\"Luogo_ID\" where ";
 		

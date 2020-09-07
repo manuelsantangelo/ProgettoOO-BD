@@ -8,8 +8,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
+
 import logic.Controller;
-import logic.Classi.Moderatore;
 import logic.Classi.Utente;
 
 public class UtenteDAO {
@@ -30,6 +30,10 @@ public class UtenteDAO {
 	}
 	
 
+
+	//Metodo utilizzato per inserire all'interno del database
+	//un nuovo utente tenendo conto di tutte le varie condizioni che possono 
+	//venirsi a verificare
 	public void addUtente (Connection conn, String nome1, String password1, String nickname1, String email1, String cognome1, java.sql.Date dataNascita1, String città1, File immagine) {
 			String comando;
 			if(immagine == null && nickname1 == null) {
@@ -170,7 +174,9 @@ public class UtenteDAO {
 		
 		}
 	
-	
+	//Metodo utilizzato per controllare se chi sta effettuando l'accesso
+	//è effettivamente un utente.
+	//Ricordiamo che un utente a differenza di un moderatore accede con il proprio NickName
 	public boolean checkUtente(Connection conn, String nickname, String pass) {
 		boolean flag = false;
 		int count = 0;
@@ -203,6 +209,7 @@ public class UtenteDAO {
 	}
 	
 	
+	//Metodo che restituisce un preciso utente
 	public Utente getThisUtente(Connection conn, String nickname, String pass) {
 		Utente user = new Utente();
 		String comando;

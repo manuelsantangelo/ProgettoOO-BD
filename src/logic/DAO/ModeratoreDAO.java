@@ -19,7 +19,6 @@ public class ModeratoreDAO {
 		return this.moderatore;
 	}
 	
-	
 	public void setModeratore(Moderatore moderatore) {
 		this.moderatore = moderatore;
 	}
@@ -28,6 +27,9 @@ public class ModeratoreDAO {
 		this.controller = controller;	
 	}
 	
+	//Metodo utilizzato per controllare se chi sta effettuando l'accesso
+	//è effettivamente un moderatore.
+	//Ricordiamo che un moderatore a differenza di un utente accede con il proprio nome
 	public boolean checkModeratore(Connection conn, String nome, String pass) {
 		boolean flag = false;
 		int count = 0;
@@ -60,6 +62,7 @@ public class ModeratoreDAO {
 		return flag;	
 	}
 	
+	//Metodo che restituisce un preciso moderatore
 	public Moderatore getThisModeratore(Connection conn, String nome, String pass) {
 		Moderatore mod = new Moderatore();
 		String comando;

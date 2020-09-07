@@ -1,27 +1,22 @@
 package logic.DAO;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Types;
 import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
-import Tipi.categoriaalbergo;
-import Tipi.prezzo;
 import logic.Controller;
-import logic.Classi.Albergo;
 import logic.Classi.Recensione;
 
 public class RecensioneDAO {
 	Controller controller;
 	
 	private Recensione recensione = new Recensione();
+	//ArrayList utilizzato per contenere le recensioni
+	//presenti nel database
 	private ArrayList<Recensione> recensioni = new ArrayList<Recensione>();
 	
 	public ArrayList<Recensione> getRecensioni() {
@@ -39,7 +34,9 @@ public class RecensioneDAO {
 	public RecensioneDAO(Controller controller) {
 		this.controller = controller;
 	}
-	
+
+	//Metodo utilizzato per inserire all'interno del database
+	//una nuova recensione per un'attrazione 
 	public void addRecensioneAttr(Connection conn, String testo, int stelle) {
 		String comando;
 	
@@ -63,6 +60,8 @@ public class RecensioneDAO {
 	}
 	}
 	
+	//Metodo utilizzato per inserire all'interno del database
+	//una nuova recensione per un ristorante
 	public void addRecensioneRis(Connection conn, String testo, int stelle) {
 		String comando;
 	
@@ -86,6 +85,8 @@ public class RecensioneDAO {
 	}
 	}
 	
+	//Metodo utilizzato per inserire all'interno del database
+	//una nuova recensione per un albergo
 	public void addRecensioneAlb(Connection conn, String testo, int stelle) {
 		String comando;
 	
@@ -110,6 +111,10 @@ public class RecensioneDAO {
 	}
 	
 
+	//Metodo che inizialmente pulisce l'ArrayList di recensioni
+	// e poi viene utilizzato per inserire nell'ArrayList stesso
+	//tutte le recensioni presenti all'interno del database che però
+	//non sono state approvate
 	public void setAllRecensioni(Connection conn){
 		this.recensioni.clear();
 		
@@ -144,6 +149,9 @@ try {
 }
 	}
 	
+	
+	//Metodo utilizzato per approvare una recensione 
+	//da parte di un moderatore
 	public void approvaRecensione (Connection conn, String testoRecensione, int Moderatore_ID) {
 		String comando;
 		comando = "Update \"Recensione\" set \"Approvata\" = true, \"Moderatore_FK\" = ? where \"Testo\" = ? ";
@@ -163,7 +171,10 @@ try {
 		}
 		
 	}
+	
 
+	//Metodo utilizzato per rifiutare una recensione 
+	//da parte di un moderatore
 	public void rifiutaRecensione(Connection conn, String testoRecensione) {
 		String comando;
 		comando = "Delete from \"Recensione\" where \"Testo\" = ? ";
@@ -181,6 +192,10 @@ try {
 		}
 	}
 	
+	//Metodo che inizialmente pulisce l'ArrayList di recensioni
+	// e poi viene utilizzato per inserire nell'ArrayList stesso
+	//tutte le recensioni presenti all'interno del database che
+	// sono state approvate
 	public void setAllRecensioniApprovate(Connection conn){
 		this.recensioni.clear();
 		
@@ -215,8 +230,12 @@ try {
 	
 }
 	}
-
-public void setRecensioniDaVisualizzareAlbergo(Connection conn){
+	
+	
+	//Metodo che inizialmente pulisce l'ArrayList di recensioni
+	// e poi viene utilizzato per inserire nell'ArrayList stesso
+	//tutte le recensioni approvate per un determinato albergo
+	public void setRecensioniDaVisualizzareAlbergo(Connection conn){
 	this.recensioni.clear();
 	
 try {		
@@ -252,7 +271,12 @@ JOptionPane.showMessageDialog(null, "ERRORE! Qualcosa è andato storto con il rec
 
 	}
 
-public void setRecensioniDaVisualizzareRistorante(Connection conn){
+	
+	
+	//Metodo che inizialmente pulisce l'ArrayList di recensioni
+	// e poi viene utilizzato per inserire nell'ArrayList stesso
+	//tutte le recensioni approvate per un determinato ristorante
+	public void setRecensioniDaVisualizzareRistorante(Connection conn){
 	this.recensioni.clear();
 	
 try {		
@@ -288,7 +312,12 @@ JOptionPane.showMessageDialog(null, "ERRORE! Qualcosa è andato storto con il rec
 }
 	}
 	
-public void setRecensioniDaVisualizzareAttrazione(Connection conn){
+	
+	
+	//Metodo che inizialmente pulisce l'ArrayList di recensioni
+	// e poi viene utilizzato per inserire nell'ArrayList stesso
+	//tutte le recensioni approvate per una determinata attrazione
+	public void setRecensioniDaVisualizzareAttrazione(Connection conn){
 	this.recensioni.clear();
 	
 try {		
@@ -324,11 +353,12 @@ JOptionPane.showMessageDialog(null, "ERRORE! Qualcosa è andato storto con il rec
 }
 	}
 
-public String getNomeUtenteRecensione(Connection conn, int codiceRecensione) {
+	
+	//Metodo che restituisce una stringa contenente il nickname
+	//corrispondente ad una determinata recensione 
+	public String getNickNameRecensione(Connection conn, int codiceRecensione) {
 	
 	String nickname = new String();
-
-	
 
 	try {
 		

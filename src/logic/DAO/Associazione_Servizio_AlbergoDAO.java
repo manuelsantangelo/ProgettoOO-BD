@@ -9,18 +9,16 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
-
-import Tipi.categoriaalbergo;
-import Tipi.tiporistorante;
 import Tipi.tiposervizio;
 import logic.Controller;
-import logic.Classi.Associazione_Categoria_Ristorante;
 import logic.Classi.Associazione_Servizio_Albergo;
 
 public class Associazione_Servizio_AlbergoDAO {
 	
 	Controller controller;
 	private Associazione_Servizio_Albergo associazione_servizio_albergo  = new Associazione_Servizio_Albergo();
+	
+	//ArrayList utilizzato per contenere associazioni tra servizi e alberghi
 	private ArrayList<Associazione_Servizio_Albergo> servizi = new ArrayList<Associazione_Servizio_Albergo>();
 	
 	public ArrayList<Associazione_Servizio_Albergo> getServizi() {
@@ -35,7 +33,9 @@ public class Associazione_Servizio_AlbergoDAO {
 	 public Associazione_Servizio_AlbergoDAO(Controller controller) {
 		this.controller = controller;	
 	}
-	
+	 
+	//Metodo utilizzato per creare un associazione tra un albergo
+	//e i servizi offerti selezionati in fase di inserimento
 	public void addAssociazione_Servizio_Albergo(Connection conn, ArrayList<tiposervizio> type, int ID) {
 		String comando;
 		comando = "INSERT INTO public.\"Associazione_Servizio_Albergo\"(\"Albergo_FK\", \"Servizio_FK\") VALUES (?, ?);";
@@ -56,6 +56,8 @@ public class Associazione_Servizio_AlbergoDAO {
 		}
 	}
 		
+	//Metodo utilizzato per inserire nell'ArrayList di associazioni
+	//tra servizi e albergo i servizi offerti da un determinato albergo
 		public void setAssociazione_Servizio_AlbergoByID (Connection conn) {
 			
 			String comando = "Select * from \"Associazione_Servizio_Albergo\" where "

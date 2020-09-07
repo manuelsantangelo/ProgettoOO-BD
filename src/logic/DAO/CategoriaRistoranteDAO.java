@@ -1,17 +1,11 @@
 package logic.DAO;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.ArrayList;
-
-import javax.swing.JOptionPane;
-
 import Tipi.tiporistorante;
 import logic.Controller;
 
+@SuppressWarnings("unused")
 public class CategoriaRistoranteDAO {
-	Controller controller;
+/*	Controller controller;
 	private tiporistorante tipoR;
 	
 	public void setTipoR(tiporistorante tipoR) {
@@ -21,5 +15,5 @@ public class CategoriaRistoranteDAO {
 	public tiporistorante getTipoR() {
 		return tipoR;
 	}
-	
+	*/
 }
