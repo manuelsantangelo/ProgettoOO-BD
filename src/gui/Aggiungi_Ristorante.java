@@ -135,7 +135,7 @@ public class Aggiungi_Ristorante extends JFrame {
 		contentPane.add(città);
 		
 		JTextArea txtrPaese = new JTextArea();
-		txtrPaese.setText("Paese");
+		txtrPaese.setText("Provincia");
 		txtrPaese.setForeground(Color.GREEN);
 		txtrPaese.setFont(new Font("Parametric Glitch", Font.BOLD, 21));
 		txtrPaese.setEditable(false);
@@ -157,7 +157,7 @@ public class Aggiungi_Ristorante extends JFrame {
 		txtrI.setFont(new Font("Parametric Glitch", Font.BOLD, 21));
 		txtrI.setEditable(false);
 		txtrI.setBackground(Color.BLACK);
-		txtrI.setBounds(24, 115, 76, 29);
+		txtrI.setBounds(24, 115, 104, 29);
 		contentPane.add(txtrI);
 		
 		indirizzo = new JTextField();
@@ -218,7 +218,7 @@ public class Aggiungi_Ristorante extends JFrame {
 		Tipologia.setForeground(Color.GREEN);
 		Tipologia.setFont(new Font("Parametric Glitch", Font.PLAIN, 16));
 		Tipologia.setBackground(Color.BLACK);
-		Tipologia.setBounds(498, 262, 189, 176);
+		Tipologia.setBounds(498, 262, 218, 189);
 		contentPane.add(Tipologia);		
 		
 		JTextArea txtrTipologia = new JTextArea();

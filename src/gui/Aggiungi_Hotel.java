@@ -137,12 +137,12 @@ public class Aggiungi_Hotel extends JFrame {
 		contentPane.add(città);
 		
 		JTextArea txtrPaese = new JTextArea();
-		txtrPaese.setText("Paese");
+		txtrPaese.setText("Provincia");
 		txtrPaese.setForeground(Color.GREEN);
 		txtrPaese.setFont(new Font("Parametric Glitch", Font.BOLD, 21));
 		txtrPaese.setEditable(false);
 		txtrPaese.setBackground(Color.BLACK);
-		txtrPaese.setBounds(746, 11, 63, 29);
+		txtrPaese.setBounds(746, 11, 128, 29);
 		contentPane.add(txtrPaese);
 		
 		paese = new JTextField();
@@ -159,7 +159,7 @@ public class Aggiungi_Hotel extends JFrame {
 		txtrI.setFont(new Font("Parametric Glitch", Font.BOLD, 21));
 		txtrI.setEditable(false);
 		txtrI.setBackground(Color.BLACK);
-		txtrI.setBounds(24, 115, 76, 29);
+		txtrI.setBounds(24, 115, 98, 29);
 		contentPane.add(txtrI);
 		
 		indirizzo = new JTextField();
@@ -217,11 +217,11 @@ public class Aggiungi_Hotel extends JFrame {
 				return values[index];
 			}
 		});
-		categorie.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+		categorie.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		categorie.setForeground(Color.GREEN);
 		categorie.setFont(new Font("Parametric Glitch", Font.PLAIN, 16));
 		categorie.setBackground(Color.BLACK);
-		categorie.setBounds(499, 151, 206, 176);
+		categorie.setBounds(476, 151, 249, 184);
 		contentPane.add(categorie);		
 		
 		JTextArea txtrTipologia = new JTextArea();
@@ -230,7 +230,7 @@ public class Aggiungi_Hotel extends JFrame {
 		txtrTipologia.setFont(new Font("Parametric Glitch", Font.BOLD, 21));
 		txtrTipologia.setEditable(false);
 		txtrTipologia.setBackground(Color.BLACK);
-		txtrTipologia.setBounds(499, 115, 128, 29);
+		txtrTipologia.setBounds(476, 115, 128, 29);
 		contentPane.add(txtrTipologia);
 		
 		JTextArea txtrTelefono = new JTextArea();

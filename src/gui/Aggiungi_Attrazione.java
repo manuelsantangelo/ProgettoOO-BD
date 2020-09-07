@@ -133,12 +133,12 @@ public class Aggiungi_Attrazione extends JFrame {
 		contentPane.add(città);
 		
 		JTextArea txtrPaese = new JTextArea();
-		txtrPaese.setText("Paese");
+		txtrPaese.setText("Provincia");
 		txtrPaese.setForeground(Color.GREEN);
 		txtrPaese.setFont(new Font("Parametric Glitch", Font.BOLD, 21));
 		txtrPaese.setEditable(false);
 		txtrPaese.setBackground(Color.BLACK);
-		txtrPaese.setBounds(24, 115, 63, 29);
+		txtrPaese.setBounds(24, 115, 108, 29);
 		contentPane.add(txtrPaese);
 		
 		paese = new JTextField();
@@ -155,7 +155,7 @@ public class Aggiungi_Attrazione extends JFrame {
 		txtrI.setFont(new Font("Parametric Glitch", Font.BOLD, 21));
 		txtrI.setEditable(false);
 		txtrI.setBackground(Color.BLACK);
-		txtrI.setBounds(253, 115, 76, 29);
+		txtrI.setBounds(253, 115, 100, 29);
 		contentPane.add(txtrI);
 		
 		indirizzo = new JTextField();
@@ -186,7 +186,7 @@ public class Aggiungi_Attrazione extends JFrame {
 		
 		JList attrazione = new JList();
 		attrazione.setModel(new AbstractListModel() {
-			String[] values = new String[] {"Museo", "Teatro", "Stadio", "Parco_Divertimenti", "Zona_Verde", "Arena", "Giro_Turistico", "Sagra"};
+			String[] values = new String[] {"Museo", "Teatro", "Stadio", "Parco_Divertimenti", "Zona_Verde", "Arena", "Giro_Turistico", "Sagra", "Monumento"};
 			public int getSize() {
 				return values.length;
 			}
@@ -198,7 +198,7 @@ public class Aggiungi_Attrazione extends JFrame {
 		attrazione.setForeground(Color.GREEN);
 		attrazione.setFont(new Font("Parametric Glitch", Font.PLAIN, 16));
 		attrazione.setBackground(Color.BLACK);
-		attrazione.setBounds(499, 263, 142, 184);
+		attrazione.setBounds(499, 263, 189, 213);
 		contentPane.add(attrazione);		
 		
 		JTextArea txtrTipologia = new JTextArea();

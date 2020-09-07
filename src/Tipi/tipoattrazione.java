@@ -8,5 +8,6 @@ public enum tipoattrazione {
 	Zona_Verde,
 	Arena,
 	Giro_Turistico,
-	Sagra
+	Sagra,
+	Monumento
 }

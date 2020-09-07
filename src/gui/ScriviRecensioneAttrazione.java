@@ -147,6 +147,7 @@ public class ScriviRecensioneAttrazione extends JFrame {
 		contentPane.add(txtrDescrizione_1);
 		
 		JTextArea textAreaRecensione = new JTextArea();
+		textAreaRecensione.setFont(new Font("Gadugi", Font.PLAIN, 17));
 		textAreaRecensione.setBounds(24, 498, 624, 98);
 		textAreaRecensione.setLineWrap(true);
 		contentPane.add(textAreaRecensione);
@@ -159,6 +160,7 @@ public class ScriviRecensioneAttrazione extends JFrame {
 		
 		
 		JTextArea textAreaDescrizione = new JTextArea();
+		textAreaDescrizione.setBorder(new LineBorder(new Color(0, 153, 255), 2, true));
 		textAreaDescrizione.setFocusable(false);
 		textAreaDescrizione.setFont(new Font("Gadugi", Font.ITALIC, 16));
 		textAreaDescrizione.setWrapStyleWord(true);
@@ -166,7 +168,7 @@ public class ScriviRecensioneAttrazione extends JFrame {
 		textAreaDescrizione.setEditable(false);
 		textAreaDescrizione.setText(controller.getAttrazioneDAO().getAttrazione().getDescrizione());
 		textAreaDescrizione.setBackground(new Color(0, 191, 255));
-		textAreaDescrizione.setBounds(270, 48, 483, 182);
+		textAreaDescrizione.setBounds(270, 48, 537, 182);
 		contentPane.add(textAreaDescrizione);
 		dlm2.addElement(controller.getAttrazioneDAO().getAttrazioni().get(controller.getIndice()).getFascia_Prezzo());
 		
@@ -202,8 +204,9 @@ public class ScriviRecensioneAttrazione extends JFrame {
 		
 		JList category = new JList();
 		category.setFocusable(false);
+		
 		category.setFont(new Font("Gadugi", Font.PLAIN, 13));
-		category.setBackground(new Color(0, 191, 255));
+		category.setBackground(new Color(0, 153, 255));
 		category.setBounds(786, 142, 118, 73);
 		dlm3.addElement(controller.getAttrazioneDAO().getAttrazioni().get(controller.getIndice()).getTipo().toString());
 		
@@ -226,9 +229,11 @@ public class ScriviRecensioneAttrazione extends JFrame {
 		JList tipoAttrazioniList = new JList();
 		tipoAttrazioniList.setLayoutOrientation(JList.HORIZONTAL_WRAP);
 		tipoAttrazioniList.setBounds(20, 196, 283, 98);
+		tipoAttrazioniList.setBorder(new LineBorder(new Color(0, 191, 255), 2, true));
+
 		panel.add(tipoAttrazioniList);
-		tipoAttrazioniList.setFont(new Font("Gadugi", Font.PLAIN, 13));
-		tipoAttrazioniList.setBackground(new Color(0, 191, 255));
+		tipoAttrazioniList.setFont(new Font("Gadugi", Font.PLAIN, 17));
+		tipoAttrazioniList.setBackground(new Color(0, 153, 255));
 		tipoAttrazioniList.setModel(dlm3);
 		
 		JLabel lblIconacategoria = new JLabel("iconaCategoria");
@@ -260,9 +265,10 @@ public class ScriviRecensioneAttrazione extends JFrame {
 		
 		JTextArea txtrCity = new JTextArea();
 		txtrCity.setBounds(20, 52, 139, 29);
+		txtrCity.setBorder(new LineBorder(new Color(0, 191, 255), 2, true));
 		panel.add(txtrCity);
 		txtrCity.setFont(new Font("Gadugi", Font.PLAIN, 17));
-		txtrCity.setBackground(new Color(0, 191, 255));
+		txtrCity.setBackground(new Color(0, 153, 255));		
 		txtrCity.setEditable(false);
 		txtrCity.setText(controller.getLuogoDAO().getLuogo2().getCittà());
 		
@@ -276,10 +282,11 @@ public class ScriviRecensioneAttrazione extends JFrame {
 		textprovincia.setText(controller.getLuogoDAO().getLuogo2().getPaese());
 		
 		JTextArea indirizzo = new JTextArea();
-		indirizzo.setBounds(164, 118, 139, 29);
+		indirizzo.setBounds(164, 118, 158, 29);
+		indirizzo.setBorder(new LineBorder(new Color(0, 191, 255), 2, true));
 		panel.add(indirizzo);
-		indirizzo.setFont(new Font("Gadugi", Font.PLAIN, 16));
-		indirizzo.setBackground(new Color(0, 191, 255));
+		indirizzo.setFont(new Font("Gadugi", Font.PLAIN, 15));
+		indirizzo.setBackground(new Color(0, 153, 255));
 		indirizzo.setEditable(false);
 		indirizzo.setText(controller.getLuogoDAO().getLuogo2().getIndirizzo());
 		
@@ -288,7 +295,7 @@ public class ScriviRecensioneAttrazione extends JFrame {
 		txtrDoveSiamo.setFont(new Font("Gadugi", Font.BOLD, 18));
 		txtrDoveSiamo.setEditable(false);
 		txtrDoveSiamo.setBackground(new Color(0, 153, 255));
-		txtrDoveSiamo.setBounds(54, 11, 118, 22);
+		txtrDoveSiamo.setBounds(54, 11, 118, 29);
 		panel.add(txtrDoveSiamo);
 		
 		JTextArea txtrTipoAttrazione = new JTextArea();
@@ -316,25 +323,39 @@ public class ScriviRecensioneAttrazione extends JFrame {
 		lblIconacontatti.setIcon(icona_telefono);
 		panel.add(lblIconacontatti);
 		
+		
+		JLabel lblIconaSitoWeb = new JLabel("iconaSitoWeb");
+		lblIconaSitoWeb.setBounds(16, 471, 28, 29);
+		File imgsitoweb = new File("images\\sitoweb.png");
+		BufferedImage imgsitoweb2 = ImageIO.read(imgsitoweb);
+		Image imgsitoweb3 = imgsitoweb2.getScaledInstance(lblIconaMappa.getWidth(), lblIconaMappa.getHeight(), Image.SCALE_SMOOTH); 
+		ImageIcon icona_sitoweb = new ImageIcon(imgsitoweb3);
+		lblIconaSitoWeb.setIcon(icona_sitoweb);
+		panel.add(lblIconaSitoWeb);
+		
 
 		JList listTelefono = new JList();
 		listTelefono.setLayoutOrientation(JList.HORIZONTAL_WRAP);
-		listTelefono.setBounds(10, 385, 300, 105);
+		listTelefono.setBounds(20, 363, 283, 98);
+		listTelefono.setBorder(new LineBorder(new Color(0, 191, 255), 2, true));
 		panel.add(listTelefono);
 		listTelefono.setFocusable(false);
-		listTelefono.setFont(new Font("Gadugi", Font.PLAIN, 13));
-		listTelefono.setBackground(new Color(0, 191, 255));
+		listTelefono.setFont(new Font("Gadugi", Font.PLAIN, 16));
+		listTelefono.setBackground(new Color(0, 153, 255));
 		for(int i = 0; i<controller.getContattiDAO().getSitoEtelefono().size(); i++) 
 			dlm.addElement(controller.getContattiDAO().getSitoEtelefono().get(0).getTelefono());
 		listTelefono.setModel(dlm);
 		
 		
 		JList listSitoWeb = new JList();
-		listSitoWeb.setBounds(16, 520, 294, 105);
+		listSitoWeb.setLayoutOrientation(JList.HORIZONTAL_WRAP);
+		listSitoWeb.setBounds(20, 509, 283, 105);
+		listSitoWeb.setBorder(new LineBorder(new Color(0, 191, 255), 2, true));
+
 		panel.add(listSitoWeb);
 		listSitoWeb.setFocusable(false);
-		listSitoWeb.setFont(new Font("Gadugi", Font.PLAIN, 13));
-		listSitoWeb.setBackground(new Color(0, 191, 255));
+		listSitoWeb.setFont(new Font("Gadugi", Font.PLAIN, 16));
+		listSitoWeb.setBackground(new Color(0, 153, 255));
 		dlm1.addElement(controller.getContattiDAO().getSitoEtelefono().get(0).getSitoWeb());
 		listSitoWeb.setModel(dlm1);
 		
