@@ -235,6 +235,7 @@ public class Controller {
 	public Elimina_Attrazione getElimina_Attrazione() {
 		return delAtt;
 	}
+	
 	public Elimina_Ristorante getElimina_Ristorante() {
 		return delRest;
 	}
@@ -250,6 +251,4 @@ public class Controller {
 	public int getIndice() {
 		return indice;
 	}
-	
-
 }

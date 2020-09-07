@@ -167,7 +167,7 @@ public boolean isCellEditable(int row, int column) {
 		textAreaDescrizione.setEditable(false);
 		textAreaDescrizione.setText(controller.getRistoranteDAO().getRistorante().getDescizione());
 		textAreaDescrizione.setBackground(new Color(0, 191, 255));
-		textAreaDescrizione.setBounds(269, 51, 537, 182);
+		textAreaDescrizione.setBounds(270, 78, 537, 182);
 		contentPane.add(textAreaDescrizione);
 	for(int i = 0; i<controller.getContattiDAO().getSitoEtelefono().size(); i++) 
 		dlm.addElement(controller.getContattiDAO().getSitoEtelefono().get(i).getTelefono());

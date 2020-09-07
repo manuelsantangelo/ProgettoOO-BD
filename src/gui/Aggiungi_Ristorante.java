@@ -43,6 +43,9 @@ import java.awt.Cursor;
 
 public class Aggiungi_Ristorante extends JFrame {
 	
+	private static final long serialVersionUID = 1L;
+
+	@SuppressWarnings("unused") // Utilizzato per ignorare il warning che non crea problemi
 	private Controller controller;
 
 	private JPanel contentPane;
@@ -59,18 +62,20 @@ public class Aggiungi_Ristorante extends JFrame {
 	private JTextField città;
 	private JTextField paese;
 	private JTextField indirizzo;
-	private JTextField txtTelefono;
-	private JTextField txtSitoWeb;
-	private DefaultListModel dlm;
-	private DefaultListModel dlm1;
+	private JTextField numero_Telefono;
+	private JTextField sitoWeb;
+	@SuppressWarnings("rawtypes") // Utilizzato per ignorare il warning che non crea problemi
+	private DefaultListModel modello_numero1;
+	@SuppressWarnings("rawtypes") // Utilizzato per ignorare il warning che non crea problemi
+	private DefaultListModel modello_numero2;
 
-	@SuppressWarnings({ "rawtypes", "unchecked", "serial" })
+	@SuppressWarnings({ "rawtypes", "unchecked", "serial" }) // Utilizzato per ignorare l warning che non creano problemi
 	public Aggiungi_Ristorante(Controller controller) {
 		
 		this.controller = controller;
 		
-		dlm = new DefaultListModel();
-		dlm1 = new DefaultListModel();
+		modello_numero1 = new DefaultListModel();
+		modello_numero2 = new DefaultListModel();
 
 		setTitle("Aggiungi Ristorante");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -83,14 +88,14 @@ public class Aggiungi_Ristorante extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JTextArea txtrNome = new JTextArea();
-		txtrNome.setBackground(Color.BLACK);
-		txtrNome.setForeground(Color.GREEN);
-		txtrNome.setEditable(false);
-		txtrNome.setFont(new Font("Parametric Glitch", Font.BOLD, 21));
-		txtrNome.setText("Nome");
-		txtrNome.setBounds(24, 11, 63, 29);
-		contentPane.add(txtrNome);
+		JTextArea testo_Nome = new JTextArea();
+		testo_Nome.setBackground(Color.BLACK);
+		testo_Nome.setForeground(Color.GREEN);
+		testo_Nome.setEditable(false);
+		testo_Nome.setFont(new Font("Parametric Glitch", Font.BOLD, 21));
+		testo_Nome.setText("Nome");
+		testo_Nome.setBounds(24, 11, 63, 29);
+		contentPane.add(testo_Nome);
 		
 		nome = new JTextField();
 		nome.setFont(new Font("Parametric Glitch", Font.PLAIN, 16));
@@ -100,14 +105,14 @@ public class Aggiungi_Ristorante extends JFrame {
 		contentPane.add(nome);
 		nome.setColumns(10);
 		
-		JTextArea txtrStato = new JTextArea();
-		txtrStato.setText("Stato");
-		txtrStato.setForeground(Color.GREEN);
-		txtrStato.setFont(new Font("Parametric Glitch", Font.BOLD, 21));
-		txtrStato.setEditable(false);
-		txtrStato.setBackground(Color.BLACK);
-		txtrStato.setBounds(253, 11, 63, 29);
-		contentPane.add(txtrStato);
+		JTextArea testo_Stato = new JTextArea();
+		testo_Stato.setText("Stato");
+		testo_Stato.setForeground(Color.GREEN);
+		testo_Stato.setFont(new Font("Parametric Glitch", Font.BOLD, 21));
+		testo_Stato.setEditable(false);
+		testo_Stato.setBackground(Color.BLACK);
+		testo_Stato.setBounds(253, 11, 63, 29);
+		contentPane.add(testo_Stato);
 		
 		stato = new JTextField();
 		stato.setForeground(Color.GREEN);
@@ -117,14 +122,14 @@ public class Aggiungi_Ristorante extends JFrame {
 		stato.setBounds(253, 44, 173, 29);
 		contentPane.add(stato);
 		
-		JTextArea txtrCittà = new JTextArea();
-		txtrCittà.setText("Citt\u00E0");
-		txtrCittà.setForeground(Color.GREEN);
-		txtrCittà.setFont(new Font("Parametric Glitch", Font.BOLD, 21));
-		txtrCittà.setEditable(false);
-		txtrCittà.setBackground(Color.BLACK);
-		txtrCittà.setBounds(499, 11, 63, 29);
-		contentPane.add(txtrCittà);
+		JTextArea testo_Città = new JTextArea();
+		testo_Città.setText("Citt\u00E0");
+		testo_Città.setForeground(Color.GREEN);
+		testo_Città.setFont(new Font("Parametric Glitch", Font.BOLD, 21));
+		testo_Città.setEditable(false);
+		testo_Città.setBackground(Color.BLACK);
+		testo_Città.setBounds(499, 11, 63, 29);
+		contentPane.add(testo_Città);
 		
 		città = new JTextField();
 		città.setForeground(Color.GREEN);
@@ -134,14 +139,14 @@ public class Aggiungi_Ristorante extends JFrame {
 		città.setBounds(499, 44, 173, 29);
 		contentPane.add(città);
 		
-		JTextArea txtrPaese = new JTextArea();
-		txtrPaese.setText("Provincia");
-		txtrPaese.setForeground(Color.GREEN);
-		txtrPaese.setFont(new Font("Parametric Glitch", Font.BOLD, 21));
-		txtrPaese.setEditable(false);
-		txtrPaese.setBackground(Color.BLACK);
-		txtrPaese.setBounds(746, 11, 63, 29);
-		contentPane.add(txtrPaese);
+		JTextArea testo_Paese = new JTextArea();
+		testo_Paese.setText("Provincia");
+		testo_Paese.setForeground(Color.GREEN);
+		testo_Paese.setFont(new Font("Parametric Glitch", Font.BOLD, 21));
+		testo_Paese.setEditable(false);
+		testo_Paese.setBackground(Color.BLACK);
+		testo_Paese.setBounds(746, 11, 63, 29);
+		contentPane.add(testo_Paese);
 		
 		paese = new JTextField();
 		paese.setForeground(Color.GREEN);
@@ -151,14 +156,14 @@ public class Aggiungi_Ristorante extends JFrame {
 		paese.setBounds(746, 44, 173, 29);
 		contentPane.add(paese);
 		
-		JTextArea txtrI = new JTextArea();
-		txtrI.setText("Indirizzo");
-		txtrI.setForeground(Color.GREEN);
-		txtrI.setFont(new Font("Parametric Glitch", Font.BOLD, 21));
-		txtrI.setEditable(false);
-		txtrI.setBackground(Color.BLACK);
-		txtrI.setBounds(24, 115, 104, 29);
-		contentPane.add(txtrI);
+		JTextArea testo_indirizzo = new JTextArea();
+		testo_indirizzo.setText("Indirizzo");
+		testo_indirizzo.setForeground(Color.GREEN);
+		testo_indirizzo.setFont(new Font("Parametric Glitch", Font.BOLD, 21));
+		testo_indirizzo.setEditable(false);
+		testo_indirizzo.setBackground(Color.BLACK);
+		testo_indirizzo.setBounds(24, 115, 104, 29);
+		contentPane.add(testo_indirizzo);
 		
 		indirizzo = new JTextField();
 		indirizzo.setForeground(Color.GREEN);
@@ -168,14 +173,14 @@ public class Aggiungi_Ristorante extends JFrame {
 		indirizzo.setBounds(24, 148, 173, 29);
 		contentPane.add(indirizzo);
 		
-		JTextArea txtrPrezzo = new JTextArea();
-		txtrPrezzo.setText("Prezzo");
-		txtrPrezzo.setForeground(Color.GREEN);
-		txtrPrezzo.setFont(new Font("Parametric Glitch", Font.BOLD, 21));
-		txtrPrezzo.setEditable(false);
-		txtrPrezzo.setBackground(Color.BLACK);
-		txtrPrezzo.setBounds(253, 115, 76, 29);
-		contentPane.add(txtrPrezzo);
+		JTextArea testo_Prezzo = new JTextArea();
+		testo_Prezzo.setText("Prezzo");
+		testo_Prezzo.setForeground(Color.GREEN);
+		testo_Prezzo.setFont(new Font("Parametric Glitch", Font.BOLD, 21));
+		testo_Prezzo.setEditable(false);
+		testo_Prezzo.setBackground(Color.BLACK);
+		testo_Prezzo.setBounds(253, 115, 76, 29);
+		contentPane.add(testo_Prezzo);
 		
 		JComboBox prezzi = new JComboBox();
 		prezzi.setFont(new Font("Parametric Glitch", Font.PLAIN, 16));
@@ -186,14 +191,14 @@ public class Aggiungi_Ristorante extends JFrame {
 		prezzi.setBounds(253, 148, 173, 29);
 		contentPane.add(prezzi);
 		
-		JTextArea txtrStelleMichelin = new JTextArea();
-		txtrStelleMichelin.setText("Stelle Michelin");
-		txtrStelleMichelin.setForeground(Color.GREEN);
-		txtrStelleMichelin.setFont(new Font("Parametric Glitch", Font.BOLD, 21));
-		txtrStelleMichelin.setEditable(false);
-		txtrStelleMichelin.setBackground(Color.BLACK);
-		txtrStelleMichelin.setBounds(499, 115, 128, 29);
-		contentPane.add(txtrStelleMichelin);
+		JTextArea testo_StelleMichelin = new JTextArea();
+		testo_StelleMichelin.setText("Stelle Michelin");
+		testo_StelleMichelin.setForeground(Color.GREEN);
+		testo_StelleMichelin.setFont(new Font("Parametric Glitch", Font.BOLD, 21));
+		testo_StelleMichelin.setEditable(false);
+		testo_StelleMichelin.setBackground(Color.BLACK);
+		testo_StelleMichelin.setBounds(499, 115, 128, 29);
+		contentPane.add(testo_StelleMichelin);
 		
 		JComboBox stelleMichelin = new JComboBox();
 		stelleMichelin.setModel(new DefaultComboBoxModel(new String[] {"0", "1", "2", "3"}));
@@ -203,9 +208,12 @@ public class Aggiungi_Ristorante extends JFrame {
 		stelleMichelin.setBounds(499, 148, 43, 29);
 		contentPane.add(stelleMichelin);
 		
-		JList Tipologia = new JList();
-		Tipologia.setLayoutOrientation(JList.VERTICAL_WRAP);
-		Tipologia.setModel(new AbstractListModel() {
+		// Lista contenente i vari tipi di Ristoranti e consente
+		// la selezione multipla
+		
+		JList lista_Tipologia = new JList();
+		lista_Tipologia.setLayoutOrientation(JList.VERTICAL_WRAP);
+		lista_Tipologia.setModel(new AbstractListModel() {
 			String[] values = new String[] {"Braceria", "Pizzeria", "Trattoria", "Gourmet", "Paninoteca", "Ristorante", "Bar", "Fast_Food", "Cucina_Etnica", "Pesce", "Cornetteria", "Gelateria", "Osteria", "Buffet"};
 			public int getSize() {
 				return values.length;
@@ -214,130 +222,142 @@ public class Aggiungi_Ristorante extends JFrame {
 				return values[index];
 			}
 		});
-		Tipologia.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-		Tipologia.setForeground(Color.GREEN);
-		Tipologia.setFont(new Font("Parametric Glitch", Font.PLAIN, 16));
-		Tipologia.setBackground(Color.BLACK);
-		Tipologia.setBounds(498, 262, 218, 189);
-		contentPane.add(Tipologia);		
+		lista_Tipologia.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+		lista_Tipologia.setForeground(Color.GREEN);
+		lista_Tipologia.setFont(new Font("Parametric Glitch", Font.PLAIN, 16));
+		lista_Tipologia.setBackground(Color.BLACK);
+		lista_Tipologia.setBounds(498, 262, 218, 189);
+		contentPane.add(lista_Tipologia);		
 		
-		JTextArea txtrTipologia = new JTextArea();
-		txtrTipologia.setText("Tipologia");
-		txtrTipologia.setForeground(Color.GREEN);
-		txtrTipologia.setFont(new Font("Parametric Glitch", Font.BOLD, 21));
-		txtrTipologia.setEditable(false);
-		txtrTipologia.setBackground(Color.BLACK);
-		txtrTipologia.setBounds(498, 226, 128, 29);
-		contentPane.add(txtrTipologia);
+		JTextArea testo_Tipologia = new JTextArea();
+		testo_Tipologia.setText("Tipologia");
+		testo_Tipologia.setForeground(Color.GREEN);
+		testo_Tipologia.setFont(new Font("Parametric Glitch", Font.BOLD, 21));
+		testo_Tipologia.setEditable(false);
+		testo_Tipologia.setBackground(Color.BLACK);
+		testo_Tipologia.setBounds(498, 226, 128, 29);
+		contentPane.add(testo_Tipologia);
 		
-		JTextArea txtrTelefono = new JTextArea();
-		txtrTelefono.setText("Telefono");
-		txtrTelefono.setForeground(Color.GREEN);
-		txtrTelefono.setFont(new Font("Parametric Glitch", Font.BOLD, 21));
-		txtrTelefono.setEditable(false);
-		txtrTelefono.setBackground(Color.BLACK);
-		txtrTelefono.setBounds(24, 226, 128, 29);
-		contentPane.add(txtrTelefono);
+		JTextArea testo_Telefono = new JTextArea();
+		testo_Telefono.setText("Telefono");
+		testo_Telefono.setForeground(Color.GREEN);
+		testo_Telefono.setFont(new Font("Parametric Glitch", Font.BOLD, 21));
+		testo_Telefono.setEditable(false);
+		testo_Telefono.setBackground(Color.BLACK);
+		testo_Telefono.setBounds(24, 226, 128, 29);
+		contentPane.add(testo_Telefono);
 		
-		txtTelefono = new JTextField();
-		txtTelefono.setForeground(Color.GREEN);
-		txtTelefono.setFont(new Font("Parametric Glitch", Font.PLAIN, 16));
-		txtTelefono.setColumns(10);
-		txtTelefono.setBackground(Color.BLACK);
-		txtTelefono.setBounds(24, 260, 142, 29);
-		contentPane.add(txtTelefono);
+		numero_Telefono = new JTextField();
+		numero_Telefono.setForeground(Color.GREEN);
+		numero_Telefono.setFont(new Font("Parametric Glitch", Font.PLAIN, 16));
+		numero_Telefono.setColumns(10);
+		numero_Telefono.setBackground(Color.BLACK);
+		numero_Telefono.setBounds(24, 260, 142, 29);
+		contentPane.add(numero_Telefono);
 		
-		JList telefono = new JList();
-		telefono.setBorder(new LineBorder(Color.GREEN));
-		telefono.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-		telefono.setLayoutOrientation(JList.VERTICAL_WRAP);
-		telefono.setForeground(Color.GREEN);
-		telefono.setFont(new Font("Parametric Glitch", Font.PLAIN, 16));
-		telefono.setBackground(Color.BLACK);
-		telefono.setBounds(24, 300, 173, 138);
-		contentPane.add(telefono);
+		JList lista_telefono = new JList();
+		lista_telefono.setBorder(new LineBorder(Color.GREEN));
+		lista_telefono.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+		lista_telefono.setLayoutOrientation(JList.VERTICAL_WRAP);
+		lista_telefono.setForeground(Color.GREEN);
+		lista_telefono.setFont(new Font("Parametric Glitch", Font.PLAIN, 16));
+		lista_telefono.setBackground(Color.BLACK);
+		lista_telefono.setBounds(24, 300, 173, 138);
+		contentPane.add(lista_telefono);
 		
-		JButton button = new JButton("+");
-		button.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		button.addActionListener(new ActionListener() {
+		// bottone con il suo ActionListener che ha il compito
+		// di aggiungere un numero di telefono nella lista_telefono
+		
+		JButton bottone_aggiungi_numero_di_telefono = new JButton("+");
+		bottone_aggiungi_numero_di_telefono.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		bottone_aggiungi_numero_di_telefono.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String num_tel = txtTelefono.getText();
-				dlm.addElement(num_tel);
-				telefono.setModel(dlm);
+				String num_tel = numero_Telefono.getText();
+				modello_numero1.addElement(num_tel);
+				lista_telefono.setModel(modello_numero1);
 			}
 		});
-		button.setBackground(Color.BLACK);
-		button.setForeground(Color.GREEN);
-		button.setFont(new Font("Parametric Glitch", Font.PLAIN, 6));
-		button.setBounds(173, 260, 24, 29);
-		contentPane.add(button);
+		bottone_aggiungi_numero_di_telefono.setBackground(Color.BLACK);
+		bottone_aggiungi_numero_di_telefono.setForeground(Color.GREEN);
+		bottone_aggiungi_numero_di_telefono.setFont(new Font("Parametric Glitch", Font.PLAIN, 6));
+		bottone_aggiungi_numero_di_telefono.setBounds(173, 260, 24, 29);
+		contentPane.add(bottone_aggiungi_numero_di_telefono);
 		
-		txtSitoWeb = new JTextField();
-		txtSitoWeb.setForeground(Color.GREEN);
-		txtSitoWeb.setFont(new Font("Parametric Glitch", Font.PLAIN, 16));
-		txtSitoWeb.setColumns(10);
-		txtSitoWeb.setBackground(Color.BLACK);
-		txtSitoWeb.setBounds(253, 260, 142, 29);
-		contentPane.add(txtSitoWeb);
+		sitoWeb = new JTextField();
+		sitoWeb.setForeground(Color.GREEN);
+		sitoWeb.setFont(new Font("Parametric Glitch", Font.PLAIN, 16));
+		sitoWeb.setColumns(10);
+		sitoWeb.setBackground(Color.BLACK);
+		sitoWeb.setBounds(253, 260, 142, 29);
+		contentPane.add(sitoWeb);
 		
-		JList SitoWeb = new JList();
-		SitoWeb.setBorder(new LineBorder(Color.GREEN));
-		SitoWeb.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-		SitoWeb.setLayoutOrientation(JList.VERTICAL_WRAP);
-		SitoWeb.setForeground(Color.GREEN);
-		SitoWeb.setFont(new Font("Parametric Glitch", Font.PLAIN, 16));
-		SitoWeb.setBackground(Color.BLACK);
-		SitoWeb.setBounds(253, 300, 173, 138);
-		contentPane.add(SitoWeb);
+		JList lista_SitoWeb = new JList();
+		lista_SitoWeb.setBorder(new LineBorder(Color.GREEN));
+		lista_SitoWeb.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+		lista_SitoWeb.setLayoutOrientation(JList.VERTICAL_WRAP);
+		lista_SitoWeb.setForeground(Color.GREEN);
+		lista_SitoWeb.setFont(new Font("Parametric Glitch", Font.PLAIN, 16));
+		lista_SitoWeb.setBackground(Color.BLACK);
+		lista_SitoWeb.setBounds(253, 300, 173, 138);
+		contentPane.add(lista_SitoWeb);
 		
-		JButton button_1 = new JButton("+");
-		button_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		button_1.addActionListener(new ActionListener() {
+		// bottone con il suo ActionListener che ha il compito
+		// di aggiungere un sito web nella lista_sitoWeb
+		
+		JButton bottone_aggiungi_sitoWeb = new JButton("+");
+		bottone_aggiungi_sitoWeb.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		bottone_aggiungi_sitoWeb.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String sito = txtSitoWeb.getText();
-				dlm1.addElement(sito);
-				SitoWeb.setModel(dlm1);
+				String sito = sitoWeb.getText();
+				modello_numero2.addElement(sito);
+				lista_SitoWeb.setModel(modello_numero2);
 			}
 		});
-		button_1.setForeground(Color.GREEN);
-		button_1.setFont(new Font("Parametric Glitch", Font.PLAIN, 6));
-		button_1.setBackground(Color.BLACK);
-		button_1.setBounds(402, 260, 24, 29);
-		contentPane.add(button_1);
+		bottone_aggiungi_sitoWeb.setForeground(Color.GREEN);
+		bottone_aggiungi_sitoWeb.setFont(new Font("Parametric Glitch", Font.PLAIN, 6));
+		bottone_aggiungi_sitoWeb.setBackground(Color.BLACK);
+		bottone_aggiungi_sitoWeb.setBounds(402, 260, 24, 29);
+		contentPane.add(bottone_aggiungi_sitoWeb);
 		
-		JTextArea txtrSitoWeb = new JTextArea();
-		txtrSitoWeb.setText("Sito Web");
-		txtrSitoWeb.setForeground(Color.GREEN);
-		txtrSitoWeb.setFont(new Font("Parametric Glitch", Font.BOLD, 21));
-		txtrSitoWeb.setEditable(false);
-		txtrSitoWeb.setBackground(Color.BLACK);
-		txtrSitoWeb.setBounds(253, 226, 128, 29);
-		contentPane.add(txtrSitoWeb);
+		JTextArea testo_SitoWeb = new JTextArea();
+		testo_SitoWeb.setText("Sito Web");
+		testo_SitoWeb.setForeground(Color.GREEN);
+		testo_SitoWeb.setFont(new Font("Parametric Glitch", Font.BOLD, 21));
+		testo_SitoWeb.setEditable(false);
+		testo_SitoWeb.setBackground(Color.BLACK);
+		testo_SitoWeb.setBounds(253, 226, 128, 29);
+		contentPane.add(testo_SitoWeb);
 		
-		JTextArea txtrFoto = new JTextArea();
-		txtrFoto.setText("Foto");
-		txtrFoto.setForeground(Color.GREEN);
-		txtrFoto.setFont(new Font("Parametric Glitch", Font.BOLD, 21));
-		txtrFoto.setEditable(false);
-		txtrFoto.setBackground(Color.BLACK);
-		txtrFoto.setBounds(746, 115, 55, 29);
-		contentPane.add(txtrFoto);
+		JTextArea testo_Foto = new JTextArea();
+		testo_Foto.setText("Foto");
+		testo_Foto.setForeground(Color.GREEN);
+		testo_Foto.setFont(new Font("Parametric Glitch", Font.BOLD, 21));
+		testo_Foto.setEditable(false);
+		testo_Foto.setBackground(Color.BLACK);
+		testo_Foto.setBounds(746, 115, 55, 29);
+		contentPane.add(testo_Foto);
 		
-		JLabel imageLabel = new JLabel("");
-		imageLabel.setBorder(new LineBorder(Color.GREEN));
-		imageLabel.setForeground(Color.GREEN);
-		imageLabel.setBackground(Color.BLACK);
-		imageLabel.setBounds(746, 156, 314, 251);
-		contentPane.add(imageLabel);
+		JLabel frame_immagine = new JLabel("");
+		frame_immagine.setBorder(new LineBorder(Color.GREEN));
+		frame_immagine.setForeground(Color.GREEN);
+		frame_immagine.setBackground(Color.BLACK);
+		frame_immagine.setBounds(746, 156, 314, 251);
+		contentPane.add(frame_immagine);
 		
-		JButton btnCerca = new JButton("Cerca\r\n");
-		btnCerca.addActionListener(new ActionListener() {
+		// bottone con il suo ActionListener che ha il compito
+		// di cercare una foto all'interno della cartella C:\\Users 
+		// (resa il più generica possibile per evitare errori di
+		// incompatibilità con altri File System e di inserirla nel 
+		// frame_per_immagine dopo averla ridimensionata
+		
+		JButton bottone_Cerca = new JButton("Cerca\r\n");
+		bottone_Cerca.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
 					JFileChooser fc = new JFileChooser();
 					fc.setCurrentDirectory(new java.io.File("C:\\Users"));
 					fc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-					if(fc.showOpenDialog(btnCerca) == JFileChooser.APPROVE_OPTION) {
+					if(fc.showOpenDialog(bottone_Cerca) == JFileChooser.APPROVE_OPTION) {
 						String path = fc.getSelectedFile().getAbsolutePath();
 						imgpath = new File(path);
 						BufferedImage img = null;
@@ -349,9 +369,9 @@ public class Aggiungi_Ristorante extends JFrame {
 						} else {
 							 ByteArrayOutputStream bos = new ByteArrayOutputStream();
 						      ImageIO.write(img, "jpg", bos );
-						      Image dimg = img.getScaledInstance(imageLabel.getWidth(), imageLabel.getHeight(), Image.SCALE_SMOOTH); 
+						      Image dimg = img.getScaledInstance(frame_immagine.getWidth(), frame_immagine.getHeight(), Image.SCALE_SMOOTH); 
 								ImageIcon imageIcon = new ImageIcon(dimg);
-								imageLabel.setIcon(imageIcon);
+								frame_immagine.setIcon(imageIcon);
 						}}
 						catch (IOException e2) 
 						{
@@ -361,20 +381,20 @@ public class Aggiungi_Ristorante extends JFrame {
 					}}
 		});
 		
-		btnCerca.setForeground(Color.GREEN);
-		btnCerca.setFont(new Font("Parametric Glitch", Font.PLAIN, 14));
-		btnCerca.setBackground(Color.BLACK);
-		btnCerca.setBounds(802, 115, 117, 29);
-		contentPane.add(btnCerca);
+		bottone_Cerca.setForeground(Color.GREEN);
+		bottone_Cerca.setFont(new Font("Parametric Glitch", Font.PLAIN, 14));
+		bottone_Cerca.setBackground(Color.BLACK);
+		bottone_Cerca.setBounds(802, 115, 117, 29);
+		contentPane.add(bottone_Cerca);
 		
-		JTextArea txtrDescrizione = new JTextArea();
-		txtrDescrizione.setText("Descrizione");
-		txtrDescrizione.setForeground(Color.GREEN);
-		txtrDescrizione.setFont(new Font("Parametric Glitch", Font.BOLD, 21));
-		txtrDescrizione.setEditable(false);
-		txtrDescrizione.setBackground(Color.BLACK);
-		txtrDescrizione.setBounds(24, 459, 128, 29);
-		contentPane.add(txtrDescrizione);
+		JTextArea testo_Descrizione = new JTextArea();
+		testo_Descrizione.setText("Descrizione");
+		testo_Descrizione.setForeground(Color.GREEN);
+		testo_Descrizione.setFont(new Font("Parametric Glitch", Font.BOLD, 21));
+		testo_Descrizione.setEditable(false);
+		testo_Descrizione.setBackground(Color.BLACK);
+		testo_Descrizione.setBounds(24, 459, 128, 29);
+		contentPane.add(testo_Descrizione);
 		
 		JTextArea descrizione = new JTextArea();
 		descrizione.setFont(new Font("Parametric Glitch", Font.PLAIN, 16));
@@ -388,35 +408,45 @@ public class Aggiungi_Ristorante extends JFrame {
 		descrizione.setBorder(BorderFactory.createCompoundBorder(border, 
 		      BorderFactory.createEmptyBorder(10, 10, 10, 10)));
 		
-		JScrollPane scrollPane = new JScrollPane(descrizione);
-		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		scrollPane.setBounds(24, 499, 664, 102);
-		contentPane.add(scrollPane);
-		scrollPane.setViewportView(descrizione);
+		JScrollPane barra_di_scorrimento = new JScrollPane(descrizione);
+		barra_di_scorrimento.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		barra_di_scorrimento.setBounds(24, 499, 664, 102);
+		contentPane.add(barra_di_scorrimento);
+		barra_di_scorrimento.setViewportView(descrizione);
 		
-		JButton btnAggiungi = new JButton("Aggiungi");
-		btnAggiungi.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnAggiungi.setForeground(Color.GREEN);
-		btnAggiungi.setFont(new Font("Parametric Glitch", Font.PLAIN, 14));
-		btnAggiungi.setBackground(Color.BLACK);
-		btnAggiungi.setBounds(849, 499, 117, 29);
-		contentPane.add(btnAggiungi);
+		JButton bottone_Aggiungi = new JButton("Aggiungi");
+		bottone_Aggiungi.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		bottone_Aggiungi.setForeground(Color.GREEN);
+		bottone_Aggiungi.setFont(new Font("Parametric Glitch", Font.PLAIN, 14));
+		bottone_Aggiungi.setBackground(Color.BLACK);
+		bottone_Aggiungi.setBounds(849, 499, 117, 29);
+		contentPane.add(bottone_Aggiungi);
 		
-		JButton btnIndietro = new JButton("Indietro");
-		btnIndietro.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnIndietro.setForeground(Color.GREEN);
-		btnIndietro.setFont(new Font("Parametric Glitch", Font.PLAIN, 14));
-		btnIndietro.setBackground(Color.BLACK);
-		btnIndietro.setBounds(849, 559, 117, 29);
-		contentPane.add(btnIndietro);
+		// bottone con il suo ActionListener che ha il compito
+		// di farci tornare alla HomePage 
 		
-		btnIndietro.addActionListener(new ActionListener() {
+		JButton bottone_Indietro = new JButton("Indietro");
+		bottone_Indietro.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		bottone_Indietro.setForeground(Color.GREEN);
+		bottone_Indietro.setFont(new Font("Parametric Glitch", Font.PLAIN, 14));
+		bottone_Indietro.setBackground(Color.BLACK);
+		bottone_Indietro.setBounds(849, 559, 117, 29);
+		contentPane.add(bottone_Indietro);
+		
+		bottone_Indietro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				controller.CambiaFrame(Aggiungi_Ristorante.this, controller.getModeratore_Homepage());
 			}
 		});
 		
-		btnAggiungi.addActionListener(new ActionListener() {
+		// ActionListener di bottone_Aggiungi che ha il compito
+		// di aggiungere il Ristorante creato nella Gui all'interno del
+		// db prendendo i vari campi dali vari componenti e utilizzandoli 
+		// all'interno di funzioni che verranno richiamate dal controller
+		// presenti nelle classi DAO
+
+		
+		bottone_Aggiungi.addActionListener(new ActionListener() {
 			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
 				int ID;
@@ -429,18 +459,18 @@ public class Aggiungi_Ristorante extends JFrame {
 				int stelleMichelin1 = stelleMichelin.getSelectedIndex();
 				String descrizione1 = descrizione.getText();
 				ArrayList<String> numTelefono = new ArrayList<String>();
-				Object tempObject[] = Tipologia.getSelectedValues().clone();
+				Object tempObject[] = lista_Tipologia.getSelectedValues().clone();
 				ArrayList<String> webSite = new ArrayList<String>();
 				ArrayList<String> temp = new ArrayList<String>();
 				ArrayList<tiporistorante> type = new ArrayList<tiporistorante>();
 				
-				for(int i = 0; i < telefono.getModel().getSize(); i++) {
-					numTelefono.add((String) telefono.getModel().getElementAt(i));
+				for(int i = 0; i < lista_telefono.getModel().getSize(); i++) {
+					numTelefono.add((String) lista_telefono.getModel().getElementAt(i));
 				}
-				for(int j = 0; j < SitoWeb.getModel().getSize(); j++) {
-					webSite.add((String) SitoWeb.getModel().getElementAt(j));
+				for(int j = 0; j < lista_SitoWeb.getModel().getSize(); j++) {
+					webSite.add((String) lista_SitoWeb.getModel().getElementAt(j));
 				}
-				for(int k = 0; k < Tipologia.getSelectedValues().length; k++) {
+				for(int k = 0; k < lista_Tipologia.getSelectedValues().length; k++) {
 					temp.add((String) tempObject[k]);
 					type.add(tiporistorante.valueOf(temp.get(k)));
 				}
@@ -451,6 +481,9 @@ public class Aggiungi_Ristorante extends JFrame {
 				controller.getContattiDAO().addContattiRistorante(controller.getConnection(), numTelefono, webSite, ID);
 				controller.getAssociazione_Categoria_RistoranteDAO().addAssociazione_Categoria_Ristorante(controller.getConnection(), type, ID);
 			
+			    // Pulizia dei vari campi per facilitare l'aggiunta di più
+				// attrazioni senza dover far ripartire il programma
+
 				nome.setText("");
 				stato.setText("");
 				città.setText("");
@@ -458,12 +491,12 @@ public class Aggiungi_Ristorante extends JFrame {
 				indirizzo.setText("");
 				descrizione.setText("");
 				numTelefono.clear();
-				txtTelefono.setText("");
-				DefaultListModel ripuliamo1 = (DefaultListModel)telefono.getModel();
+				numero_Telefono.setText("");
+				DefaultListModel ripuliamo1 = (DefaultListModel)lista_telefono.getModel();
 				ripuliamo1.removeAllElements();
-				txtSitoWeb.setText("");
+				sitoWeb.setText("");
 				webSite.clear();
-				DefaultListModel ripuliamo2 = (DefaultListModel)SitoWeb.getModel();
+				DefaultListModel ripuliamo2 = (DefaultListModel)lista_SitoWeb.getModel();
 				ripuliamo2.removeAllElements();
 			}
 		});
