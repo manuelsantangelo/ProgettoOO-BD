@@ -1,21 +1,13 @@
 package gui;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
-
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
 import logic.Controller;
-
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
@@ -29,10 +21,10 @@ import java.awt.Button;
 import javax.swing.JTextArea;
 import java.awt.Toolkit;
 
-//Se vedi questo commento allora la commit è avvenuta con successo
-
+@SuppressWarnings("serial")
 public class HomePage extends JFrame {
 	
+	@SuppressWarnings("unused")
 	private Controller controller;
 	
 	final static int FINESTRA_Y = 80;
@@ -41,8 +33,8 @@ public class HomePage extends JFrame {
 	final static int LUNGHEZZA_FINESTRA = 940;
 	
 	private JPanel contentPane;
-	private JTextField textField;
-	private JPasswordField textField_1;
+	private JTextField nickname;
+	private JPasswordField password;
 
 	public HomePage(Controller controller) {
 		
@@ -69,59 +61,71 @@ public class HomePage extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		JLabel lblAccedi = new JLabel("Accedi");
-		lblAccedi.setFont(new Font("Gadugi", Font.BOLD, 40));
-		lblAccedi.setBounds(72, 45, 133, 63);
-		panel.add(lblAccedi);
+		JLabel testo_Accedi = new JLabel("Accedi");
+		testo_Accedi.setFont(new Font("Gadugi", Font.BOLD, 40));
+		testo_Accedi.setBounds(72, 45, 133, 63);
+		panel.add(testo_Accedi);
 		
-		textField_1 = new JPasswordField();
-		textField_1.setEchoChar('*');
-		textField_1.setBackground(new Color(153, 204, 255));
-		textField_1.setFont(new Font("Gadugi", Font.BOLD, 30));
-		textField_1.setBounds(20, 326, 337, 53);
-		panel.add(textField_1);
-		textField_1.setColumns(10);
+		password = new JPasswordField();
+		password.setEchoChar('*');
+		password.setBackground(new Color(153, 204, 255));
+		password.setFont(new Font("Gadugi", Font.BOLD, 30));
+		password.setBounds(20, 326, 337, 53);
+		panel.add(password);
+		password.setColumns(10);
 		
-		JLabel lblNickname = new JLabel("Nickname");
-		lblNickname.setFont(new Font("Gadugi", Font.BOLD, 25));
-		lblNickname.setBounds(52, 151, 153, 34);
-		panel.add(lblNickname);
+		JLabel testo_Nickname = new JLabel("Nickname");
+		testo_Nickname.setFont(new Font("Gadugi", Font.BOLD, 25));
+		testo_Nickname.setBounds(52, 151, 153, 34);
+		panel.add(testo_Nickname);
 		
-		textField = new JTextField();
-		textField.setBackground(new Color(153, 204, 255));
-		textField.setFont(new Font("Gadugi", Font.BOLD, 30));
-		textField.setBounds(20, 199, 337, 53);
-		panel.add(textField);
-		textField.setColumns(10);
+		nickname = new JTextField();
+		nickname.setBackground(new Color(153, 204, 255));
+		nickname.setFont(new Font("Gadugi", Font.BOLD, 30));
+		nickname.setBounds(20, 199, 337, 53);
+		panel.add(nickname);
+		nickname.setColumns(10);
 		
-		JLabel lblPassword = new JLabel("Password");
-		lblPassword.setFont(new Font("Gadugi", Font.BOLD, 25));
-		lblPassword.setBounds(52, 281, 153, 34);
-		panel.add(lblPassword);
+		JLabel testo_Password = new JLabel("Password");
+		testo_Password.setFont(new Font("Gadugi", Font.BOLD, 25));
+		testo_Password.setBounds(52, 281, 153, 34);
+		panel.add(testo_Password);
 		
-		JCheckBox chckbxNewCheckBox = new JCheckBox("Mostra Password");
-		chckbxNewCheckBox.addActionListener(new ActionListener() {
+		// CheckBox con il suo Listener che ha il compito
+		// di mostrare o nascondere la password, sostituendo 
+		// ogni carattere con '*'
+		
+		JCheckBox check_Box_Mostra_Password = new JCheckBox("Mostra Password");
+		check_Box_Mostra_Password.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (chckbxNewCheckBox.isSelected()) {
-					textField_1.setEchoChar((char)0);
+				if (check_Box_Mostra_Password.isSelected()) {
+					password.setEchoChar((char)0);
 				}else {
-					textField_1.setEchoChar('*');
+					password.setEchoChar('*');
 				}
 			}
 		});
-		chckbxNewCheckBox.setHorizontalAlignment(SwingConstants.LEFT);
-		chckbxNewCheckBox.setBackground(new Color(0, 153, 255));
-		chckbxNewCheckBox.setFont(new Font("Gadugi", Font.BOLD, 13));
-		chckbxNewCheckBox.setBounds(20, 388, 133, 23);
-		panel.add(chckbxNewCheckBox);
+		check_Box_Mostra_Password.setHorizontalAlignment(SwingConstants.LEFT);
+		check_Box_Mostra_Password.setBackground(new Color(0, 153, 255));
+		check_Box_Mostra_Password.setFont(new Font("Gadugi", Font.BOLD, 13));
+		check_Box_Mostra_Password.setBounds(20, 388, 133, 23);
+		panel.add(check_Box_Mostra_Password);
+		
+		// Bottone con il suo Listener che una volta premuto
+		// attraverso la chiamata di alcune funzioni delle DAO
+		// tramite il controller, controllano se il i campi nickname
+		// e password corrispondono a un Moderatore o a un Utente
+		// e successivamente passano al frame successivo adeguato
+		// (Principale per Utente e HomePage_Moderatore per un 
+	    // Moderatore)
 		
 		Button tasto_di_accesso = new Button("Accedi");
 		tasto_di_accesso.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				String nick = textField.getText();
+				String nick = nickname.getText();
 				@SuppressWarnings("deprecation")
-				String pass = textField_1.getText();
+				String pass = password.getText();
 				boolean flagMod = false;
 				boolean flagUser = false;
 				
@@ -130,17 +134,16 @@ public class HomePage extends JFrame {
 				
 				if(flagMod) {
 				controller.getModeratoreDAO().setModeratore(controller.getModeratoreDAO().getThisModeratore(controller.getConnection(), nick, pass));
-				textField.setText("");
-				textField_1.setText("");
+				nickname.setText("");
+				password.setText("");
 				controller.CambiaFrame(HomePage.this, controller.getModeratore_Homepage());
 				}else if (flagUser) {
 					controller.getUtenteDAO().setUtente(controller.getUtenteDAO().getThisUtente(controller.getConnection(), nick, pass));
-						textField.setText("");
-						textField_1.setText("");
+						nickname.setText("");
+						password.setText("");
 					try {
 							controller.CambiaFrame(HomePage.this, controller.getPrincipale());
 						} catch (IOException e1) {
-							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						}
 					} 
@@ -148,8 +151,6 @@ public class HomePage extends JFrame {
 				else {
 					JOptionPane.showMessageDialog(null, "Per accedere devi iscriverti. Non sei ne un utente ne un moderatore!");
 				}
-				
-			
 			}
 		});
 		tasto_di_accesso.setBounds(38, 455, 185, 45);
@@ -167,23 +168,23 @@ public class HomePage extends JFrame {
 		tasto_di_iscrizione.setBounds(65, 455, 185, 45);
 		contentPane.add(tasto_di_iscrizione);
 		
-		JTextArea txtrSeNonSei = new JTextArea();
-		txtrSeNonSei.setLineWrap(true);
-		txtrSeNonSei.setEditable(false);
-		txtrSeNonSei.setForeground(new Color(51, 51, 51));
-		txtrSeNonSei.setFont(new Font("Gadugi", Font.BOLD, 15));
-		txtrSeNonSei.setBackground(new Color(0, 191, 255));
-		txtrSeNonSei.setText("Se non sei ancora iscritto che aspetti?\r\nCi vogliono solo 5 minuti!");
-		txtrSeNonSei.setBounds(65, 387, 278, 56);
-		contentPane.add(txtrSeNonSei);
+		JTextArea piccola_Descrizione = new JTextArea();
+		piccola_Descrizione.setLineWrap(true);
+		piccola_Descrizione.setEditable(false);
+		piccola_Descrizione.setForeground(new Color(51, 51, 51));
+		piccola_Descrizione.setFont(new Font("Gadugi", Font.BOLD, 15));
+		piccola_Descrizione.setBackground(new Color(0, 191, 255));
+		piccola_Descrizione.setText("Se non sei ancora iscritto che aspetti?\r\nCi vogliono solo 5 minuti!");
+		piccola_Descrizione.setBounds(65, 387, 278, 56);
+		contentPane.add(piccola_Descrizione);
+		
+		// Listener del tasto_di_iscrizione che ha il compito di passare
+		// dalla HomePage alla finestra di Iscrizione
 		
 		tasto_di_iscrizione.addActionListener(new ActionListener() {
-			
 			public void actionPerformed(ActionEvent e) {
 			controller.CambiaFrame(HomePage.this, controller.getIscrizione());
 				}
 		});
-		
 	}
-
 }

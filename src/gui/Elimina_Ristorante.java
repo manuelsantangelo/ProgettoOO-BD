@@ -9,7 +9,6 @@ import java.awt.event.ActionListener;
 import java.io.File;
 
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -19,30 +18,22 @@ import javax.swing.border.EmptyBorder;
 
 import logic.Controller;
 
+@SuppressWarnings("serial")
 public class Elimina_Ristorante extends JFrame {
 	
+	@SuppressWarnings("unused")
 	private Controller controller;
 
 	private JPanel contentPane;
 	
 	final static int FINESTRA_Y = 0;
 	final static int FINESTRA_X = 25;
-	final static int ALTEZZA_FINESTRA = 690;
-	final static int LUNGHEZZA_FINESTRA = 940;
 	static File imgpath = null;
 
-	
-	
-	private DefaultListModel dlm;
-	private DefaultListModel dlm1;
-	
-
-public Elimina_Ristorante (Controller controller) {
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	public Elimina_Ristorante (Controller controller) {
 		
-this.controller = controller;
-		
-		dlm = new DefaultListModel();
-		dlm1 = new DefaultListModel();
+		this.controller = controller;
 
 		setTitle("Elimina Ristorante");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -55,17 +46,16 @@ this.controller = controller;
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JTextArea txtrRistorante = new JTextArea();
-		txtrRistorante.setBackground(Color.BLACK);
-		txtrRistorante.setForeground(Color.GREEN);
-		txtrRistorante.setEditable(false);
-		txtrRistorante.setFont(new Font("Parametric Glitch", Font.BOLD, 21));
-		txtrRistorante.setText("Ristorante");
-		txtrRistorante.setBounds(24, 11, 114, 29);
-		contentPane.add(txtrRistorante);
+		JTextArea testo_Ristorante = new JTextArea();
+		testo_Ristorante.setBackground(Color.BLACK);
+		testo_Ristorante.setForeground(Color.GREEN);
+		testo_Ristorante.setEditable(false);
+		testo_Ristorante.setFont(new Font("Parametric Glitch", Font.BOLD, 21));
+		testo_Ristorante.setText("Ristorante");
+		testo_Ristorante.setBounds(24, 11, 114, 29);
+		contentPane.add(testo_Ristorante);
 		
 		JComboBox ristoranti = new JComboBox();
-
 		ristoranti.setFont(new Font("Parametric Glitch", Font.PLAIN, 16));
 		ristoranti.setBackground(new Color(20, 20, 20));
 		ristoranti.setForeground(Color.GREEN);
@@ -74,59 +64,56 @@ this.controller = controller;
 		ristoranti.setBounds(24, 50, 173, 29);
 		contentPane.add(ristoranti);
 		
-		JButton btnElimina = new JButton("Elimina");
-		btnElimina.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnElimina.setForeground(Color.GREEN);
-		btnElimina.setFont(new Font("Parametric Glitch", Font.PLAIN, 14));
-		btnElimina.setBackground(Color.BLACK);
-		btnElimina.setBounds(281, 51, 117, 28);
-		contentPane.add(btnElimina);
+		JButton bottone_Elimina = new JButton("Elimina");
+		bottone_Elimina.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		bottone_Elimina.setForeground(Color.GREEN);
+		bottone_Elimina.setFont(new Font("Parametric Glitch", Font.PLAIN, 14));
+		bottone_Elimina.setBackground(Color.BLACK);
+		bottone_Elimina.setBounds(281, 51, 117, 28);
+		contentPane.add(bottone_Elimina);
 		
-		JButton btnIndietro = new JButton("Indietro");
-		btnIndietro.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnIndietro.addActionListener(new ActionListener() {
+		// bottone con il suo ActionListener che ha il compito
+		// di farci tornare alla HomePage del Moderatore
+		
+		JButton bottone_Indietro = new JButton("Indietro");
+		bottone_Indietro.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		bottone_Indietro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				controller.CambiaFrame(Elimina_Ristorante.this, controller.getModeratore_Homepage());
 			}
 		});
-		btnIndietro.setForeground(Color.GREEN);
-		btnIndietro.setFont(new Font("Parametric Glitch", Font.PLAIN, 14));
-		btnIndietro.setBackground(Color.BLACK);
-		btnIndietro.setBounds(281, 103, 117, 29);
-		contentPane.add(btnIndietro);
+		bottone_Indietro.setForeground(Color.GREEN);
+		bottone_Indietro.setFont(new Font("Parametric Glitch", Font.PLAIN, 14));
+		bottone_Indietro.setBackground(Color.BLACK);
+		bottone_Indietro.setBounds(281, 103, 117, 29);
+		contentPane.add(bottone_Indietro);
 		
+		// bottone con il suo ActionListener che ha il compito
+		// di aggiornare la comboBox che elenca i Ristoranti
 		
-		JButton btnAggiorna = new JButton("Aggiorna");
-		btnAggiorna.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnAggiorna.addActionListener(new ActionListener() {
+		JButton bottone_Aggiorna = new JButton("Aggiorna");
+		bottone_Aggiorna.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		bottone_Aggiorna.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				DefaultComboBoxModel model = new DefaultComboBoxModel(controller.getRistoranteDAO().getNomeRistorante(controller.getConnection()).toArray());
 				ristoranti.setModel(model);
-
-			
 			}
 		});
-		btnAggiorna.setForeground(Color.GREEN);
-		btnAggiorna.setFont(new Font("Parametric Glitch", Font.PLAIN, 14));
-		btnAggiorna.setBackground(Color.BLACK);
-		btnAggiorna.setBounds(438, 50, 117, 29);
-		contentPane.add(btnAggiorna);
+		bottone_Aggiorna.setForeground(Color.GREEN);
+		bottone_Aggiorna.setFont(new Font("Parametric Glitch", Font.PLAIN, 14));
+		bottone_Aggiorna.setBackground(Color.BLACK);
+		bottone_Aggiorna.setBounds(438, 50, 117, 29);
+		contentPane.add(bottone_Aggiorna);	
 		
-	
+		// ActionListener di bottone_Elimina che ha il compito
+		// eliminare il Ristorante selezionato
 		
-			
-		
-		btnElimina.addActionListener(new ActionListener() {
+		bottone_Elimina.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				String nome = ristoranti.getSelectedItem().toString();
-	
 				controller.getRistoranteDAO().deleteRistorante(controller.getConnection(), nome);
 				
 			}});
 }
 }
-
-
-
-

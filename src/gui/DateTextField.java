@@ -31,6 +31,7 @@ import javax.swing.border.LineBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+@SuppressWarnings("serial")
 public class DateTextField extends JTextField {
 
     private static String DEFAULT_DATE_FORMAT = "dd/MM/yyyy";

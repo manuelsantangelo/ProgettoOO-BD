@@ -1,7 +1,5 @@
 package gui;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,15 +15,16 @@ import logic.Controller;
 import java.awt.Color;
 import java.awt.Cursor;
 
-import javax.swing.JTextField;
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.GraphicsEnvironment;
 import javax.swing.JTextArea;
 import javax.swing.JButton;
 
+@SuppressWarnings("serial")
 public class Moderatore_Homepage extends JFrame {
 	
+	@SuppressWarnings("unused")
 	private Controller controller;
 	
 	final static int FINESTRA_Y = 80;
@@ -34,15 +33,15 @@ public class Moderatore_Homepage extends JFrame {
 	final static int LUNGHEZZA_FINESTRA = 940;
 
 	private JPanel contentPane;
-	private JTextArea txtDomanda;
+	private JTextArea testo_Domanda;
 	private Font custom_font;
-	private JButton btnAggiu;
-	private JButton btnAggiungiRistorante;
-	private JButton btnAggiungiAttrazione;
-	private JButton btnEliminaHotel;
-	private JButton btnEliminaRistorante;
-	private JButton btnEliminaAttrazione;
-	private JButton btnLogout;
+	private JButton bottone_Aggiungi_Hotel;
+	private JButton bottone_Aggiungi_Ristorante;
+	private JButton bottone_Aggiungi_Attrazione;
+	private JButton bottone_Elimina_Hotel;
+	private JButton bottone_Elimina_Ristorante;
+	private JButton bottone_Elimina_Attrazione;
+	private JButton bottone_logout;
 
 	public Moderatore_Homepage(Controller controller) {
 		
@@ -70,119 +69,119 @@ public class Moderatore_Homepage extends JFrame {
 			
 		}
 		
-		txtDomanda = new JTextArea();
-		txtDomanda.setEditable(false);
-		txtDomanda.setFont(custom_font);
-		txtDomanda.setText("Cosa si desidera fare?");
-		txtDomanda.setForeground(Color.GREEN);
-		txtDomanda.setBackground(Color.BLACK);
-		txtDomanda.setBounds(67, 22, 361, 54);
-		contentPane.add(txtDomanda);
-		txtDomanda.setColumns(10);
+		testo_Domanda = new JTextArea();
+		testo_Domanda.setEditable(false);
+		testo_Domanda.setFont(custom_font);
+		testo_Domanda.setText("Cosa si desidera fare?");
+		testo_Domanda.setForeground(Color.GREEN);
+		testo_Domanda.setBackground(Color.BLACK);
+		testo_Domanda.setBounds(67, 22, 361, 54);
+		contentPane.add(testo_Domanda);
+		testo_Domanda.setColumns(10);
 		
-		JButton btnApprovarecensione = new JButton("Approva Recensione");
-		btnApprovarecensione.setForeground(Color.GREEN);
-		btnApprovarecensione.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnApprovarecensione.setBackground(Color.BLACK);
-		btnApprovarecensione.setFont(new Font("Parametric Glitch", Font.BOLD, 14));
-		btnApprovarecensione.setBounds(248, 87, 152, 47);
-		contentPane.add(btnApprovarecensione);
+		JButton bottone_ApprovaRecensione = new JButton("Approva Recensione");
+		bottone_ApprovaRecensione.setForeground(Color.GREEN);
+		bottone_ApprovaRecensione.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		bottone_ApprovaRecensione.setBackground(Color.BLACK);
+		bottone_ApprovaRecensione.setFont(new Font("Parametric Glitch", Font.BOLD, 14));
+		bottone_ApprovaRecensione.setBounds(248, 87, 160, 47);
+		contentPane.add(bottone_ApprovaRecensione);
 		
-		btnAggiu = new JButton("Aggiungi Hotel");
-		btnAggiu.addActionListener(new ActionListener() {
+		bottone_Aggiungi_Hotel = new JButton("Aggiungi Hotel");
+		bottone_Aggiungi_Hotel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				controller.CambiaFrame(Moderatore_Homepage.this, controller.getAggiungi_Hotel());	
 			}
 		});
-		btnAggiu.setForeground(Color.GREEN);
-		btnAggiu.setFont(new Font("Parametric Glitch", Font.BOLD, 14));
-		btnAggiu.setBackground(Color.BLACK);
-		btnAggiu.setBounds(10, 163, 152, 47);
-		contentPane.add(btnAggiu);
+		bottone_Aggiungi_Hotel.setForeground(Color.GREEN);
+		bottone_Aggiungi_Hotel.setFont(new Font("Parametric Glitch", Font.BOLD, 14));
+		bottone_Aggiungi_Hotel.setBackground(Color.BLACK);
+		bottone_Aggiungi_Hotel.setBounds(10, 163, 152, 47);
+		contentPane.add(bottone_Aggiungi_Hotel);
 		
-		btnAggiungiRistorante = new JButton("Aggiungi Ristorante");
-		btnAggiungiRistorante.setForeground(Color.GREEN);
-		btnAggiungiRistorante.setFont(new Font("Parametric Glitch", Font.BOLD, 14));
-		btnAggiungiRistorante.setBackground(Color.BLACK);
-		btnAggiungiRistorante.setBounds(165, 163, 152, 47);
-		contentPane.add(btnAggiungiRistorante);
+		bottone_Aggiungi_Ristorante = new JButton("Aggiungi Ristorante");
+		bottone_Aggiungi_Ristorante.setForeground(Color.GREEN);
+		bottone_Aggiungi_Ristorante.setFont(new Font("Parametric Glitch", Font.BOLD, 14));
+		bottone_Aggiungi_Ristorante.setBackground(Color.BLACK);
+		bottone_Aggiungi_Ristorante.setBounds(165, 163, 152, 47);
+		contentPane.add(bottone_Aggiungi_Ristorante);
 		
-		btnAggiungiAttrazione = new JButton("Aggiungi Attrazione");
-		btnAggiungiAttrazione.addActionListener(new ActionListener() {
+		bottone_Aggiungi_Attrazione = new JButton("Aggiungi Attrazione");
+		bottone_Aggiungi_Attrazione.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				controller.CambiaFrame(Moderatore_Homepage.this, controller.getAggiungi_Attrazione());
 			}
 		});
-		btnAggiungiAttrazione.setForeground(Color.GREEN);
-		btnAggiungiAttrazione.setFont(new Font("Parametric Glitch", Font.BOLD, 14));
-		btnAggiungiAttrazione.setBackground(Color.BLACK);
-		btnAggiungiAttrazione.setBounds(320, 163, 152, 47);
-		contentPane.add(btnAggiungiAttrazione);
+		bottone_Aggiungi_Attrazione.setForeground(Color.GREEN);
+		bottone_Aggiungi_Attrazione.setFont(new Font("Parametric Glitch", Font.BOLD, 14));
+		bottone_Aggiungi_Attrazione.setBackground(Color.BLACK);
+		bottone_Aggiungi_Attrazione.setBounds(320, 163, 152, 47);
+		contentPane.add(bottone_Aggiungi_Attrazione);
 		
-		btnEliminaHotel = new JButton("Elimina Hotel");
-		btnEliminaHotel.setForeground(Color.GREEN);
-		btnEliminaHotel.setFont(new Font("Parametric Glitch", Font.BOLD, 14));
-		btnEliminaHotel.setBackground(Color.BLACK);
-		btnEliminaHotel.setBounds(10, 229, 152, 47);
-		contentPane.add(btnEliminaHotel);
+		bottone_Elimina_Hotel = new JButton("Elimina Hotel");
+		bottone_Elimina_Hotel.setForeground(Color.GREEN);
+		bottone_Elimina_Hotel.setFont(new Font("Parametric Glitch", Font.BOLD, 14));
+		bottone_Elimina_Hotel.setBackground(Color.BLACK);
+		bottone_Elimina_Hotel.setBounds(10, 229, 152, 47);
+		contentPane.add(bottone_Elimina_Hotel);
 		
-		btnEliminaRistorante = new JButton("Elimina Ristorante");
-		btnEliminaRistorante.setForeground(Color.GREEN);
-		btnEliminaRistorante.setFont(new Font("Parametric Glitch", Font.BOLD, 14));
-		btnEliminaRistorante.setBackground(Color.BLACK);
-		btnEliminaRistorante.setBounds(165, 229, 152, 47);
-		contentPane.add(btnEliminaRistorante);
+		bottone_Elimina_Ristorante = new JButton("Elimina Ristorante");
+		bottone_Elimina_Ristorante.setForeground(Color.GREEN);
+		bottone_Elimina_Ristorante.setFont(new Font("Parametric Glitch", Font.BOLD, 14));
+		bottone_Elimina_Ristorante.setBackground(Color.BLACK);
+		bottone_Elimina_Ristorante.setBounds(165, 229, 152, 47);
+		contentPane.add(bottone_Elimina_Ristorante);
 		
-		btnEliminaAttrazione = new JButton("Elimina Attrazione");
-		btnEliminaAttrazione.setForeground(Color.GREEN);
-		btnEliminaAttrazione.setFont(new Font("Parametric Glitch", Font.BOLD, 14));
-		btnEliminaAttrazione.setBackground(Color.BLACK);
-		btnEliminaAttrazione.setBounds(320, 229, 152, 47);
-		contentPane.add(btnEliminaAttrazione);
+		bottone_Elimina_Attrazione = new JButton("Elimina Attrazione");
+		bottone_Elimina_Attrazione.setForeground(Color.GREEN);
+		bottone_Elimina_Attrazione.setFont(new Font("Parametric Glitch", Font.BOLD, 14));
+		bottone_Elimina_Attrazione.setBackground(Color.BLACK);
+		bottone_Elimina_Attrazione.setBounds(320, 229, 152, 47);
+		contentPane.add(bottone_Elimina_Attrazione);
 		
-		btnLogout = new JButton("Log-out");
-		btnLogout.setForeground(Color.GREEN);
-		btnLogout.setFont(new Font("Parametric Glitch", Font.BOLD, 14));
-		btnLogout.setBackground(Color.BLACK);
-		btnLogout.setBounds(67, 87, 152, 47);
-		contentPane.add(btnLogout);
+		bottone_logout = new JButton("Log-out");
+		bottone_logout.setForeground(Color.GREEN);
+		bottone_logout.setFont(new Font("Parametric Glitch", Font.BOLD, 14));
+		bottone_logout.setBackground(Color.BLACK);
+		bottone_logout.setBounds(67, 87, 152, 47);
+		contentPane.add(bottone_logout);
 		
-		btnAggiungiRistorante.addActionListener(new ActionListener() {
+		bottone_Aggiungi_Ristorante.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
 			controller.CambiaFrame(Moderatore_Homepage.this, controller.getAggiungi_Ristorante());
 				}
 		});
 		
-		btnLogout.addActionListener(new ActionListener() {
+		bottone_logout.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
 			controller.CambiaFrame(Moderatore_Homepage.this, controller.getHome());
 				}
 		});
 		
-btnEliminaAttrazione.addActionListener(new ActionListener() {
+bottone_Elimina_Attrazione.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
 			controller.CambiaFrame(Moderatore_Homepage.this, controller.getElimina_Attrazione());
 				}
 		});
 
-btnEliminaRistorante.addActionListener(new ActionListener() {
+bottone_Elimina_Ristorante.addActionListener(new ActionListener() {
 	
 	public void actionPerformed(ActionEvent e) {
 	controller.CambiaFrame(Moderatore_Homepage.this, controller.getElimina_Ristorante());
 		}
 });
 
-btnEliminaHotel.addActionListener(new ActionListener() {
+bottone_Elimina_Hotel.addActionListener(new ActionListener() {
 	
 	public void actionPerformed(ActionEvent e) {
 	controller.CambiaFrame(Moderatore_Homepage.this, controller.getElimina_Hotel());
 		}
 });
 
-btnApprovarecensione.addActionListener(new ActionListener() {
+bottone_ApprovaRecensione.addActionListener(new ActionListener() {
 	
 	public void actionPerformed(ActionEvent e) {
 		controller.CambiaFrame(Moderatore_Homepage.this, controller.getApprovaRecensione());

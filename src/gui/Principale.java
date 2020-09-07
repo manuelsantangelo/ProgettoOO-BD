@@ -6,15 +6,11 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Toolkit;
-import java.awt.datatransfer.Clipboard;
-import java.awt.datatransfer.StringSelection;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.imageio.ImageIO;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
@@ -23,35 +19,27 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
 import logic.Controller;
-import logic.Classi.Albergo;
-import logic.Classi.Attrazione;
-import logic.Classi.Ristorante;
-
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.table.DefaultTableModel;
-
-
 import javax.swing.JScrollPane;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.SwingConstants;
 import java.awt.Component;
 import javax.swing.border.LineBorder;
-import java.awt.SystemColor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 
+@SuppressWarnings("serial")
 public class Principale extends JFrame {
 	
+	@SuppressWarnings("unused")
 	private Controller controller;
 
 	private JPanel contentPane;
-	private JFrame frame;
 	
 	final static int FINESTRA_Y = 80;
 	final static int FINESTRA_X = 25;
@@ -68,12 +56,12 @@ public class Principale extends JFrame {
 	    }
 	};	
 	
-	
 	static int lista = 0; 
 	private JTextField areaNome;
 	private JTextField areaStato;
 	private JTextField areaCittà;
 	private JTextField areaProvincia;
+	@SuppressWarnings("unchecked")
 	public Principale(Controller controller) throws IOException{
 		
 		
@@ -167,12 +155,13 @@ public class Principale extends JFrame {
 		contentPane.add(txtDomanda);
 		txtDomanda.setColumns(10);
 		
+		@SuppressWarnings("rawtypes")
 		JComboBox attrazioneristorantehotel = new JComboBox();
-
 		attrazioneristorantehotel.setFont(new Font("Parametric Glitch", Font.PLAIN, 16));
 		attrazioneristorantehotel.setBackground(Color.WHITE);
 		attrazioneristorantehotel.setForeground(Color.BLACK);
 		String [] tipi = {"Attrazione","Ristorante","Albergo"};
+		@SuppressWarnings("rawtypes")
 		DefaultComboBoxModel model = new DefaultComboBoxModel(tipi);
 		attrazioneristorantehotel.setModel(model);
 		attrazioneristorantehotel.setBounds(332, 81, 117, 29);
@@ -334,7 +323,7 @@ public class Principale extends JFrame {
 	}
 	//-----------------------------------------------------------------------------------------------------------
 	//CHIUSURA COSTRUTTORE
-	//FUNZIONI PER RIEMPIRE LE TABELLE!!!!
+	//METODI PER RIEMPIRE LE TABELLE!!!!
 	
 	
 	public void riempitabellaAlberghi(Controller controller) {
@@ -448,5 +437,3 @@ public class Principale extends JFrame {
 }
 	
 }
-	
-

@@ -13,45 +13,32 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
-//import java.util.Date;
-//import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-
 import java.awt.Font;
 import java.awt.Image;
-
 import javax.swing.JTextField;
-import javax.swing.filechooser.FileNameExtensionFilter;
-
 import logic.Controller;
-
-import java.time.chrono.JapaneseDate;
 import javax.swing.JTextArea;
 
+@SuppressWarnings("serial")
 public class Iscrizione extends JFrame{
+	
+	@SuppressWarnings("unused")
 	private Controller controller;
 
-	
 	final static int FINESTRA_Y = 80;
 	final static int FINESTRA_X = 25;
 	final static int ALTEZZA_FINESTRA = 690;
 	final static int LUNGHEZZA_FINESTRA = 940;
 
-	
 	private JTextField nome;
 	private JTextField cognome;
 	private JTextField nickname;
 	private JTextField email;
 	private JTextField password;
 	private JTextField city;
-	String s;
-	
 	static File imgpath = null;
 
 	public Iscrizione(Controller controller) {
@@ -59,7 +46,6 @@ public class Iscrizione extends JFrame{
 		this.controller = controller;
 		
 		setIconImage(Toolkit.getDefaultToolkit().getImage("images\\LogoPiccolo.png"));
-		
 		setTitle("SafeTravel - Iscriviti!");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(FINESTRA_Y, FINESTRA_X, LUNGHEZZA_FINESTRA, ALTEZZA_FINESTRA);
@@ -71,10 +57,10 @@ public class Iscrizione extends JFrame{
 		getContentPane().add(panel);
 		panel.setLayout(null);
 		
-		JLabel lblNome = new JLabel("Nome *");
-		lblNome.setFont(new Font("Gadugi", Font.BOLD, 20));
-		lblNome.setBounds(25, 11, 79, 33);
-		panel.add(lblNome);
+		JLabel testo_Nome = new JLabel("Nome *");
+		testo_Nome.setFont(new Font("Gadugi", Font.BOLD, 20));
+		testo_Nome.setBounds(25, 11, 79, 33);
+		panel.add(testo_Nome);
 		
 		nome = new JTextField();
 		nome.setFont(new Font("Gadugi", Font.BOLD, 15));
@@ -82,10 +68,10 @@ public class Iscrizione extends JFrame{
 		panel.add(nome);
 		nome.setColumns(10);
 		
-		JLabel lblCognome = new JLabel("Cognome *");
-		lblCognome.setFont(new Font("Gadugi", Font.BOLD, 20));
-		lblCognome.setBounds(279, 11, 140, 33);
-		panel.add(lblCognome);
+		JLabel testo_Cognome = new JLabel("Cognome *");
+		testo_Cognome.setFont(new Font("Gadugi", Font.BOLD, 20));
+		testo_Cognome.setBounds(279, 11, 140, 33);
+		panel.add(testo_Cognome);
 		
 		cognome = new JTextField();
 		cognome.setFont(new Font("Gadugi", Font.BOLD, 15));
@@ -97,10 +83,10 @@ public class Iscrizione extends JFrame{
 		calendario.setBounds(25,391,193,29);
 		panel.add(calendario);
 		
-		JLabel lblN = new JLabel("Nickname");
-		lblN.setFont(new Font("Gadugi", Font.BOLD, 20));
-		lblN.setBounds(25, 129, 106, 27);
-		panel.add(lblN);
+		JLabel testo_Nickname = new JLabel("Nickname");
+		testo_Nickname.setFont(new Font("Gadugi", Font.BOLD, 20));
+		testo_Nickname.setBounds(25, 129, 106, 27);
+		panel.add(testo_Nickname);
 		
 		nickname = new JTextField();
 		nickname.setFont(new Font("Gadugi", Font.BOLD, 15));
@@ -108,10 +94,10 @@ public class Iscrizione extends JFrame{
 		nickname.setBounds(25, 173, 193, 33);
 		panel.add(nickname);
 		
-		JLabel lblEmail = new JLabel("Email *");
-		lblEmail.setFont(new Font("Gadugi", Font.BOLD, 20));
-		lblEmail.setBounds(279, 129, 140, 33);
-		panel.add(lblEmail);
+		JLabel testo_Email = new JLabel("Email *");
+		testo_Email.setFont(new Font("Gadugi", Font.BOLD, 20));
+		testo_Email.setBounds(279, 129, 140, 33);
+		panel.add(testo_Email);
 		
 		email = new JTextField();
 		email.setFont(new Font("Gadugi", Font.BOLD, 15));
@@ -119,10 +105,10 @@ public class Iscrizione extends JFrame{
 		email.setBounds(279, 173, 193, 33);
 		panel.add(email);
 		
-		JLabel lblPassword = new JLabel("Password *");
-		lblPassword.setFont(new Font("Gadugi", Font.BOLD, 20));
-		lblPassword.setBounds(25, 240, 106, 27);
-		panel.add(lblPassword);
+		JLabel testo_Password = new JLabel("Password *");
+		testo_Password.setFont(new Font("Gadugi", Font.BOLD, 20));
+		testo_Password.setBounds(25, 240, 106, 27);
+		panel.add(testo_Password);
 		
 		password = new JTextField();
 		password.setFont(new Font("Gadugi", Font.BOLD, 15));
@@ -130,10 +116,10 @@ public class Iscrizione extends JFrame{
 		password.setBounds(25, 278, 193, 33);
 		panel.add(password);
 		
-		JLabel lblCitt = new JLabel("Citt\u00E0 *");
-		lblCitt.setFont(new Font("Gadugi", Font.BOLD, 20));
-		lblCitt.setBounds(279, 240, 72, 27);
-		panel.add(lblCitt);
+		JLabel testo_Città = new JLabel("Città *");
+		testo_Città.setFont(new Font("Gadugi", Font.BOLD, 20));
+		testo_Città.setBounds(279, 240, 72, 27);
+		panel.add(testo_Città);
 		
 		city = new JTextField();
 		city.setFont(new Font("Gadugi", Font.BOLD, 15));
@@ -141,10 +127,10 @@ public class Iscrizione extends JFrame{
 		city.setBounds(279, 278, 193, 33);
 		panel.add(city);
 		
-		JLabel lblDataDiNascita = new JLabel("Data di nascita *");
-		lblDataDiNascita.setFont(new Font("Gadugi", Font.BOLD, 20));
-		lblDataDiNascita.setBounds(25, 349, 174, 27);
-		panel.add(lblDataDiNascita);
+		JLabel testo_DataDiNascita = new JLabel("Data di nascita *");
+		testo_DataDiNascita.setFont(new Font("Gadugi", Font.BOLD, 20));
+		testo_DataDiNascita.setBounds(25, 349, 174, 27);
+		panel.add(testo_DataDiNascita);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(0, 153, 255));
@@ -152,37 +138,37 @@ public class Iscrizione extends JFrame{
 		panel.add(panel_1);
 		panel_1.setLayout(null);
 		
-		JLabel lblNote = new JLabel("Note:");
-		lblNote.setBounds(10, 11, 65, 33);
-		panel_1.add(lblNote);
-		lblNote.setFont(new Font("Gadugi", Font.BOLD, 20));
+		JLabel testo_Note = new JLabel("Note:");
+		testo_Note.setBounds(10, 11, 65, 33);
+		panel_1.add(testo_Note);
+		testo_Note.setFont(new Font("Gadugi", Font.BOLD, 20));
 		
-		JTextArea txtrTuttiICampi = new JTextArea();
-		txtrTuttiICampi.setWrapStyleWord(true);
-		txtrTuttiICampi.setFont(new Font("Gadugi", Font.BOLD, 13));
-		txtrTuttiICampi.setLineWrap(true);
-		txtrTuttiICampi.setEditable(false);
-		txtrTuttiICampi.setText("Tutti i campi contrassegnati dall'asterisco sono campi obbligatori.\r\n\r\nIl Nome e il Cognome non possono essere pi\u00F9 lunghi di 50 caratteri.\r\n\r\nLa Password non puo essere pi\u00F9 lunga di 20 caratteri e deve \r\ncontenere numeri e lettere.\r\n\r\nL'Email deve essere valida.\r\n\r\nLa Citt\u00E0 non deve essere pi\u00F9 lunga di 20 caratteri.\r\n\r\nLa Data deve essere valida.\r\n\r\n");
-		txtrTuttiICampi.setBackground(new Color(0, 153, 255));
-		txtrTuttiICampi.setBounds(10, 39, 380, 261);
-		panel_1.add(txtrTuttiICampi);
+		JTextArea testo_Informazioni = new JTextArea();
+		testo_Informazioni.setWrapStyleWord(true);
+		testo_Informazioni.setFont(new Font("Gadugi", Font.BOLD, 13));
+		testo_Informazioni.setLineWrap(true);
+		testo_Informazioni.setEditable(false);
+		testo_Informazioni.setText("Tutti i campi contrassegnati dall'asterisco sono campi obbligatori.\r\n\r\nIl Nome e il Cognome non possono essere pi\u00F9 lunghi di 50 caratteri.\r\n\r\nLa Password non puo essere pi\u00F9 lunga di 20 caratteri e deve \r\ncontenere numeri e lettere.\r\n\r\nL'Email deve essere valida.\r\n\r\nLa Citt\u00E0 non deve essere pi\u00F9 lunga di 20 caratteri.\r\n\r\nLa Data deve essere valida.\r\n\r\n");
+		testo_Informazioni.setBackground(new Color(0, 153, 255));
+		testo_Informazioni.setBounds(10, 39, 380, 261);
+		panel_1.add(testo_Informazioni);
 		
-		JButton btnIscriviti = new JButton("Iscriviti");
-		btnIscriviti.setFont(new Font("Gadugi", Font.BOLD, 18));
-		btnIscriviti.setBackground(new Color(0, 191, 255));
-		btnIscriviti.setBounds(141, 406, 123, 33);
-		panel_1.add(btnIscriviti);
+		JButton bottone_Iscriviti = new JButton("Iscriviti");
+		bottone_Iscriviti.setFont(new Font("Gadugi", Font.BOLD, 18));
+		bottone_Iscriviti.setBackground(new Color(0, 191, 255));
+		bottone_Iscriviti.setBounds(141, 406, 123, 33);
+		panel_1.add(bottone_Iscriviti);
 		
-		JButton btnAnnulla = new JButton("Annulla");
-		btnAnnulla.setFont(new Font("Gadugi", Font.BOLD, 18));
-		btnAnnulla.setBackground(new Color(0, 191, 255));
-		btnAnnulla.setBounds(141, 458, 123, 33);
-		panel_1.add(btnAnnulla);
+		JButton bottone_Annulla = new JButton("Annulla");
+		bottone_Annulla.setFont(new Font("Gadugi", Font.BOLD, 18));
+		bottone_Annulla.setBackground(new Color(0, 191, 255));
+		bottone_Annulla.setBounds(141, 458, 123, 33);
+		panel_1.add(bottone_Annulla);
 		
-		JLabel lblImmagineDelProfilo = new JLabel("Immagine del profilo");
-		lblImmagineDelProfilo.setFont(new Font("Gadugi", Font.BOLD, 20));
-		lblImmagineDelProfilo.setBounds(279, 349, 227, 27);
-		panel.add(lblImmagineDelProfilo);
+		JLabel testo_Immagine_Del_Profilo = new JLabel("Immagine del profilo");
+		testo_Immagine_Del_Profilo.setFont(new Font("Gadugi", Font.BOLD, 20));
+		testo_Immagine_Del_Profilo.setBounds(279, 349, 227, 27);
+		panel.add(testo_Immagine_Del_Profilo);
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBackground(new Color(0, 191, 255));
@@ -190,39 +176,44 @@ public class Iscrizione extends JFrame{
 		panel.add(panel_2);
 		panel_2.setLayout(null);
 		
-		JLabel imagelabel = new JLabel("");
-		imagelabel.setBackground(new Color(0, 191, 255));
-		imagelabel.setBounds(0, 0, 184, 144);
-		panel_2.add(imagelabel);
+		JLabel frame_Immagine_del_Profilo = new JLabel("");
+		frame_Immagine_del_Profilo.setBackground(new Color(0, 191, 255));
+		frame_Immagine_del_Profilo.setBounds(0, 0, 184, 144);
+		panel_2.add(frame_Immagine_del_Profilo);
 		
-		JButton button2 = new JButton("Cerca");
-		button2.setBackground(new Color(0, 153, 255));
-		button2.setFont(new Font("Gadugi", Font.BOLD, 11));
-		button2.setBounds(328, 550, 89, 23);
-		panel.add(button2);
+		// bottone con il suo ActionListener che ha il compito
+		// di cercare una foto all'interno della cartella C:\\Users 
+		// (resa il più generica possibile per evitare errori di
+		// incompatibilità con altri File System e di inserirla nel 
+		// frame_per_immagine dopo averla ridimensionata
 		
-		button2.addActionListener(new ActionListener() {
+		JButton bottone_Cerca = new JButton("Cerca");
+		bottone_Cerca.setBackground(new Color(0, 153, 255));
+		bottone_Cerca.setFont(new Font("Gadugi", Font.BOLD, 11));
+		bottone_Cerca.setBounds(328, 550, 89, 23);
+		panel.add(bottone_Cerca);
+		bottone_Cerca.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			JFileChooser fc = new JFileChooser();
 			fc.setCurrentDirectory(new java.io.File("C:/Users"));
 			fc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-			if(fc.showOpenDialog(button2) == JFileChooser.APPROVE_OPTION) {
+			if(fc.showOpenDialog(bottone_Cerca) == JFileChooser.APPROVE_OPTION) {
 				String path = fc.getSelectedFile().getAbsolutePath();
 				imgpath = new File(path);
 				BufferedImage img = null;
+				
 				try 
 				{
 					img = ImageIO.read(imgpath); 
 				    if(img == null) {
-				    	 JOptionPane.showMessageDialog(null, "ERRORE! Non hai selezionato una foto!");	
-				    
+				    	 JOptionPane.showMessageDialog(null, "ERRORE! Non hai selezionato una foto!");		    
 			    }
 			    else {
 			      ByteArrayOutputStream bos = new ByteArrayOutputStream();
 			      ImageIO.write(img, "jpg", bos );
-			  	  Image dimg = img.getScaledInstance(imagelabel.getWidth(), imagelabel.getHeight(), Image.SCALE_SMOOTH); 
+			  	  Image dimg = img.getScaledInstance(frame_Immagine_del_Profilo.getWidth(), frame_Immagine_del_Profilo.getHeight(), Image.SCALE_SMOOTH); 
 				  ImageIcon imageIcon = new ImageIcon(dimg);
-				  imagelabel.setIcon(imageIcon);
+				  frame_Immagine_del_Profilo.setIcon(imageIcon);
 				    } }
 				catch (IOException e2) 
 				{
@@ -232,7 +223,10 @@ public class Iscrizione extends JFrame{
 			}}
 		}); 
 		
-		btnAnnulla.addActionListener(new ActionListener() {
+		// Listener di bottone_Annulla che libera tutti i campi della precedente
+		// o tentata iscrizione e torna alla HomePage
+		
+		bottone_Annulla.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
 				nome.setText("");
@@ -244,10 +238,12 @@ public class Iscrizione extends JFrame{
 				
 			controller.CambiaFrame(Iscrizione.this, controller.getHome());
 				}
-		});
-		
+		});		
 
-		btnIscriviti.addActionListener(new ActionListener() {		
+		// Listener di bottone_Iscriviti che crea una nuova istanza di Utente
+		// nel database in base ai campi inseriti dall'utente durante l'iscrizione
+		
+		bottone_Iscriviti.addActionListener(new ActionListener() {		
 			public void actionPerformed(ActionEvent e ) {
 				
 				String nome1 = nome.getText();
@@ -261,11 +257,7 @@ public class Iscrizione extends JFrame{
 				
 				controller.getUtenteDAO().addUtente(controller.getConnection(), nome1, password1, nickname1, email1, cognome1, dataNascita1, città1, imgpath);
 				
-				
 			}
 		});
-		
-		
 	}
 }
-
