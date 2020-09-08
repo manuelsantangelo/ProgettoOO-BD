@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.Image;
-import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -33,10 +32,10 @@ import java.awt.event.MouseEvent;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 
-@SuppressWarnings("serial")
+@SuppressWarnings("serial") // Utilizzato per ignorare il warning che non crea problemi
 public class Principale extends JFrame {
 	
-	@SuppressWarnings("unused")
+	@SuppressWarnings("unused") // Utilizzato per ignorare il warning che non crea problemi
 	private Controller controller;
 
 	private JPanel contentPane;
@@ -45,11 +44,12 @@ public class Principale extends JFrame {
 	final static int FINESTRA_X = 25;
 	final static int ALTEZZA_FINESTRA = 690;
 	final static int LUNGHEZZA_FINESTRA = 940;
-	private JTable elementi = new JTable();
-	private JTextArea txtDomanda;
+	private JTable tabellaPrincipale = new JTable();
+	private JTextArea testo_Domanda;
 
-	static DefaultTableModel dtm = new DefaultTableModel(0,0){       //Impostiamo le righe e colonne della JTable
-		                                                             //cliccabili ma non modificabili
+    //Impostiamo le righe e colonne della JTable
+    //cliccabili ma non modificabili
+	static DefaultTableModel dtm = new DefaultTableModel(0,0){     
 		@Override
 	    public boolean isCellEditable(int row, int column) {
 	        return false;
@@ -57,11 +57,12 @@ public class Principale extends JFrame {
 	};	
 	
 	static int lista = 0; 
-	private JTextField areaNome;
-	private JTextField areaStato;
-	private JTextField areaCittà;
-	private JTextField areaProvincia;
-	@SuppressWarnings("unchecked")
+	private JTextField scrivi_Nome_per_ricerca;
+	private JTextField scrivi_Stato_per_ricerca;
+	private JTextField scrivi_Città_per_ricerca;
+	private JTextField scrivi_Provincia_per_ricerca;
+	
+	@SuppressWarnings("unchecked")// Utilizzato per ignorare il warning che non crea problemi
 	public Principale(Controller controller) throws IOException{
 		
 		
@@ -75,185 +76,191 @@ public class Principale extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 	
-		JButton cerca = new JButton("Cerca");
-		cerca.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		cerca.setForeground(Color.BLACK);
-		cerca.setFont(new Font("Gadugi", Font.BOLD, 16));
-		cerca.setBackground(Color.WHITE);
-		cerca.setBounds(777, 534, 117, 28);
-		contentPane.add(cerca);
+		JButton bottone_cerca = new JButton("Cerca");
+		bottone_cerca.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		bottone_cerca.setForeground(Color.BLACK);
+		bottone_cerca.setFont(new Font("Gadugi", Font.BOLD, 16));
+		bottone_cerca.setBackground(Color.WHITE);
+		bottone_cerca.setBounds(777, 534, 117, 28);
+		contentPane.add(bottone_cerca);
 		
-		JPanel panel = new JPanel();
-		panel.setForeground(new Color(0, 0, 0));
-		panel.setBackground(new Color(0, 153, 255));
-		panel.setBounds(0, 0, 312, 651);
-		contentPane.add(panel);
-		panel.setLayout(null);
+		JPanel pannello_laterale = new JPanel();
+		pannello_laterale.setForeground(new Color(0, 0, 0));
+		pannello_laterale.setBackground(new Color(0, 153, 255));
+		pannello_laterale.setBounds(0, 0, 312, 651);
+		contentPane.add(pannello_laterale);
+		pannello_laterale.setLayout(null);
 		
-		JLabel lblNomeECognome = new JLabel(controller.getUtenteDAO().getUtente().getNome() + " " + controller.getUtenteDAO().getUtente().getCognome());
-		lblNomeECognome.setFont(new Font("Gadugi", Font.BOLD, 21));
-		lblNomeECognome.setBounds(42, 203, 244, 35);
-		lblNomeECognome.setAlignmentX(Component.CENTER_ALIGNMENT);
-		panel.add(lblNomeECognome);
+		JLabel label_nome_cognome = new JLabel(controller.getUtenteDAO().getUtente().getNome() + " " + controller.getUtenteDAO().getUtente().getCognome());
+		label_nome_cognome.setFont(new Font("Gadugi", Font.BOLD, 21));
+		label_nome_cognome.setBounds(42, 203, 244, 35);
+		label_nome_cognome.setAlignmentX(Component.CENTER_ALIGNMENT);
+		pannello_laterale.add(label_nome_cognome);
 		
-		JLabel lblFoto = new JLabel("foto");
-		lblFoto.setBorder(new LineBorder(new Color(0, 191, 255), 2, true));
-		lblFoto.setBounds(42, 23, 160, 160);
-		panel.add(lblFoto);
+		JLabel label_per_foto = new JLabel("foto");
+		label_per_foto.setBorder(new LineBorder(new Color(0, 191, 255), 2, true));
+		label_per_foto.setBounds(42, 23, 160, 160);
+		pannello_laterale.add(label_per_foto);
 		
 		byte[] imgBytes = controller.getUtenteDAO().getUtente().getPropic();
 		ByteArrayInputStream bis = new ByteArrayInputStream(imgBytes);
 	    BufferedImage bImage = ImageIO.read(bis);
-	    Image dimg = bImage.getScaledInstance(lblFoto.getWidth(), lblFoto.getHeight(), Image.SCALE_SMOOTH); 
+	    Image dimg = bImage.getScaledInstance(label_per_foto.getWidth(), label_per_foto.getHeight(), Image.SCALE_SMOOTH); 
 		ImageIcon imageIcon = new ImageIcon(dimg);
-		lblFoto.setIcon(imageIcon);
+		label_per_foto.setIcon(imageIcon);
 		
-		JLabel lblNickname = new JLabel(controller.getUtenteDAO().getUtente().getNickname());
-		lblNickname.setFont(new Font("Gadugi", Font.BOLD, 17));
-		lblNickname.setAlignmentX(0.5f);
-		lblNickname.setBounds(42, 229, 194, 35);
-		panel.add(lblNickname);
+		JLabel label_per_nickname = new JLabel(controller.getUtenteDAO().getUtente().getNickname());
+		label_per_nickname.setFont(new Font("Gadugi", Font.BOLD, 17));
+		label_per_nickname.setAlignmentX(0.5f);
+		label_per_nickname.setBounds(42, 229, 194, 35);
+		pannello_laterale.add(label_per_nickname);
 		
-		JLabel lblEmail = new JLabel(controller.getUtenteDAO().getUtente().getEmail());
-		lblEmail.setFont(new Font("Gadugi", Font.BOLD, 17));
-		lblEmail.setAlignmentX(0.5f);
-		lblEmail.setBounds(42, 250, 194, 35);
-		panel.add(lblEmail);
+		JLabel label_per_email = new JLabel(controller.getUtenteDAO().getUtente().getEmail());
+		label_per_email.setFont(new Font("Gadugi", Font.BOLD, 17));
+		label_per_email.setAlignmentX(0.5f);
+		label_per_email.setBounds(42, 250, 194, 35);
+		pannello_laterale.add(label_per_email);
 		
-		JLabel lblDataDiIscrizione = new JLabel("Data di Iscrizione: " + controller.getUtenteDAO().getUtente().getData_Iscrizione());
-		lblDataDiIscrizione.setFont(new Font("Gadugi", Font.BOLD, 17));
-		lblDataDiIscrizione.setAlignmentX(0.5f);
-		lblDataDiIscrizione.setBounds(42, 296, 244, 35);
-		panel.add(lblDataDiIscrizione);
+		JLabel label_per_data_di_iscrizione = new JLabel("Data di Iscrizione: " + controller.getUtenteDAO().getUtente().getData_Iscrizione());
+		label_per_data_di_iscrizione.setFont(new Font("Gadugi", Font.BOLD, 17));
+		label_per_data_di_iscrizione.setAlignmentX(0.5f);
+		label_per_data_di_iscrizione.setBounds(42, 296, 244, 35);
+		pannello_laterale.add(label_per_data_di_iscrizione);
 		
-		JLabel lblDescrizioniEffettuate = new JLabel("Descrizioni effettuate: " + controller.getUtenteDAO().getUtente().getContributi());
-		lblDescrizioniEffettuate.setFont(new Font("Gadugi", Font.BOLD, 17));
-		lblDescrizioniEffettuate.setAlignmentX(0.5f);
-		lblDescrizioniEffettuate.setBounds(42, 320, 235, 35);
-		panel.add(lblDescrizioniEffettuate);
+		JLabel label_per_recensioni_effettuate = new JLabel("Recensioni effettuate: " + controller.getUtenteDAO().getUtente().getContributi());
+		label_per_recensioni_effettuate.setFont(new Font("Gadugi", Font.BOLD, 17));
+		label_per_recensioni_effettuate.setAlignmentX(0.5f);
+		label_per_recensioni_effettuate.setBounds(42, 320, 235, 35);
+		pannello_laterale.add(label_per_recensioni_effettuate);
 		
-		JButton btnIndietro = new JButton("Logout");
-		btnIndietro.setBounds(93, 506, 117, 29);
-		panel.add(btnIndietro);
-		btnIndietro.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnIndietro.addActionListener(new ActionListener() {
+		//Bottone che con il suo ActionListener ha il compito di
+		//passare dalla finestra Principale alla HomePage
+		JButton bottone_Logout = new JButton("Logout");
+		bottone_Logout.setBounds(93, 506, 117, 29);
+		pannello_laterale.add(bottone_Logout);
+		bottone_Logout.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		bottone_Logout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				controller.CambiaFrame(Principale.this, controller.getHome());
 			}
 		});
-		btnIndietro.setForeground(new Color(0, 0, 0));
-		btnIndietro.setFont(new Font("Gadugi", Font.BOLD, 15));
-		btnIndietro.setBackground(new Color(0, 153, 255));
+		bottone_Logout.setForeground(new Color(0, 0, 0));
+		bottone_Logout.setFont(new Font("Gadugi", Font.BOLD, 15));
+		bottone_Logout.setBackground(new Color(0, 153, 255));
 		
-		txtDomanda = new JTextArea();
-		txtDomanda.setEditable(false);
-		txtDomanda.setFont(new Font("Gadugi", Font.BOLD, 30));
-		txtDomanda.setText("Cosa si desidera recensire?");
-		txtDomanda.setForeground(new Color(0, 0, 0));
-		txtDomanda.setBackground(new Color(0, 191, 255));
-		txtDomanda.setBounds(417, 10, 391, 54);
-		contentPane.add(txtDomanda);
-		txtDomanda.setColumns(10);
 		
-		@SuppressWarnings("rawtypes")
-		JComboBox attrazioneristorantehotel = new JComboBox();
-		attrazioneristorantehotel.setFont(new Font("Parametric Glitch", Font.PLAIN, 16));
-		attrazioneristorantehotel.setBackground(Color.WHITE);
-		attrazioneristorantehotel.setForeground(Color.BLACK);
+		testo_Domanda = new JTextArea();
+		testo_Domanda.setEditable(false);
+		testo_Domanda.setFont(new Font("Gadugi", Font.BOLD, 30));
+		testo_Domanda.setText("Cosa si desidera recensire?");
+		testo_Domanda.setForeground(new Color(0, 0, 0));
+		testo_Domanda.setBackground(new Color(0, 191, 255));
+		testo_Domanda.setBounds(417, 10, 391, 54);
+		contentPane.add(testo_Domanda);
+		testo_Domanda.setColumns(10);
+		
+		@SuppressWarnings("rawtypes") // Utilizzato per ignorare il warning che non crea problemi
+		JComboBox selezione_per_ricerca = new JComboBox();
+		selezione_per_ricerca.setFont(new Font("Parametric Glitch", Font.PLAIN, 16));
+		selezione_per_ricerca.setBackground(Color.WHITE);
+		selezione_per_ricerca.setForeground(Color.BLACK);
 		String [] tipi = {"Attrazione","Ristorante","Albergo"};
-		@SuppressWarnings("rawtypes")
+		@SuppressWarnings("rawtypes") // Utilizzato per ignorare il warning che non crea problemi
 		DefaultComboBoxModel model = new DefaultComboBoxModel(tipi);
-		attrazioneristorantehotel.setModel(model);
-		attrazioneristorantehotel.setBounds(332, 81, 117, 29);
-		contentPane.add(attrazioneristorantehotel);
-		elementi.setSelectionBackground(UIManager.getColor("Table.selectionBackground"));
-		elementi.setRowHeight(25);
+		selezione_per_ricerca.setModel(model);
+		selezione_per_ricerca.setBounds(332, 81, 117, 29);
+		contentPane.add(selezione_per_ricerca);
 		
-	
-		elementi.setBackground(new Color(255, 255, 255));
-		elementi.setFont(new Font("Gadugi", Font.PLAIN, 18));
+		
+		tabellaPrincipale.setSelectionBackground(UIManager.getColor("Table.selectionBackground"));
+		tabellaPrincipale.setRowHeight(25);
+		tabellaPrincipale.setBackground(new Color(255, 255, 255));
+		tabellaPrincipale.setFont(new Font("Gadugi", Font.PLAIN, 18));
 		String nomeColonne[] = new String[] { "Nome", "Città", "Voto" };
-	    elementi.setModel(dtm);
+	    tabellaPrincipale.setModel(dtm);
 	    dtm.setColumnIdentifiers(nomeColonne);
-		elementi.setBounds(332, 148, 514, 304);
-		contentPane.add(elementi);
+		tabellaPrincipale.setBounds(332, 148, 514, 304);
+		contentPane.add(tabellaPrincipale);
 		
-		JScrollPane scrollPane = new JScrollPane(elementi);
-		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS); 
-		scrollPane.setBounds(332, 194, 563, 316);
-		contentPane.add(scrollPane);
-		scrollPane.setViewportView(elementi);
+		JScrollPane scrollPane_tabellaPrincipale = new JScrollPane(tabellaPrincipale);
+		scrollPane_tabellaPrincipale.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS); 
+		scrollPane_tabellaPrincipale.setBounds(332, 194, 563, 316);
+		contentPane.add(scrollPane_tabellaPrincipale);
+		scrollPane_tabellaPrincipale.setViewportView(tabellaPrincipale);
 		
-		JTextArea txtrNome = new JTextArea();
-		txtrNome.setText("Nome\r\n");
-		txtrNome.setForeground(Color.BLACK);
-		txtrNome.setFont(new Font("Gadugi", Font.BOLD, 17));
-		txtrNome.setEditable(false);
-		txtrNome.setColumns(10);
-		txtrNome.setBackground(new Color(0, 191, 255));
-		txtrNome.setBounds(332, 125, 60, 29);
-		contentPane.add(txtrNome);
+		JTextArea testo_Nome = new JTextArea();
+		testo_Nome.setText("Nome\r\n");
+		testo_Nome.setForeground(Color.BLACK);
+		testo_Nome.setFont(new Font("Gadugi", Font.BOLD, 17));
+		testo_Nome.setEditable(false);
+		testo_Nome.setColumns(10);
+		testo_Nome.setBackground(new Color(0, 191, 255));
+		testo_Nome.setBounds(332, 125, 60, 29);
+		contentPane.add(testo_Nome);
 		
-		areaNome = new JTextField();
-		areaNome.setFont(new Font("Gadugi", Font.BOLD, 14));
-		areaNome.setBounds(389, 130, 173, 20);
-		contentPane.add(areaNome);
-		areaNome.setColumns(10);
+		scrivi_Nome_per_ricerca = new JTextField();
+		scrivi_Nome_per_ricerca.setFont(new Font("Gadugi", Font.BOLD, 14));
+		scrivi_Nome_per_ricerca.setBounds(389, 130, 173, 20);
+		contentPane.add(scrivi_Nome_per_ricerca);
+		scrivi_Nome_per_ricerca.setColumns(10);
 		
-		JTextArea txtrStato = new JTextArea();
-		txtrStato.setText("Stato\r\n");
-		txtrStato.setForeground(Color.BLACK);
-		txtrStato.setFont(new Font("Gadugi", Font.BOLD, 17));
-		txtrStato.setEditable(false);
-		txtrStato.setColumns(10);
-		txtrStato.setBackground(new Color(0, 191, 255));
-		txtrStato.setBounds(332, 154, 60, 29);
-		contentPane.add(txtrStato);
+		JTextArea testo_Stato = new JTextArea();
+		testo_Stato.setText("Stato\r\n");
+		testo_Stato.setForeground(Color.BLACK);
+		testo_Stato.setFont(new Font("Gadugi", Font.BOLD, 17));
+		testo_Stato.setEditable(false);
+		testo_Stato.setColumns(10);
+		testo_Stato.setBackground(new Color(0, 191, 255));
+		testo_Stato.setBounds(332, 154, 60, 29);
+		contentPane.add(testo_Stato);
 		
-		areaStato = new JTextField();
-		areaStato.setFont(new Font("Gadugi", Font.BOLD, 14));
-		areaStato.setColumns(10);
-		areaStato.setBounds(389, 161, 173, 20);
-		contentPane.add(areaStato);
+		scrivi_Stato_per_ricerca = new JTextField();
+		scrivi_Stato_per_ricerca.setFont(new Font("Gadugi", Font.BOLD, 14));
+		scrivi_Stato_per_ricerca.setColumns(10);
+		scrivi_Stato_per_ricerca.setBounds(389, 161, 173, 20);
+		contentPane.add(scrivi_Stato_per_ricerca);
 		
-		JTextArea txtrCittà = new JTextArea();
-		txtrCittà.setText("Citt\u00E0");
-		txtrCittà.setForeground(Color.BLACK);
-		txtrCittà.setFont(new Font("Gadugi", Font.BOLD, 17));
-		txtrCittà.setEditable(false);
-		txtrCittà.setColumns(10);
-		txtrCittà.setBackground(new Color(0, 191, 255));
-		txtrCittà.setBounds(633, 121, 50, 29);
-		contentPane.add(txtrCittà);
+		JTextArea testo_Città = new JTextArea();
+		testo_Città.setText("Citt\u00E0");
+		testo_Città.setForeground(Color.BLACK);
+		testo_Città.setFont(new Font("Gadugi", Font.BOLD, 17));
+		testo_Città.setEditable(false);
+		testo_Città.setColumns(10);
+		testo_Città.setBackground(new Color(0, 191, 255));
+		testo_Città.setBounds(633, 121, 50, 29);
+		contentPane.add(testo_Città);
 		
-		JTextArea txtrProvincia = new JTextArea();
-		txtrProvincia.setText("Provincia");
-		txtrProvincia.setForeground(Color.BLACK);
-		txtrProvincia.setFont(new Font("Gadugi", Font.BOLD, 17));
-		txtrProvincia.setEditable(false);
-		txtrProvincia.setColumns(10);
-		txtrProvincia.setBackground(new Color(0, 191, 255));
-		txtrProvincia.setBounds(606, 154, 77, 29);
-		contentPane.add(txtrProvincia);
+		JTextArea testo_Provincia = new JTextArea();
+		testo_Provincia.setText("Provincia");
+		testo_Provincia.setForeground(Color.BLACK);
+		testo_Provincia.setFont(new Font("Gadugi", Font.BOLD, 17));
+		testo_Provincia.setEditable(false);
+		testo_Provincia.setColumns(10);
+		testo_Provincia.setBackground(new Color(0, 191, 255));
+		testo_Provincia.setBounds(606, 154, 77, 29);
+		contentPane.add(testo_Provincia);
 		
-		areaCittà = new JTextField();
-		areaCittà.setFont(new Font("Gadugi", Font.BOLD, 14));
-		areaCittà.setColumns(10);
-		areaCittà.setBounds(693, 128, 173, 20);
-		contentPane.add(areaCittà);
+		scrivi_Città_per_ricerca = new JTextField();
+		scrivi_Città_per_ricerca.setFont(new Font("Gadugi", Font.BOLD, 14));
+		scrivi_Città_per_ricerca.setColumns(10);
+		scrivi_Città_per_ricerca.setBounds(693, 128, 173, 20);
+		contentPane.add(scrivi_Città_per_ricerca);
 		
-		areaProvincia = new JTextField();
-		areaProvincia.setFont(new Font("Gadugi", Font.BOLD, 14));
-		areaProvincia.setColumns(10);
-		areaProvincia.setBounds(693, 161, 173, 20);
-		contentPane.add(areaProvincia);
+		scrivi_Provincia_per_ricerca = new JTextField();
+		scrivi_Provincia_per_ricerca.setFont(new Font("Gadugi", Font.BOLD, 14));
+		scrivi_Provincia_per_ricerca.setColumns(10);
+		scrivi_Provincia_per_ricerca.setBounds(693, 161, 173, 20);
+		contentPane.add(scrivi_Provincia_per_ricerca);
 		
-		
+		//ActionListener del bottone_cerca che ha il compito
+		//di chiamare la funzione per riempire la tabella 
+		//in base al tipo di valore
+		//selezionato all'interno della combobox
 	
-		cerca.addActionListener(new ActionListener() {
+		bottone_cerca.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				String nome = attrazioneristorantehotel.getSelectedItem().toString();
+				String nome = selezione_per_ricerca.getSelectedItem().toString();
 	
 				if(nome == "Attrazione") {
 				lista = 1;
@@ -269,16 +276,15 @@ public class Principale extends JFrame {
 				}
 			}});
 	
-	 //Doppio click mouse, apertura pagina recensioni 
-    elementi.addMouseListener(new MouseAdapter() {
+	
+	//Doppio click mouse, apertura pagina recensioni 
+    tabellaPrincipale.addMouseListener(new MouseAdapter() {
         public void mousePressed(MouseEvent mouseEvent) {
-            elementi = (JTable) mouseEvent.getSource();
-            Point point = mouseEvent.getPoint();
-            int row = elementi.rowAtPoint(point);
-            if (mouseEvent.getClickCount() == 2 && elementi.getSelectedRow() != -1) {
+            tabellaPrincipale = (JTable) mouseEvent.getSource();
+                      if (mouseEvent.getClickCount() == 2 && tabellaPrincipale.getSelectedRow() != -1) {
            	
             	
-            	int indice = elementi.getSelectedRow();
+            	int indice = tabellaPrincipale.getSelectedRow();
             	controller.setIndice(indice);
             	if(lista == 1) {
             		controller.getAttrazioneDAO().setAttrazione(controller.getAttrazioneDAO().getAttrazioni().get(indice));
@@ -322,20 +328,19 @@ public class Principale extends JFrame {
     });
 	}
 	//-----------------------------------------------------------------------------------------------------------
-	//CHIUSURA COSTRUTTORE
-	//METODI PER RIEMPIRE LE TABELLE!!!!
+	//METODI PER RIEMPIRE LE TABELLE
 	
 	
 	public void riempitabellaAlberghi(Controller controller) {
 	
-		if(areaNome.getText().isEmpty() && areaStato.getText().isEmpty() && areaCittà.getText().isEmpty() && areaProvincia.getText().isEmpty())
+		if(scrivi_Nome_per_ricerca.getText().isEmpty() && scrivi_Stato_per_ricerca.getText().isEmpty() && scrivi_Città_per_ricerca.getText().isEmpty() && scrivi_Provincia_per_ricerca.getText().isEmpty())
 		{
 		
 			controller.getAlbergoDAO().setAllAlberghi(controller.getConnection());
 			
 		}
 		else {
-			controller.getAlbergoDAO().setAlbergoByFiltro(controller.getConnection(), areaNome.getText(), areaCittà.getText(), areaStato.getText(), areaProvincia.getText());
+			controller.getAlbergoDAO().setAlbergoByFiltro(controller.getConnection(), scrivi_Nome_per_ricerca.getText(), scrivi_Città_per_ricerca.getText(), scrivi_Stato_per_ricerca.getText(), scrivi_Provincia_per_ricerca.getText());
 		}
 		while (dtm.getRowCount() > 0) {
 		    dtm.removeRow(0);
@@ -363,14 +368,14 @@ public class Principale extends JFrame {
 	}
 	
 	public void riempitabellaRistoranti(Controller controller) {
-		if(areaNome.getText().isEmpty() && areaStato.getText().isEmpty() && areaCittà.getText().isEmpty() && areaProvincia.getText().isEmpty())
+		if(scrivi_Nome_per_ricerca.getText().isEmpty() && scrivi_Stato_per_ricerca.getText().isEmpty() && scrivi_Città_per_ricerca.getText().isEmpty() && scrivi_Provincia_per_ricerca.getText().isEmpty())
 		{
 		
 			controller.getRistoranteDAO().setAllRistoranti(controller.getConnection());
 			
 		}
 		else {
-			controller.getRistoranteDAO().setRistoranteByFiltro(controller.getConnection(), areaNome.getText(), areaCittà.getText(), areaStato.getText(), areaProvincia.getText());
+			controller.getRistoranteDAO().setRistoranteByFiltro(controller.getConnection(), scrivi_Nome_per_ricerca.getText(), scrivi_Città_per_ricerca.getText(), scrivi_Stato_per_ricerca.getText(), scrivi_Provincia_per_ricerca.getText());
 		}
 		while (dtm.getRowCount() > 0) {
 		    dtm.removeRow(0);
@@ -402,14 +407,14 @@ public class Principale extends JFrame {
 	}
 	
 	public void riempitabellaAttrazioni(Controller controller) {
-		if(areaNome.getText().isEmpty() && areaStato.getText().isEmpty() && areaCittà.getText().isEmpty() && areaProvincia.getText().isEmpty())
+		if(scrivi_Nome_per_ricerca.getText().isEmpty() && scrivi_Stato_per_ricerca.getText().isEmpty() && scrivi_Città_per_ricerca.getText().isEmpty() && scrivi_Provincia_per_ricerca.getText().isEmpty())
 		{
 		
 			controller.getAttrazioneDAO().setAllAttrazioni(controller.getConnection());
 			
 		}
 		else {
-			controller.getAttrazioneDAO().setAttrazioneByFiltro(controller.getConnection(), areaNome.getText(), areaCittà.getText(), areaStato.getText(), areaProvincia.getText());
+			controller.getAttrazioneDAO().setAttrazioneByFiltro(controller.getConnection(), scrivi_Nome_per_ricerca.getText(), scrivi_Città_per_ricerca.getText(), scrivi_Stato_per_ricerca.getText(), scrivi_Provincia_per_ricerca.getText());
 		}
 		while (dtm.getRowCount() > 0) {
 		    dtm.removeRow(0);

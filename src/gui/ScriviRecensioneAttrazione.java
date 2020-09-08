@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.Image;
-import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -44,13 +43,13 @@ public class ScriviRecensioneAttrazione extends JFrame {
 	final static int LUNGHEZZA_FINESTRA = 1260;
 	
 	@SuppressWarnings("rawtypes") // Utilizzato per ignorare il warning che non crea problemi
-	private DefaultListModel dlm = new DefaultListModel();
+	private DefaultListModel modello_numero1 = new DefaultListModel();
 	@SuppressWarnings("rawtypes") // Utilizzato per ignorare il warning che non crea problemi
-	private DefaultListModel dlm1 = new DefaultListModel();
+	private DefaultListModel modello_numero2 = new DefaultListModel();
 	@SuppressWarnings("rawtypes") // Utilizzato per ignorare il warning che non crea problemi
-	private DefaultListModel dlm2 = new DefaultListModel();
+	private DefaultListModel modello_numero3 = new DefaultListModel();
 	@SuppressWarnings("rawtypes") // Utilizzato per ignorare il warning che non crea problemi
-	private DefaultListModel dlm3 = new DefaultListModel();
+	private DefaultListModel modello_numero4 = new DefaultListModel();
 
 	
 	 //Impostiamo le righe e colonne della JTable
@@ -176,8 +175,9 @@ public class ScriviRecensioneAttrazione extends JFrame {
 		contenuto_Descrizione.setBounds(270, 48, 537, 182);
 		contentPane.add(contenuto_Descrizione);
 		
-	
-
+		
+		//bottone_Indietro con il suo ActionListener che ha il compito
+		//di tornare nella pagina principale
 		JButton bottone_Indietro = new JButton("Indietro");
 		bottone_Indietro.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		bottone_Indietro.addActionListener(new ActionListener() {
@@ -205,14 +205,6 @@ public class ScriviRecensioneAttrazione extends JFrame {
 		label_per_descrizione.setIcon(icona_nota);
 		contentPane.add(label_per_descrizione);
 		
-		/*@SuppressWarnings("rawtypes") // Utilizzato per ignorare il warning che non crea problemi
-		JList category = new JList();
-		category.setFocusable(false);
-		
-		category.setFont(new Font("Gadugi", Font.PLAIN, 13));
-		category.setBackground(new Color(0, 153, 255));
-		category.setBounds(786, 142, 118, 73);
-		dlm3.addElement(controller.getAttrazioneDAO().getAttrazioni().get(controller.getIndice()).getTipo().toString());*/
 		
 		
 		JPanel pannello_laterale = new JPanel();
@@ -239,7 +231,8 @@ public class ScriviRecensioneAttrazione extends JFrame {
 		pannello_laterale.add(lista_Attrazioni);
 		lista_Attrazioni.setFont(new Font("Gadugi", Font.PLAIN, 17));
 		lista_Attrazioni.setBackground(new Color(0, 153, 255));
-		lista_Attrazioni.setModel(dlm3);
+		modello_numero4.addElement(controller.getAttrazioneDAO().getAttrazioni().get(controller.getIndice()).getTipo().toString());
+		lista_Attrazioni.setModel(modello_numero4);
 		
 		JLabel label_per_tipo_di_attrazione = new JLabel("iconaCategoria");
 		label_per_tipo_di_attrazione.setBounds(16, 156, 28, 29);
@@ -349,8 +342,8 @@ public class ScriviRecensioneAttrazione extends JFrame {
 		lista_telefono.setFont(new Font("Gadugi", Font.PLAIN, 16));
 		lista_telefono.setBackground(new Color(0, 153, 255));
 		for(int i = 0; i<controller.getContattiDAO().getSitoEtelefono().size(); i++) 
-			dlm.addElement(controller.getContattiDAO().getSitoEtelefono().get(0).getTelefono());
-		lista_telefono.setModel(dlm);
+			modello_numero1.addElement(controller.getContattiDAO().getSitoEtelefono().get(0).getTelefono());
+		lista_telefono.setModel(modello_numero1);
 		
 		
 		@SuppressWarnings("rawtypes") // Utilizzato per ignorare il warning che non crea problemi
@@ -363,8 +356,8 @@ public class ScriviRecensioneAttrazione extends JFrame {
 		lista_sitoweb.setFocusable(false);
 		lista_sitoweb.setFont(new Font("Gadugi", Font.PLAIN, 16));
 		lista_sitoweb.setBackground(new Color(0, 153, 255));
-		dlm1.addElement(controller.getContattiDAO().getSitoEtelefono().get(0).getSitoWeb());
-		lista_sitoweb.setModel(dlm1);
+		modello_numero2.addElement(controller.getContattiDAO().getSitoEtelefono().get(0).getSitoWeb());
+		lista_sitoweb.setModel(modello_numero2);
 		
 		JTextArea testo_Provincia = new JTextArea();
 		testo_Provincia.setText("Provincia");
@@ -380,8 +373,8 @@ public class ScriviRecensioneAttrazione extends JFrame {
 		contentPane.add(lista_fascia_prezzo);
 		lista_fascia_prezzo.setBackground(new Color(0, 191, 255));
 		lista_fascia_prezzo.setFont(new Font("Gadugi", Font.PLAIN, 13));
-		dlm2.addElement(controller.getAttrazioneDAO().getAttrazioni().get(controller.getIndice()).getFascia_Prezzo());
-		lista_fascia_prezzo.setModel(dlm2);
+		modello_numero3.addElement(controller.getAttrazioneDAO().getAttrazioni().get(controller.getIndice()).getFascia_Prezzo());
+		lista_fascia_prezzo.setModel(modello_numero3);
 	
 		
 		tabellaRecensioni.setRowHeight(20);	
@@ -399,6 +392,7 @@ public class ScriviRecensioneAttrazione extends JFrame {
 		contentPane.add(scrollPane_tabellaRecensioni);
 		scrollPane_tabellaRecensioni.setViewportView(tabellaRecensioni);
 		
+		//Richiamiamo il metodo all'esterno del costruttore per riempire la tabella delle recensioni
 		riempitabellaRecensioni(controller);
 		
 		JTextArea contenuto_Visualizza_recensione = new JTextArea();
@@ -434,7 +428,9 @@ public class ScriviRecensioneAttrazione extends JFrame {
 		testo_Visualizza_recensione.setBounds(562, 271, 228, 29);
 		contentPane.add(testo_Visualizza_recensione);
 		
-		
+		//ActionListener di bottone_aggiungi_recensione che ha il compito di 
+		//aggiungere una recensione che in seguito deve essere approvata
+		//o rifiutata da un moderatore
 		bottone_Aggiungi_recensione.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String recensione = contenuto_scrivi_recensione.getText();
@@ -444,12 +440,11 @@ public class ScriviRecensioneAttrazione extends JFrame {
 				
 			}});
 		
-		
+		//Doppio click mouse, visualizzazione recensione per esteso
 		tabellaRecensioni.addMouseListener(new MouseAdapter() {
 	        public void mousePressed(MouseEvent mouseEvent) {
 	            tabellaRecensioni = (JTable) mouseEvent.getSource();
-	            Point point = mouseEvent.getPoint();
-	            int row = tabellaRecensioni.rowAtPoint(point);
+	           
 	            if (mouseEvent.getClickCount() == 2 && tabellaRecensioni.getSelectedRow() != -1) {
 	            	int indice = tabellaRecensioni.getSelectedRow();
 	            	int codiceRecensione = controller.getRecensioneDAO().getRecensioni().get(indice).getReview_ID();
@@ -461,6 +456,8 @@ public class ScriviRecensioneAttrazione extends JFrame {
 		});
 }
 
+	//-----------------------------------------------------------------------------------------------------------
+	//METODO PER RIEMPIRE LA TABELLA
 public void riempitabellaRecensioni (Controller controller) {
 	
 	controller.getRecensioneDAO().setRecensioniDaVisualizzareAttrazione(controller.getConnection());

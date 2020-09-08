@@ -18,7 +18,7 @@ import javax.swing.border.EmptyBorder;
 
 import logic.Controller;
 
-@SuppressWarnings("serial")
+@SuppressWarnings("serial")// Utilizzato per ignorare il warning che non crea problemi
 public class Elimina_Ristorante extends JFrame {
 	
 	@SuppressWarnings("unused")
@@ -30,7 +30,7 @@ public class Elimina_Ristorante extends JFrame {
 	final static int FINESTRA_X = 25;
 	static File imgpath = null;
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@SuppressWarnings({ "rawtypes", "unchecked" }) // Utilizzato per ignorare i warning che non creano problemi
 	public Elimina_Ristorante (Controller controller) {
 		
 		this.controller = controller;

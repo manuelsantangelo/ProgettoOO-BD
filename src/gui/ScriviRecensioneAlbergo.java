@@ -5,7 +5,6 @@ import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.Image;
-import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -70,9 +69,6 @@ public boolean isCellEditable(int row, int column) {
 	return false;
 }
 };	
-
-	
-
 
 
 	@SuppressWarnings("unchecked") // Utilizzato per ignorare il warning che non crea problemi
@@ -187,6 +183,8 @@ public boolean isCellEditable(int row, int column) {
 		contenuto_Descrizione.setBounds(270, 48, 537, 182);
 		contentPane.add(contenuto_Descrizione);
 		
+		//bottone_Indietro con il suo ActionListener che ha il compito
+		//di tornare nella pagina principale
 		JButton bottone_Indietro = new JButton("Indietro");
 		bottone_Indietro.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		bottone_Indietro.addActionListener(new ActionListener() {
@@ -196,7 +194,6 @@ public boolean isCellEditable(int row, int column) {
 					controller.getAssociazione_Servizio_AlbergoDAO().getServizi().clear();
 					controller.CambiaFrame(ScriviRecensioneAlbergo.this, controller.getPrincipale());
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
@@ -207,12 +204,7 @@ public boolean isCellEditable(int row, int column) {
 		bottone_Indietro.setBounds(685, 583, 215, 29);
 		contentPane.add(bottone_Indietro);
 		
-		modello_numero4.addElement(controller.getAlbergoDAO().getAlberghi().get(controller.getIndice()).getCategoria());
-		for(int i = 0; i < controller.getAssociazione_Servizio_AlbergoDAO().getServizi().size(); i++)
-			modello_numero5.addElement(controller.getAssociazione_Servizio_AlbergoDAO().getServizi().get(i).getServizio_FK().toString());
-		
-		
-		
+
 		JLabel label_per_descrizione = new JLabel("iconaDescrizione");
 		label_per_descrizione.setBounds(270, 14, 28, 29);
 		File nota = new File("images\\nota.png");
@@ -221,16 +213,7 @@ public boolean isCellEditable(int row, int column) {
 		ImageIcon icona_nota = new ImageIcon(img2);
 		label_per_descrizione.setIcon(icona_nota);
 		contentPane.add(label_per_descrizione);
-		
-		@SuppressWarnings("rawtypes")  // Utilizzato per ignorare il warning che non crea problemi
-		/*JList category = new JList();
-		category.setFocusable(false);
-		category.setFont(new Font("Gadugi", Font.PLAIN, 13));
-		category.setBackground(new Color(0, 191, 255));
-		category.setBounds(786, 142, 118, 73);
-		for(int i = 0; i < controller.getAssociazione_Categoria_RistoranteDAO().getCategorie().size(); i++)
-		modello_numero4.addElement(controller.getAssociazione_Categoria_RistoranteDAO().getCategorie().get(i).getCategoria_Ristorante_FK().toString());
-		*/
+	
 		
 		JPanel panello_laterale = new JPanel();
 		panello_laterale.setBackground(new Color(0, 153, 255));
@@ -354,7 +337,6 @@ public boolean isCellEditable(int row, int column) {
 		lista_telefono.setBackground(new Color(0, 153, 255));
 		for(int i = 0; i<controller.getContattiDAO().getSitoEtelefono().size(); i++) 
 			modello_numero1.addElement(controller.getContattiDAO().getSitoEtelefono().get(i).getTelefono());
-			lista_telefono.setModel(modello_numero1);
 		lista_telefono.setModel(modello_numero1);
 	
 		
@@ -368,8 +350,7 @@ public boolean isCellEditable(int row, int column) {
 		lista_sitoweb.setFont(new Font("Gadugi", Font.PLAIN, 14));
 		lista_sitoweb.setBackground(new Color(0, 153, 255));
 		for(int i = 0; i<controller.getContattiDAO().getSitoEtelefono().size(); i++) 
-			modello_numero2.addElement(controller.getContattiDAO().getSitoEtelefono().get(i).getSitoWeb());
-		lista_sitoweb.setModel(modello_numero2);
+		modello_numero2.addElement(controller.getContattiDAO().getSitoEtelefono().get(i).getSitoWeb());
 		lista_sitoweb.setModel(modello_numero2);
 		
 			
@@ -393,14 +374,16 @@ public boolean isCellEditable(int row, int column) {
 		contenuto_numero_camere.setBackground(new Color(0, 153, 255));
 		
 		@SuppressWarnings("rawtypes") // Utilizzato per ignorare il warning che non crea problemi
-		JList lista_tipo_di_servizio = new JList();
-		lista_tipo_di_servizio.setBorder(new LineBorder(new Color(0, 191, 255), 2, true));
-		lista_tipo_di_servizio.setBounds(16, 195, 287, 29);
-		panello_laterale.add(lista_tipo_di_servizio);
-		lista_tipo_di_servizio.setFocusable(false);
-		lista_tipo_di_servizio.setFont(new Font("Gadugi", Font.PLAIN, 16));
-		lista_tipo_di_servizio.setBackground(new Color(0, 153, 255));
-		lista_tipo_di_servizio.setModel(modello_numero4);
+		JList lista_tipo_di_struttura = new JList();
+		lista_tipo_di_struttura.setBorder(new LineBorder(new Color(0, 191, 255), 2, true));
+		lista_tipo_di_struttura.setBounds(16, 195, 287, 29);
+		panello_laterale.add(lista_tipo_di_struttura);
+		lista_tipo_di_struttura.setFocusable(false);
+		lista_tipo_di_struttura.setFont(new Font("Gadugi", Font.PLAIN, 14));
+		lista_tipo_di_struttura.setBackground(new Color(0, 153, 255));
+		modello_numero4.addElement(controller.getAlbergoDAO().getAlberghi().get(controller.getIndice()).getCategoria() + " " 
+				+ controller.getAlbergoDAO().getAlberghi().get(controller.getIndice()).getStelle() + " stelle");
+		lista_tipo_di_struttura.setModel(modello_numero4);
 		
 		@SuppressWarnings("rawtypes") // Utilizzato per ignorare il warning che non crea problemi
 		JList lista_servizio = new JList();
@@ -411,6 +394,8 @@ public boolean isCellEditable(int row, int column) {
 		lista_servizio.setFocusable(false);
 		lista_servizio.setFont(new Font("Gadugi", Font.PLAIN, 16));
 		lista_servizio.setBackground(new Color(0, 153, 255));
+		for(int i = 0; i < controller.getAssociazione_Servizio_AlbergoDAO().getServizi().size(); i++)
+			modello_numero5.addElement(controller.getAssociazione_Servizio_AlbergoDAO().getServizi().get(i).getServizio_FK().toString());
 		lista_servizio.setModel(modello_numero5);
 		
 		JTextArea testo_Servizio = new JTextArea();
@@ -455,8 +440,8 @@ public boolean isCellEditable(int row, int column) {
 		lista_fascia_prezzo.setFont(new Font("Gadugi", Font.PLAIN, 13));
 		modello_numero3.addElement(controller.getAlbergoDAO().getAlberghi().get(controller.getIndice()).getFascia_Prezzo());
 		lista_fascia_prezzo.setModel(modello_numero3);
+		
 		tabellaRecensioni.setRowHeight(20);
-
 		tabellaRecensioni.setBackground(Color.WHITE);
 		tabellaRecensioni.setFont(new Font("Gadugi", Font.PLAIN, 14));
 		String nomeColonne[] = new String[] { "Recensioni", "Stelle" };
@@ -507,6 +492,10 @@ public boolean isCellEditable(int row, int column) {
 		testo_Visualizza_Recensione.setBounds(563, 277, 233, 29);
 		contentPane.add(testo_Visualizza_Recensione);
 		
+		//ActionListener di bottone_aggiungi_recensione che ha il compito di 
+		//aggiungere una recensione che in seguito deve essere approvata
+		//o rifiutata da un moderatore
+		
 		bottone_aggiungi_recensione.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String recensione = contenuto_scrivi_recensione.getText();
@@ -515,15 +504,14 @@ public boolean isCellEditable(int row, int column) {
 					
 			}});
 		
+		//Doppio click mouse, visualizzazione recensione per esteso
 		tabellaRecensioni.addMouseListener(new MouseAdapter() {
 	        public void mousePressed(MouseEvent mouseEvent) {
 	            tabellaRecensioni = (JTable) mouseEvent.getSource();
-	            Point point = mouseEvent.getPoint();
-				int row = tabellaRecensioni.rowAtPoint(point);
-	            if (mouseEvent.getClickCount() == 2 && tabellaRecensioni.getSelectedRow() != -1) {
+				if (mouseEvent.getClickCount() == 2 && tabellaRecensioni.getSelectedRow() != -1) {
 	            	int indice = tabellaRecensioni.getSelectedRow();
 	            	int codiceRecensione = controller.getRecensioneDAO().getRecensioni().get(indice).getReview_ID();
-	            	testo_Visualizza_Recensione.setText(controller.getRecensioneDAO().getRecensioni().get(indice).getTesto() + "\n - " + controller.getRecensioneDAO().getNickNameRecensione(controller.getConnection(), codiceRecensione));
+	            	contenuto_Visualizza_Recensione.setText(controller.getRecensioneDAO().getRecensioni().get(indice).getTesto() + "\n - " + controller.getRecensioneDAO().getNickNameRecensione(controller.getConnection(), codiceRecensione));
 	            	
 	           	
 	            }
@@ -532,6 +520,9 @@ public boolean isCellEditable(int row, int column) {
 		
 }
 	
+	//-----------------------------------------------------------------------------------------------------------
+	//METODO PER RIEMPIRE LA TABELLA
+
 public void riempitabellaRecensioni (Controller controller) {
 		
 		controller.getRecensioneDAO().setRecensioniDaVisualizzareAlbergo(controller.getConnection());

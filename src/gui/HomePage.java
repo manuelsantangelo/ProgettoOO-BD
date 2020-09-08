@@ -21,10 +21,10 @@ import java.awt.Button;
 import javax.swing.JTextArea;
 import java.awt.Toolkit;
 
-@SuppressWarnings("serial")
+@SuppressWarnings("serial") // Utilizzato per ignorare il warning che non crea problemi
 public class HomePage extends JFrame {
 	
-	@SuppressWarnings("unused")
+	@SuppressWarnings("unused") // Utilizzato per ignorare il warning che non crea problemi
 	private Controller controller;
 	
 	final static int FINESTRA_Y = 80;
@@ -113,7 +113,7 @@ public class HomePage extends JFrame {
 		
 		// Bottone con il suo Listener che una volta premuto
 		// attraverso la chiamata di alcune funzioni delle DAO
-		// tramite il controller, controllano se il i campi nickname
+		// tramite il controller, controllano se i campi nickname
 		// e password corrispondono a un Moderatore o a un Utente
 		// e successivamente passano al frame successivo adeguato
 		// (Principale per Utente e HomePage_Moderatore per un 

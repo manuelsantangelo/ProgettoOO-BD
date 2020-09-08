@@ -22,10 +22,10 @@ import javax.swing.JTextField;
 import logic.Controller;
 import javax.swing.JTextArea;
 
-@SuppressWarnings("serial")
+@SuppressWarnings("serial") // Utilizzato per ignorare il warning che non crea problemi
 public class Iscrizione extends JFrame{
 	
-	@SuppressWarnings("unused")
+	@SuppressWarnings("unused") // Utilizzato per ignorare il warning che non crea problemi
 	private Controller controller;
 
 	final static int FINESTRA_Y = 80;

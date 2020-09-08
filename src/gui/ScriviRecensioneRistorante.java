@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.Image;
-import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -178,11 +177,8 @@ public boolean isCellEditable(int row, int column) {
 		contentPane.add(contenuto_Descrizione);
 	
 		
-		for(int i = 0; i<controller.getContattiDAO().getSitoEtelefono().size(); i++) 
-		modello_numero1.addElement(controller.getContattiDAO().getSitoEtelefono().get(i).getTelefono());
-		for(int i = 0; i<controller.getContattiDAO().getSitoEtelefono().size(); i++) 
-			modello_numero2.addElement(controller.getContattiDAO().getSitoEtelefono().get(i).getSitoWeb());
 		
+	
 		/*@SuppressWarnings("rawtypes") // Utilizzato per ignorare il warning che non crea problemi
 		JList lista_fascia_prezzo = new JList();
 		lista_fascia_prezzo.setFocusable(false);
@@ -191,7 +187,8 @@ public boolean isCellEditable(int row, int column) {
 		lista_fascia_prezzo.setBounds(786, 48, 118, 47);
 		dlm2.addElement(controller.getRistoranteDAO().getRistoranti().get(controller.getIndice()).getFascia_Prezzo());*/
 		
-
+		//bottone_Indietro con il suo ActionListener che ha il compito
+		//di tornare nella pagina principale
 		JButton bottone_Indietro = new JButton("Indietro");
 		bottone_Indietro.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		bottone_Indietro.addActionListener(new ActionListener() {
@@ -221,15 +218,7 @@ public boolean isCellEditable(int row, int column) {
 		label_per_descrizione.setIcon(icona_nota);
 		contentPane.add(label_per_descrizione);
 		
-		/*@SuppressWarnings("rawtypes") // Utilizzato per ignorare il warning che non crea problemi
-		JList category = new JList();
-		category.setFocusable(false);
-		category.setFont(new Font("Gadugi", Font.PLAIN, 13));
-		category.setBackground(new Color(0, 191, 255));
-		category.setBounds(786, 142, 118, 73);
-		for(int i = 0; i < controller.getAssociazione_Categoria_RistoranteDAO().getCategorie().size(); i++)
-		dlm3.addElement(controller.getAssociazione_Categoria_RistoranteDAO().getCategorie().get(i).getCategoria_Ristorante_FK().toString());*/
-		
+	
 		JPanel pannello_laterale = new JPanel();
 		pannello_laterale.setBackground(new Color(0, 153, 255));
 		pannello_laterale.setBounds(912, 0, 332, 651);
@@ -250,12 +239,13 @@ public boolean isCellEditable(int row, int column) {
 		lista_cucine.setLayoutOrientation(JList.HORIZONTAL_WRAP);
 		lista_cucine.setBounds(20, 196, 302, 98);
 		lista_cucine.setBorder(new LineBorder(new Color(0, 191, 255), 2, true));
-
 		pannello_laterale.add(lista_cucine);
 		lista_cucine.setFont(new Font("Gadugi", Font.PLAIN, 15));
 		lista_cucine.setBackground(new Color(0, 153, 255));
+		for(int i = 0; i < controller.getAssociazione_Categoria_RistoranteDAO().getCategorie().size(); i++)
+		modello_numero4.addElement(controller.getAssociazione_Categoria_RistoranteDAO().getCategorie().get(i).getCategoria_Ristorante_FK().toString());
 		lista_cucine.setModel(modello_numero4);
-		
+	
 		JLabel label_per_cucine = new JLabel("iconaCategoria");
 		label_per_cucine.setBounds(16, 156, 28, 29);
 		File category_icon = new File("images\\ristorante.png");
@@ -361,6 +351,8 @@ public boolean isCellEditable(int row, int column) {
 		lista_telefono.setFocusable(false);
 		lista_telefono.setFont(new Font("Gadugi", Font.PLAIN, 15));
 		lista_telefono.setBackground(new Color(0, 153, 255));
+		for(int i = 0; i<controller.getContattiDAO().getSitoEtelefono().size(); i++) 
+			modello_numero1.addElement(controller.getContattiDAO().getSitoEtelefono().get(i).getTelefono());
 		lista_telefono.setModel(modello_numero1);
 		
 		@SuppressWarnings("rawtypes") // Utilizzato per ignorare il warning che non crea problemi
@@ -372,6 +364,8 @@ public boolean isCellEditable(int row, int column) {
 		lista_sitoweb.setFocusable(false);
 		lista_sitoweb.setFont(new Font("Gadugi", Font.PLAIN, 15));
 		lista_sitoweb.setBackground(new Color(0, 153, 255));
+		for(int i = 0; i<controller.getContattiDAO().getSitoEtelefono().size(); i++) 
+			modello_numero2.addElement(controller.getContattiDAO().getSitoEtelefono().get(i).getSitoWeb());
 		lista_sitoweb.setModel(modello_numero2);
 		
 		JTextArea testo_Provincia = new JTextArea();
@@ -434,6 +428,7 @@ public boolean isCellEditable(int row, int column) {
 		contentPane.add(scrollPane_tabellaRecensioni);
 		scrollPane_tabellaRecensioni.setViewportView(tabellaRecensioni);
 		
+		//Richiamiamo il metodo all'esterno del costruttore per riempire la tabella delle recensioni
 		riempitabellaRecensioni(controller);
 		
 		JTextArea contenuto_Visualizza_recensione = new JTextArea();
@@ -469,6 +464,10 @@ public boolean isCellEditable(int row, int column) {
 		testo_Visualizza_recensione.setBounds(566, 272, 228, 29);
 		contentPane.add(testo_Visualizza_recensione);
 		
+		
+		//ActionListener di bottone_aggiungi_recensione che ha il compito di 
+		//aggiungere una recensione che in seguito deve essere approvata
+		//o rifiutata da un moderatore
 		bottone_aggiungi_Recensione.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String recensione = testo_scrivi_recensione.getText();
@@ -477,11 +476,12 @@ public boolean isCellEditable(int row, int column) {
 						
 			}});
 		
+		//Doppio click mouse, visualizzazione recensione per esteso
+
 		tabellaRecensioni.addMouseListener(new MouseAdapter() {
 	        public void mousePressed(MouseEvent mouseEvent) {
 	            tabellaRecensioni = (JTable) mouseEvent.getSource();
-	            Point point = mouseEvent.getPoint();
-	            int row = tabellaRecensioni.rowAtPoint(point);
+	          
 	            if (mouseEvent.getClickCount() == 2 && tabellaRecensioni.getSelectedRow() != -1) {
 	            	int indice = tabellaRecensioni.getSelectedRow();
 	            	int codiceRecensione = controller.getRecensioneDAO().getRecensioni().get(indice).getReview_ID();
@@ -493,6 +493,8 @@ public boolean isCellEditable(int row, int column) {
 		});
 }
 	
+	//-----------------------------------------------------------------------------------------------------------
+	//METODO PER RIEMPIRE LA TABELLA
 	
 public void riempitabellaRecensioni(Controller controller) {
 		
