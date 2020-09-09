@@ -224,7 +224,7 @@ public class ScriviRecensioneAttrazione extends JFrame {
 		
 		@SuppressWarnings("rawtypes") // Utilizzato per ignorare il warning che non crea problemi
 		JList lista_Attrazioni = new JList();
-		lista_Attrazioni.setLayoutOrientation(JList.HORIZONTAL_WRAP);
+		lista_Attrazioni.setLayoutOrientation(JList.VERTICAL_WRAP);
 		lista_Attrazioni.setBounds(20, 196, 283, 98);
 		lista_Attrazioni.setBorder(new LineBorder(new Color(0, 191, 255), 2, true));
 

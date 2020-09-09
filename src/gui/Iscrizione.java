@@ -83,9 +83,9 @@ public class Iscrizione extends JFrame{
 		calendario.setBounds(25,391,193,29);
 		panel.add(calendario);
 		
-		JLabel testo_Nickname = new JLabel("Nickname");
+		JLabel testo_Nickname = new JLabel("Nickname *");
 		testo_Nickname.setFont(new Font("Gadugi", Font.BOLD, 20));
-		testo_Nickname.setBounds(25, 129, 106, 27);
+		testo_Nickname.setBounds(25, 129, 140, 27);
 		panel.add(testo_Nickname);
 		
 		nickname = new JTextField();
@@ -148,9 +148,9 @@ public class Iscrizione extends JFrame{
 		testo_Informazioni.setFont(new Font("Gadugi", Font.BOLD, 13));
 		testo_Informazioni.setLineWrap(true);
 		testo_Informazioni.setEditable(false);
-		testo_Informazioni.setText("Tutti i campi contrassegnati dall'asterisco sono campi obbligatori.\r\n\r\nIl Nome e il Cognome non possono essere pi\u00F9 lunghi di 50 caratteri.\r\n\r\nLa Password non puo essere pi\u00F9 lunga di 20 caratteri e deve \r\ncontenere numeri e lettere.\r\n\r\nL'Email deve essere valida.\r\n\r\nLa Citt\u00E0 non deve essere pi\u00F9 lunga di 20 caratteri.\r\n\r\nLa Data deve essere valida.\r\n\r\n");
+		testo_Informazioni.setText("Tutti i campi contrassegnati dall'asterisco sono campi obbligatori.\r\n\r\nIl Nome e il Cognome non possono essere pi\u00F9 lunghi di 50 caratteri.\r\n\r\nLa Password deve essere minimo di 8 caratteri e non pi\u00F9 lunga di 20 caratteri e deve contenere numeri e lettere.\r\n\r\nL'Email deve essere valida.\r\n\r\nLa Citt\u00E0 non deve essere pi\u00F9 lunga di 20 caratteri.\r\n\r\nLa Data di nascita deve essere valida.\r\n\r\n");
 		testo_Informazioni.setBackground(new Color(0, 153, 255));
-		testo_Informazioni.setBounds(10, 39, 380, 261);
+		testo_Informazioni.setBounds(10, 39, 380, 296);
 		panel_1.add(testo_Informazioni);
 		
 		JButton bottone_Iscriviti = new JButton("Iscriviti");
@@ -245,15 +245,49 @@ public class Iscrizione extends JFrame{
 		
 		bottone_Iscriviti.addActionListener(new ActionListener() {		
 			public void actionPerformed(ActionEvent e ) {
+				String nome1;
+				String password1;
+				String nickname1;
+				String email1;
+				String cognome1;
+				String città1;
 				
-				String nome1 = nome.getText();
-				String password1 = password.getText();			
-				String nickname1 = nickname.getText();	
-				String email1= email.getText();
-				String cognome1 = cognome.getText();
+				if(nome.getText().isEmpty()) { 
+				 nome1 = null;}
+				else {nome1 = nome.getText();}
+				
+				if(password.getText().isEmpty()){
+					password1 = null;} else {
+						password1 = password.getText();
+				}
+				
+				if(nickname.getText().isEmpty()) {
+					nickname1 = null;}
+				else {
+				 nickname1 = nickname.getText();
+				}
+				
+				if(email.getText().isEmpty()) {
+					email1 = null;
+				}else {
+				email1 = email.getText();
+				}
+				
+				if(cognome.getText().isEmpty()) {
+					cognome1 = null;
+				}else {
+				cognome1 = cognome.getText();
+				}
+
+				if(city.getText().isEmpty()) {
+					città1 = null;} 
+				else {
+				città1  = city.getText();}
+				
+				
 				java.util.Date dataNascita = calendario.getDate();	
 				java.sql.Date dataNascita1 = new java.sql.Date(dataNascita.getTime());
-				String città1 = city.getText();
+				
 				
 				controller.getUtenteDAO().addUtente(controller.getConnection(), nome1, password1, nickname1, email1, cognome1, dataNascita1, città1, imgpath);
 				

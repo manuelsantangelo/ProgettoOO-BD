@@ -14,6 +14,7 @@ public class Moderatore {
 	private Date DataDiNascita;
 	private String CF;
 	private String Password;
+	
 	public int getModeratore_ID() {
 		return Moderatore_ID;
 	}

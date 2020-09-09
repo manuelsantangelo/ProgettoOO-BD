@@ -7,7 +7,7 @@ public class Ristorante {
 	private String Nome;
 	private int Stelle_Michelin;
 	private double Voto;
-	private String Descizione;
+	private String Descrizione;
 	private prezzo Fascia_Prezzo;
 	private int Luogo_FK;
 	private byte[] Foto;
@@ -36,11 +36,11 @@ public class Ristorante {
 	public void setVoto(double voto) {
 		Voto = voto;
 	}
-	public String getDescizione() {
-		return Descizione;
+	public String getDescrizione() {
+		return Descrizione;
 	}
-	public void setDescizione(String descizione) {
-		Descizione = descizione;
+	public void setDescrizione(String descizione) {
+		Descrizione = descizione;
 	}
 	public prezzo getFascia_Prezzo() {
 		return Fascia_Prezzo;

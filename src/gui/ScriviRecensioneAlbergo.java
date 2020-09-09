@@ -387,12 +387,12 @@ public boolean isCellEditable(int row, int column) {
 		
 		@SuppressWarnings("rawtypes") // Utilizzato per ignorare il warning che non crea problemi
 		JList lista_servizio = new JList();
-		lista_servizio.setLayoutOrientation(JList.HORIZONTAL_WRAP);
+		lista_servizio.setLayoutOrientation(JList.VERTICAL_WRAP);
 		lista_servizio.setBorder(new LineBorder(new Color(0, 191, 255), 2, true));
 		lista_servizio.setBounds(16, 269, 306, 135);
 		panello_laterale.add(lista_servizio);
 		lista_servizio.setFocusable(false);
-		lista_servizio.setFont(new Font("Gadugi", Font.PLAIN, 16));
+		lista_servizio.setFont(new Font("Gadugi", Font.PLAIN, 12));
 		lista_servizio.setBackground(new Color(0, 153, 255));
 		for(int i = 0; i < controller.getAssociazione_Servizio_AlbergoDAO().getServizi().size(); i++)
 			modello_numero5.addElement(controller.getAssociazione_Servizio_AlbergoDAO().getServizi().get(i).getServizio_FK().toString());

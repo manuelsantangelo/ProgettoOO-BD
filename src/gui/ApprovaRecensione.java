@@ -224,7 +224,8 @@ public class ApprovaRecensione extends JFrame{
 		modello_di_default.setRowCount(0);
 
 		int i = 0;
-		
+	if(controller.getRecensioneDAO().getRecensioni().isEmpty()) {}
+	else {
 	do {
 		
 		modello_di_default.addRow(new Object[] {
@@ -235,4 +236,5 @@ public class ApprovaRecensione extends JFrame{
 			i++;
 		}while(controller.getRecensioneDAO().getRecensioni().size() != i);
 	}
+}
 }

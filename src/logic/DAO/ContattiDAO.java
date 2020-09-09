@@ -36,7 +36,9 @@ public class ContattiDAO {
 	
 	//Metodo utilizzato per inserire all'interno del database
 	//un telefono (o più telefoni) e un sito web (o più siti web) 
-	//per il corrispondente ristorante
+	//per il corrispondente ristorante. Ricordiamo che 
+	// è accortezza del moderatore inserire lo stesso numero di elementi
+	//per il telefono e sitoweb purchè siano pari (cioè un sitoweb e un telefono oppure due siti web e due telefoni)
 	public void addContattiRistorante(Connection conn, ArrayList<String> numTelefono, ArrayList<String> webSite, int ID) {
 		String comando;
 		comando = "INSERT INTO public.\"Contatti\"(\"Telefono\", \"SitoWeb\", \"Ristorante_FK\")VALUES (?, ?, ?);";
@@ -113,7 +115,9 @@ public class ContattiDAO {
 	
 	//Metodo utilizzato per inserire all'interno del database
 	//un telefono (o più telefoni) e un sito web (o più siti web) 
-	//per il corrispondente albergo
+	//per il corrispondente albergo.Ricordiamo che 
+	// è accortezza del moderatore inserire lo stesso numero di elementi
+	//per il telefono e sitoweb purchè siano pari (cioè un sitoweb e un telefono oppure due siti web e due telefoni)
 	
 	public void addContattiAlbergo(Connection conn, ArrayList<String> numTelefono, ArrayList<String> webSite, int ID) {
 	String comando;
@@ -190,7 +194,9 @@ public class ContattiDAO {
 
 	//Metodo utilizzato per inserire all'interno del database
 	//un telefono (o più telefoni) e un sito web (o più siti web) 
-	//per la corrispondente attrazione
+	//per la corrispondente attrazione.Ricordiamo che 
+	// è accortezza del moderatore inserire lo stesso numero di elementi
+	//per il telefono e sitoweb purchè siano pari (cioè un sitoweb e un telefono oppure due siti web e due telefoni)
 	public void addContattiAttrazione(Connection conn, ArrayList<String> numTelefono, ArrayList<String> webSite, int ID) {
 	String comando;
 	comando = "INSERT INTO public.\"Contatti\"(\"Telefono\", \"SitoWeb\", \"Attrazione_FK\")VALUES (?, ?, ?);";
@@ -268,6 +274,8 @@ public class ContattiDAO {
 	//il sito web (o siti web) presenti all'interno del database
 	//in corrispondenza di una determinata attrazione
       public void setContattiAttrazioni(Connection conn) {
+    	  this.sitoEtelefono.clear();
+    	  
     	  String comando;
     	  comando = "Select * from \"Contatti\" where \"Attrazione_FK\" = " + controller.getAttrazioneDAO().getAttrazione().getAttrazione_ID();
     	  
@@ -299,6 +307,7 @@ public class ContattiDAO {
   	//il sito web (o siti web) presenti all'interno del database
   	//in corrispondenza di un determinato albergo
       public void setContattiAlbergo(Connection conn) {
+    	  this.sitoEtelefono.clear();
     	  String comando;
     	  comando = "Select * from \"Contatti\" where \"Albergo_FK\" = " + controller.getAlbergoDAO().getAlbergo().getAlbergo_ID();
     	  
@@ -328,6 +337,7 @@ public class ContattiDAO {
   	//il sito web (o siti web) presenti all'interno del database
   	//in corrispondenza di un determinato ristorante
       public void setContattiRistorante(Connection conn) {
+    	  this.sitoEtelefono.clear();
     	  String comando;
     	  comando = "Select * from \"Contatti\" where \"Ristorante_FK\" = " + controller.getRistoranteDAO().getRistorante().getRistorante_ID();
     	  

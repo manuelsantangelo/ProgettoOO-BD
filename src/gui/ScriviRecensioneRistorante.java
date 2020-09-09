@@ -171,21 +171,11 @@ public boolean isCellEditable(int row, int column) {
 		contenuto_Descrizione.setWrapStyleWord(true);
 		contenuto_Descrizione.setLineWrap(true);
 		contenuto_Descrizione.setEditable(false);
-		contenuto_Descrizione.setText(controller.getRistoranteDAO().getRistorante().getDescizione());
+		contenuto_Descrizione.setText(controller.getRistoranteDAO().getRistorante().getDescrizione());
 		contenuto_Descrizione.setBackground(new Color(0, 191, 255));
 		contenuto_Descrizione.setBounds(270, 78, 537, 182);
 		contentPane.add(contenuto_Descrizione);
 	
-		
-		
-	
-		/*@SuppressWarnings("rawtypes") // Utilizzato per ignorare il warning che non crea problemi
-		JList lista_fascia_prezzo = new JList();
-		lista_fascia_prezzo.setFocusable(false);
-		lista_fascia_prezzo.setBackground(new Color(0, 191, 255));
-		lista_fascia_prezzo.setFont(new Font("Gadugi", Font.PLAIN, 13));
-		lista_fascia_prezzo.setBounds(786, 48, 118, 47);
-		dlm2.addElement(controller.getRistoranteDAO().getRistoranti().get(controller.getIndice()).getFascia_Prezzo());*/
 		
 		//bottone_Indietro con il suo ActionListener che ha il compito
 		//di tornare nella pagina principale
@@ -236,11 +226,11 @@ public boolean isCellEditable(int row, int column) {
 		
 		@SuppressWarnings("rawtypes") // Utilizzato per ignorare il warning che non crea problemi
 		JList lista_cucine = new JList();
-		lista_cucine.setLayoutOrientation(JList.HORIZONTAL_WRAP);
+		lista_cucine.setLayoutOrientation(JList.VERTICAL_WRAP);
 		lista_cucine.setBounds(20, 196, 302, 98);
 		lista_cucine.setBorder(new LineBorder(new Color(0, 191, 255), 2, true));
 		pannello_laterale.add(lista_cucine);
-		lista_cucine.setFont(new Font("Gadugi", Font.PLAIN, 15));
+		lista_cucine.setFont(new Font("Gadugi", Font.PLAIN, 12));
 		lista_cucine.setBackground(new Color(0, 153, 255));
 		for(int i = 0; i < controller.getAssociazione_Categoria_RistoranteDAO().getCategorie().size(); i++)
 		modello_numero4.addElement(controller.getAssociazione_Categoria_RistoranteDAO().getCategorie().get(i).getCategoria_Ristorante_FK().toString());

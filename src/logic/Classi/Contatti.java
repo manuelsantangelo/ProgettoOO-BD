@@ -7,6 +7,8 @@ public class Contatti {
 	private int Ristorante_FK;
 	private int Albergo_FK;
 	private int Attrazione_FK;
+	
+	
 	public String getTelefono() {
 		return Telefono;
 	}

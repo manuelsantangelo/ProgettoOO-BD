@@ -169,7 +169,7 @@ try {
 		ristorante.setNome(rs.getString(2));
 		ristorante.setStelle_Michelin(rs.getInt(3));
 		ristorante.setVoto(rs.getDouble(4));
-		ristorante.setDescizione(rs.getString(5));
+		ristorante.setDescrizione(rs.getString(5));
 		ristorante.setFascia_Prezzo(prezzo.valueOf(rs.getObject(6).toString()));
 		ristorante.setLuogo_FK(rs.getInt(7));
 		ristorante.setFoto(rs.getBytes(8));
@@ -251,7 +251,7 @@ try {
 				ristorante.setNome(rs.getString(2));
 				ristorante.setStelle_Michelin(rs.getInt(3));
 				ristorante.setVoto(rs.getDouble(4));
-				ristorante.setDescizione(rs.getString(5));
+				ristorante.setDescrizione(rs.getString(5));
 				ristorante.setFascia_Prezzo(prezzo.valueOf(rs.getObject(6).toString()));
 				ristorante.setLuogo_FK(rs.getInt(7));
 				ristorante.setFoto(rs.getBytes(8));

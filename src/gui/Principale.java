@@ -112,13 +112,13 @@ public class Principale extends JFrame {
 		JLabel label_per_nickname = new JLabel(controller.getUtenteDAO().getUtente().getNickname());
 		label_per_nickname.setFont(new Font("Gadugi", Font.BOLD, 17));
 		label_per_nickname.setAlignmentX(0.5f);
-		label_per_nickname.setBounds(42, 229, 194, 35);
+		label_per_nickname.setBounds(42, 229, 244, 35);
 		pannello_laterale.add(label_per_nickname);
 		
 		JLabel label_per_email = new JLabel(controller.getUtenteDAO().getUtente().getEmail());
 		label_per_email.setFont(new Font("Gadugi", Font.BOLD, 17));
 		label_per_email.setAlignmentX(0.5f);
-		label_per_email.setBounds(42, 250, 194, 35);
+		label_per_email.setBounds(42, 250, 260, 35);
 		pannello_laterale.add(label_per_email);
 		
 		JLabel label_per_data_di_iscrizione = new JLabel("Data di Iscrizione: " + controller.getUtenteDAO().getUtente().getData_Iscrizione());

@@ -3,9 +3,8 @@ package logic.DAO;
 import Tipi.tiporistorante;
 import logic.Controller;
 
-@SuppressWarnings("unused")
 public class CategoriaRistoranteDAO {
-/*	Controller controller;
+Controller controller;
 	private tiporistorante tipoR;
 	
 	public void setTipoR(tiporistorante tipoR) {
@@ -15,5 +14,5 @@ public class CategoriaRistoranteDAO {
 	public tiporistorante getTipoR() {
 		return tipoR;
 	}
-	*/
+	
 }

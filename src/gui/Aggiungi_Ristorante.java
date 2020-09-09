@@ -145,7 +145,7 @@ public class Aggiungi_Ristorante extends JFrame {
 		testo_Paese.setFont(new Font("Parametric Glitch", Font.BOLD, 21));
 		testo_Paese.setEditable(false);
 		testo_Paese.setBackground(Color.BLACK);
-		testo_Paese.setBounds(746, 11, 63, 29);
+		testo_Paese.setBounds(746, 11, 117, 29);
 		contentPane.add(testo_Paese);
 		
 		paese = new JTextField();

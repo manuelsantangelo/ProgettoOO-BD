@@ -10,6 +10,7 @@ public class Attrazione {
 	private prezzo Fascia_Prezzo;
 	private int Luogo_FK;
 	private byte[] Foto;
+	
 	public int getAttrazione_ID() {
 		return Attrazione_ID;
 	}

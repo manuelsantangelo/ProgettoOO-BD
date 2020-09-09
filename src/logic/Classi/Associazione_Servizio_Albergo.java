@@ -5,6 +5,7 @@ import Tipi.tiposervizio;
 public class Associazione_Servizio_Albergo {
 	private int Albergo_FK;
 	private tiposervizio Servizio_FK;
+	
 	public int getAlbergo_FK() {
 		return Albergo_FK;
 	}
